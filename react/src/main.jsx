@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MyCity from './maps/MyCity/index'
+import MyCity from './views/maps/MyCity/index'
 
 
 ReactDOM.render(

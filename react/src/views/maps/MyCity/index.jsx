@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import "./index.less"
-import MyCityRoad from "../components/road/index"
-import Car from "../components/car/index"
+import MyCityRoad from "../../../components/map/road/index"
+import Car from "../../../components/map/Car/index"
 
 export class index extends Component {
   render() {
