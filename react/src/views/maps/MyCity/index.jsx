@@ -38,7 +38,7 @@ export class index extends Component {
                     <LeftArrow />
                   </div>
                   <div className="road-name">
-                    深入交通
+                    基础通识路
                   </div>
 
                 </div>
@@ -48,7 +48,7 @@ export class index extends Component {
                     <ForwardArrow />
                   </div>
                   <div className="road-name">
-                    深入交通
+                    深入交通路
                   </div>
                 </div>
                 <DottedLine width="7px" height="100%" lineNum="15" />
@@ -57,9 +57,8 @@ export class index extends Component {
                     <RightArrow />
                   </div>
                   <div className="road-name">
-                    深入交通
+                    未来展望路
                   </div>
-
                 </div>
               </div>
               <SingleWhite width="5px" height="100%" />

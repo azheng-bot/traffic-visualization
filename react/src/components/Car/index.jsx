@@ -13,6 +13,11 @@ function index(props) {
   let x = -150; //汽车x轴位置
   let y = -100; //汽车y轴位置
 
+  const increaseSpeed = 0.005 //加速度
+  const reduceSpeed = 0.005 //减速度
+  const maxForwardSpeed = 0.75 //最高前进速度
+  const maxBackSpeed = -0.5 //最高后退速度
+
 
   let isInitCar = true;
 
@@ -83,7 +88,7 @@ function index(props) {
   let wheel_2 = useRef(null)
   console.log(`wheel_2`, wheel_2)
   function rotateWheel() {
-    wheelRate += runSpeed * 6;
+    wheelRate += runSpeed * 8;
     wheel_1.current.style.transform = `rotateX(42deg) rotateY(316deg) rotateZ(${wheelRate}deg)`
     wheel_2.current.style.transform = `rotateX(33deg) rotateY(313deg) rotateZ(${wheelRate + 30}deg)`
   }
@@ -95,17 +100,17 @@ function index(props) {
       return false;
     }
     // 自然减速
-    runSpeed += runSpeed <= 0 ? 0.015 : -0.015
+    runSpeed += runSpeed <= 0 ? reduceSpeed : -reduceSpeed
     x += coafX * runSpeed;
     y += coafY * runSpeed;
   }
   // 加速
   function speedUp() {
     // 加速
-    runSpeed += 0.015
+    runSpeed += increaseSpeed
     // 设置最高速度限制
-    if (runSpeed >= 1.5) {
-      runSpeed = 1.5
+    if (runSpeed >= maxForwardSpeed) {
+      runSpeed = maxForwardSpeed
     }
     // 设置x,y
     x += coafX * runSpeed;
@@ -114,23 +119,23 @@ function index(props) {
   // 减速
   function speedDown() {
     // 减速
-    runSpeed -= runSpeed <= 0 ? 0.01 : 0.02
+    runSpeed -= runSpeed <= 0 ? reduceSpeed : reduceSpeed * 2
     // 设置最高速度限制
-    if (runSpeed <= -0.75) {
-      runSpeed = -0.75
+    if (runSpeed <= maxBackSpeed) {
+      runSpeed = maxBackSpeed
     }
     x += coafX * runSpeed;
     y += coafY * runSpeed;
   }
   // 左转
   function turnLeft() {
-    x -= coafY * 0.3
-    y += coafX * 0.3
+    x -= coafY * 0.2
+    y += coafX * 0.2
   }
   // 右转
   function turnRight() {
-    x += coafY * 0.3
-    y -= coafX * 0.3
+    x += coafY * 0.2
+    y -= coafX * 0.2
   }
 
 
