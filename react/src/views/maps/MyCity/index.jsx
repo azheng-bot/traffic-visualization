@@ -18,16 +18,20 @@ export class index extends Component {
           {/* 马路 */}
           <div className="road">
             {/* 斑马线 */}
-            <div className="zebra-crossing">
-              <ZebraCrossing />
+            <div className="zebra" style={{}} >
+              <ZebraCrossing width="100%" height="120px" lineNum="25" />
             </div>
             {/* 行驶区 */}
             <div className="driving-area">
               <SingleWhite width="5px" height="100%" />
+              {/* 双黄线左边道路 */}
               <div className="left-road">
-                <ForwardArrow />
+                  <div className="arrow">
+                    <ForwardArrow />
+                  </div>
               </div>
-              <DoubleYellow width="15px" height="100%"></DoubleYellow>
+              <DoubleYellow width="18px" height="100%"></DoubleYellow>
+              {/* 双黄线右边道路 */}
               <div className="right-road">
                 <div className="left">
                   <div className="arrow">

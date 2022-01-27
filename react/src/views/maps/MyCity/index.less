@@ -2,6 +2,7 @@
   width: 100%;
   height: 100%;
   background-color: #8dc63f;
+  position: relative;
 
   .visible-area {
     width: 1200px;
@@ -13,5 +14,64 @@
     border: 1px solid;
   }
 
+  .road {
+    width: 400px;
+    height: 900px;
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+
+    .zebra {
+      width: 100%;
+      height: 200px;
+      margin:15px 0px;
+    }
+
+    .driving-area {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+
+
+      .left-road {
+        width: 25%;
+        height: 100%;
+
+        .arrow {
+          text-align: center;
+          margin-top: 100px;
+          transform: rotate(180deg);
+        }
+      }
+
+      .right-road {
+        width: 75%;
+        height: 100%;
+        border-top: 7px solid #fff;
+        display: flex;
+        flex-direction: row;
+
+        .left,.forward, .right{
+          width: 33%;
+
+          .arrow {
+            margin: auto;
+            margin-top: 30px;
+            text-align: center;
+          }
+          .road-name {
+            margin: auto;
+            margin-top: 20px;
+            writing-mode: vertical-lr;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
 
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import ForwardArrow from './arrows/ForwardArrow';
+import ForwardArrow from '../arrows/ForwardArrow';
 
 
 
@@ -20,26 +20,6 @@ function index() {
   let current = "MyCity"
 
   return (
-    <div className="road">
-      <div className="single-white"></div>
-      <div className="left-road">
-
-      </div>
-      <div className="double-yellow"></div>
-      <div className="right-road">
-        <div className="left">
-
-        </div>
-        <div className="zero-crossing"></div>
-        <div className="forward">
-
-        </div>
-        <div className="zero-crossing"></div>
-        <div className="right">
-
-        </div>
-      </div>
-    </div>
   )
 }
 
