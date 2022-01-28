@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
+import './index.less'
 import App from './App'
-import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom';
-import MyCity from './maps/MyCity/index'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import MyCity from './views/maps/MyCity/index'
 
 
 ReactDOM.render(
@@ -11,7 +11,8 @@ ReactDOM.render(
     <Router>
       <Routes>
         <Route path="/" element={<App />} >
-          <Route path="mycity" element={<MyCity />}></Route>
+          <Route path="/" element={<MyCity />}></Route>
+          <Route path="/mycity" element={<MyCity />}></Route>
         </Route>
 
       </Routes>
