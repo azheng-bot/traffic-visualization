@@ -1,29 +1,53 @@
 .my-city {
   width: 100%;
   height: 100%;
-  background-color: #8dc63f;
+  background-color: #8bb839;
   position: relative;
 
+
   .visible-area {
-    width: 1200px;
-    height: 800px;
+    width: 1280px;
+    height: 720px;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
     border: 1px solid;
+
+
+    .road-aside-left,
+    .road-aside-right {
+      width: 3500px;
+      height: 100px;
+      background-color: #dcded9;
+    transform: rotateX(59deg) rotateY(349deg) rotateZ(143deg);
+      position: absolute;
+      z-index: 100;
+    }
+
+    .road-aside-left {
+      top: 387px;
+      left: -1588px;
+      border-top: 8px solid #bbbbbb;
+    }
+
+    .road-aside-right {
+      bottom: -10px;
+      left: -1160px;
+      border-bottom: 1px solid #bbbbbb;
+    }
   }
 
   .road {
     width: 400px;
-    height: 4000px;
-    background-color: gray;
+    height: 2500px;
+    background-color: #404040;
     display: flex;
     flex-direction: column;
-    transform: rotateX(62deg) rotateY(351deg) rotateZ(42deg);
+    transform: rotateX(59deg) rotateY(349deg) rotateZ(53deg) scale(1.6);
     position: absolute;
-    top: -1350px;
-    right: 1001px;
+    top: -700px;
+    right: 860px;
     padding-top: 200px;
 
     .zebra {

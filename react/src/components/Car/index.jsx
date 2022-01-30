@@ -8,15 +8,20 @@ function index(props) {
   // 汽车基础属性
   let runSpeed = 0; //行驶速度
   let runStatus = 'stop'; //行驶状态
-  let coafX = 1.5; //汽车行驶距离与x轴的比例
-  let coafY = 1; //汽车行驶距离与x轴的比例
-  let x = -150; //汽车x轴位置
-  let y = -100; //汽车y轴位置
+  let scaleX = 1.6; //汽车行驶距离与x轴的比例
+  let scaleY = 0.9; //汽车行驶距离与x轴的比例
+  let x = -160; //汽车x轴位置
+  let y = -90; //汽车y轴位置
 
-  const increaseSpeed = 0.005 //加速度
+  // 速度数值
+  const increaseSpeed = 0.05 //加速度
   const reduceSpeed = 0.005 //减速度
-  const maxForwardSpeed = 0.75 //最高前进速度
-  const maxBackSpeed = -0.5 //最高后退速度
+  const maxForwardSpeed = 1.75 //最高前进速度
+  const maxBackSpeed = -1.5 //最高后退速度
+  const turnSpeed = 0.4 // 左右转的速度
+  const wheelSpeed = 6 // 轮胎转速
+
+
 
 
   let isInitCar = true;
@@ -88,7 +93,7 @@ function index(props) {
   let wheel_2 = useRef(null)
   console.log(`wheel_2`, wheel_2)
   function rotateWheel() {
-    wheelRate += runSpeed * 8;
+    wheelRate += runSpeed * wheelSpeed;
     wheel_1.current.style.transform = `rotateX(42deg) rotateY(316deg) rotateZ(${wheelRate}deg)`
     wheel_2.current.style.transform = `rotateX(33deg) rotateY(313deg) rotateZ(${wheelRate + 30}deg)`
   }
@@ -101,8 +106,8 @@ function index(props) {
     }
     // 自然减速
     runSpeed += runSpeed <= 0 ? reduceSpeed : -reduceSpeed
-    x += coafX * runSpeed;
-    y += coafY * runSpeed;
+    x += scaleX * runSpeed;
+    y += scaleY * runSpeed;
   }
   // 加速
   function speedUp() {
@@ -113,8 +118,8 @@ function index(props) {
       runSpeed = maxForwardSpeed
     }
     // 设置x,y
-    x += coafX * runSpeed;
-    y += coafY * runSpeed;
+    x += scaleX * runSpeed;
+    y += scaleY * runSpeed;
   }
   // 减速
   function speedDown() {
@@ -124,18 +129,18 @@ function index(props) {
     if (runSpeed <= maxBackSpeed) {
       runSpeed = maxBackSpeed
     }
-    x += coafX * runSpeed;
-    y += coafY * runSpeed;
+    x += scaleX * runSpeed;
+    y += scaleY * runSpeed;
   }
   // 左转
   function turnLeft() {
-    x -= coafY * 0.2
-    y += coafX * 0.2
+    x -= scaleY * turnSpeed
+    y += scaleX * turnSpeed
   }
   // 右转
   function turnRight() {
-    x += coafY * 0.2
-    y -= coafX * 0.2
+    x += scaleY * turnSpeed
+    y -= scaleX * turnSpeed
   }
 
 
