@@ -1,11 +1,12 @@
 const fs = require("fs")
 const path = require("path")
-const { env } = require("process")
 
+// env字符串
 let envStr = fs.readFileSync(path.join(__dirname, '../', '.env')).toString('utf-8')
 
 function getConfig() {
   let envConfig = {}
+  // 把字符串格式化成对象
   envStr
     .split('\n')
     .filter(configStr => configStr.trim() != '')
@@ -18,4 +19,4 @@ function getConfig() {
   return envConfig
 }
 
-module.exports = getConfig;
+module.exports = getConfig();
