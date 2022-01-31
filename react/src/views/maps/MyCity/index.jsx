@@ -13,13 +13,20 @@ export class index extends Component {
   render() {
     return (
       <div className="my-city">
-        {/* 小车行驶区域 */}
+        {/*  可视区域 */}
         <div className="visible-area">
+          {/* 树木 */}
+          <div className="trees-left">
+            <img className="bush bush-1" src="./image/bush3.png" alt="" />
+            <img className="bush bush-2" src="./image/high-bush2.png" alt="" />
+            <img className="bush bush-3" src="./image/tree.png" alt="" />
+          </div>
+          {/* 路边-左侧 */}
           <div className="road-aside-left"></div>
           {/* 马路 */}
           <div className="road">
             {/* 斑马线 */}
-            <div className="zebra" style={{}} >
+            <div className="zebra" >
               <ZebraCrossing width="100%" height="120px" lineNum="25" />
             </div>
             {/* 行驶区 */}
@@ -33,7 +40,7 @@ export class index extends Component {
               </div>
               {/* 双黄线右边道路 */}
               <div className="right-road">
-              <DoubleYellow width="18px" height="100%"></DoubleYellow>
+                <DoubleYellow width="18px" height="100%"></DoubleYellow>
                 <div className="left">
                   <div className="arrow">
                     <LeftArrow />
@@ -65,7 +72,9 @@ export class index extends Component {
               <SingleWhite width="5px" height="100%" />
             </div>
           </div>
+          {/* 小车 */}
           <Car></Car>
+          {/* 路边-右侧 */}
           <div className="road-aside-right"></div>
         </div>
       </div>
