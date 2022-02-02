@@ -13,35 +13,24 @@
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
-    border: 1px solid;
+    // border: 1px solid;
 
-    .trees-left {
+    .scenery-left,
+    .scenery-right {
       position: absolute;
-      left: -100px;
-      top: -100px;
 
-      .bush {
+      .scenery-item {
         display: block;
         position: absolute;
-        width: 512px;
-        height: 512px;
+        transform: skew(0deg,
+            1deg);
+        z-index: 10;
+      }
+    }
 
-      }
-
-      .bush-1 {
-        left: 1px;
-        top: 1px ;
-      }
-      .bush-2 {
-        left: 100px;
-        top: 100px ;
-      }
-      .bush-3 {
-        width: 192px;
-        height: 192px;
-        left: 300px;
-        top: 250px ;
-      }
+    .scenery-right {
+      bottom: 0;
+      right: 0;
     }
 
 
@@ -50,9 +39,9 @@
       width: 3500px;
       height: 100px;
       background-color: #dcded9;
-    transform: rotateX(59deg) rotateY(349deg) rotateZ(143deg);
+      transform: rotateX(59deg) rotateY(349deg) rotateZ(143deg);
       position: absolute;
-      z-index: 100;
+      z-index: 0;
     }
 
     .road-aside-left {

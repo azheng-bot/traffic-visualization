@@ -223,9 +223,9 @@ function index(props) {
 
   return (
     <div className="car" ref={carRef} onClick={handleCar}>
-      <img className="car_image" src="./image/后-右.png" alt="" />
-      <img className="wheel wheel_1" src="./image/轮毂.png" alt="" ref={wheel_1} />
-      <img className="wheel wheel_2" src="./image/轮毂.png" alt="" ref={wheel_2} />
+      <img className="car_image" src="./image/car/后-右.png" alt="" />
+      <img className="wheel wheel_1" src="./image/car/轮毂.png" alt="" ref={wheel_1} />
+      <img className="wheel wheel_2" src="./image/car/轮毂.png" alt="" ref={wheel_2} />
     </div>
   )
 }
