@@ -10,13 +10,16 @@ import ZebraCrossing from "../../../components/lines/ZebraCrossing"
 import DottedLine from "../../../components/lines/DottedLine"
 
 function index() {
-
   // 左边景观的图片与样式
   const leftSceneries = []
   !(function createLeftSceneries() {
     // 添加灌木丛样式
-    let bushNum = 24, initBushLeft = -594, initBushTop = 726, initBushZIndex = 100+bushNum;
+    let bushNum = 24, initBushLeft = -594, initBushTop = 726, initBushZIndex = 100 + bushNum;
     for (var i = 0; i <= bushNum; i++) {
+      if (i == 11) {
+        initBushLeft += 75 * 2
+        initBushTop -= 42 * 2
+      }
       leftSceneries.push({
         src: "image/tree/bush-1.png",
         left: initBushLeft += 75,
@@ -49,35 +52,34 @@ function index() {
     }
 
     // 添加大型树木2
-    let bigTree2Num = 15, initBigTree2Left = -950, initBigTree2Top = 400;
+    let bigTree2Num = 25, initBigTree2Left = -950, initBigTree2Top = 400;
     for (var i = 0; i <= bigTree2Num; i++) {
       leftSceneries.push({
-        src: "image/tree/bigtree-2.png",
-        left: initBigTree2Left += 128,
-        top: initBigTree2Top -= 72,
+        src: "image/tree/bigtree-1.png",
+        left: initBigTree2Left += 80,
+        top: initBigTree2Top -= 45,
         zIndex: 40
       })
     }
 
     // 添加大型树木3
-    let bigTree3Num = 12, initBigTree3Left = -1050, initBigTree3Top = 350;
-    for (var i = 0;  i <= bigTree3Num; i++) {
+    let bigTree3Num = 16, initBigTree3Left = -1050, initBigTree3Top = 350;
+    for (var i = 0; i <= bigTree3Num; i++) {
       leftSceneries.push({
         src: "image/tree/bigtree-4.png",
-        left: initBigTree3Left += 150,
-        top: initBigTree3Top -= 84,
+        left: initBigTree3Left += 128,
+        top: initBigTree3Top -= 72,
         zIndex: 35
       })
     }
 
   })()
 
-
   // 右边景观的图片与样式
   const rightSceneries = []
   !(function createRightSceneries() {
     // 添加灌木丛样式
-    let bushNum = 24, initBushRight = 1180, initBushBottom = -348, initBushZIndex = bushNum;
+    let bushNum = 24, initBushRight = 1180, initBushBottom = -348, initBushZIndex = bushNum + 20;
     for (var i = 0; i <= bushNum; i++) {
       rightSceneries.push({
         src: "image/tree/bush-1.png",
@@ -88,20 +90,80 @@ function index() {
     }
 
     // 添加不规则小树样式
+    let treeNum = 25, initTreeRight = -740, initTreeBottom = 670;
+    for (var i = 0; i <= treeNum; i++) {
+      rightSceneries.push({
+        src: "image/tree/tree-1.png",
+        width: 76,
+        right: initTreeRight += 80,
+        bottom: initTreeBottom -= 45,
+        zIndex: 50
+      })
+    }
+
+    // 添加大型树木1
+    let bigTree1Num = 18, initBigTree1Right = -750, initBigTree1Bottom = 500;
+    for (var i = 0; i <= bigTree1Num; i++) {
+      rightSceneries.push({
+        src: "image/tree/bigtree-1.png",
+        right: initBigTree1Right += 112,
+        bottom: initBigTree1Bottom -= 63,
+        zIndex: 55
+      })
+    }
+
+    // 添加大型树木2
+    let bigTree2Num = 25, initBigTree2Right = -950, initBigTree2Bottom = 450;
+    for (var i = 0; i <= bigTree2Num; i++) {
+      rightSceneries.push({
+        src: "image/tree/bigtree-1.png",
+        right: initBigTree2Right += 80,
+        bottom: initBigTree2Bottom -= 45,
+        zIndex: 60
+      })
+    }
+
+    // 添加大型树木3
+    let bigTree3Num = 12, initBigTree3Right = -1050, initBigTree3Bottom = 350;
+    for (var i = 0; i <= bigTree3Num; i++) {
+      rightSceneries.push({
+        src: "image/tree/bigtree-4.png",
+        right: initBigTree3Right += 150,
+        bottom: initBigTree3Bottom -= 84,
+        zIndex: 65
+      })
+    }
+
+    // 添加座椅和路灯
     rightSceneries.push({
-      src: "image/tree/tree-1.png",
-      right: 75,
-      bottom: 42,
-      zIndex: initBushZIndex--
+      src: "image/tree/bigtree-4.png",
+      right: initBigTree3Right += 150,
+      bottom: initBigTree3Bottom -= 84,
+      zIndex: 65
     })
 
   })()
 
+  // 小车的朝向
+  const drivingOrient = "rightTop"
+  // 小车的初始位置
+  const carInitSite = { x: 0, y: 0 }
+
+  // 小车事件区域
+  // 事件区域：小车到达某区域之后，执行目标事件
+  const eventAreas = {
+    rightTop: [
+      { name: "toNext", y: 0 }
+    ]
+  }
 
   return (
     <div className="my-city">
       {/*  可视区域 */}
       <div className="visible-area">
+        {/* 参考线 */}
+        <div className="ref-x"></div>
+        <div className="ref-y"></div>
         {/* 左侧树木&景观 */}
         <div className="scenery-left">
           {leftSceneries.map((item, index) => <img
@@ -121,6 +183,8 @@ function index() {
         <div className="road-aside-left"></div>
         {/* 马路 */}
         <div className="road">
+          {/* 小车 */}
+          <Car></Car>
           {/* 斑马线 */}
           <div className="zebra" >
             <ZebraCrossing width="100%" height="120px" lineNum="25" />
@@ -168,8 +232,6 @@ function index() {
             <SingleWhite width="5px" height="100%" />
           </div>
         </div>
-        {/* 小车 */}
-        <Car></Car>
         {/* 路边-右侧 */}
         <div className="road-aside-right"></div>
         {/* 右侧树木&景观 */}

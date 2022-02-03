@@ -3,7 +3,7 @@
 .my-city {
   width: 100%;
   height: 100%;
-  background-color: #8bb839;
+  background-color: #8ec53f;
   position: relative;
 
   .visible-area {
@@ -14,6 +14,25 @@
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
     // border: 1px solid;
+
+    .ref-x {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width:3000px ;
+      height: 1px ;
+      background-color: rgb(248, 0, 0);
+      z-index: 999;
+    }
+    .ref-y {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1px;
+      height: 3000px ;
+      background-color: rgb(255, 0, 0);
+      z-index: 999;
+    }
 
     .scenery-left,
     .scenery-right {
@@ -48,12 +67,14 @@
       top: 387px;
       left: -1588px;
       border-top: 8px solid #bbbbbb;
+      z-index: 5;
     }
 
     .road-aside-right {
       bottom: -10px;
       left: -1160px;
       border-bottom: 1px solid #bbbbbb;
+      z-index: 15;
     }
   }
 
@@ -68,6 +89,7 @@
     top: -700px;
     right: 860px;
     padding-top: 200px;
+    z-index: 10;
 
     .zebra {
       width: 100%;
