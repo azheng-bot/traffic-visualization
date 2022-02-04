@@ -2,16 +2,22 @@ import React, { useRef, useEffect } from 'react'
 import "./index.less"
 
 function index(props) {
+  // 获取汽车dom元素
   const carRef = useRef(null)
-  console.log(`carRef`, carRef)
 
-  // 汽车基础属性
+  // 0.汽车基础属性
+  let orient = "topRight" // 汽车朝向
+  let orientImgMap = {
+    topRight:"./image/car/上-右.png",
+    topLeft:"./image/car/上-左.png",
+    bottomRight:"./image/car/下-右.png",
+    bottomLeft:"./image/car/下-左.png",
+  }
+
   let runSpeed = 0; //行驶速度
   let runStatus = 'stop'; //行驶状态
-  let scaleX = 1.6; //汽车行驶距离与x轴的比例
-  let scaleY = 0.9; //汽车行驶距离与x轴的比例
-  let x = -160; //汽车x轴位置
-  let y = -90; //汽车y轴位置
+  let x = 0; //汽车x轴位置
+  let y = 1000; //汽车y轴位置
 
   // 速度数值
   const increaseSpeed = 0.05 //加速度
@@ -19,14 +25,17 @@ function index(props) {
   const maxForwardSpeed = 1.75 //最高前进速度
   const maxBackSpeed = -1.5 //最高后退速度
   const turnSpeed = 0.4 // 左右转的速度
-  const wheelSpeed = 6 // 轮胎转速
+
+  // 前后左右边界
+  const leftBorder = -53;
+  const rightBorder = 292;
+  const backBorder = 1000
+  const forwardBorder = 2239
 
 
-
-
-  let isInitCar = true;
 
   // 初始化小汽车入场
+  let isInitCar = true;
   useEffect(() => {
     setTimeout(() => {
       isInitCar = false;
@@ -36,7 +45,7 @@ function index(props) {
   }, [])
 
   let timer = null;
-  // 运行小车
+  // 1.小车运行
   function runCar() {
     timer = setInterval(() => {
       if (isInitCar) { // 初始化小汽车入场
@@ -79,16 +88,19 @@ function index(props) {
           turnRight()
           break;
       }
+      console.log('x,y', x, y);
       carRef.current.style.left = x + 'px'
       carRef.current.style.bottom = y + 'px'
-
       rotateWheel()
+
+      if (y >= forwardBorder) toNextRoad()
     }, 3)
   }
   // runCar()
 
   // 轮毂旋转
   let wheelRate = 0
+  const wheelSpeed = 3 // 轮胎转速
   let wheel_1 = useRef(null)
   let wheel_2 = useRef(null)
   console.log(`wheel_2`, wheel_2)
@@ -106,8 +118,7 @@ function index(props) {
     }
     // 自然减速
     runSpeed += runSpeed <= 0 ? reduceSpeed : -reduceSpeed
-    x += scaleX * runSpeed;
-    y += scaleY * runSpeed;
+    y += runSpeed;
   }
   // 加速
   function speedUp() {
@@ -118,8 +129,7 @@ function index(props) {
       runSpeed = maxForwardSpeed
     }
     // 设置x,y
-    x += scaleX * runSpeed;
-    y += scaleY * runSpeed;
+    y += runSpeed;
   }
   // 减速
   function speedDown() {
@@ -129,21 +139,25 @@ function index(props) {
     if (runSpeed <= maxBackSpeed) {
       runSpeed = maxBackSpeed
     }
-    x += scaleX * runSpeed;
-    y += scaleY * runSpeed;
+    y += runSpeed;
   }
+
   // 左转
   function turnLeft() {
-    x -= scaleY * turnSpeed
-    y += scaleX * turnSpeed
+    if (x >= leftBorder) {
+      x -= turnSpeed
+    }
+    y += turnSpeed
   }
   // 右转
   function turnRight() {
-    x += scaleY * turnSpeed
-    y -= scaleX * turnSpeed
+    if (x <= rightBorder) {
+      x += turnSpeed
+    }
+    y -= turnSpeed
   }
 
-
+  // 2.键盘事件
   // 键值 to 方向
   let key2Direction = {
     37: 'left', 38: 'up', 39: 'right', 40: 'down',
@@ -217,15 +231,26 @@ function index(props) {
     defermineDirection()
   })
 
-  const handleCar = e => {
-    console.log(`carRef`, carRef)
+  const road1 = [56, 134]
+  const road2 = [134, 220]
+  const road3 = [220, 293]
+  function toNextRoad() {
+    clearInterval(timer)
+    timer = null
+    if (x >= road1[0] && x < road1[1]) {
+      window.alert("To 通识 road")
+    } else if (x >= road2[0] && x < road2[1]) {
+      window.alert("To 深入 road")
+    } else if (x >= road3[0] && x < road3[1]) {
+      window.alert("To 展望 road")
+    }  
   }
 
   return (
-    <div className="car" ref={carRef} onClick={handleCar}>
-      <img className="car_image" src="./image/后-右.png" alt="" />
-      <img className="wheel wheel_1" src="./image/轮毂.png" alt="" ref={wheel_1} />
-      <img className="wheel wheel_2" src="./image/轮毂.png" alt="" ref={wheel_2} />
+    <div className="car" ref={carRef}>
+      <img className="car_image" src={orientImgMap[orient]} alt="" />
+      <img className="wheel wheel_1" src="./image/car/轮毂.png" alt="" ref={wheel_1} />
+      <img className="wheel wheel_2" src="./image/car/轮毂.png" alt="" ref={wheel_2} />
     </div>
   )
 }

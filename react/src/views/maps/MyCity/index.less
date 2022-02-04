@@ -3,7 +3,7 @@
 .my-city {
   width: 100%;
   height: 100%;
-  background-color: #8bb839;
+  background-color: #8ec53f;
   position: relative;
 
   .visible-area {
@@ -13,35 +13,43 @@
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
-    border: 1px solid;
+    // border: 1px solid;
 
-    .trees-left {
+    .ref-x {
       position: absolute;
-      left: -100px;
-      top: -100px;
+      right: 0;
+      bottom: 0;
+      width:3000px ;
+      height: 1px ;
+      background-color: rgb(248, 0, 0);
+      z-index: 999;
+    }
+    .ref-y {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1px;
+      height: 3000px ;
+      background-color: rgb(255, 0, 0);
+      z-index: 999;
+    }
 
-      .bush {
+    .scenery-left,
+    .scenery-right {
+      position: absolute;
+
+      .scenery-item {
         display: block;
         position: absolute;
-        width: 512px;
-        height: 512px;
+        transform: skew(0deg,
+            1deg);
+        z-index: 10;
+      }
+    }
 
-      }
-
-      .bush-1 {
-        left: 1px;
-        top: 1px ;
-      }
-      .bush-2 {
-        left: 100px;
-        top: 100px ;
-      }
-      .bush-3 {
-        width: 192px;
-        height: 192px;
-        left: 300px;
-        top: 250px ;
-      }
+    .scenery-right {
+      bottom: 0;
+      right: 0;
     }
 
 
@@ -50,21 +58,23 @@
       width: 3500px;
       height: 100px;
       background-color: #dcded9;
-    transform: rotateX(59deg) rotateY(349deg) rotateZ(143deg);
+      transform: rotateX(59deg) rotateY(349deg) rotateZ(143deg);
       position: absolute;
-      z-index: 100;
+      z-index: 0;
     }
 
     .road-aside-left {
       top: 387px;
       left: -1588px;
       border-top: 8px solid #bbbbbb;
+      z-index: 5;
     }
 
     .road-aside-right {
       bottom: -10px;
       left: -1160px;
       border-bottom: 1px solid #bbbbbb;
+      z-index: 15;
     }
   }
 
@@ -79,6 +89,7 @@
     top: -700px;
     right: 860px;
     padding-top: 200px;
+    z-index: 10;
 
     .zebra {
       width: 100%;
