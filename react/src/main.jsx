@@ -4,7 +4,7 @@ import "./index.less";
 import App from "./App";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MyCity from "./views/maps/MyCity/index";
-import Icon from "./views/knowledgeModule/Icon/index";
+import Sign from "./views/knowledgeModule/Sign/index";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,7 +13,7 @@ ReactDOM.render(
         <Route path="/" element={<App />}>
           <Route path="/" element={<MyCity />}></Route>
           <Route path="/mycity" element={<MyCity />}></Route>
-          <Route path="/icon" element={<Icon />}></Route>
+          <Route path="/sign" element={<Sign />}></Route>
         </Route>
       </Routes>
     </Router>
