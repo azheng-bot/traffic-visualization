@@ -1,0 +1,58 @@
+@import url(../../style/animation.less);
+.mask {
+  animation-name: fideOut;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 10, 10, 0.158);
+}
+
+.mask.active {
+  animation-name: fideIn;
+  animation-duration: .2s;
+  animation-fill-mode: forwards;
+  display: block;
+}
+
+.modal-box {
+  display: none;
+  width: 500px;
+  height: 600px;
+  border-radius: 30px;
+  background-color: #fff;
+  transition: .3s;
+  // box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  border: 2px solid #828a92;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+  .close {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 50px;
+    font-weight: 200;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: rgb(221, 221, 221);
+    transform: rotate(45deg);
+    cursor: pointer;
+  }
+
+  .close:hover {
+    color: rgb(145, 145, 145);
+  }
+}
+
+.modal.active {
+  display: block;
+}

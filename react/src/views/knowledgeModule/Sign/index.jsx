@@ -2,47 +2,79 @@ import React, { useEffect, useState } from "react";
 import { getSign } from "../../../api/deepModule";
 import "./index.less";
 function Sign() {
-  // 标志图标分类
+  // 数据列表
   const [list, setList] = useState([]);
-  // 控制那个标志图标内容显示
-  const [flag, setFlag] = useState(1);
+  // 当前选中分类
+  const [currentCate, setCurrentCate] = useState(1);
+  // 当前选中图标
+  const [currentSign, setCurrentSign] = useState(1);
+  // 模态框是否显示
+  const [isModalVisiable, setIsModalVisiable] = useState(false);
+
+
+  // 初始化获取数据
   useEffect(() => {
     getSign().then((res) => {
       setList(res.signCategaries);
-      console.log(list);
+      console.log('res.signCategaries.find(item => item.cate_id == 1)', res.signCategaries);
+      setCurrentCate(res.signCategaries.find(item => item.cate_id == 1))
     });
   }, []);
 
+
   return (
-    <ul className="traffic-sign">
-      {list.map((item) => (
-        <li
-          className={item.cate_id === flag ? "active sign-module" : "sign-module"}
-          key={item.cate_id}
-          onClick={() => setFlag(item.cate_id)}
-        >
-          <div className="module-title complete-center">
-            <span>{item.cate_name}</span>
-            <img src={item.signList[4].sign_url} alt="" />
-          </div>
-          <div className="module-content">
-            <div className="title">
+    <div className="traffic-sign">
+      <ul>
+        {list.map((item) => (
+          <li
+            className={item.cate_id === currentCate.cate_id ? "active sign-module" : "sign-module"}
+            key={item.cate_id}
+            onClick={() => setCurrentCate(item)}
+          >
+            <div className="module-title complete-center">
               <span>{item.cate_name}</span>
               <img src={item.signList[4].sign_url} alt="" />
             </div>
-            <div className="sign-list">
-              {item.signList.map((key) => (
-                <div className="sign-item" key={key.sign_id}>
-                  <img src={key.sign_url} title={key.sign_name}></img>
-                  <br />
-                  <span>{key.sign_name}</span>
-                </div>
-              ))}
+            <div className="module-content">
+              <div className="title">
+                <span>{item.cate_name}</span>
+                <img src={item.signList[4].sign_url} alt="" />
+              </div>
+              <div className="sign-list">
+                {item.signList.map((key) => (
+                  <div
+                    className="sign-item"
+                    title={key.sign_name}
+                    key={key.sign_id}
+                    onClick={() => setCurrentSign(key) || setIsModalVisiable(true)}
+                  >
+                    <img src={key.sign_url} title={key.sign_name}></img>
+                    <br />
+                    <span>{key.sign_name}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </li>
-      ))}
-    </ul>
+          </li>
+        ))}
+      </ul>
+      <div className={isModalVisiable ? "mask active" : 'mask'}  onClick={() => setIsModalVisiable(false)}></div>
+      <div className={isModalVisiable ? "modal  active" : 'modal'}>
+        <div className="picture">
+          <img src={currentSign.sign_url} alt="" />
+        </div>
+        <div className="name">
+          {currentSign.sign_name}
+
+        </div>
+        <div className="module-name">
+          <span>
+            {currentCate.cate_name}
+          </span>
+        </div>
+        <div className="close" onClick={() => setIsModalVisiable(false)}>+</div>
+      </div>
+    </div>
   );
 }
 
