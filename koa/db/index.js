@@ -1,7 +1,15 @@
 const mysql = require("mysql")
+const env = require("../utils/envConfig")
+const { user, password, host, port, database } = env;
+
 const conn = mysql.createConnection({
-  user:"traffic",
-  password:"123456",
-  host:"120.55.171.5",
-  database:"traffic"
+  user,
+  password,
+  host,
+  database,
+  port
 })
+
+conn.connect()
+
+module.exports = conn
