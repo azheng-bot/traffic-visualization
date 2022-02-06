@@ -7,6 +7,10 @@ const controller = require("../controller/index")
 router.get("/signs", controller.getSigns)
 // 获取全国省市
 router.get("/cities", controller.getCities)
+// 获取法律条文
+router.get("/laws", controller.getLaws)
+// 获取公交车信息
+router.get("/buses", controller.getBuses)
 
 
-module.exports = router
+module.exports = router 
