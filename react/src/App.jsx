@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import './App.less'
+import Navigator from './components/Navigator/index.jsx';
+;
 
 
 function App() {
@@ -8,6 +10,7 @@ function App() {
 
   return (
     <div className="App">
+      <Navigator></Navigator>
       <Outlet></Outlet>
     </div>
   )

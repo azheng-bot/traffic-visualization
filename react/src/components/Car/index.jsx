@@ -88,7 +88,6 @@ function index(props) {
           turnRight()
           break;
       }
-      console.log('x,y', x, y);
       carRef.current.style.left = x + 'px'
       carRef.current.style.bottom = y + 'px'
       rotateWheel()
@@ -100,10 +99,9 @@ function index(props) {
 
   // 轮毂旋转
   let wheelRate = 0
-  const wheelSpeed = 3 // 轮胎转速
+  const wheelSpeed = 5 // 轮胎转速
   let wheel_1 = useRef(null)
   let wheel_2 = useRef(null)
-  console.log(`wheel_2`, wheel_2)
   function rotateWheel() {
     wheelRate += runSpeed * wheelSpeed;
     wheel_1.current.style.transform = `rotateX(42deg) rotateY(316deg) rotateZ(${wheelRate}deg)`

@@ -161,9 +161,6 @@ function index() {
     <div className="my-city">
       {/*  可视区域 */}
       <div className="visible-area">
-        {/* 参考线 */}
-        <div className="ref-x"></div>
-        <div className="ref-y"></div>
         {/* 左侧树木&景观 */}
         <div className="scenery-left">
           {leftSceneries.map((item, index) => <img

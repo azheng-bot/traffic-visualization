@@ -27,7 +27,7 @@
       cursor: pointer;
       font-size: 32px;
       writing-mode: vertical-lr;
-      animation-name: fideIn;
+      animation-name: fadeIn;
       animation-duration: 1s;
       animation-fill-mode: forwards;
 
@@ -47,7 +47,7 @@
 
     .module-content {
       display: none;
-      animation-name: fideOut;
+      animation-name: fadeOut;
       animation-duration: .2s;
       animation-fill-mode: forwards;
 
@@ -166,7 +166,7 @@
     width: 40%;
 
 
-    @keyframes fideOutTitle {
+    @keyframes fadeOutTitle {
       0% {
         opacity: 1;
       }
@@ -184,12 +184,12 @@
     }
 
     .module-title {
-      animation-name: fideOutTitle;
+      animation-name: fadeOutTitle;
       animation-duration: 1s;
       animation-fill-mode: forwards;
     }
 
-    @keyframes fideInContent {
+    @keyframes fadeInContent {
       0% {
         opacity: 0;
       }
@@ -207,7 +207,7 @@
     .module-content {
       display: flex;
       flex-direction: column;
-      animation-name: fideInContent;
+      animation-name: fadeInContent;
       animation-duration: 1.8s;
       animation-fill-mode: forwards;
     }
@@ -215,7 +215,7 @@
 }
 
 .traffic-sign .mask {
-  animation-name: fideOut;
+  animation-name: fadeOut;
   animation-duration: 1s;
   animation-fill-mode: forwards;
   display: none;
@@ -228,7 +228,7 @@
 }
 
 .traffic-sign .mask.active {
-  animation-name: fideIn;
+  animation-name: fadeIn;
   animation-duration: .4s;
   animation-fill-mode: forwards;
   display: block;
