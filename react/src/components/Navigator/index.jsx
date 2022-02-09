@@ -1,7 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+;
+
 import "./index.less"
 
 function index(props) {
+  const navigate = useNavigate()
   const moduleList = [
     {
       name: "我的城市",
@@ -56,6 +60,8 @@ function index(props) {
 
   return (
     <div className={["navigator", navigatorVisible ? "active" : ""].join(" ")} >
+      {/* 半透明背景 */}
+      <div className="mask"></div>
       {/* logo */}
       <div className="logo">
         <img src="../image/favicon.svg" alt="" />
@@ -79,21 +85,21 @@ function index(props) {
             </li>
           ))}
         </ul>
-          <ul
-            className={["select-list", selectVisible ? "show" : "hide"].join(" ")}
-            style={{
-              width: (moduleList[moduleIndex].children.length * 195) + 'px',
-              left: moduleIndex * 150 - (moduleList[moduleIndex].children.length * 195) / 2 + 75 + 'px'
-            }}
-            onMouseLeave={() => setSelectVisible(false)}>
-            {moduleList[moduleIndex].children.map((item, index) => (
-              <li key={index}>
-                <img className="_icon" src={item._icon} alt=" " />
-                <img className="icon" src={item.icon} alt=" " />
-                <p className="name">{item.name}</p>
-              </li>
-            ))}
-          </ul>
+        <ul
+          className={["select-list", selectVisible ? "show" : "hide"].join(" ")}
+          style={{
+            width: (moduleList[moduleIndex].children.length * 195) + 'px',
+            left: moduleIndex * 150 - (moduleList[moduleIndex].children.length * 195) / 2 + 75 + 'px'
+          }}
+          onMouseLeave={() => setSelectVisible(false)}>
+          {moduleList[moduleIndex].children.map((item, index) => (
+            <li key={index} onClick={() => navigate(item.route)}>
+              <img className="_icon" src={item._icon} alt=" " />
+              <img className="icon" src={item.icon} alt=" " />
+              <p className="name">{item.name}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   )
