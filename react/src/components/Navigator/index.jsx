@@ -63,7 +63,7 @@ function index(props) {
       {/* 半透明背景 */}
       <div className="mask"></div>
       {/* logo */}
-      <div className="logo">
+      <div className="logo" onClick={() => navigate("/")}>
         <img src="../image/favicon.svg" alt="" />
         <span className="text">视觉交通</span>
       </div>
