@@ -9,6 +9,7 @@ function index(props) {
   const moduleList = [
     {
       name: "我的城市",
+      route: "/mycity",
       children: [
         { name: "城市公交", route: "/mycity/bus", icon: "../image/modules/colorless/bus.png", _icon: "../image/modules/colorless/_bus.png" },
         { name: "城市地铁", route: "/mycity/subway", icon: "../image/modules/colorless/subway.png", _icon: "../image/modules/colorless/_subway.png" },
@@ -16,6 +17,7 @@ function index(props) {
     },
     {
       name: "交通通识",
+      route: "/knowledge",
       children: [
         { name: "交通图标", route: "/knowledge/sign", icon: "../image/modules/colorless/sign.png", _icon: "../image/modules/colorless/_sign.png" },
         { name: "交通工具", route: "/knowledge/tool", icon: "../image/modules/colorless/tool.png", _icon: "../image/modules/colorless/_tool.png" },
@@ -25,6 +27,7 @@ function index(props) {
     },
     {
       name: "深入交通",
+      route: "/deep",
       children: [
         { name: "交通现状", route: "/deep/now", icon: "../image/modules/colorless/now.png", _icon: "../image/modules/colorless/_now.png" },
         { name: "违法统计", route: "/deep/illegal", icon: "../image/modules/colorless/illegal.png", _icon: "../image/modules/colorless/_illegal.png" },
@@ -34,6 +37,7 @@ function index(props) {
     },
     {
       name: "交通展望",
+      route: "/future",
       children: [
         { name: "疫情", route: "/future/covid", icon: "../image/modules/colorless/covid.png", _icon: "../image/modules/colorless/_covid.png" },
         { name: "碳中和", route: "/future/carbon", icon: "../image/modules/colorless/carbon.png", _icon: "../image/modules/colorless/_carbon.png" },
@@ -78,7 +82,7 @@ function index(props) {
       <div className="module-list">
         <ul className="modules">
           {moduleList.map((item, index) => (
-            <li className="module" key={index} onMouseEnter={() => setModuleIndex(index) || setSelectVisible(true)}  >
+            <li className="module" key={index} onMouseEnter={() => setModuleIndex(index) || setSelectVisible(true)}  onClick={() => navigate(item.route)} >
               <a href="#" className="text">
                 {item.name}
               </a>

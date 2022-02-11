@@ -1,21 +1,25 @@
 import React, { Component } from 'react'
+import { useLocation, Outlet } from 'react-router-dom'
 import "./index.less"
-import Car from "../../../components/Car/index"
-import LeftArrow from "../../../components/arrows/LeftArrow"
-import ForwardArrow from "../../../components/arrows/ForwardArrow"
-import RightArrow from "../../../components/arrows/RightArrow"
-import DoubleYellow from "../../../components/lines/DoubleYellow"
-import SingleWhite from "../../../components/lines/SingleWhite"
-import ZebraCrossing from "../../../components/lines/ZebraCrossing"
-import DottedLine from "../../../components/lines/DottedLine"
+import Car from "../../components/Car/index"
+import LeftArrow from "../../components/arrows/LeftArrow"
+import ForwardArrow from "../../components/arrows/ForwardArrow"
+import RightArrow from "../../components/arrows/RightArrow"
+import DoubleYellow from "../../components/lines/DoubleYellow"
+import SingleWhite from "../../components/lines/SingleWhite"
+import ZebraCrossing from "../../components/lines/ZebraCrossing"
+import DottedLine from "../../components/lines/DottedLine"
 
-function index() {
+function index(props) {
+  let match = useLocation()
+  console.log(match)
   // 左边景观的图片与样式
-  const leftSceneries = []
-  !(function createLeftSceneries() {
+  const leftSceneries = [];
+  (function createLeftSceneries() {
     // 添加灌木丛样式
     let bushNum = 24, initBushLeft = -594, initBushTop = 726, initBushZIndex = 100 + bushNum;
     for (var i = 0; i <= bushNum; i++) {
+      // 中间少两个灌木，去添加特殊景观
       if (i == 11) {
         initBushLeft += 75 * 2
         initBushTop -= 42 * 2
@@ -73,14 +77,19 @@ function index() {
       })
     }
 
-  })()
+  })();
 
   // 右边景观的图片与样式
-  const rightSceneries = []
-  !(function createRightSceneries() {
+  const rightSceneries = [];
+  (function createRightSceneries() {
     // 添加灌木丛样式
     let bushNum = 24, initBushRight = 1180, initBushBottom = -348, initBushZIndex = bushNum + 20;
     for (var i = 0; i <= bushNum; i++) {
+      // 中间少两个灌木，去添加特殊景观
+      if (i == 11) {
+        initBushRight -= 75 * 2
+        initBushBottom += 42 * 2
+      }
       rightSceneries.push({
         src: "image/tree/bush-1.png",
         right: initBushRight -= 75,
@@ -142,12 +151,59 @@ function index() {
       zIndex: 65
     })
 
-  })()
+  })();
+
+  // 特殊景观
+  (function createSpecialSceneries() {
+    // 左边
+    // 凳子
+    leftSceneries.push({
+      src: "image/scenery/chair-1.png",
+      width: 60,
+      left: 380,
+      top: 222,
+      zIndex: 50
+    })
+    // 路灯
+    leftSceneries.push({
+      src: "image/scenery/light-1.png",
+      width: 20,
+      left: 362,
+      top: 176,
+      zIndex: 50
+    })
+    // 女孩儿
+    leftSceneries.push({
+      src: "image/scenery/people-2.png",
+      left: 40,
+      top: 140,
+      zIndex: 40
+    })
+
+    // 右边
+    // 凳子
+    rightSceneries.push({
+      src: "image/scenery/chair-1.png",
+      width: 60,
+      right: 275,
+      bottom: 192,
+      zIndex: 40
+    })
+    // 路灯
+    rightSceneries.push({
+      src: "image/scenery/light-1.png",
+      width: 20,
+      right: 256,
+      bottom: 220,
+      zIndex: 40
+    })
+  })();
 
   // 小车的朝向
   const drivingOrient = "rightTop"
+  const drivingDirect = "back"
   // 小车的初始位置
-  const carInitSite = { x: 0, y: 0 }
+  const carInitSite = { x: 180, y: 1300 }
 
   // 小车事件区域
   // 事件区域：小车到达某区域之后，执行目标事件
@@ -160,7 +216,8 @@ function index() {
   return (
     <div className="my-city">
       {/*  可视区域 */}
-      <div className="visible-area">
+      <div className="visible-area" >
+        {/* <div className="border" ></div> */}
         {/* 左侧树木&景观 */}
         <div className="scenery-left">
           {leftSceneries.map((item, index) => <img
@@ -181,7 +238,7 @@ function index() {
         {/* 马路 */}
         <div className="road">
           {/* 小车 */}
-          <Car></Car>
+          <Car orient={drivingOrient} direct={drivingDirect} initSite={carInitSite}></Car>
           {/* 斑马线 */}
           <div className="zebra" >
             <ZebraCrossing width="100%" height="120px" lineNum="25" />
@@ -246,6 +303,10 @@ function index() {
             }}
           />)}
         </div>
+      </div>
+      {/* 子页面 */}
+      <div style={{ width: '100%', height: '100%', position: "absolute", left: 0, top: 0 }}>
+        <Outlet style={{ width: '100%', height: '100%' }}></Outlet>
       </div>
     </div>
   )

@@ -4,29 +4,74 @@
   position: absolute;
   bottom: -1000px;
   left: -1000px;
-    transform: rotateX(237deg) rotateY(155deg) rotateZ(120deg) ;
-    z-index: 10;
-}
+  transform: rotateX(237deg) rotateY(155deg) rotateZ(120deg);
+  z-index: 10;
 
-.car img.car_image {
-  width: 100%;
-  height: 100%;
-}
+  img.car_image {
+    width: 100%;
+    height: 100%;
+  }
 
-.car img.wheel_1 {
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  left: 54px;
-  top: 76.1px;
-  transform: rotateX(42deg) rotateY(316deg) rotateZ(244deg);
-}
+  img.wheel_1,
+  img.wheel_2 {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+  }
 
-.car img.wheel_2 {
-  width: 22px;
-  height: 22px;
-  position: absolute;
-  left: 125px;
-  top: 34.7px;
-  transform: rotateX(33deg) rotateY(313deg) rotateZ(146deg);
+  &.topRight {
+    img.wheel_1 {
+      left: 54px;
+      top: 75px;
+      transform: rotateX(42deg) rotateY(316deg) rotateZ(244deg);
+    }
+
+    img.wheel_2 {
+      left: 124px;
+      top: 32.7px;
+      transform: rotateX(33deg) rotateY(313deg) rotateZ(146deg);
+    }
+  }
+
+  &.topLeft {
+    img.wheel_1 {
+      left: 1px;
+      top: 33px;
+      transform:  rotateX(41deg) rotateY(51deg) ;
+    }
+
+    img.wheel_2 {
+      left: 72px;
+      top: 75.7px;
+      transform:  rotateX(41deg) rotateY(43deg) ;
+    }
+  }
+
+  &.bottomLeft {
+    img.wheel_1 {
+      left: 54.5px;
+      top: 75.5px;
+      transform: rotateX(42deg) rotateY(316deg) rotateZ(244deg);
+    }
+
+    img.wheel_2 {
+      left: 121px;
+      top: 38.7px;
+      transform: rotateX(33deg) rotateY(313deg) rotateZ(146deg);
+    }
+  }
+
+  &.bottomRight {
+    img.wheel_1 {
+      left: 4px;
+      top: 39px;
+      transform:  rotateX(41deg) rotateY(51deg) ;
+    }
+
+    img.wheel_2 {
+      left: 71px;
+      top: 75.7px;
+      transform:  rotateX(41deg) rotateY(43deg) ;
+    }
+  }
 }
