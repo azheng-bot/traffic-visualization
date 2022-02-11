@@ -1,0 +1,154 @@
+@import url(../../style/variable.less);
+
+.knowledge {
+  width: 100%;
+  height: 100%;
+  background-color: #8ec53f;
+  position: relative;
+
+  .border {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border: 1px solid red;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+  }
+
+  .visible-area {
+    width: 1280px;
+    height: 720px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%) rotateY(180deg);
+    // border: 1px solid;
+
+
+    .scenery-left,
+    .scenery-right {
+      position: absolute;
+
+      .scenery-item {
+        display: block;
+        position: absolute;
+        transform: skew(0deg,
+            1deg);
+        z-index: 10;
+      }
+    }
+
+    .scenery-right {
+      bottom: 0;
+      right: 0;
+    }
+
+
+    .road-aside-left,
+    .road-aside-right {
+      width: 3500px;
+      height: 100px;
+      background-color: #dcded9;
+      transform: rotateX(59deg) rotateY(349deg) rotateZ(143deg);
+      position: absolute;
+      z-index: 0;
+    }
+
+    .road-aside-left {
+      top: 387px;
+      left: -1588px;
+      border-top: 8px solid #bbbbbb;
+      z-index: 5;
+    }
+
+    .road-aside-right {
+      bottom: -10px;
+      left: -1160px;
+      border-bottom: 1px solid #bbbbbb;
+      z-index: 15;
+    }
+  }
+
+  .road {
+    width: 400px;
+    height: 2500px;
+    background-color: #404040;
+    display: flex;
+    flex-direction: column;
+    transform:rotateX(59deg) rotateY(169deg) rotateZ(127deg) scale(1.6);
+    position: absolute;
+    top: -700px;
+    right: 860px;
+    padding-top: 200px;
+    z-index: 10;
+
+    .zebra {
+      width: 100%;
+      margin: 20px 0px;
+    }
+
+    .driving-area {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+
+
+      .left-road {
+        width: 25%;
+        height: 100%;
+
+        .arrow {
+          text-align: center;
+          margin-top: 100px;
+          transform: rotate(180deg);
+        }
+      }
+
+      .right-road {
+        width: 75%;
+        height: 100%;
+        border-top: 7px solid #fff;
+        display: flex;
+        flex-direction: row;
+
+        .left,
+        .forward,
+        .right {
+          width: 33%;
+
+          .arrow {
+            margin: auto;
+            margin-top: 30px;
+            text-align: center;
+          }
+
+          .road-name {
+            margin: auto;
+            margin-top: 20px;
+            writing-mode: vertical-lr;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  .submodule-enter-btns {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    .submodule-enter-btn {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 1px solid red;
+      z-index: 999;
+    }
+  }
+}

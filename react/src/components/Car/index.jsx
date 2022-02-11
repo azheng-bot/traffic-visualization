@@ -1,13 +1,18 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import "./index.less"
 
 function index(props) {
+  let submoduleEnterAreas = props.submoduleEnterAreas
+  let currentSubmodule = null
+
   // 获取汽车dom元素
   const carRef = useRef(null)
 
   // 0.汽车基础属性
-  let direct = props.direct  // 汽车前后方向 //朝路中心是前，反之则为后
-  let orient = (direct == "forward") ? "topRight" : "bottomLeft" // 汽车朝向
+  let direct = props.direct  // 汽车前后方向 - 朝路中心是前，反之则为后
+  let forwardOrient = props.forwardOrient // 汽车向前时，汽车的上下左右朝向
+  let forward2back = { "topRight": "bottomLeft", "bottomLeft": "topRight", "bottomRight": "topLeft", "topLeft": "bottomRight" } // 汽车反向
+  let [orient, setOrient] = useState((direct == "forward") ? forwardOrient : forward2back[forwardOrient]) // 汽车朝向
   let orientImgMap = {
     topRight: "./image/car/上-右.png",
     topLeft: "./image/car/上-左.png",
@@ -35,8 +40,8 @@ function index(props) {
 
   // 前后左右边界
   let leftBorder = 66;
-  let rightBorder = 292;
-  let backBorder = 1000
+  let rightBorder = 285;
+  let backBorder = 950
   let forwardBorder = 2239
 
   // 根据小车行驶方向，更改基础参数
@@ -45,18 +50,18 @@ function index(props) {
     initX = -17;
     initY = 2239;
     // 边界
-    leftBorder = -8;
-    rightBorder = -53;
+    leftBorder = -53;
+    rightBorder = -8;
   }
 
 
 
   // 初始化小汽车入场
-  // 实现方法：初始化小车以最高速度行驶500ms入场
+  // 实现方法：初始化小车以最高速度行驶入场
   let isInitCar = true;
   useEffect(() => {
-    // 初始化小车移动500ms，500ms小车y轴移动305px去实现入场动画，这会使得小车初始偏移目标位置；
-    // 所以把目标y轴距离减去500ms内小车移动的距离，就是初始小车的y轴应在位置。
+    // 初始化小车以最高速度行驶y轴移动305px去实现入场动画，这会使得小车初始偏移目标位置；
+    // 所以把目标y轴距离减去305px，就是初始小车的y轴应在位置。
     y = initY + (direct == "forward" ? -305 : 305)
     x = initX
     runSpeed = maxForwardSpeed;
@@ -72,7 +77,7 @@ function index(props) {
   // 1.小车运行
   function runCar() {
     timer = setInterval(() => {
-      // console.log('x,y', runStatus, x, y)
+      // console.log('x,y', x, y)
 
       // 根据汽车行驶状态，执行对应事件
       switch (runStatus) {
@@ -108,22 +113,69 @@ function index(props) {
           turnRight()
           break;
       }
+      // 判断x,y是否越过边界
+      // 左边界
+      if (x <= leftBorder) {
+        x = leftBorder
+      }
+      // 右边界
+      if (x >= rightBorder) {
+        x = rightBorder
+      }
+      // 下边界
+      if (y <= backBorder) {
+        // 转向
+        if (direct == "forward") {
+          direct = "back"
+          setOrient("bottomLeft")
+          x = -23;
+          leftBorder = -53;
+          rightBorder = -8;
+        } else if (direct == "back") {
+          direct = "forward"
+          setOrient("topRight")
+          x = 180
+          leftBorder = 66;
+          rightBorder = 285;
+        }
+      }
+      // 上边界
+      if (y >= forwardBorder && direct == "forward") toNextRoad()
+
+      // 判断是否在模块进入点周围
+      if (direct == "back" || x >= 170) { // 判断x轴位置是否在路边
+        // 判断y轴位置是否有模块进入点
+        let enterAreas = submoduleEnterAreas[direct]
+        let targetSubmodule = null;
+        for (var i = 0; i < enterAreas.length; i++) {
+          if (y > enterAreas[i].y1 && y < enterAreas[i].y2) {
+            targetSubmodule = enterAreas[i].name
+          }
+        }
+        if (targetSubmodule != currentSubmodule) {
+          currentSubmodule = targetSubmodule
+          // 触发进入模块事件
+          props.showSubmodule(currentSubmodule)
+        }
+      }
+
+      // 设置style
       carRef.current.style.left = x + 'px'
       carRef.current.style.bottom = y + 'px'
+      // 转动轮胎
       rotateWheel()
 
-      if (y >= forwardBorder && direct == "forward") toNextRoad()
     }, 3)
   }
   // runCar()
 
   // 轮毂旋转
   let wheelRate = 0
-  const wheelSpeed = direct == "forward" ? 5 : -5 // 轮胎转速
+  const wheelSpeed = 5 // 轮胎转速
   let wheel_1 = useRef(null)
   let wheel_2 = useRef(null)
   function rotateWheel() {
-    wheelRate += runSpeed * wheelSpeed;
+    wheelRate += runSpeed * (direct == "forward" ? wheelSpeed : -wheelSpeed);
     if (orient == "topRight" || orient == "bottomLeft") {
       wheel_1.current.style.transform = `rotateX(42deg) rotateY(316deg) rotateZ(${wheelRate}deg)`
       wheel_2.current.style.transform = `rotateX(33deg) rotateY(313deg) rotateZ(${wheelRate + 30}deg)`
@@ -164,34 +216,23 @@ function index(props) {
       runSpeed = maxBackSpeed
     }
     y += (direct == "forward") ? runSpeed : -runSpeed
+
   }
 
   // 左转
   function turnLeft() {
     if (direct == "forward") {
-      x -= turnSpeed
-      if (x <= leftBorder) {
-        x = leftBorder
-      }
+      x -= turnSpeed * (runSpeed / maxForwardSpeed)
     } else if (direct == "back") {
-      x += turnSpeed
-      if (x >= leftBorder) {
-        x = leftBorder
-      }
+      x += turnSpeed * (runSpeed / maxForwardSpeed)
     }
   }
   // 右转
   function turnRight() {
     if (direct == "forward") {
-      x += turnSpeed
-      if (x >= rightBorder) {
-        x = rightBorder
-      }
+      x += turnSpeed * Math.abs(runSpeed / maxForwardSpeed)
     } else if (direct == "back") {
-      x -= turnSpeed
-      if (x <= rightBorder) {
-        x = rightBorder
-      }
+      x -= turnSpeed * Math.abs(runSpeed / maxForwardSpeed)
     }
   }
 
@@ -232,6 +273,7 @@ function index(props) {
     }
     // 根据键盘状态，确认小车方向状态
     defermineDirection()
+
   })
   // 根据键盘状态，确认小车方向状态
   function defermineDirection() {
@@ -268,26 +310,30 @@ function index(props) {
     }
     defermineDirection()
   })
+  // 按回车时触发enterSubmodule事件
+  window.addEventListener("keypress", (e) => {
+    if (e.keyCode == 13) props.enterSubmodule(currentSubmodule)
+  })
 
   // 三条路的x轴位置
-  const road1 = [56, 134]
-  const road2 = [134, 220]
-  const road3 = [220, 293]
+  const leftRoad = [56, 134]
+  const forwardRoad = [134, 220]
+  const rightRoad = [220, 293]
   // 通往下一条路
   function toNextRoad() {
     clearInterval(timer)
     timer = null
-    if (x >= road1[0] && x < road1[1]) {
-      window.alert("To 通识 road")
-    } else if (x >= road2[0] && x < road2[1]) {
-      window.alert("To 深入 road")
-    } else if (x >= road3[0] && x < road3[1]) {
-      window.alert("To 展望 road")
+    if (x >= leftRoad[0] && x < leftRoad[1]) {
+      props.toNextRoad("leftRoad")
+    } else if (x >= forwardRoad[0] && x < forwardRoad[1]) {
+      props.toNextRoad("forwardRoad")
+    } else if (x >= rightRoad[0] && x < rightRoad[1]) {
+      props.toNextRoad("rightRoad")
     }
   }
 
   return (
-    <div className={["car", orient].join(" ")} ref={carRef}>
+    <div className={`car ${orient}`} ref={carRef}>
       <img className="car_image" src={orientImgMap[orient]} alt="" />
       <img className="wheel wheel_1" src="./image/car/轮毂.png" alt="" ref={wheel_1} />
       <img className="wheel wheel_2" src="./image/car/轮毂.png" alt="" ref={wheel_2} />

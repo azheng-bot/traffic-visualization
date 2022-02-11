@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { useLocation, Outlet } from 'react-router-dom'
+import { useLocation, Outlet, useNavigate } from 'react-router-dom'
 import "./index.less"
 import Car from "../../components/Car/index"
 import LeftArrow from "../../components/arrows/LeftArrow"
@@ -160,16 +160,16 @@ function index(props) {
     leftSceneries.push({
       src: "image/scenery/chair-1.png",
       width: 60,
-      left: 380,
-      top: 222,
+      left: 371,
+      top: 217,
       zIndex: 50
     })
     // 路灯
     leftSceneries.push({
       src: "image/scenery/light-1.png",
       width: 20,
-      left: 362,
-      top: 176,
+      left: 355,
+      top: 170,
       zIndex: 50
     })
     // 女孩儿
@@ -185,33 +185,60 @@ function index(props) {
     rightSceneries.push({
       src: "image/scenery/chair-1.png",
       width: 60,
-      right: 275,
-      bottom: 192,
+      right: 267,
+      bottom: 182,
       zIndex: 40
     })
     // 路灯
     rightSceneries.push({
       src: "image/scenery/light-1.png",
       width: 20,
-      right: 256,
-      bottom: 220,
+      right: 248,
+      bottom: 215,
       zIndex: 40
     })
   })();
 
   // 小车的朝向
   const drivingOrient = "rightTop"
-  const drivingDirect = "back"
+  const drivingDirect = "forward"
   // 小车的初始位置
   const carInitSite = { x: 180, y: 1300 }
 
-  // 小车事件区域
-  // 事件区域：小车到达某区域之后，执行目标事件
-  const eventAreas = {
-    rightTop: [
-      { name: "toNext", y: 0 }
-    ]
+  // 模块进入点区域
+  const submoduleEnterBtns = [
+    { src: "", name: "城市地铁", intro: "", left: 36, top: 413 },
+    { src: "", name: "城市公交", intro: "", left: 436, top: 213 },
+  ]
+  // 模块进入点区域小车y轴区间
+  const submoduleEnterAreas = {
+    back:
+      [
+        { name: "subway", y1: 1250, y2: 1400 },
+        { name: "bus", y1: 1575, y2: 1750 }
+      ],
+    forward:
+      []
   }
+  // 显示子模块详细信息
+  function showSubmodule(submodule) {
+    if (submodule == null) return
+    console.log('show', submodule)
+  }
+  // 回车进入子模块
+  function enterSubmodule(submodule) {
+    if (submodule == null) return
+    alert("enter")
+    console.log('enter', 1, submodule)
+  }
+  // 小车进入下一条路
+  const roadMap = { leftRoad: "/knowledge", forwardRoad: "/deep", rightRoad: "/future" }
+  let navigate = useNavigate()
+  function toNextRoad(road) {
+    navigate(roadMap[road])
+  }
+
+
 
   return (
     <div className="my-city">
@@ -238,7 +265,7 @@ function index(props) {
         {/* 马路 */}
         <div className="road">
           {/* 小车 */}
-          <Car orient={drivingOrient} direct={drivingDirect} initSite={carInitSite}></Car>
+          <Car orient={drivingOrient} direct={drivingDirect} initSite={carInitSite} submoduleEnterAreas={submoduleEnterAreas} showSubmodule={showSubmodule} enterSubmodule={enterSubmodule} toNextRoad={toNextRoad}></Car>
           {/* 斑马线 */}
           <div className="zebra" >
             <ZebraCrossing width="100%" height="120px" lineNum="25" />
@@ -302,6 +329,12 @@ function index(props) {
               height: item.height ? item.height + "px" : 'auto',
             }}
           />)}
+        </div>
+        {/* 子模块进入装置 */}
+        <div className="submodule-enter-btns">
+          {submoduleEnterBtns.map((item, index) => (
+            <div className="submodule-enter-btn" style={{ left: item.left, top: item.top }} key={index}>{item.name}</div>
+          ))}
         </div>
       </div>
       {/* 子页面 */}

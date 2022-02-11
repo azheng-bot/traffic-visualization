@@ -53,7 +53,7 @@ function index(props) {
   // 详细模块下拉菜单 - 每个模块的下拉菜单的left属性
   const selectLeftMap = { 0: 10, 1: 10, 2: 10 }
   // navigator导航栏 - 是否显示
-  const [navigatorVisible, setNavigatorVisible] = useState(true)
+  const [navigatorVisible, setNavigatorVisible] = useState(false)
 
   function unfold() {
     setNavigatorVisible(!navigatorVisible)
