@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react'
 import "./index.less"
 
 function index(props) {
-  let submoduleEnterAreas = props.submoduleEnterAreas
+  let submoduleEntryAreas = props.submoduleEntryAreas
   let currentSubmodule = null
 
   // 获取汽车dom元素
@@ -11,9 +11,14 @@ function index(props) {
   // 0.汽车基础属性
   let direct = props.direct  // 汽车前后方向 - 朝路中心是前，反之则为后
   let forwardOrient = props.forwardOrient // 汽车向前时，汽车的上下左右朝向
-  let forward2back = { "topRight": "bottomLeft", "bottomLeft": "topRight", "bottomRight": "topLeft", "topLeft": "bottomRight" } // 汽车反向
-  let [orient, setOrient] = useState((direct == "forward") ? forwardOrient : forward2back[forwardOrient]) // 汽车朝向
-  let orientImgMap = {
+  let reverseOrientMap = { // 汽车反向
+    "topRight": "bottomLeft",
+    "bottomLeft": "topRight",
+    "bottomRight": "topLeft",
+    "topLeft": "bottomRight"
+  }
+  const [orient, setOrient] = useState(direct == "forward" ? forwardOrient : reverseOrientMap[forwardOrient]) // 汽车朝向
+  let orientImgMap = { // 朝向对应的汽车图片
     topRight: "./image/car/上-右.png",
     topLeft: "./image/car/上-左.png",
     bottomRight: "./image/car/下-右.png",
@@ -36,19 +41,19 @@ function index(props) {
   let reduceSpeed = 0.005 //减速度
   let maxForwardSpeed = 1.75 //最高前进速度
   let maxBackSpeed = -1.5 //最高后退速度
-  let turnSpeed = 0.4 // 左右转的速度
+  let turnSpeed = 0.8 // 左右转的速度
 
   // 前后左右边界
   let leftBorder = 66;
   let rightBorder = 285;
-  let backBorder = 950
+  let backBorder = 900
   let forwardBorder = 2239
 
   // 根据小车行驶方向，更改基础参数
   if (direct == "back") {
     // 初始坐标
     initX = -17;
-    initY = 2239;
+    initY = 2000;
     // 边界
     leftBorder = -53;
     rightBorder = -8;
@@ -58,7 +63,7 @@ function index(props) {
 
   // 初始化小汽车入场
   // 实现方法：初始化小车以最高速度行驶入场
-  let isInitCar = true;
+  // let isInitCar = true;
   useEffect(() => {
     // 初始化小车以最高速度行驶y轴移动305px去实现入场动画，这会使得小车初始偏移目标位置；
     // 所以把目标y轴距离减去305px，就是初始小车的y轴应在位置。
@@ -66,9 +71,9 @@ function index(props) {
     x = initX
     runSpeed = maxForwardSpeed;
 
-    setTimeout(() => {
-      isInitCar = false;
-    }, 500)
+    // setTimeout(() => {
+    //   isInitCar = false;
+    // }, 500)
 
     runCar()
   }, [])
@@ -127,13 +132,13 @@ function index(props) {
         // 转向
         if (direct == "forward") {
           direct = "back"
-          setOrient("bottomLeft")
+          setOrient(prev => reverseOrientMap[prev])
           x = -23;
           leftBorder = -53;
           rightBorder = -8;
         } else if (direct == "back") {
           direct = "forward"
-          setOrient("topRight")
+          setOrient(prev => reverseOrientMap[prev])
           x = 180
           leftBorder = 66;
           rightBorder = 285;
@@ -145,11 +150,11 @@ function index(props) {
       // 判断是否在模块进入点周围
       if (direct == "back" || x >= 170) { // 判断x轴位置是否在路边
         // 判断y轴位置是否有模块进入点
-        let enterAreas = submoduleEnterAreas[direct]
+        let entryAreas = submoduleEntryAreas[direct]
         let targetSubmodule = null;
-        for (var i = 0; i < enterAreas.length; i++) {
-          if (y > enterAreas[i].y1 && y < enterAreas[i].y2) {
-            targetSubmodule = enterAreas[i].name
+        for (var i = 0; i < entryAreas.length; i++) {
+          if (y > entryAreas[i].y1 && y < entryAreas[i].y2) {
+            targetSubmodule = entryAreas[i].name
           }
         }
         if (targetSubmodule != currentSubmodule) {
@@ -310,9 +315,9 @@ function index(props) {
     }
     defermineDirection()
   })
-  // 按回车时触发enterSubmodule事件
+  // 按回车时触发entrySubmodule事件
   window.addEventListener("keypress", (e) => {
-    if (e.keyCode == 13) props.enterSubmodule(currentSubmodule)
+    if (e.keyCode == 13) props.entrySubmodule(currentSubmodule)
   })
 
   // 三条路的x轴位置

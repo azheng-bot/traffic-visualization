@@ -1,10 +1,16 @@
 @import url(../../style/variable.less);
+@import url(../../style/animation.less);
 
 .knowledge {
   width: 100%;
   height: 100%;
   background-color: #8ec53f;
   position: relative;
+  animation: fadeIn .25s forwards;
+
+  &.hide {
+    animation: fadeOut .25s forwards;
+  }
 
   .border {
     position: absolute;
@@ -23,7 +29,8 @@
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%) rotateY(180deg);
-    // border: 1px solid;
+  margin-top: -80px;
+  // border: 1px solid;
 
 
     .scenery-left,
@@ -76,10 +83,10 @@
     background-color: #404040;
     display: flex;
     flex-direction: column;
-    transform:rotateX(59deg) rotateY(169deg) rotateZ(127deg) scale(1.6);
+    transform: rotateX(59deg) rotateY(169deg) rotateZ(127deg) scale(1.6);
     position: absolute;
-    top: -700px;
-    right: 860px;
+    top: -1211px;
+    right: -47px;
     padding-top: 200px;
     z-index: 10;
 

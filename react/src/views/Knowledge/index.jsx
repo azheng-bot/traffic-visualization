@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { useLocation, Outlet } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useLocation, Outlet,useNavigate } from 'react-router-dom'
 import "./index.less"
 import Car from "../../components/Car/index"
 import LeftArrow from "../../components/arrows/LeftArrow"
@@ -76,6 +76,16 @@ function index(props) {
         zIndex: 35
       })
     }
+    // 添加大型树木4
+    let bigTree4Num = 16, initBigTree4Left = -1150, initBigTree4Top = 250;
+    for (var i = 0; i <= bigTree4Num; i++) {
+      leftSceneries.push({
+        src: "image/tree/bigtree-4.png",
+        left: initBigTree4Left += 128,
+        top: initBigTree4Top -= 72,
+        zIndex: 30
+      })
+    }
 
   })();
 
@@ -142,14 +152,26 @@ function index(props) {
         zIndex: 65
       })
     }
+ 
+    // 添加大型树木4
+    let bigTree4Num = 16, initBigTree4Right = -1150, initBigTree4Bottom = 250;
+    for (var i = 0; i <= bigTree4Num; i++) {
+      rightSceneries.push({
+        src: "image/tree/bigtree-4.png",
+        right: initBigTree4Right += 128,
+        bottom: initBigTree4Bottom -= 72,
+        zIndex: 70
+      })
+    }
+    console.log(bigTree4Num)
 
-    // 添加座椅和路灯
-    rightSceneries.push({
-      src: "image/tree/bigtree-4.png",
-      right: initBigTree3Right += 150,
-      bottom: initBigTree3Bottom -= 84,
-      zIndex: 65
-    })
+    // // 添加座椅和路灯
+    // rightSceneries.push({
+    //   src: "image/tree/bigtree-4.png",
+    //   right: initBigTree3Right += 150,
+    //   bottom: initBigTree3Bottom -= 84,
+    //   zIndex: 65
+    // })
 
   })();
 
@@ -201,16 +223,16 @@ function index(props) {
 
   // 小车的朝向
   const drivingOrient = "rightTop"
-  const drivingDirect = "forward"
+  const drivingDirect = "back"
   // 小车的初始位置
   const carInitSite = { x: 180, y: 1300 }
 
   // 模块进入点区域
-  const submoduleEnterBtns = [
+  const submoduleEntryBtns = [
     { src: "", name: "城市地铁", intro: "", left: 36, top: 413 },
     { src: "", name: "城市公交", intro: "", left: 436, top: 213 },
   ]
-  const submoduleEnterAreas = {
+  const submoduleEntryAreas = {
     back:
       [{ name: "subway", y1: 1250, y2: 1400 }, { name: "bus", y1: 1575, y2: 1750 }],
     forward:
@@ -220,16 +242,26 @@ function index(props) {
     if (submodule == null) return
     console.log('show', submodule)
   }
-  function  enterSubmodule(submodule) {
+  function  entrySubmodule(submodule) {
     if (submodule == null) return
-    alert("enter")
-    console.log('enter',1, submodule)
+    alert("entry")
+    console.log('entry',1, submodule)
+  }
+  // 小车进入下一条路
+  let navigate = useNavigate()
+  const roadMap = { leftRoad: "/deep", forwardRoad: "/future", rightRoad: "/mycity" }
+  const [knowledgeVisible, setKnowledgeVisible] = useState(true)
+  function toNextRoad(road) {
+    setKnowledgeVisible(false)
+    setTimeout(() => {
+      navigate(roadMap[road])
+    }, 150)
   }
   
 
 
   return (
-    <div className="knowledge">
+    <div className={knowledgeVisible ? "knowledge" : "knowledge hide"}>
       {/*  可视区域 */}
       <div className="visible-area" >
         {/* <div className="border" ></div> */}
@@ -253,7 +285,7 @@ function index(props) {
         {/* 马路 */}
         <div className="road">
           {/* 小车 */}
-          <Car orient={drivingOrient} direct={drivingDirect} forwardOrient={"bottomRight"} initSite={carInitSite} submoduleEnterAreas={submoduleEnterAreas}  showSubmodule={ showSubmodule} enterSubmodule={enterSubmodule}></Car>
+          <Car orient={drivingOrient} direct={drivingDirect} forwardOrient={"bottomRight"} initSite={carInitSite} submoduleEntryAreas={submoduleEntryAreas}  showSubmodule={ showSubmodule} entrySubmodule={entrySubmodule} toNextRoad={toNextRoad} ></Car>
           {/* 斑马线 */}
           <div className="zebra" >
             <ZebraCrossing width="100%" height="120px" lineNum="25" />
@@ -275,7 +307,7 @@ function index(props) {
                   <LeftArrow />
                 </div>
                 <div className="road-name">
-                  基础通识路
+                 深入交通路
                 </div>
 
               </div>
@@ -285,7 +317,7 @@ function index(props) {
                   <ForwardArrow />
                 </div>
                 <div className="road-name">
-                  深入交通路
+                  未来展望路
                 </div>
               </div>
               <DottedLine width="7px" height="100%" lineNum="15" />
@@ -294,7 +326,7 @@ function index(props) {
                   <RightArrow />
                 </div>
                 <div className="road-name">
-                  未来展望路
+                  我的城市路
                 </div>
               </div>
             </div>
@@ -319,9 +351,9 @@ function index(props) {
           />)}
         </div>
         {/* 子模块进入装置 */}
-        <div className="submodule-enter-btns">
-          {submoduleEnterBtns.map((item, index) => (
-            <div className="submodule-enter-btn" style={{ left: item.left, top: item.top }} key={index}>{item.name}</div>
+        <div className="submodule-entry-btns">
+          {submoduleEntryBtns.map((item, index) => (
+            <div className="submodule-entry-btn" style={{ left: item.left, top: item.top }} key={index}>{item.name}</div>
           ))}
         </div>
       </div>

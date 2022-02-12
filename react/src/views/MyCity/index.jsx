@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import { useLocation, Outlet, useNavigate } from 'react-router-dom'
 import "./index.less"
 import Car from "../../components/Car/index"
@@ -77,6 +77,17 @@ function index(props) {
       })
     }
 
+    // 添加大型树木4
+    let bigTree4Num = 16, initBigTree4Left = -1150, initBigTree4Top = 250;
+    for (var i = 0; i <= bigTree4Num; i++) {
+      leftSceneries.push({
+        src: "image/tree/bigtree-4.png",
+        left: initBigTree4Left += 128,
+        top: initBigTree4Top -= 72,
+        zIndex: 30
+      })
+    }
+
   })();
 
   // 右边景观的图片与样式
@@ -142,14 +153,16 @@ function index(props) {
         zIndex: 65
       })
     }
-
-    // 添加座椅和路灯
-    rightSceneries.push({
-      src: "image/tree/bigtree-4.png",
-      right: initBigTree3Right += 150,
-      bottom: initBigTree3Bottom -= 84,
-      zIndex: 65
-    })
+    // 添加大型树木4
+    let bigTree4Num = 16, initBigTree4Right = -1150, initBigTree4Bottom = 250;
+    for (var i = 0; i <= bigTree4Num; i++) {
+      rightSceneries.push({
+        src: "image/tree/bigtree-4.png",
+        right: initBigTree4Right += 128,
+        bottom: initBigTree4Bottom -= 72,
+        zIndex: 70
+      })
+    }
 
   })();
 
@@ -201,17 +214,17 @@ function index(props) {
 
   // 小车的朝向
   const drivingOrient = "rightTop"
-  const drivingDirect = "forward"
+  const drivingDirect = "back"
   // 小车的初始位置
   const carInitSite = { x: 180, y: 1300 }
 
   // 模块进入点区域
-  const submoduleEnterBtns = [
+  const submoduleEntrys = [
     { src: "", name: "城市地铁", intro: "", left: 36, top: 413 },
     { src: "", name: "城市公交", intro: "", left: 436, top: 213 },
   ]
   // 模块进入点区域小车y轴区间
-  const submoduleEnterAreas = {
+  const submoduleEntryAreas = {
     back:
       [
         { name: "subway", y1: 1250, y2: 1400 },
@@ -234,14 +247,18 @@ function index(props) {
   // 小车进入下一条路
   const roadMap = { leftRoad: "/knowledge", forwardRoad: "/deep", rightRoad: "/future" }
   let navigate = useNavigate()
+  const [myCityVisible, setMyCityVisible] = useState(true)
   function toNextRoad(road) {
-    navigate(roadMap[road])
+    setMyCityVisible(false)
+    setTimeout(() => {
+      navigate(roadMap[road])
+    }, 150)
   }
 
 
 
   return (
-    <div className="my-city">
+    <div className={myCityVisible ? "my-city" : "my-city hide"}>
       {/*  可视区域 */}
       <div className="visible-area" >
         {/* <div className="border" ></div> */}
@@ -265,7 +282,7 @@ function index(props) {
         {/* 马路 */}
         <div className="road">
           {/* 小车 */}
-          <Car orient={drivingOrient} direct={drivingDirect} initSite={carInitSite} submoduleEnterAreas={submoduleEnterAreas} showSubmodule={showSubmodule} enterSubmodule={enterSubmodule} toNextRoad={toNextRoad}></Car>
+          <Car orient={drivingOrient} forwardOrient={"topRight"} direct={drivingDirect} initSite={carInitSite} submoduleEntryAreas={submoduleEntryAreas} showSubmodule={showSubmodule} enterSubmodule={enterSubmodule} toNextRoad={toNextRoad}></Car>
           {/* 斑马线 */}
           <div className="zebra" >
             <ZebraCrossing width="100%" height="120px" lineNum="25" />
@@ -332,7 +349,7 @@ function index(props) {
         </div>
         {/* 子模块进入装置 */}
         <div className="submodule-enter-btns">
-          {submoduleEnterBtns.map((item, index) => (
+          {submoduleEntrys.map((item, index) => (
             <div className="submodule-enter-btn" style={{ left: item.left, top: item.top }} key={index}>{item.name}</div>
           ))}
         </div>
