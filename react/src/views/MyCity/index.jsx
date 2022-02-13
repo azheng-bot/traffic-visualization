@@ -220,14 +220,13 @@ function index(props) {
   // 小车的朝向
   const drivingOrient = "rightTop"
   const drivingDirect = "back"
-  // 小车的初始位置
-  const carInitSite = { x: 180, y: 1300 }
 
   // 模块进入点区域
   const submoduleEntrys = [
-    { image: "./image/modules/colorful/ai.png", active: true, name: "城市地铁", intro: "城市地铁城市地铁城市地铁城市地铁城市地铁", left: 28, top: 262 },
-    { image: "", active: true, name: "城市公交", intro: "城市地铁城市地铁城市地铁城市地铁城市地铁", left: 436, top: 213 },
+    { active: true,image: "./image/modules/colorful/subway.png",  name: "城市地铁", intro: "展示出对于你所在的城市的所有地铁，当然在你所在城市有地铁通行的前提下。", left: 28, top: 199 },
+    {active: true, image: "./image/modules/colorful/bus.png",  name: "城市公交", intro: "将你所在城市的所有公交的线路及相关信息进行展示与罗列。", left: 534, top: -85 },
   ]
+
   // 模块进入点区域小车y轴区间
   const submoduleEntryAreas = {
     back:
@@ -238,17 +237,20 @@ function index(props) {
     forward:
       []
   }
+  
   // 显示子模块详细信息
   function showSubmodule(submodule) {
     if (submodule == null) return
     console.log('show', submodule)
   }
-  // 回车进入子模块
+
+  // 键入回车键，进入子模块
   function enterSubmodule(submodule) {
     if (submodule == null) return
     alert("enter")
     console.log('enter', 1, submodule)
   }
+
   // 小车进入下一条路
   const roadMap = { leftRoad: "/knowledge", forwardRoad: "/deep", rightRoad: "/future" }
   let navigate = useNavigate()
@@ -287,7 +289,7 @@ function index(props) {
         {/* 马路 */}
         <div className="road">
           {/* 小车 */}
-          <Car orient={drivingOrient} forwardOrient={"topRight"} direct={drivingDirect} initSite={carInitSite} submoduleEntryAreas={submoduleEntryAreas} showSubmodule={showSubmodule} enterSubmodule={enterSubmodule} toNextRoad={toNextRoad}></Car>
+          <Car orient={drivingOrient} forwardOrient={"topRight"} direct={drivingDirect}  submoduleEntryAreas={submoduleEntryAreas} showSubmodule={showSubmodule} enterSubmodule={enterSubmodule} toNextRoad={toNextRoad}></Car>
           {/* 斑马线 */}
           <div className="zebra" >
             <ZebraCrossing width="100%" height="120px" lineNum="25" />

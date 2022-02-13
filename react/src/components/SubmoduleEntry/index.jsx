@@ -8,10 +8,11 @@ function index(props) {
   const submoduleInfo = props.submoduleInfo
 
   return (
-    <div className={submoduleInfo.active ? "submodule-entry active" : "submodule-entry"} style={{left:submoduleInfo.left+'px',top:submoduleInfo.top+'px'}} onMouseEnter={() => setActive(true)} onMouseOut={() => setActive(false)} >
+    <div className={submoduleInfo.active ? "submodule-entry active" : "submodule-entry"} style={{ left: submoduleInfo.left + 'px', top: submoduleInfo.top + 'px' }} onMouseEnter={() => setActive(true)} onMouseOut={() => setActive(false)} >
       <div className="media">
-        <div className="img-intro">
-          <img src={submoduleInfo.image} alt=" " />
+        {/* <div className="img-intro"> */}
+        <img src={submoduleInfo.image} alt=" " />
+        <div className="tips">
           <div className="guide-line">
             <div className="line"></div>
             <div className="point"></div>
@@ -19,8 +20,12 @@ function index(props) {
           <div className="intro">
             <p className="submodule-name">{submoduleInfo.name}</p>
             <p className="detail-intro">{submoduleInfo.intro}</p>
+            <p className="hint">
+              <span className="border">Enter</span>回车键进入模块
+            </p>
           </div>
         </div>
+        {/* </div> */}
       </div>
       <div className="light"></div>
       <div className="phone">

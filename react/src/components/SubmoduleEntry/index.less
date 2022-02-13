@@ -1,6 +1,6 @@
 .submodule-entry {
-  width: 200px;
-  height: 200px;
+  width: 270px;
+  height: 270px;
   /* border: 1px solid red; */
   position: absolute;
   left: 50px;
@@ -8,20 +8,25 @@
   z-index: 500;
 
   .media {
-    width: 150px;
-    height: 150px;
+    width: 155px;
+    height: 155px;
+    padding: 25px;
+    box-sizing: border-box;
     margin: 0 auto;
     opacity: 0;
-    transition: .25s all;
-    transition-delay: .5s;
+    transition: 0.25s all;
+    transition-delay: 0.5s;
     /* border: 1px solid red; */
     position: relative;
     z-index: 150;
-
+    background: #ffffffa1;
+    backdrop-filter: blur(1px);
+    border-radius: 35px;
   }
 
 
-  .img-intro {
+
+  img {
     width: 100%;
     height: 100%;
     transform: translate(0px, -50%);
@@ -29,79 +34,102 @@
     top: 50%;
     display: block;
     position: relative;
+    margin: 0 auto;
+  }
 
-    img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      margin: 0 auto;
-    }
+  .tips {
+    position: absolute;
+    right: -33px;
+    top: 8px;
+    width: 45px;
+    height: 20px;
 
     .intro {
       position: absolute;
-      right: -182px;
-      top: 0px;
-      width: 135px;
+      left: 57px;
+      top: 2px;
+      width: 250px;
       // border-left: 2px solid #fff;
       padding: 3px;
       padding-left: 7px;
-      background: linear-gradient(to right, #ffffffbd, #ffffff6c,#ffffff38, #ffffff00, );
+      background: linear-gradient(to right, #ffffffb6, #ffffff59, #ffffff0a, #ffffff00, );
       ;
-    }
 
-    .intro::before {
-      content: "";
-      display: block;
-      width: 3px;
-      height: 100%;
-      position: absolute;
-      left: -6px;
-      top: 0;
-      background-color: rgba(255, 255, 255, 0.95);
-    }
+      &::before {
+        content: "";
+        display: block;
+        width: 3px;
+        height: 100%;
+        position: absolute;
+        left: -6px;
+        top: 0;
+        background-color: rgba(255, 255, 255, 0.801);
+      }
 
-    .intro .submodule-name {
-      font-size: 18px;
-      font-weight: 500;
-    }
+      .submodule-name {
+        font-size: 18px;
+        font-weight: 500;
+      }
 
-    .intro .detail-intro {
-      font-size: 14px;
-      font-weight: 300;
-      margin-top: 3px;
-      letter-spacing: 0.5px;
-      line-height: 18px;
+      .detail-intro {
+        font-size: 14px;
+        font-weight: 300;
+        margin-top: 3px;
+        letter-spacing: 0.5px;
+        line-height: 18px;
+      }
+
+      .hint {
+        font-size: 14px;
+        font-weight: 300;
+        margin-top: 3px;
+        letter-spacing: 0.5px;
+        line-height: 18px;
+        font-style: italic;
+        margin-top: 18px;
+
+        .border {
+          display: inline-block;
+          padding: 3px;
+          border: 1px solid #111;
+          border-radius: 3px;
+          line-height: 10px;
+          margin-right: 2px;
+        }
+
+      }
     }
 
     .guide-line {
       position: absolute;
-      right: -22px;
-      top: 15px;
-      width: 40px;
+      left: 0px;
+      top: 0px;
+      width: 45px;
       height: 20px;
+
+      .line {
+        width: 33px;
+        height: 15px;
+        border-top: 1px solid rgb(255, 255, 255);
+        border-left: 1.5px solid rgb(255, 255, 255);
+        transform: skewX(-49deg);
+        position: absolute;
+        left: 10px;
+        bottom: 2px;
+      }
+
+      .point {
+        width: 3px;
+        height: 3px;
+        border: 1px solid rgb(255, 255, 255);
+        border-radius: 50%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0);
+      }
     }
 
-    .guide-line .line {
-      width: 30px;
-      height: 15px;
-      border-top: 1px solid rgb(255, 255, 255);
-      border-left: 1.5px solid rgb(255, 255, 255);
-      transform: skewX(-49deg);
-      position: absolute;
-      left: 10px;
-      bottom: 2px;
-    }
-
-    .guide-line .point {
-      width: 3px;
-      height: 3px;
-      border: 1px solid rgb(255, 255, 255);
-      border-radius: 50%;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      background: rgba(255, 255, 255, 0);
-    }
 
     .intro,
     .guide-line {
@@ -110,17 +138,17 @@
 
       transition-delay: .25s;
     }
+
   }
 
-
   .light {
-    width: 3px;
-    height: 39px;
-    background: linear-gradient(to top, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff, rgb(255 255 255 / 69%), rgba(255, 255, 255, 0));
+    width: 5px;
+    height: 39.5px;
+    background: linear-gradient(to top, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, rgb(255 255 255 / 86%), rgba(255, 255, 255, 0));
     margin: 0 auto;
     z-index: 100;
     position: relative;
-    margin-top: 30px;
+    margin-top: 63px;
     transition: 0.25s all;
     transition-delay: 0.75s;
     transform: perspective(20px) rotateX(-80deg);
@@ -169,8 +197,8 @@
     transition-delay: 1s;
   }
 
-  .img-intro .intro,
-  .img-intro .guide-line {
+  .media .intro,
+  .media .guide-line {
     opacity: 1;
     transition: 1s ease-out;
     transition-delay: 1.5s;
