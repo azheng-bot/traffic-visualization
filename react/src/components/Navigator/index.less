@@ -128,9 +128,9 @@
     display: none;
     // top: -500px;
     left: 100px;
-    transition: .6s ease-out left;
-    background-color: rgba(255, 255, 255, 0.212);
-    backdrop-filter: saturate(180%) blur(30px);
+    transition: .75s  left;
+    backdrop-filter: saturate(180%) blur(20px);
+    background-color: rgba(255, 255, 255, 0.72);
     border: 2px solid rgba(255, 255, 255, 0.075);
     flex-direction: row;
     border-radius: 8px;
@@ -144,22 +144,22 @@
       display: inline-block;
       width: 176px;
       height: 176px;
-      background-color: rgba(255, 255, 255, 0.644);
+      background-color: rgba(255, 255, 255, 0.329);
       border: 2px solid rgba(206, 206, 206, 0.199);
 
       border-radius: 8px;
       margin: 7.5px;
       position: relative;
       cursor: pointer;
-      transition: .5s all;
+      transition: .25s all;
 
       img.icon,
       img._icon {
         width: 80px;
         position: absolute;
         left: 50px;
-        top: 40px;
-        transition: .25s ease-out;
+        top: 32px;
+        transition: 0.5s ease-out;
       }
 
       img.icon {
@@ -168,23 +168,27 @@
 
       .name {
         position: absolute;
-        bottom: 0;
+        bottom: 25px;
         text-align: center;
         width: 100%;
-        line-height: 60px;
+        line-height: 18px;
         font-size: 18px;
         font-weight: 200;
-        color: rgb(145, 145, 145);
-        transition: .05s ease-in-out;
+        color: #919191;
+        transition: 0.05s ease-in-out;
       }
     }
 
     li:hover {
-      // background-color: rgba(255, 255, 255, 0.733);
+      background-color: rgba(255, 255, 255, 0.877);
 
+      img._icon {
+        opacity: 0;
+      }
       img.icon {
         opacity: 1;
       }
+
 
       .name {
         color: rgb(43, 43, 43);
@@ -225,6 +229,7 @@
 
   .select-list.show {
     // top: 58px;
+    display: block;
     animation: selectFadeIn forwards .3s;
   }
 

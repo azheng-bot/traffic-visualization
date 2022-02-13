@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useLocation, Outlet,useNavigate } from 'react-router-dom'
+import { useLocation, Outlet, useNavigate } from 'react-router-dom'
 import "./index.less"
 import Car from "../../components/Car/index"
 import LeftArrow from "../../components/arrows/LeftArrow"
@@ -152,7 +152,7 @@ function index(props) {
         zIndex: 65
       })
     }
- 
+
     // 添加大型树木4
     let bigTree4Num = 16, initBigTree4Right = -1150, initBigTree4Bottom = 250;
     for (var i = 0; i <= bigTree4Num; i++) {
@@ -238,14 +238,14 @@ function index(props) {
     forward:
       []
   }
-  function  showSubmodule(submodule) {
+  function showSubmodule(submodule) {
     if (submodule == null) return
     console.log('show', submodule)
   }
-  function  entrySubmodule(submodule) {
+  function entrySubmodule(submodule) {
     if (submodule == null) return
     alert("entry")
-    console.log('entry',1, submodule)
+    console.log('entry', 1, submodule)
   }
   // 小车进入下一条路
   let navigate = useNavigate()
@@ -257,7 +257,7 @@ function index(props) {
       navigate(roadMap[road])
     }, 150)
   }
-  
+
 
 
   return (
@@ -285,7 +285,7 @@ function index(props) {
         {/* 马路 */}
         <div className="road">
           {/* 小车 */}
-          <Car orient={drivingOrient} direct={drivingDirect} forwardOrient={"bottomRight"} initSite={carInitSite} submoduleEntryAreas={submoduleEntryAreas}  showSubmodule={ showSubmodule} entrySubmodule={entrySubmodule} toNextRoad={toNextRoad} ></Car>
+          <Car orient={drivingOrient} direct={drivingDirect} forwardOrient={"bottomRight"} initSite={carInitSite} submoduleEntryAreas={submoduleEntryAreas} showSubmodule={showSubmodule} entrySubmodule={entrySubmodule} toNextRoad={toNextRoad} ></Car>
           {/* 斑马线 */}
           <div className="zebra" >
             <ZebraCrossing width="100%" height="120px" lineNum="25" />
@@ -307,7 +307,7 @@ function index(props) {
                   <LeftArrow />
                 </div>
                 <div className="road-name">
-                 深入交通路
+                  深入交通路
                 </div>
 
               </div>
@@ -358,9 +358,7 @@ function index(props) {
         </div>
       </div>
       {/* 子页面 */}
-      <div style={{ width: '100%', height: '100%', position: "absolute", left: 0, top: 0 }}>
-        <Outlet style={{ width: '100%', height: '100%' }}></Outlet>
-      </div>
+      <Outlet style={{ width: '100%', height: '100%', position: "absolute", left: 0, top: 0 }}></Outlet>
     </div>
   )
 }

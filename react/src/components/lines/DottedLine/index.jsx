@@ -1,5 +1,4 @@
 import React, { createRef, useEffect } from 'react'
-import "../../../style/variable.less"
 import "./index.less"
 
 function index(props) {

@@ -1,0 +1,183 @@
+.submodule-entry {
+  width: 200px;
+  height: 200px;
+  /* border: 1px solid red; */
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  z-index: 500;
+
+  .media {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    opacity: 0;
+    transition: .25s all;
+    transition-delay: .5s;
+    /* border: 1px solid red; */
+    position: relative;
+    z-index: 150;
+
+  }
+
+
+  .img-intro {
+    width: 100%;
+    height: 100%;
+    transform: translate(0px, -50%);
+    position: relative;
+    top: 50%;
+    display: block;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .intro {
+      position: absolute;
+      right: -182px;
+      top: 0px;
+      width: 135px;
+      // border-left: 2px solid #fff;
+      padding: 3px;
+      padding-left: 7px;
+      background: linear-gradient(to right, #ffffffbd, #ffffff6c,#ffffff38, #ffffff00, );
+      ;
+    }
+
+    .intro::before {
+      content: "";
+      display: block;
+      width: 3px;
+      height: 100%;
+      position: absolute;
+      left: -6px;
+      top: 0;
+      background-color: rgba(255, 255, 255, 0.95);
+    }
+
+    .intro .submodule-name {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .intro .detail-intro {
+      font-size: 14px;
+      font-weight: 300;
+      margin-top: 3px;
+      letter-spacing: 0.5px;
+      line-height: 18px;
+    }
+
+    .guide-line {
+      position: absolute;
+      right: -22px;
+      top: 15px;
+      width: 40px;
+      height: 20px;
+    }
+
+    .guide-line .line {
+      width: 30px;
+      height: 15px;
+      border-top: 1px solid rgb(255, 255, 255);
+      border-left: 1.5px solid rgb(255, 255, 255);
+      transform: skewX(-49deg);
+      position: absolute;
+      left: 10px;
+      bottom: 2px;
+    }
+
+    .guide-line .point {
+      width: 3px;
+      height: 3px;
+      border: 1px solid rgb(255, 255, 255);
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0);
+    }
+
+    .intro,
+    .guide-line {
+      opacity: 0;
+      transition: .25s all;
+
+      transition-delay: .25s;
+    }
+  }
+
+
+  .light {
+    width: 3px;
+    height: 39px;
+    background: linear-gradient(to top, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff, rgb(255 255 255 / 69%), rgba(255, 255, 255, 0));
+    margin: 0 auto;
+    z-index: 100;
+    position: relative;
+    margin-top: 30px;
+    transition: 0.25s all;
+    transition-delay: 0.75s;
+    transform: perspective(20px) rotateX(-80deg);
+    opacity: 0;
+  }
+
+  .phone {
+    width: 36px;
+    height: 36px;
+    margin: 0 auto;
+    margin-top: -36px;
+    position: relative;
+  }
+
+  .phone img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .phone::after {
+    content: "";
+    display: block;
+    width: 27px;
+    height: 15px;
+    background-color: rgba(255, 255, 255, 0);
+    position: absolute;
+    transition: 0.25s all;
+    left: 4px;
+    top: 9.5px;
+    transform: rotateX(55deg) rotateZ(-45deg);
+    transition-delay: 1s;
+  }
+}
+
+.submodule-entry.active {
+  .light {
+    opacity: 1;
+    transition: .3s ease-in;
+    transition-delay: .5s;
+  }
+
+  .media {
+    opacity: 1;
+    transition: .3s ease-in;
+    transition-delay: 1s;
+  }
+
+  .img-intro .intro,
+  .img-intro .guide-line {
+    opacity: 1;
+    transition: 1s ease-out;
+    transition-delay: 1.5s;
+  }
+
+  .phone::after {
+    transition: .5s all;
+    background-color: rgb(255, 255, 255);
+  }
+}

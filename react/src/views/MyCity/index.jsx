@@ -1,7 +1,9 @@
 import React, { Component, useState } from 'react'
 import { useLocation, Outlet, useNavigate } from 'react-router-dom'
 import "./index.less"
+// 引入小车
 import Car from "../../components/Car/index"
+// 引入交通地线
 import LeftArrow from "../../components/arrows/LeftArrow"
 import ForwardArrow from "../../components/arrows/ForwardArrow"
 import RightArrow from "../../components/arrows/RightArrow"
@@ -9,6 +11,9 @@ import DoubleYellow from "../../components/lines/DoubleYellow"
 import SingleWhite from "../../components/lines/SingleWhite"
 import ZebraCrossing from "../../components/lines/ZebraCrossing"
 import DottedLine from "../../components/lines/DottedLine"
+// 引入子模块进入点
+import SubmoduleEntry from "../../components/SubmoduleEntry"
+
 
 function index(props) {
   let match = useLocation()
@@ -220,8 +225,8 @@ function index(props) {
 
   // 模块进入点区域
   const submoduleEntrys = [
-    { src: "", name: "城市地铁", intro: "", left: 36, top: 413 },
-    { src: "", name: "城市公交", intro: "", left: 436, top: 213 },
+    { image: "./image/modules/colorful/ai.png", active: true, name: "城市地铁", intro: "城市地铁城市地铁城市地铁城市地铁城市地铁", left: 28, top: 262 },
+    { image: "", active: true, name: "城市公交", intro: "城市地铁城市地铁城市地铁城市地铁城市地铁", left: 436, top: 213 },
   ]
   // 模块进入点区域小车y轴区间
   const submoduleEntryAreas = {
@@ -350,14 +355,12 @@ function index(props) {
         {/* 子模块进入装置 */}
         <div className="submodule-enter-btns">
           {submoduleEntrys.map((item, index) => (
-            <div className="submodule-enter-btn" style={{ left: item.left, top: item.top }} key={index}>{item.name}</div>
+            <SubmoduleEntry  key={index} submoduleInfo={item}></SubmoduleEntry>
           ))}
         </div>
       </div>
       {/* 子页面 */}
-      <div style={{ width: '100%', height: '100%', position: "absolute", left: 0, top: 0 }}>
-        <Outlet style={{ width: '100%', height: '100%' }}></Outlet>
-      </div>
+      <Outlet style={{ width: '100%', height: '100%', position: "absolute", left: 0, top: 0 }}></Outlet>
     </div>
   )
 }

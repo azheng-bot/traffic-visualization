@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      background-color: rgb(230, 230, 230);
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .submodule-entry {
+      width: 200px;
+      height: 200px;
+      /* border: 1px solid red; */
+      position: absolute;
+      left: 50px;
+      top: 50px;
+    }
+
+    .media {
+      width: 130px;
+      height: 130px;
+      margin: 0 auto;
+      opacity: 0;
+      transition: .25s all;
+      transition-delay: .5s;
+      /* border: 1px solid red; */
+      position: relative;
+      z-index: 20;
+
+    }
+
+    .media .img-intro {
+      width: 100%;
+      height: max-content;
+      transform: translate(0px, -50%);
+      position: relative;
+      top: 50%;
+      display: block;
+      position: relative;
+    }
+
+    .img-intro img {
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .intro {
+      position: absolute;
+      right: -175px;
+      top: -15px;
+      width: 135px;
+    }
+
+    .intro .submodule-name {
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .intro .detail-intro {
+      font-size: 14px;
+      font-weight: 300;
+      margin-top: 3px;
+      letter-spacing: 0.5px;
+      line-height: 18px;
+    }
+
+    .guide-line {
+      position: absolute;
+      right: -27px;
+      top: -3px;
+      width: 40px;
+      height: 20px;
+    }
+
+    .guide-line .line {
+      width: 30px;
+      height: 15px;
+      border-top: 1px solid rgb(0, 0, 0);
+      border-left: 1.5px solid rgb(0, 0, 0);
+      transform: skewX(-49deg);
+      position: absolute;
+      left: 10px;
+      bottom: 2px;
+    }
+
+    .guide-line .point {
+      width: 4px;
+      height: 4px;
+      border: 1px solid rgb(0, 0, 0);
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background: #fff;
+    }
+
+    .img-intro .intro,
+    .img-intro .guide-line {
+      opacity: 0;
+      transition: .25s all;
+
+      transition-delay: .25s;
+    }
+
+
+    .light {
+      width: 12px;
+      height: 42px;
+      background: linear-gradient(to top, rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgba(255, 255, 255, 0.651), rgba(255, 255, 255, 0));
+      margin: 0 auto;
+      z-index: 100;
+      position: relative;
+      margin-top: 25px;
+      transition: .25s all;
+      transition-delay: .75s;
+      transform: perspective(20px) rotateX(-55deg);
+      opacity: 0;
+    }
+
+    .phone {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto;
+      margin-top: -44px;
+      position: relative;
+    }
+
+    .phone img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .phone::after {
+      content: "";
+      display: block;
+      width: 46px;
+      height: 27px;
+      background-color: rgba(255, 255, 255, 0);
+      position: absolute;
+      transition: .25s all;
+      left: 9px;
+      top: 16.5px;
+      transform: rotateX(55deg) rotateZ(-45deg);
+      transition-delay: 1s;
+    }
+
+    .submodule-entry.active .light {
+      opacity: 1;
+      transition: .3s ease-in;
+      transition-delay: .5s;
+    }
+
+    .submodule-entry.active .media {
+      opacity: 1;
+      transition: .3s ease-in;
+      transition-delay: 1s;
+    }
+
+    .submodule-entry.active .img-intro .intro,
+    .submodule-entry.active .img-intro .guide-line {
+      opacity: 1;
+      transition: 1s ease-out;
+      transition-delay: 1.5s;
+    }
+
+    .submodule-entry.active .phone::after {
+      transition: .5s all;
+      background-color: rgb(255, 255, 255);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="submodule-entry ">
+    <div class="media">
+      <div class="img-intro">
+        <img src="./image/前-右.png" alt=" ">
+        <div class="guide-line">
+          <div class="line"></div>
+          <div class="point"></div>
+        </div>
+        <div class="intro">
+          <p class="submodule-name">我的汽车</p>
+          <p class="detail-intro">通过文图的方式详细介绍汽车内部零件。</p>
+        </div>
+      </div>
+    </div>
+    <div class="light"></div>
+    <div class="phone">
+      <img src="./image/iphone.png" alt="">
+    </div>
+  </div>
+
+  <script>
+    let entry = document.getElementsByClassName("submodule-entry")[0]
+    entry.addEventListener("mouseenter", e => {
+      entry.className = "submodule-entry active"
+    })
+    entry.addEventListener("mouseout", e => {
+      entry.className = "submodule-entry"
+    })
+  </script>
+</body>
+
+</html>
