@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import './App.less'
 import Navigator from './components/Navigator/index.jsx';
-;
+import BackBtn from './components/BackBtn/index.jsx';
 
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
   return (
     <div className="App">
       <Navigator></Navigator>
+      <BackBtn></BackBtn>
       <Outlet></Outlet>
     </div>
   )

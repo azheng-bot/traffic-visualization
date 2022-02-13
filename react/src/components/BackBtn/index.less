@@ -1,0 +1,37 @@
+.back-btn {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  background-color: rgba(255, 255, 255, 0.781);
+  border-radius: 50%;
+  z-index: 500;
+  cursor: pointer;
+  transition: .3s ease-out;
+
+  img {
+    display: block;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+    transition: .3s ease-out;
+  }
+
+  &:hover {
+    right: -60px;
+    top: -60px;
+    width: 120px;
+    height: 120px;
+    background-color: rgb(255, 255, 255);
+
+    img {
+      width: 25px;
+      height: 25px;
+      left: 25px;
+      bottom: 25px;
+    }
+  }
+}

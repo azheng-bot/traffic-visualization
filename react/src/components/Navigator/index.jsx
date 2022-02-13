@@ -50,17 +50,9 @@ function index(props) {
   const [selectVisible, setSelectVisible] = useState(false)
   // 详细模块下拉菜单 - index索引
   const [moduleIndex, setModuleIndex] = useState(1)
-  // 详细模块下拉菜单 - 每个模块的下拉菜单的left属性
-  const selectLeftMap = { 0: 10, 1: 10, 2: 10 }
   // navigator导航栏 - 是否显示
   const [navigatorVisible, setNavigatorVisible] = useState(false)
 
-  function unfold() {
-    setNavigatorVisible(!navigatorVisible)
-  }
-  function changeSelect(index) {
-
-  }
 
   return (
     <div className={["navigator", navigatorVisible ? "active" : ""].join(" ")} >
@@ -71,24 +63,18 @@ function index(props) {
         <img src="../image/favicon.svg" alt="" />
         <span className="text">视觉交通</span>
       </div>
-      {/* 收起按钮 */}
-      <div className="fold" onClick={unfold}>
-        <img src="../image/others/fold.svg" alt="" />
-      </div>
-      {/* 展开按钮 */}
-      <div className={["unfold", navigatorVisible ? "" : "active"].join(" ")} onClick={unfold}>
-        <img className="complete-center" src="../image/others/fold.svg" alt="" />
-      </div>
       <div className="module-list">
+        {/* 大模块菜单 */}
         <ul className="modules">
           {moduleList.map((item, index) => (
-            <li className="module" key={index} onMouseEnter={() => setModuleIndex(index) || setSelectVisible(true)}  onClick={() => navigate(item.route)} >
+            <li className="module" key={index} onMouseEnter={() => setModuleIndex(index) || setSelectVisible(true)} onClick={() => navigate(item.route)} >
               <a href="#" className="text">
                 {item.name}
               </a>
             </li>
           ))}
         </ul>
+        {/* 详细子模块菜单 */}
         <ul
           className={["select-list", selectVisible ? "show" : "hide"].join(" ")}
           style={{
@@ -104,6 +90,14 @@ function index(props) {
             </li>
           ))}
         </ul>
+      </div>
+      {/* 收起按钮 */}
+      <div className="fold" onClick={() => setNavigatorVisible(!navigatorVisible)}>
+        <img src="../image/others/fold.svg" alt="" />
+      </div>
+      {/* 展开按钮 */}
+      <div className={["unfold", navigatorVisible ? "" : "active"].join(" ")} onClick={() => setNavigatorVisible(!navigatorVisible)}>
+        <img className="complete-center" src="../image/others/fold.svg" alt="" />
       </div>
     </div>
   )
