@@ -24,6 +24,12 @@ function index(props) {
     bottomRight: "./image/car/下-右.png",
     bottomLeft: "./image/car/下-左.png",
   }
+  let forwardOrient2Transform = {
+    topRight: "rotateX(237deg) rotateY(155deg) rotateZ(120deg)",
+    topLeft: "rotateX(127deg) rotateY(154deg) rotateZ(242deg)",
+    bottomRight: "rotateX(127deg) rotateY(154deg) rotateZ(60deg)",
+    bottomLeft: "rotateX(237deg) rotateY(155deg) rotateZ(300deg)",
+  }// forwardOrient to transform，不同forwardOrient对应不同小车transform
 
   // 动态变量数值
   let runSpeed = 0; //行驶速度
@@ -53,7 +59,7 @@ function index(props) {
   if (direct == "back") {
     // 初始坐标
     initX = -17;
-    initY = 2000;
+    initY = 2150;
     // 边界
     leftBorder = -53;
     rightBorder = -8;
@@ -82,7 +88,7 @@ function index(props) {
   // 1.小车运行
   function runCar() {
     timer = setInterval(() => {
-      // console.log('x,y', x, y)
+      console.log('x,y', x, y)
 
       // 根据汽车行驶状态，执行对应事件
       switch (runStatus) {
@@ -180,14 +186,30 @@ function index(props) {
   let wheel_1 = useRef(null)
   let wheel_2 = useRef(null)
   function rotateWheel() {
-    wheelRate += runSpeed * (direct == "forward" ? wheelSpeed : -wheelSpeed);
-    if (orient == "topRight" || orient == "bottomLeft") {
-      wheel_1.current.style.transform = `rotateX(42deg) rotateY(316deg) rotateZ(${wheelRate}deg)`
-      wheel_2.current.style.transform = `rotateX(33deg) rotateY(313deg) rotateZ(${wheelRate + 30}deg)`
-    }
-    else if (orient == "topLeft" || orient == "bottomRight") {
-      wheel_1.current.style.transform = ` rotateX(41deg) rotateY(51deg) rotateZ(${wheelRate}deg)`
-      wheel_2.current.style.transform = ` rotateX(41deg) rotateY(43deg) rotateZ(${wheelRate + 30}deg)`
+    switch (forwardOrient) {
+      case "topRight":
+        wheel_1.current.style.transform = `rotateX(42deg) rotateY(316deg) rotateZ(${wheelRate}deg)`
+        wheel_2.current.style.transform = `rotateX(33deg) rotateY(313deg) rotateZ(${wheelRate + 30}deg)`
+        wheelRate += runSpeed * (direct == "forward" ? wheelSpeed : -wheelSpeed);
+        break;
+
+      case "bottomLeft":
+        wheel_1.current.style.transform = `rotateX(42deg) rotateY(316deg) rotateZ(${wheelRate}deg)`
+        wheel_2.current.style.transform = `rotateX(33deg) rotateY(313deg) rotateZ(${wheelRate + 30}deg)`
+        wheelRate += runSpeed * (direct == "forward" ? -wheelSpeed : wheelSpeed);
+        break;
+
+      case "topLeft":
+        wheel_1.current.style.transform = ` rotateX(41deg) rotateY(51deg) rotateZ(${wheelRate}deg)`
+        wheel_2.current.style.transform = ` rotateX(41deg) rotateY(43deg) rotateZ(${wheelRate + 30}deg)`
+        wheelRate += runSpeed * (direct == "forward" ? -wheelSpeed : wheelSpeed);
+        break;
+
+      case "bottomRight":
+        wheel_1.current.style.transform = ` rotateX(41deg) rotateY(51deg) rotateZ(${wheelRate}deg)`
+        wheel_2.current.style.transform = ` rotateX(41deg) rotateY(43deg) rotateZ(${wheelRate + 30}deg)`
+        wheelRate += runSpeed * (direct == "forward" ? wheelSpeed : -wheelSpeed);
+        break;
     }
   }
 
@@ -315,9 +337,9 @@ function index(props) {
     }
     defermineDirection()
   })
-  // 按回车时触发entrySubmodule事件
+  // 按回车时触发enterSubmodule事件
   window.addEventListener("keypress", (e) => {
-    if (e.keyCode == 13) props.entrySubmodule(currentSubmodule)
+    if (e.keyCode == 13) props.enterSubmodule(currentSubmodule)
   })
 
   // 三条路的x轴位置
@@ -338,7 +360,7 @@ function index(props) {
   }
 
   return (
-    <div className={`car ${orient}`} ref={carRef}>
+    <div className={`car ${orient}`} style={{ transform: forwardOrient2Transform[forwardOrient] }} ref={carRef}>
       <img className="car_image" src={orientImgMap[orient]} alt="" />
       <img className="wheel wheel_1" src="./image/car/轮毂.png" alt="" ref={wheel_1} />
       <img className="wheel wheel_2" src="./image/car/轮毂.png" alt="" ref={wheel_2} />

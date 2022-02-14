@@ -21,6 +21,12 @@ ReactDOM.render(
           <Route path="/knowledge" element={<Knowledge />}>
             <Route path="sign" element={<Sign />}></Route>
           </Route>
+          <Route path="/deep" element={<Deep />}>
+            <Route path="now" element={<Sign />}></Route>
+          </Route>
+          <Route path="/future" element={<Future />}>
+            <Route path="ai" element={<Sign />}></Route>
+          </Route>
         </Route>
       </Routes>
     </Router>

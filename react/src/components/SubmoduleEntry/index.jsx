@@ -2,13 +2,12 @@ import React, { createRef, useEffect, useState } from 'react'
 import "./index.less"
 
 function index(props) {
-  const [active, setActive] = useState(false)
   // setActive(props.show || false)
-
+  const reserve = props.reserve || false;
   const submoduleInfo = props.submoduleInfo
 
   return (
-    <div className={submoduleInfo.active ? "submodule-entry active" : "submodule-entry"} style={{ left: submoduleInfo.left + 'px', top: submoduleInfo.top + 'px' }} onMouseEnter={() => setActive(true)} onMouseOut={() => setActive(false)} >
+    <div className={["submodule-entry", submoduleInfo.active ? "active" : "", reserve ? "reserve" : ""].join(" ")} style={{ left: submoduleInfo.left + 'px', top: submoduleInfo.top + 'px' }} >
       <div className="media">
         {/* <div className="img-intro"> */}
         <img src={submoduleInfo.image} alt=" " />
@@ -18,10 +17,10 @@ function index(props) {
             <div className="point"></div>
           </div>
           <div className="intro">
-            <p className="submodule-name">{submoduleInfo.name}</p>
+            <p className="submodule-name">{submoduleInfo.title}</p>
             <p className="detail-intro">{submoduleInfo.intro}</p>
             <p className="hint">
-              <span className="border">Enter</span>回车键进入模块
+              <span className="border">ENTER</span>回车键进入模块
             </p>
           </div>
         </div>

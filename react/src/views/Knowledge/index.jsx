@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { useLocation, Outlet, useNavigate } from 'react-router-dom'
 import "./index.less"
+// 引入小车
 import Car from "../../components/Car/index"
+// 引入交通地线
 import LeftArrow from "../../components/arrows/LeftArrow"
 import ForwardArrow from "../../components/arrows/ForwardArrow"
 import RightArrow from "../../components/arrows/RightArrow"
@@ -9,6 +11,10 @@ import DoubleYellow from "../../components/lines/DoubleYellow"
 import SingleWhite from "../../components/lines/SingleWhite"
 import ZebraCrossing from "../../components/lines/ZebraCrossing"
 import DottedLine from "../../components/lines/DottedLine"
+// 引入子模块进入点
+import SubmoduleEntry from "../../components/SubmoduleEntry"
+// 引入路标
+import RoadSign from "../../components/RoadSign"
 
 function index(props) {
   let match = useLocation()
@@ -222,49 +228,107 @@ function index(props) {
   })();
 
   // 小车的朝向
-  const drivingOrient = "rightTop"
+  const forwardOrient = "bottomRight"
   const drivingDirect = "back"
-  // 小车的初始位置
-  const carInitSite = { x: 180, y: 1300 }
 
   // 模块进入点区域
-  const submoduleEntryBtns = [
-    { src: "", name: "城市地铁", intro: "", left: 36, top: 413 },
-    { src: "", name: "城市公交", intro: "", left: 436, top: 213 },
-  ]
+  const [submoduleEntrys, setSubmoduleEntrys] = useState([
+    {
+      active: false,
+      name: "sign",
+      title: "交通图标",
+      image: "./image/modules/colorful/sign.png",
+      intro: "展示所有交通图标的类别，以及图标类别所对应的所有交通图标。",
+      left: -4,
+      top: 219
+    },
+    {
+      active: false,
+      name: "tool",
+      title: "交通工具",
+      image: "./image/modules/colorful/tool.png",
+      intro: "对所有交通图标进行分类，并通过对应分类方式将所交通工具进行排列展示。",
+      left: 423,
+      top: -23
+    },
+    {
+      active: false,
+      name: "law",
+      title: "交通法规",
+      image: "./image/modules/colorful/law.png",
+      intro: "展示现行主要的交通法规，并通过章节、条目进行法律内容的选择查看。",
+      left: 1161,
+      top: 42
+    },
+    {
+      active: false,
+      name: "history",
+      title: "交通历史",
+      image: "./image/modules/colorful/history.png",
+      intro: "将从古到今的交通历史进行展现，并对不同时期的交通能力进行对比。",
+      left: 730,
+      top: 285
+    },
+  ])
+
+  // 模块进入点区域 - 对应小车y轴区间
   const submoduleEntryAreas = {
     back:
-      [{ name: "subway", y1: 1250, y2: 1400 }, { name: "bus", y1: 1575, y2: 1750 }],
+      [
+        { name: "sign", y1: 1850, y2: 2050 },
+        { name: "tool", y1: 1500, y2: 1700 },
+      ],
     forward:
-      []
+      [
+        { name: "law", y1: 1200, y2: 1400 },
+        { name: "history", y1: 1525, y2: 1725 },
+      ]
   }
+
+  // 显示子模块详细信息
   function showSubmodule(submodule) {
-    if (submodule == null) return
-    console.log('show', submodule)
+    if (submodule == null) {
+      setSubmoduleEntrys(
+        submoduleEntrys.map(item => {
+          item.active = false;
+          return item
+        })
+      )
+    } else {
+      setSubmoduleEntrys(
+        submoduleEntrys.map(item => {
+          if (item.name == submodule) item.active = true;
+          else item.active = false;
+          return item;
+        })
+      )
+    }
   }
-  function entrySubmodule(submodule) {
+
+  // 键入回车键，进入子模块
+  function enterSubmodule(submodule) {
     if (submodule == null) return
-    alert("entry")
-    console.log('entry', 1, submodule)
+    navigate("/knowledge/" + submodule)
   }
+
   // 小车进入下一条路
-  let navigate = useNavigate()
   const roadMap = { leftRoad: "/deep", forwardRoad: "/future", rightRoad: "/mycity" }
+  let navigate = useNavigate()
   const [knowledgeVisible, setKnowledgeVisible] = useState(true)
   function toNextRoad(road) {
     setKnowledgeVisible(false)
     setTimeout(() => {
       navigate(roadMap[road])
-    }, 150)
+    }, 250)
   }
-
 
 
   return (
     <div className={knowledgeVisible ? "knowledge" : "knowledge hide"}>
       {/*  可视区域 */}
       <div className="visible-area" >
-        {/* <div className="border" ></div> */}
+        {/* 路标 */}
+        <RoadSign style={{ left: -229, bottom: 73 }} cnName={"基础通识路"} enName={"Knowledge Road"} reserve={true}></RoadSign>
         {/* 左侧树木&景观 */}
         <div className="scenery-left">
           {leftSceneries.map((item, index) => <img
@@ -285,7 +349,7 @@ function index(props) {
         {/* 马路 */}
         <div className="road">
           {/* 小车 */}
-          <Car orient={drivingOrient} direct={drivingDirect} forwardOrient={"bottomRight"} initSite={carInitSite} submoduleEntryAreas={submoduleEntryAreas} showSubmodule={showSubmodule} entrySubmodule={entrySubmodule} toNextRoad={toNextRoad} ></Car>
+          <Car forwardOrient={forwardOrient} direct={drivingDirect} submoduleEntryAreas={submoduleEntryAreas} showSubmodule={showSubmodule} enterSubmodule={enterSubmodule} toNextRoad={toNextRoad}></Car>
           {/* 斑马线 */}
           <div className="zebra" >
             <ZebraCrossing width="100%" height="120px" lineNum="25" />
@@ -351,9 +415,9 @@ function index(props) {
           />)}
         </div>
         {/* 子模块进入装置 */}
-        <div className="submodule-entry-btns">
-          {submoduleEntryBtns.map((item, index) => (
-            <div className="submodule-entry-btn" style={{ left: item.left, top: item.top }} key={index}>{item.name}</div>
+        <div className="submodule-enter-btns">
+          {submoduleEntrys.map((item, index) => (
+            <SubmoduleEntry key={index} reserve={true} submoduleInfo={item}></SubmoduleEntry>
           ))}
         </div>
       </div>

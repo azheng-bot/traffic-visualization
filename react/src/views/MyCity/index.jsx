@@ -13,6 +13,8 @@ import ZebraCrossing from "../../components/lines/ZebraCrossing"
 import DottedLine from "../../components/lines/DottedLine"
 // 引入子模块进入点
 import SubmoduleEntry from "../../components/SubmoduleEntry"
+// 引入路标
+import RoadSign from "../../components/RoadSign"
 
 
 function index(props) {
@@ -218,57 +220,87 @@ function index(props) {
   })();
 
   // 小车的朝向
-  const drivingOrient = "rightTop"
+  const forwardOrient = "topRight"
   const drivingDirect = "back"
 
   // 模块进入点区域
-  const submoduleEntrys = [
-    { active: true,image: "./image/modules/colorful/subway.png",  name: "城市地铁", intro: "展示出对于你所在的城市的所有地铁，当然在你所在城市有地铁通行的前提下。", left: 28, top: 199 },
-    {active: true, image: "./image/modules/colorful/bus.png",  name: "城市公交", intro: "将你所在城市的所有公交的线路及相关信息进行展示与罗列。", left: 534, top: -85 },
-  ]
+  const [submoduleEntrys, setSubmoduleEntrys] = useState([
+    {
+      active: false,
+      name: "subway",
+      title: "城市地铁",
+      image: "./image/modules/colorful/subway.png",
+      intro: "展示出对于你所在的城市的所有地铁，当然在你所在城市有地铁通行的前提下。",
+      left: 28,
+      top: 199
+    },
+    {
+      active: false,
+      name: "bus",
+      title: "城市公交",
+      image: "./image/modules/colorful/bus.png",
+      intro: "将你所在城市的所有公交的线路及相关信息进行展示与罗列。",
+      left: 534,
+      top: -85
+    },
+  ])
 
-  // 模块进入点区域小车y轴区间
+  // 模块进入点区域 - 对应小车y轴区间
   const submoduleEntryAreas = {
     back:
       [
-        { name: "subway", y1: 1250, y2: 1400 },
-        { name: "bus", y1: 1575, y2: 1750 }
+        { name: "subway", y1: 1250, y2: 1600 },
+        { name: "bus", y1: 1675, y2: 1925 }
       ],
     forward:
       []
   }
-  
+
   // 显示子模块详细信息
   function showSubmodule(submodule) {
-    if (submodule == null) return
-    console.log('show', submodule)
+    if (submodule == null) {
+      setSubmoduleEntrys(
+        submoduleEntrys.map(item => {
+          item.active = false;
+          return item
+        })
+      )
+    } else {
+      setSubmoduleEntrys(
+        submoduleEntrys.map(item => {
+          if (item.name == submodule) item.active = true;
+          else item.active = false;
+          return item;
+        })
+      )
+    }
   }
 
   // 键入回车键，进入子模块
   function enterSubmodule(submodule) {
     if (submodule == null) return
-    alert("enter")
-    console.log('enter', 1, submodule)
+    navigate("/mycity/" + submodule)
   }
 
   // 小车进入下一条路
   const roadMap = { leftRoad: "/knowledge", forwardRoad: "/deep", rightRoad: "/future" }
   let navigate = useNavigate()
-  const [myCityVisible, setMyCityVisible] = useState(true)
+  const [deepVisible, setDeepVisible] = useState(true)
   function toNextRoad(road) {
-    setMyCityVisible(false)
+    setDeepVisible(false)
     setTimeout(() => {
       navigate(roadMap[road])
-    }, 150)
+    }, 250)
   }
 
 
 
   return (
-    <div className={myCityVisible ? "my-city" : "my-city hide"}>
+    <div className={deepVisible ? "my-city" : "my-city hide"}>
       {/*  可视区域 */}
       <div className="visible-area" >
-        {/* <div className="border" ></div> */}
+        {/* 路标 */}
+        <RoadSign style={{ left: -229, bottom: 73 }} cnName={"我的城市路"} enName={"My City Road"}></RoadSign>
         {/* 左侧树木&景观 */}
         <div className="scenery-left">
           {leftSceneries.map((item, index) => <img
@@ -289,7 +321,7 @@ function index(props) {
         {/* 马路 */}
         <div className="road">
           {/* 小车 */}
-          <Car orient={drivingOrient} forwardOrient={"topRight"} direct={drivingDirect}  submoduleEntryAreas={submoduleEntryAreas} showSubmodule={showSubmodule} enterSubmodule={enterSubmodule} toNextRoad={toNextRoad}></Car>
+          <Car forwardOrient={forwardOrient} direct={drivingDirect} submoduleEntryAreas={submoduleEntryAreas} showSubmodule={showSubmodule} enterSubmodule={enterSubmodule} toNextRoad={toNextRoad}></Car>
           {/* 斑马线 */}
           <div className="zebra" >
             <ZebraCrossing width="100%" height="120px" lineNum="25" />
@@ -357,7 +389,7 @@ function index(props) {
         {/* 子模块进入装置 */}
         <div className="submodule-enter-btns">
           {submoduleEntrys.map((item, index) => (
-            <SubmoduleEntry  key={index} submoduleInfo={item}></SubmoduleEntry>
+            <SubmoduleEntry key={index} submoduleInfo={item}></SubmoduleEntry>
           ))}
         </div>
       </div>
