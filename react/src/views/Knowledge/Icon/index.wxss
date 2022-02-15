@@ -48,7 +48,6 @@ li {
   height: 100%;
   padding: 40px 20px;
   box-sizing: border-box;
-  overflow-y: scroll;
 }
 .icon .icon_item::-webkit-scrollbar {
   width: 3px;

@@ -3,11 +3,13 @@ import ReactDOM from "react-dom";
 import "./index.less";
 import App from "./App";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import MyCity from "./views/MyCity/index";
 import Knowledge from "./views/Knowledge/index";
 import Deep from "./views/Deep/index";
 import Future from "./views/Future/index";
 import Sign from "./views/Knowledge/Sign/index";
+import Bus from "./views/mycityModule/bus/index";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -27,6 +29,7 @@ ReactDOM.render(
           <Route path="/future" element={<Future />}>
             <Route path="ai" element={<Sign />}></Route>
           </Route>
+          <Route path="/bus" element={<Bus />}></Route>
         </Route>
       </Routes>
     </Router>
