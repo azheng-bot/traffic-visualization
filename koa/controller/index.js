@@ -42,7 +42,6 @@ module.exports.getLaws = async (ctx, next) => {
 // 获取公交车信息
 module.exports.getBuses = async (ctx, next) => {
   const { buses } = await getBuses(ctx.query.city)
-  
   ctx.body = { buses }
   next()
 }
