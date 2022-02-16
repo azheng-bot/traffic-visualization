@@ -11,6 +11,8 @@ import Future from "./views/Future/index";
 import Sign from "./views/Knowledge/Sign/index";
 import Bus from "./views/MyCity/bus/index";
 
+import Bus from "./views/mycityModule/bus/index";
+import Metro from "./views/mycityModule/metro/index";
 ReactDOM.render(
   <React.StrictMode>
     <Router>
@@ -30,6 +32,7 @@ ReactDOM.render(
             <Route path="ai" element={<Sign />}></Route>
           </Route>
           <Route path="/bus" element={<Bus />}></Route>
+          <Route path="/metro/:id" element={<Metro />}></Route>
         </Route>
       </Routes>
     </Router>
