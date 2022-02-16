@@ -1,0 +1,75 @@
+.box {
+  width: 100%;
+  height: 100%;
+  .box_left,
+  .box_right {
+    height: 100%;
+    position: fixed;
+  }
+  .box_left {
+    // position: fixed;
+    z-index: 10000;
+    width: 280px;
+    background-color: bisque;
+    ul {
+      height: 100%;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #d8d8d8;
+        border-radius: 10px;
+      }
+      &::-webkit-scrollbar-track-piece {
+        background: transparent;
+      }
+    }
+    li {
+      width: 100%;
+      height: 50px;
+      padding-left: 40px;
+      line-height: 50px;
+      cursor: pointer;
+      a {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    li:hover {
+      background-color: aquamarine;
+    }
+    .bg {
+      background-color: aquamarine;
+    }
+  }
+  .box_right {
+    width: calc(100% - 280px);
+    left: 280px;
+    background-color: aquamarine;
+    .amap-subway-api #drag_handle {
+      left: 280px;
+    }
+  }
+}
+.zoom {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 10000;
+  .da,
+  .xiao {
+    width: 40px;
+    height: 40px;
+    background-color: aqua;
+    text-align: center;
+  }
+  .da {
+    margin-bottom: 10px;
+  }
+  img {
+    width: 100%;
+  }
+}
