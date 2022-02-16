@@ -220,8 +220,9 @@ function index(props) {
   })();
 
   // 小车的朝向
-  const forwardOrient = "topRight"
-  const drivingDirect = "back"
+  let forwardOrient = "topRight"
+  let drivingDirect = "back"
+  if (match.pathname == "/") drivingDirect = "forward"
 
   // 模块进入点区域
   const [submoduleEntrys, setSubmoduleEntrys] = useState([

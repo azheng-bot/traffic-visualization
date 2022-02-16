@@ -9,7 +9,7 @@ import Knowledge from "./views/Knowledge/index";
 import Deep from "./views/Deep/index";
 import Future from "./views/Future/index";
 import Sign from "./views/Knowledge/Sign/index";
-import Bus from "./views/mycityModule/bus/index";
+import Bus from "./views/MyCity/bus/index";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,7 +18,7 @@ ReactDOM.render(
         <Route path="/" element={<App />}>
           <Route path="/" element={<MyCity />}></Route>
           <Route path="/mycity" element={<MyCity />}>
-            <Route path="subway" element={<Sign />}></Route>
+            <Route path="bus" element={<Bus />}></Route>
           </Route>
           <Route path="/knowledge" element={<Knowledge />}>
             <Route path="sign" element={<Sign />}></Route>

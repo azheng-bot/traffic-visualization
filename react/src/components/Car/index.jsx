@@ -70,25 +70,23 @@ function index(props) {
   // 初始化小汽车入场
   // 实现方法：初始化小车以最高速度行驶入场
   // let isInitCar = true;
-  useEffect(() => {
+  useEffect(() => { 
     // 初始化小车以最高速度行驶y轴移动305px去实现入场动画，这会使得小车初始偏移目标位置；
     // 所以把目标y轴距离减去305px，就是初始小车的y轴应在位置。
     y = initY + (direct == "forward" ? -305 : 305)
     x = initX
     runSpeed = maxForwardSpeed;
 
-    // setTimeout(() => {
-    //   isInitCar = false;
-    // }, 500)
-
-    runCar()
+    setTimeout(() => {
+      runCar()
+    }, 750)
   }, [])
 
   let timer = null;
   // 1.小车运行
   function runCar() {
     timer = setInterval(() => {
-      console.log('x,y', x, y)
+      // console.log('x,y', x, y)
 
       // 根据汽车行驶状态，执行对应事件
       switch (runStatus) {
