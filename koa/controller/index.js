@@ -1,5 +1,5 @@
 const { getSigns } = require("../modules/sign")
-const { getCities } = require("../modules/city")
+const { getCities,getCityAdcode } = require("../modules/city")
 const { getLaws } = require("../modules/law")
 const { getBuses } = require("../modules/bus")
 
@@ -24,6 +24,15 @@ module.exports.getCities = async (ctx, next) => {
   ctx.body = { provinces }
   next()
 }
+
+// 获取城市adcode
+module.exports.getCityAdcode = async (ctx, next) => {
+  console.log(ctx.query.city)
+  const { adcode } = await getCityAdcode(ctx.query.city)
+  ctx.body = { adcode }
+  next()
+}
+
 
 // 获取法律条文
 module.exports.getLaws = async (ctx, next) => {

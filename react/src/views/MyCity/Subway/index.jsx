@@ -36,7 +36,7 @@ function Metro() {
   }, []);
 
   return (
-    <div className="box">
+    <div className="subway-module">
       <div className="box_left">
         <ul>
           {cityList.map((item) => (

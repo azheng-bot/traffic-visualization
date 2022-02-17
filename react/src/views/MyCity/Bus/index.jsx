@@ -179,7 +179,7 @@ function Bus() {
     setMarKer(marker);
   };
   return (
-    <div className="box">
+    <div className="bus-module">
       <div className="box_left">
         <div
           className="city"
