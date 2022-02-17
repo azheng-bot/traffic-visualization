@@ -1,5 +1,5 @@
 const { getSigns } = require("../modules/sign")
-const { getCities,getCityAdcode } = require("../modules/city")
+const { getCities, getCityAdcode } = require("../modules/city")
 const { getLaws } = require("../modules/law")
 const { getBuses } = require("../modules/bus")
 
@@ -50,7 +50,8 @@ module.exports.getLaws = async (ctx, next) => {
 
 // 获取公交车信息
 module.exports.getBuses = async (ctx, next) => {
-  const { buses } = await getBuses(ctx.query.city)
+  let { buses } = await getBuses(ctx.query.city)
+  buses = buses.filter(item => item.bus_name.search(/^\d+[\u4e00-\u9fa5]$/) != -1)
   ctx.body = { buses }
   next()
 }

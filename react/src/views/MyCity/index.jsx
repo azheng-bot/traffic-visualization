@@ -397,7 +397,7 @@ function index(props) {
         </div>
       </div>
       {/* 子页面 */}
-      <Outlet style={{ width: '100%', height: '100%', position: "absolute", left: 0, top: 0 }}></Outlet>
+      <Outlet ></Outlet>
     </div>
   )
 }

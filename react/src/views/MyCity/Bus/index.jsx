@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { getBusList, getCityList } from "../../../api/mycityModule";
 import "./index.less";
 import AMapLoader from "@amap/amap-jsapi-loader";
+
+
 function Bus() {
   // 城市列表
   const [cityList, setCityList] = useState([]);
@@ -17,10 +19,12 @@ function Bus() {
   let [busLine, setBusLine] = useState("1路");
   // 公交线路信息
   let [busLineInfo, setBusLineInfo] = useState([]);
+  // 公交时间信息
+  let [busTimeInfo, setBusTimeInfo] = useState('');
   // 站点标记
   let [marker, setMarKer] = useState("");
   // 站点选中
-  let [busStop, setBusStop] = useState("");
+  let [busStop, setBusStop] = useState(0);
   useEffect(() => {
     AMapLoader.load({
       key: "c6e434d1188e1c9f904dc256f7e14de8", // 申请好的Web端开发者Key，首次调用 load 时必填
@@ -61,6 +65,7 @@ function Bus() {
   };
   // 点击城市
   const cityClick = (item) => {
+    console.log('item', item)
     if (item.cities) {
       setCityList(item.cities);
     } else {
@@ -68,10 +73,8 @@ function Bus() {
       busListClick();
       setCityFlag(false);
       setBusLine("1路");
-      console.log(busLine, item.city_name);
       getbusLine(busLine, item.city_name);
       setBusStop("");
-      // console.log(1111);---------------------------------------------------------------
     }
   };
   // 城市下拉框
@@ -100,7 +103,9 @@ function Bus() {
     linesearch.search(name, function (status, result) {
       map.clearMap ? map.clearMap() : "";
       if (status === "complete" && result.info === "OK") {
+        console.log(result.lineInfo)
         setBusLineInfo(result.lineInfo);
+        setBusTimeInfo(JSON.parse(decodeURI(result.lineInfo[0].timedesc).replaceAll('%2C', ',')).allRemark)
 
         lineSearch_Callback(result.lineInfo);
       }
@@ -178,6 +183,7 @@ function Bus() {
     });
     setMarKer(marker);
   };
+
   return (
     <div className="bus-module">
       <div className="box_left">
@@ -189,35 +195,24 @@ function Bus() {
         >
           {city}
           {cityFlag ? (
-            <img
-              src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/icon_down.png"
-              alt=""
-            />
+            <img src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/icon_down.png" alt="" />
           ) : (
-            <img
-              src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/icon_up.png"
-              alt=""
-            />
+            <img src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/icon_up.png" alt="" />
+          )}
+          {cityFlag ? (
+            <div className="city-select">
+              <ul>
+                {cityList.map((item) => (
+                  <li onClick={() => cityClick(item)} key={item.city_id || item.prov_id}>
+                    {item.prov_name || item.city_name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            ""
           )}
         </div>
-        {cityFlag ? (
-          <div className="city_item">
-            <ul>
-              {cityList.map((item) => (
-                <li
-                  onClick={() => {
-                    cityClick(item);
-                  }}
-                  key={item.city_id || item.prov_id}
-                >
-                  {item.prov_name || item.city_name}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : (
-          ""
-        )}
 
         <div className="bus">
           <ul>
@@ -238,34 +233,54 @@ function Bus() {
         </div>
       </div>
       <div className="box_right">
-        <div className="box_right_title">
-          公交名称: {busLineInfo[0] ? busLineInfo[0].name : ""} <br />
-          站点信息:
-          <br />
-          {busLineInfo[0]
-            ? busLineInfo[0].via_stops.map((item, index) => (
-                <div key={item.sequence} className="bus_stop">
-                  <div
-                    className={index === busStop ? "bg" : ""}
-                    onClick={() => {
-                      busStopClick(item.location, index);
-                    }}
-                  >
-                    {item.name}
+        {busLineInfo[0] &&
+          (<div className="bus-info">
+            <div className="bus-base-info">
+              <div className="bus-number">
+                {busLineInfo[0].name.match(/^\d+/)[0]}
+              </div>
+              <div className="bus-company">
+                茶马大道站公司
+              </div>
+              <div className="bus-start-end">
+                <div className="start-stop">起点:<span> 茶马大道站</span></div>
+                <div className="end-stop">终点:<span> 蒸阳大道站</span></div>
+              </div>
+            </div>
+            <div className="bus-line-info">
+              <div className="top-line">
+                <div className="arrive-line" style={{ width: `calc(17px + (100% - 30px) * ${busStop} / ${busLineInfo[0].via_stops.length - 1})` }}></div>
+              </div>
+              <div className="stop-list">
+                {busLineInfo[0].via_stops.map((item, index) => (
+                  <div key={item.sequence} className={index === busStop ? "stop-info active" : "stop-info"}>
+                    <div className="point"></div>
+                    <div
+                      className="stop-name"
+                      onClick={() => {
+                        busStopClick(item.location, index);
+                      }}
+                    >
+                      {item.name}
+                    </div>
                   </div>
-                  {index === busLineInfo[0].via_stops.length - 1 ? (
-                    ""
-                  ) : (
-                    <img src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/youjiantou.png"></img>
-                  )}
+                ))}
+              </div>
+              <div className="bottom-line">
+                {[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,].map((item, index) => (
+                  <div className="point" key={index}></div>
+                ))}
+                <div className="bus-time">
+                  {busTimeInfo}
                 </div>
-              ))
-            : ""}
-        </div>
+              </div>
+            </div>
+          </div>)
+        }
         <div id="container" className="map" style={{ height: "70%" }}></div>
       </div>
     </div>
   );
-}
+};
 
 export default Bus;
