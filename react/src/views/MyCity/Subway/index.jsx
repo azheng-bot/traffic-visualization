@@ -44,7 +44,7 @@ function Metro() {
               className={item.adcode == adcodeId ? "bg" : ""}
               key={item.adcode}
             >
-              <a href={`/metro/${item.adcode}`}>{item.name}</a>
+              <a href={`/subway/${item.adcode}`}>{item.name}</a>
             </li>
           ))}
         </ul>

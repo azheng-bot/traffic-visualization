@@ -1,6 +1,6 @@
 @green: #0a8777;
 @gray: #5e5a5d;
- 
+
 .bus-module {
   height: 100%;
   z-index: 999;
@@ -17,15 +17,28 @@
   }
 
   .city {
-    width: 100px;
-    height: 50px;
-    line-height: 50px;
-    margin: 0 auto;
-    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
-    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
-    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    width: 220px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+    font-style: italic;
+    margin: 20px auto;
+    padding: 0px 0px;
+    border-radius: 5px;
+    box-shadow: rgb(204, 219, 232) 2px 2px 4px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    position: relative;
+
+    .city-name {
+      display: inline-block;
+      line-height: 28px;
+      border-radius: 4px;
+      padding: 0px 8px;
+      margin-right: 5px;
+      box-shadow: rgb(204, 219, 232) 2px 2px 4px 0px, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px;
+      // box-shadow: rgba(0, 0, 0, 0.116) 0px 5px 10px;
+
+    }
 
     img {
       padding-top: 2px;
@@ -34,11 +47,13 @@
     }
 
     .city-select {
+      font-style: normal;
       width: 410px;
       border: 1px solid #e4e4e4;
       position: absolute;
-      left: 0;
-      top: 29px;
+      left: 0px;
+      top: 50px;
+      border-radius: 5px;
       background: #fff;
       min-height: 30px;
       line-height: 30px;
@@ -162,14 +177,16 @@
     }
 
     .bus-company {
+
       width: max-content;
       border: 1px solid @green;
       border-radius: 6px;
       letter-spacing: 1px;
+      margin: 0 auto;
       margin-top: 25px;
-      margin-left: 35px;
+      // margin-left: 35px;
       padding: 5px 15px;
-      font-size: 18px;
+      font-size: 16px;
       color: @green;
     }
 
@@ -271,7 +288,6 @@
       left: 0px;
       height: 20px;
       line-height: 20px;
-      overflow: hidden;
 
       .point {
         width: 3px;
@@ -284,6 +300,8 @@
 
       .bus-time {
         color: @green;
+        padding: 0px 15px;
+        text-align: center;
         font-style: italic;
         font-weight: 500;
         background-color: #fff;
@@ -304,7 +322,9 @@
       }
 
       .stop-name {
+        margin-top: 12px;
         font-weight: 600;
+        font-size: 20px;
       }
     }
   }
