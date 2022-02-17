@@ -6,3 +6,11 @@ import { request } from '../utils/request'
 export function getSign() {
     return request('/signs', "get");
 }
+
+/**
+ * 获取法规
+ */
+
+export function getLaws() {
+    return request('/laws', "get")
+}

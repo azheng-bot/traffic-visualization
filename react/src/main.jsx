@@ -11,6 +11,7 @@ import Subway from "./views/MyCity/Subway/index";
 // 基础通识 - Knowledge
 import Knowledge from "./views/Knowledge/index";
 import Sign from "./views/Knowledge/Sign/index";
+import Laws from "./views/Knowledge/laws/index";
 // 深入交通 - Deep
 import Deep from "./views/Deep/index";
 // 未来展望 - Future
@@ -38,6 +39,7 @@ ReactDOM.render(
           </Route>
           {/* <Route path="/bus" element={<Bus />}></Route>
           <Route path="/metro/:id" element={<Metro />}></Route> */}
+          <Route path="law" element={<Laws />}></Route>
         </Route>
       </Routes>
     </Router>
