@@ -1,113 +1,334 @@
-.box {
-  height: 100%;
-}
-.box_left {
-  float: left;
-  width: 20%;
-  height: 100%;
-  background-color: aqua;
-}
-.box_right {
-  float: left;
-  height: 100%;
-  width: 80%;
-}
-.city {
-  width: 100px;
-  img {
-    padding-top: 2px;
-    float: right;
-    width: 16px;
-  }
-}
-.city_item {
-  width: 410px;
-  border: 1px solid #e4e4e4;
-  position: absolute;
-  left: 0;
-  top: 29px;
-  background: #fff;
-  min-height: 30px;
-  line-height: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 10px;
-  z-index: 100;
-  li {
-    float: left;
-    width: 130px;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 4px;
-    padding: 0 3px;
-  }
-  li:hover {
-    background-color: antiquewhite;
-  }
-}
-.bus {
-  height: 100%;
-  ul {
-    height: 100%;
-    overflow-y: scroll;
-    &::-webkit-scrollbar {
-      width: 5px;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: #d8d8d8;
-      border-radius: 10px;
-    }
-    &::-webkit-scrollbar-track-piece {
-      background: transparent;
-    }
-  }
-}
-.bus_item {
-  float: left;
-  padding: 4px 10px;
-  margin: 10px 10px;
-  background-color: brown;
-  cursor: pointer;
-}
-.bus_select {
-  background-color: blue;
-}
-.box_right_title {
-  height: 30%;
-  overflow-y: scroll;
-  background-color: aquamarine;
-  &::-webkit-scrollbar {
-    width: 5px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: #d8d8d8;
-    border-radius: 10px;
-  }
-  &::-webkit-scrollbar-track-piece {
-    background: transparent;
-  }
-}
-.bus_stop {
-  float: left;
-  margin-top: 10px;
+@green: #0a8777;
+@gray: #5e5a5d;
 
-  div {
-    float: left;
-    padding: 0 10px;
+.bus-module {
+  height: 100%;
+  z-index: 999;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+
+  .box_left {
+    width: 250px;
+    height: 100%;
+    background-color: #fff;
+    z-index: 10;
+    box-shadow: rgba(0, 0, 0, 0.151) 0px 4px 13px;
+  }
+
+  .city {
+    width: 220px;
+    height: 40px;
     text-align: center;
-    cursor: pointer;
-    line-height: 30px;
-    height: 30px;
-    background-color: cadetblue;
+    line-height: 40px;
+    font-size: 18px;
+    font-style: italic;
+    margin: 20px auto;
+    padding: 0px 0px;
+    border-radius: 5px;
+    box-shadow: rgb(204, 219, 232) 2px 2px 4px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    position: relative;
+
+    .city-name {
+      display: inline-block;
+      line-height: 28px;
+      border-radius: 4px;
+      padding: 0px 8px;
+      margin-right: 5px;
+      box-shadow: rgb(204, 219, 232) 2px 2px 4px 0px, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px;
+      // box-shadow: rgba(0, 0, 0, 0.116) 0px 5px 10px;
+
+    }
+
+    img {
+      padding-top: 2px;
+      float: right;
+      width: 16px;
+    }
+
+    .city-select {
+      font-style: normal;
+      width: 410px;
+      border: 1px solid #e4e4e4;
+      position: absolute;
+      left: 0px;
+      top: 50px;
+      border-radius: 5px;
+      background: #fff;
+      min-height: 30px;
+      line-height: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 10px;
+      z-index: 100;
+
+
+      li {
+        float: left;
+        width: 130px;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 4px;
+        padding: 0 3px;
+      }
+
+      li:hover {
+        background-color: antiquewhite;
+      }
+    }
   }
-  div:hover {
-    background-color: antiquewhite;
+
+  .box_right {
+    flex: 1;
+    height: 100%;
   }
-  .bg {
-    background-color: antiquewhite;
+
+  .bus {
+    height: 100%;
+    padding-right: 2px;
+
+    ul {
+      height: 100%;
+      overflow-y: scroll;
+
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: rgb(218, 218, 218);
+        border-radius: 10px;
+        border-right: 1px solid transparent;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: rgb(168, 168, 168);
+      }
+
+      &::-webkit-scrollbar-track-piece {
+        background: transparent;
+      }
+    }
+
+    .bus_item {
+      font-style: italic;
+      float: left;
+      padding: 4px 15px;
+      width: 90px;
+      box-sizing: border-box;
+      text-align: center;
+      margin: 10px 15px;
+      background-color: #fff;
+      border-radius: 6px;
+      font-size: 18px;
+      cursor: pointer;
+      // border: 1px solid rgb(187, 187, 187);
+      box-shadow: rgba(0, 0, 0, 0.048) 0px 5px 15px;
+      transition: .1s;
+
+      &:hover {
+        background-color: #f7f7f7;
+      }
+    }
+
+    .bus_select {
+      background-color: @green;
+      color: #fff;
+      border-color: transparent;
+
+      &:hover {
+        background-color: @green;
+      }
+    }
   }
-  img {
-    padding: 4px 0px;
-    width: 20px;
+
+
+  .bus-info {
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    height: 350px;
+    box-shadow: rgba(0, 0, 0, 0.226) 0px 4px 12px;
+
+    z-index: 5;
+    position: relative;
   }
+
+  .bus-base-info {
+    width: 300px;
+    position: relative;
+
+    .bus-number {
+      min-width: 100px;
+      text-align: center;
+      color: #fff;
+      margin: 0px auto;
+      margin-top: 40px;
+      font-size: 140px;
+      line-height: 126px;
+      font-family: unset;
+      letter-spacing: -8px;
+      background-color: @green;
+      border-radius: 12px;
+      width: max-content;
+      padding: 0px 5px;
+      padding-right: 20px;
+      padding-bottom: 3px;
+    }
+
+    .bus-company {
+
+      width: max-content;
+      border: 1px solid @green;
+      border-radius: 6px;
+      letter-spacing: 1px;
+      margin: 0 auto;
+      margin-top: 25px;
+      // margin-left: 35px;
+      padding: 5px 15px;
+      font-size: 16px;
+      color: @green;
+    }
+
+    .bus-start-end {
+      width: 100%;
+      line-height: 26px;
+      position: absolute;
+      bottom: 20px;
+      left: 75px;
+
+      .start-stop,
+      .end-stop {
+        font-size: 14px;
+        font-weight: 500;
+        position: relative;
+
+        span {
+          font-weight: 600;
+          font-size: 20px;
+          vertical-align: text-bottom;
+        }
+      }
+
+      .start-stop::before,
+      .end-stop::before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: -40px;
+        top: 3px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #9bd4e7;
+      }
+
+      .end-stop::before {
+        background-color: #59b94d;
+        top: -3px;
+        z-index: 10;
+      }
+    }
+  }
+
+  .bus-line-info {
+    flex: 1;
+    padding: 40px 0px;
+    padding-right: 60px;
+    box-sizing: border-box;
+    position: relative;
+
+    .top-line {
+      width: 100%;
+      height: 14px;
+      background-color: @green;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .top-line .arrive-line {
+      width: 100px;
+      height: 100%;
+      background-color: @gray;
+    }
+
+    .stop-list {
+      margin-top: -14px;
+      width: 100%;
+      padding: 0px 7px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .stop-info {
+      .point {
+        width: 7px;
+        height: 7px;
+        background-color: #fff;
+        border-radius: 50%;
+        margin: 3.5px auto;
+      }
+
+      .stop-name {
+        margin-top: 15px;
+        writing-mode: vertical-lr;
+        letter-spacing: 3px;
+        font-size: 18px;
+        cursor: pointer;
+      }
+
+    }
+
+    .bottom-line {
+      width: calc(100% - 60px);
+      position: absolute;
+      bottom: 30px;
+      left: 0px;
+      height: 20px;
+      line-height: 20px;
+
+      .point {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 8px 12px;
+        background-color: @green;
+      }
+
+      .bus-time {
+        color: @green;
+        padding: 0px 15px;
+        text-align: center;
+        font-style: italic;
+        font-weight: 500;
+        background-color: #fff;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .stop-info.active {
+      .point {
+        width: 8px;
+        height: 8px;
+        background-color: #5d5b5d;
+        border: 3px solid #fff;
+        margin: 0px auto;
+      }
+
+      .stop-name {
+        margin-top: 12px;
+        font-weight: 600;
+        font-size: 20px;
+      }
+    }
+  }
+
+
+
 }

@@ -1,18 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useContext, createContext } from 'react'
 import { Outlet } from 'react-router-dom'
 import './App.less'
 import Navigator from './components/Navigator/index.jsx';
+import Weather from './components/Weather/index.jsx';
 import BackBtn from './components/BackBtn/index.jsx';
-
+import axios from 'axios'
+import { addressContext } from "./utils/addressContext.js"
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="App">
-      <Navigator></Navigator>
-      <BackBtn></BackBtn>
-      <Outlet></Outlet>
+        {/* {state.city} */}
+        <Navigator></Navigator>
+        <Weather></Weather>
+        <BackBtn></BackBtn>
+        <Outlet></Outlet>
     </div>
   )
 }

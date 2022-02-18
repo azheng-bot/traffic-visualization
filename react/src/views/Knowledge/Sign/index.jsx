@@ -18,7 +18,7 @@ function Sign() {
       setList(res.signCategaries);
       console.log('res.signCategaries.find(item => item.cate_id == 1)', res.signCategaries);
       setCurrentCate(res.signCategaries.find(item => item.cate_id == 1))
-    });
+    });  
   }, []);
 
 

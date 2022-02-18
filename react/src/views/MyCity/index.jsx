@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component, useState, useContext } from 'react'
 import { useLocation, Outlet, useNavigate } from 'react-router-dom'
 import "./index.less"
 // 引入小车
@@ -15,6 +15,8 @@ import DottedLine from "../../components/lines/DottedLine"
 import SubmoduleEntry from "../../components/SubmoduleEntry"
 // 引入路标
 import RoadSign from "../../components/RoadSign"
+// addressContext
+import { addressContext } from "../../utils/addressContext.js"
 
 
 function index(props) {
@@ -395,7 +397,7 @@ function index(props) {
         </div>
       </div>
       {/* 子页面 */}
-      <Outlet style={{ width: '100%', height: '100%', position: "absolute", left: 0, top: 0 }}></Outlet>
+      <Outlet ></Outlet>
     </div>
   )
 }
