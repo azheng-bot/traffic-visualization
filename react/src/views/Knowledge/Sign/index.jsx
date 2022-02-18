@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getSign } from "../../../api/deepModule";
+import { getSign } from "../../../api/knowLedgeModule";
 import "./index.less";
 function Sign() {
   // 数据列表

@@ -4,9 +4,8 @@ import "./index.less";
 import App from "./App";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // cityInfoContext
-import { CityInfoContextProvider, cityInfoContext } from './utils/reducer'
+import { CityInfoContextProvider, cityInfoContext } from "./utils/reducer";
 // antd design
-
 
 // 我的城市 - MyCity
 import MyCity from "./views/MyCity/index";
@@ -15,6 +14,7 @@ import Subway from "./views/MyCity/Subway/index";
 // 基础通识 - Knowledge
 import Knowledge from "./views/Knowledge/index";
 import Sign from "./views/Knowledge/Sign/index";
+import Laws from "./views/Knowledge/laws/index";
 // 深入交通 - Deep
 import Deep from "./views/Deep/index";
 // 未来展望 - Future
@@ -22,7 +22,7 @@ import Future from "./views/Future/index";
 
 ReactDOM.render(
   <React.StrictMode>
-    <CityInfoContextProvider  >
+    <CityInfoContextProvider>
       <Router>
         <Routes>
           <Route path="/" element={<App />}>
@@ -44,9 +44,13 @@ ReactDOM.render(
             <Route path="/bus" element={<Bus />}></Route>
             <Route path="/subway/:id" element={<Subway />}></Route>
           </Route>
+
+          {/* <Route path="/bus" element={<Bus />}></Route>
+          <Route path="/metro/:id" element={<Metro />}></Route> */}
+          <Route path="law" element={<Laws />}></Route>
         </Routes>
       </Router>
-    </ CityInfoContextProvider>
+    </CityInfoContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
