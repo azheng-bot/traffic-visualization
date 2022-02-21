@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
 import cityList from "./cityList.js";
 import "./index.less";
 import "https://webapi.amap.com/subway?v=1.0&key=c6e434d1188e1c9f904dc256f7e14de8&callback=cbk";
@@ -9,8 +8,7 @@ function Metro() {
   let [adcodeId, setAdcodeId] = useState(1100);
   let [mysubway, setmysubway] = useState("");
   // 放大比例
-  let [zoom, setZoom] = useState(0.7);
-
+  let [zoom, setZoom] = useState(1);
   // 放大缩小
   const zoomClick = (type) => {
     if (zoom > 1.3) {
@@ -31,9 +29,9 @@ function Metro() {
         adcode: id,
         easy: 1,
       });
-      // setmysubway(mySubway);
+      setmysubway(mySubway);
     };
-  }, []);
+  });
 
   return (
     <div className="subway-module">
