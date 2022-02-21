@@ -2,6 +2,7 @@ const { getSigns } = require("../modules/sign")
 const { getCities, getCityAdcode } = require("../modules/city")
 const { getLaws } = require("../modules/law")
 const { getBuses } = require("../modules/bus")
+const { getTools } = require("../modules/tool")
 
 // 获取交通图标
 module.exports.getSigns = async (ctx, next) => {
@@ -27,7 +28,6 @@ module.exports.getCities = async (ctx, next) => {
 
 // 获取城市adcode
 module.exports.getCityAdcode = async (ctx, next) => {
-  console.log(ctx.query.city)
   const { adcode } = await getCityAdcode(ctx.query.city)
   ctx.body = { adcode }
   next()
@@ -53,5 +53,30 @@ module.exports.getBuses = async (ctx, next) => {
   let { buses } = await getBuses(ctx.query.city)
   buses = buses.filter(item => item.bus_name.search(/^\d+[\u4e00-\u9fa5]$/) != -1)
   ctx.body = { buses }
+  next()
+}
+
+// 获取所有交通工具及其分类标签
+module.exports.getTools = async (ctx, next) => {
+  let { tools, toolLabels, toolCategaries, toolsWithLabels } = await getTools()
+
+  // 给所有tool&label添加其对应tool
+  toolsWithLabels.forEach(tl => {
+    tl.tool = tools.find(toolItem => toolItem.tool_id == tl.tool_id)
+  })
+  // 根据tool&label，给所有label添加上其对应的tools
+  toolLabels.forEach(labelItem => {
+    let targetToolsWithLabels = toolsWithLabels.filter(tl => tl.label_id == labelItem.label_id) // 对应tool&label 
+    labelItem.tools = targetToolsWithLabels.map(tl => tl.tool) //对应tool
+  }) 
+  // 给所有categary添加上其对应的labels
+  toolCategaries.forEach(cateItem => {
+    cateItem.labels = toolLabels.filter(labelItem => labelItem.cate_id && labelItem.cate_id == cateItem.cate_id)
+  })
+
+  ctx.body = {
+    tools,
+    categaries: toolCategaries
+  }
   next()
 }

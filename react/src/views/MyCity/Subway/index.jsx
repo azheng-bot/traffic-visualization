@@ -30,20 +30,38 @@ function Index() {
   var mysubway;
   window.cbk = function () {
     mysubway = subway("mybox", {
-      adcode: adcodeId
+      adcode: adcodeId,
+      theme: "colorful",
+      client: 0,
+      doubleclick: {
+        switch: true
+      }
     });
-    // mysubway.setAdcode(4401)
-    console.log('my subway')
+
+
     mysubway.getCityList(function (res) {
       console.log('res', res)
     })
-    mysubway.event.on("subway.complete", function () {
+    mysubway.event.on("subway.complete", function (res) {
       mysubway.getLineList(function (res) {
-        console.log('res', res)
+        console.log('getLineList', res)
       })
-      var center = mysubway.getSelectedLineCenter();
-      mysubway.setCenter(center);
+      mysubway.stationSearch('城', function (res) {
+        console.log('stationSearch', res)
+      })
+
+      //点击线路名，高亮此线路
+      mysubway.event.on("lineName.touch", function (ev, info) {
+        console.log('111', ev, info,)
+
+        mysubway.showLine(info.id);  
+        var select_obj = qs('#g-select');
+        mysubway.setFitView(select_obj);
+        var center = mysubway.getSelectedLineCenter();
+        mysubway.setCenter(center);
+      });
     });
+
   };
   // adcodeId改变后地图跟着改变
   useEffect(() => {
@@ -53,7 +71,7 @@ function Index() {
       if (subway) {
         clearInterval(timer)
         timer = null;
-        
+
         mysubway = null;
         mysubway = subway("mybox", {
           adcode: adcodeId

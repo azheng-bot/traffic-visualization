@@ -1,11 +1,17 @@
 .subway-module {
   width: 100%;
   height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(255, 255, 255);
   
   .box_left,
   .box_right {
     height: 100%;
-    position: fixed;
+    // position: fixed;
+    position: relative;
+
   }
 
   .box_left {
@@ -48,11 +54,10 @@
     }
   }
   .box_right {
-    width: calc(100% - 280px);
-    left: 280px;
-    background-color: aquamarine;
+    flex: 1;
+    position: relative;
+    transform: scale(1);
     .amap-subway-api #drag_handle {
-      left: 280px;
     }
   }
 }
