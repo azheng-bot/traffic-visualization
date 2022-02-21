@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import cityList from "./cityList.js";
 import "./index.less";
-import "https://webapi.amap.com/subway?v=1.0&key=c6e434d1188e1c9f904dc256f7e14de8&callback=cbk";
+// import "https://webapi.amap.com/subway?v=1.0&key=c6e434d1188e1c9f904dc256f7e14de8&callback=cbk";
 function Index() {
   // const { id } = useParams();
   let id = 1;
