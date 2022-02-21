@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
 import cityList from "./cityList.js";
 import "./index.less";
-// import "https://webapi.amap.com/subway?v=1.0&key=c6e434d1188e1c9f904dc256f7e14de8&callback=cbk";
-function Metro() {
-  const { id } = useParams();
+import "https://webapi.amap.com/subway?v=1.0&key=c6e434d1188e1c9f904dc256f7e14de8&callback=cbk";
+function Index() {
+  // const { id } = useParams();
+  let id = 1;
   let [adcodeId, setAdcodeId] = useState(1100);
-  let [mysubway, setmysubway] = useState("");
+  // let [mysubway, setmysubway] = useState("");
   // 放大比例
-  let [zoom, setZoom] = useState(1);
+  let [zoom, setZoom] = useState(0.7);
+
   // 放大缩小
   const zoomClick = (type) => {
     if (zoom > 1.3) {
@@ -22,21 +25,41 @@ function Metro() {
       mysubway.scale ? mysubway.scale(zoom) : "";
     }
   };
-  useEffect(() => {
-    setAdcodeId(id);
-    window.cbk = function () {
-      var mySubway = subway("mybox", {
-        adcode: id,
-        easy: 1,
+
+  var mysubway;
+  window.cbk = function () {
+    mysubway = subway("mybox", {
+      adcode: adcodeId,
+    });
+    // mysubway.setAdcode(4401)
+    console.log("my subway");
+    mysubway.getCityList(function (res) {
+      console.log("res", res);
+    });
+    mysubway.event.on("subway.complete", function () {
+      mysubway.getLineList(function (res) {
+        console.log("res", res);
       });
-      setmysubway(mySubway);
-    };
-    mysubway.getLineList
-      ? mysubway.getLineList((res) => {
-          console.log(res);
-        })
-      : "";
-  });
+      var center = mysubway.getSelectedLineCenter();
+      mysubway.setCenter(center);
+    });
+  };
+  // adcodeId改变后地图跟着改变
+  useEffect(() => {
+    // setAdcodeId(id);
+    // console.log('my subway',adcodeId)
+    let timer = setInterval(() => {
+      if (subway) {
+        clearInterval(timer);
+        timer = null;
+
+        mysubway = null;
+        mysubway = subway("mybox", {
+          adcode: adcodeId,
+        });
+      }
+    }, 500);
+  }, [adcodeId]);
 
   return (
     <div className="subway-module">
@@ -46,8 +69,9 @@ function Metro() {
             <li
               className={item.adcode == adcodeId ? "bg" : ""}
               key={item.adcode}
+              onClick={() => setAdcodeId(item.adcode)}
             >
-              <a href={`/subway/${item.adcode}`}>{item.name}</a>
+              <a href={`#`}>{item.name}</a>
             </li>
           ))}
         </ul>
@@ -83,4 +107,4 @@ function Metro() {
   );
 }
 
-export default Metro;
+export default Index;
