@@ -7,11 +7,11 @@ import BackBtn from './components/BackBtn/index.jsx';
 import axios from 'axios'
 import { addressContext } from "./utils/addressContext.js"
 
-function App() {
+function App() {  
   return (
     <div className="App">
         {/* {state.city} */}
-        <Navigator></Navigator>
+        <Navigator></Navigator> 
         <Weather></Weather>
         <BackBtn></BackBtn>
         <Outlet></Outlet>

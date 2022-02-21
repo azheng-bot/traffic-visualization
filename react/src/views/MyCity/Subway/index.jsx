@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import cityList from "./cityList.js";
 import "./index.less";
-import "https://webapi.amap.com/subway?v=1.0&key=c6e434d1188e1c9f904dc256f7e14de8&callback=cbk";
+// import "https://webapi.amap.com/subway?v=1.0&key=c6e434d1188e1c9f904dc256f7e14de8&callback=cbk";
 function Metro() {
   const { id } = useParams();
   let [adcodeId, setAdcodeId] = useState(1100);
@@ -31,6 +31,11 @@ function Metro() {
       });
       setmysubway(mySubway);
     };
+    mysubway.getLineList
+      ? mysubway.getLineList((res) => {
+          console.log(res);
+        })
+      : "";
   });
 
   return (

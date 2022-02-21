@@ -14,7 +14,7 @@ import Subway from "./views/MyCity/Subway/index";
 // 基础通识 - Knowledge
 import Knowledge from "./views/Knowledge/index";
 import Sign from "./views/Knowledge/Sign/index";
-import Laws from "./views/Knowledge/laws/index";
+import Laws from "./views/Knowledge/Laws/index";
 // 深入交通 - Deep
 import Deep from "./views/Deep/index";
 // 未来展望 - Future
@@ -29,11 +29,11 @@ ReactDOM.render(
             <Route path="/" element={<MyCity />}></Route>
             <Route path="/mycity" element={<MyCity />}>
               <Route path="bus" element={<Bus />}></Route>
-              <Route path="subway/:id" element={<Subway />}></Route>
+              <Route path="subway" element={<Subway />}></Route>
             </Route>
             <Route path="/knowledge" element={<Knowledge />}>
               <Route path="sign" element={<Sign />}></Route>
-              <Route path="sign" element={<Sign />}></Route>
+              <Route path="law" element={<Laws />}></Route>
             </Route>
             <Route path="/deep" element={<Deep />}>
               <Route path="now" element={<Sign />}></Route>
@@ -43,11 +43,15 @@ ReactDOM.render(
             </Route>
             <Route path="/bus" element={<Bus />}></Route>
             <Route path="/subway/:id" element={<Subway />}></Route>
+
+            {/* <Route path="/bus" element={<Bus />}></Route>
+          <Route path="/metro/:id" element={<Metro />}></Route> */}
+            <Route path="/bus" element={<Bus />}></Route>
+            <Route path="/subway" element={<Subway />}></Route>
+            <Route path="/sign" element={<Sign />}></Route>
+            <Route path="/law" element={<Laws />}></Route>
           </Route>
 
-          {/* <Route path="/bus" element={<Bus />}></Route>
-          <Route path="/metro/:id" element={<Metro />}></Route> */}
-          <Route path="law" element={<Laws />}></Route>
         </Routes>
       </Router>
     </CityInfoContextProvider>
