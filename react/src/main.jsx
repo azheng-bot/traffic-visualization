@@ -51,7 +51,6 @@ ReactDOM.render(
             <Route path="/sign" element={<Sign />}></Route>
             <Route path="/law" element={<Laws />}></Route>
           </Route>
-
         </Routes>
       </Router>
     </CityInfoContextProvider>
