@@ -12,7 +12,7 @@ function App() {
     <div className="App">
         {/* {state.city} */}
         <Navigator></Navigator> 
-        <Weather></Weather>
+        {/* <Weather></Weather> */}
         <BackBtn></BackBtn>
         <Outlet></Outlet>
     </div>
