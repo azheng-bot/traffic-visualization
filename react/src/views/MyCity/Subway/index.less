@@ -1,8 +1,11 @@
 .subway-module {
   width: 100%;
   height: 100%;
-  
-  .box_left,
+
+  .box_left {
+    position: fixed;
+    background-color: antiquewhite;
+  }
   .box_right {
     height: 100%;
     position: fixed;
@@ -12,49 +15,78 @@
     // position: fixed;
     z-index: 10000;
     width: 280px;
-    background-color: bisque;
-    ul {
-      height: 100%;
-      overflow-y: scroll;
-      overflow-x: hidden;
-      &::-webkit-scrollbar {
-        width: 5px;
-      }
-      &::-webkit-scrollbar-thumb {
-        background: #d8d8d8;
-        border-radius: 10px;
-      }
-      &::-webkit-scrollbar-track-piece {
-        background: transparent;
-      }
-    }
-    li {
-      width: 100%;
-      height: 50px;
-      padding-left: 40px;
-      line-height: 50px;
-      cursor: pointer;
-      a {
-        display: inline-block;
+    // background-color: bisque;
+    .line,
+    .address {
+      height: 50%;
+
+      .address_default,
+      .line_default {
         width: 100%;
-        height: 100%;
+        height: 50px;
+        font-size: 20px;
+        line-height: 50px;
+        text-align: center;
+        cursor: pointer;
+        img {
+          width: 20px;
+          float: right;
+          margin-right: 50px;
+          margin-top: 16px;
+        }
+      }
+      ul {
+        height: 360px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        &::-webkit-scrollbar {
+          width: 5px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: #d8d8d8;
+          border-radius: 10px;
+        }
+        &::-webkit-scrollbar-track-piece {
+          background: transparent;
+        }
+      }
+      li {
+        width: 100%;
+        height: 50px;
+        padding-left: 20px;
+        line-height: 50px;
+        box-sizing: border-box;
+        cursor: pointer;
+        a {
+          display: inline-block;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      li:hover {
+        background-color: aquamarine;
+      }
+      .bg {
+        background-color: aquamarine;
       }
     }
-    li:hover {
-      background-color: aquamarine;
-    }
-    .bg {
-      background-color: aquamarine;
+    .action_width {
+      height: 50px;
     }
   }
   .box_right {
-    width: calc(100% - 280px);
-    left: 280px;
+    // width: calc(100% - 280px);
+    width: 100%;
+    // left: 280px;
     background-color: aquamarine;
     .amap-subway-api #drag_handle {
       left: 280px;
     }
   }
+}
+
+.subway-module .box_right .amap-subway-api #drag_handle {
+  left: 0;
 }
 .zoom {
   position: fixed;
