@@ -885,6 +885,14 @@
   "resolved" "https://registry.npmmirror.com/dotenv/download/dotenv-8.6.0.tgz"
   "version" "8.6.0"
 
+"echarts@^5.3.0":
+  "integrity" "sha512-zENufmwFE6WjM+24tW3xQq4ICqQtI0CGj4bDVDNd3BK3LtaA/5wBp+64ykIyKy3QElz0cieKqSYP4FX9Lv9MwQ=="
+  "resolved" "https://registry.npmmirror.com/echarts/-/echarts-5.3.0.tgz"
+  "version" "5.3.0"
+  dependencies:
+    "tslib" "2.3.0"
+    "zrender" "5.3.0"
+
 "ejs@^3.1.6":
   "integrity" "sha512-9lt9Zse4hPucPkoP7FHDF0LQAlGyF9JVpnClFLFH3aSSbxmyoqINRpp/9wePWJTUl4KOQwRL72Iw3InHPDkoGw=="
   "resolved" "https://registry.npmmirror.com/ejs/-/ejs-3.1.6.tgz"
@@ -2111,6 +2119,11 @@
   "resolved" "https://registry.npmmirror.com/tslib/download/tslib-2.3.1.tgz"
   "version" "2.3.1"
 
+"tslib@2.3.0":
+  "integrity" "sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg=="
+  "resolved" "https://registry.npmmirror.com/tslib/-/tslib-2.3.0.tgz"
+  "version" "2.3.0"
+
 "universalify@^2.0.0":
   "integrity" "sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ=="
   "resolved" "https://registry.npmmirror.com/universalify/-/universalify-2.0.0.tgz"
@@ -2202,3 +2215,10 @@
   "version" "2.0.2"
   dependencies:
     "isexe" "^2.0.0"
+
+"zrender@5.3.0":
+  "integrity" "sha512-Ln2QB5uqI1ftNYMtCRxd+XDq6MOttLgam2tmhKAVA+j0ko47UT+VNlDvKTkqe4K2sJhBvB0EhYNLebqlCTjatQ=="
+  "resolved" "https://registry.npmmirror.com/zrender/-/zrender-5.3.0.tgz"
+  "version" "5.3.0"
+  dependencies:
+    "tslib" "2.3.0"

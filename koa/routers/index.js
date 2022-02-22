@@ -15,6 +15,8 @@ router.get("/laws", controllers.getLaws)
 router.get("/buses", controllers.getBuses)
 // 获取所有交通工具及其分类标签
 router.get("/tools", controllers.getTools)
+// 获取所有新闻
+router.get("/news", controllers.getNews)
 
 
 module.exports = router 

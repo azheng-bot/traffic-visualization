@@ -10,7 +10,13 @@ export function getSign() {
 /**
  * 获取法规
  */
-
 export function getLaws() {
     return request('/laws', "get")
+}
+
+/**
+ * 获取交通工具
+ */
+export function getTools() {
+    return request('/tools', "get")
 }
