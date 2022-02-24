@@ -18,6 +18,7 @@ import Laws from "./views/Knowledge/Law/index";
 import Tool from "./views/Knowledge/Tool/index";
 // 深入交通 - Deep
 import Deep from "./views/Deep/index";
+import New from "./views/Deep/News/index";
 // 未来展望 - Future
 import Future from "./views/Future/index";
 
@@ -27,7 +28,6 @@ ReactDOM.render(
       <Router>
         <Routes>
           <Route path="/" element={<App />}>
-
             <Route path="/" element={<MyCity />}></Route>
             <Route path="/mycity" element={<MyCity />}>
               <Route path="bus" element={<Bus />}></Route>
@@ -39,12 +39,9 @@ ReactDOM.render(
               <Route path="tool" element={<Tool />}></Route>
             </Route>
             <Route path="/deep" element={<Deep />}>
-
+              <Route path="news" element={<New />}></Route>
             </Route>
-            <Route path="/future" element={<Future />}>
-
-            </Route>
-
+            <Route path="/future" element={<Future />}></Route>
 
             <Route path="/bus" element={<Bus />}></Route>
             <Route path="/subway/:id" element={<Subway />}></Route>
@@ -52,7 +49,6 @@ ReactDOM.render(
             <Route path="/sign" element={<Sign />}></Route>
             <Route path="/law" element={<Laws />}></Route>
             <Route path="tool" element={<Tool />}></Route>
-
           </Route>
         </Routes>
       </Router>
