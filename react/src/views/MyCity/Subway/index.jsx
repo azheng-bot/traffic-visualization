@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
 import cityList from "./cityList.js";
 import "./index.less";
-import "https://webapi.amap.com/subway?v=1.0&key=c6e434d1188e1c9f904dc256f7e14de8&callback=cbk";
-function Index() {
-  // const { id } = useParams();
-  let id = 1;
+// import "https://webapi.amap.com/subway?v=1.0&key=c6e434d1188e1c9f904dc256f7e14de8&callback=cbk";
+function Metro() {
+  const { id } = useParams();
   let [adcodeId, setAdcodeId] = useState(1100);
-  // let [mysubway, setmysubway] = useState("");
+  let [mysubway, setmysubway] = useState("");
   // 放大比例
-  let [zoom, setZoom] = useState(0.7);
-
+  let [zoom, setZoom] = useState(1);
+  // 线路
+  let [lineList, setLineList] = useState([]);
+  // 控制地址的显示和隐藏
+  let [flagAddres, setFlagAddres] = useState(false);
+  // 控制线路显示隐藏
+  let [flagLine, setFlagLine] = useState(false);
+  // 默认地址
+  let [address, setAddres] = useState("北京市");
+  // 默认线路
+  let [line, setLine] = useState("所有线路");
+  let [lineId, setLineId] = useState(0);
   // 放大缩小
   const zoomClick = (type) => {
     if (zoom > 1.3) {
@@ -26,74 +34,154 @@ function Index() {
     }
   };
 
-
-  var mysubway;
-  window.cbk = function () {
-    mysubway = subway("mybox", {
-      adcode: adcodeId,
-      theme: "colorful",
-      client: 0,
-      doubleclick: {
-        switch: true
-      }
-    });
-
-
-    mysubway.getCityList(function (res) {
-      console.log('res', res)
-    })
-    mysubway.event.on("subway.complete", function (res) {
-      mysubway.getLineList(function (res) {
-        console.log('getLineList', res)
-      })
-      mysubway.stationSearch('城', function (res) {
-        console.log('stationSearch', res)
-      })
-
-      //点击线路名，高亮此线路
-      mysubway.event.on("lineName.touch", function (ev, info) {
-        console.log('111', ev, info,)
-
-        mysubway.showLine(info.id);  
-        var select_obj = qs('#g-select');
-        mysubway.setFitView(select_obj);
-        var center = mysubway.getSelectedLineCenter();
-        mysubway.setCenter(center);
-      });
-    });
-
-  };
-  // adcodeId改变后地图跟着改变
   useEffect(() => {
-    // setAdcodeId(id);
-    // console.log('my subway',adcodeId)
-    let timer = setInterval(() => {
-      if (subway) {
-        clearInterval(timer)
-        timer = null;
-
-        mysubway = null;
-        mysubway = subway("mybox", {
-          adcode: adcodeId
-        });
+    setAdcodeId(id);
+    cityList.map((item) => {
+      if (item.adcode == id) {
+        setAddres(item.name);
       }
-    }, 500)
-  }, [adcodeId]);
+    });
+    window.cbk = function () {
+      var mySubway = subway("mybox", {
+        adcode: id,
+        easy: 1,
+      });
+      mySubway.event.on("subway.complete", function () {
+        mySubway.getLineList(function (res) {
+          console.log("res", res);
+          setLineList(res);
+        });
+      });
+      //点击线路名，高亮此线路
+      mySubway.event.on("lineName.touch", function (ev, info) {
+        mySubway.showLine(info.id);
+        var select_obj = qs("#g-select");
+        mySubway.setFitView(select_obj);
+        var center = mySubway.getSelectedLineCenter();
+        mySubway.setCenter(center);
+      });
+      //点击空白, 关闭infowindow
 
+      setmysubway(mySubway);
+    };
+  }, []);
+
+  const lineClick = (item) => {
+    if (item == "全部") {
+      setLine("全部线路");
+      setLineId(0);
+      mysubway.clearOverlays();
+    } else {
+      setLine(item.shortname);
+      setLineId(item.id);
+      mysubway.showLine ? mysubway.showLine(item.id) : "";
+      var select_obj = document.getElementById("g-select");
+      mysubway.setFitView ? mysubway.setFitView(select_obj) : "";
+      var center = mysubway.getSelectedLineCenter();
+      mysubway.setCenter(center);
+    }
+  };
+  const updateFlag = (type) => {
+    if (type == "addres") {
+      mysubway.clearOverlays();
+      setFlagLine(false);
+      setFlagAddres(!flagAddres);
+    } else {
+      setFlagAddres(true);
+      setFlagLine(!flagLine);
+    }
+  };
+  const addressClick = (name) => {
+    setAddres(name);
+  };
   return (
     <div className="subway-module">
       <div className="box_left">
-        <ul>
-          {cityList.map((item) => (
-            <li
-              className={item.adcode == adcodeId ? "bg" : ""}
-              key={item.adcode}
-              onClick={() => setAdcodeId(item.adcode)}
-            >
-              <a href={`#`}>{item.name}</a>
-            </li>
-          ))}
-        </ul>
+        <div className={flagAddres ? "address action_width" : "address"}>
+          <div
+            className="address_default"
+            onClick={() => {
+              updateFlag("addres");
+            }}
+          >
+            {address}
+            {flagAddres ? (
+              <img
+                src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/icon_down.png"
+                alt=""
+              />
+            ) : (
+              <img
+                src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/icon_up.png"
+                alt=""
+              />
+            )}
+          </div>
+          {!flagAddres ? (
+            <ul>
+              {cityList.map((item) => (
+                <li
+                  className={item.adcode == adcodeId ? "bg" : ""}
+                  key={item.adcode}
+                  onClick={() => {
+                    addressClick(item.name);
+                  }}
+                >
+                  <a href={`/subway/${item.adcode}`}>{item.name}</a>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            ""
+          )}
+        </div>
+        <div className={!flagLine ? "line action_width" : "line"}>
+          <div
+            className="line_default"
+            onClick={() => {
+              updateFlag("line");
+            }}
+          >
+            {line}
+            {flagLine ? (
+              <img
+                src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/icon_up.png"
+                alt=""
+              />
+            ) : (
+              <img
+                src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/icon_down.png"
+                alt=""
+              />
+            )}
+          </div>
+          {flagLine ? (
+            <ul>
+              <li
+                className={line === "所有线路" ? "bg" : ""}
+                onClick={() => {
+                  lineClick("全部");
+                }}
+              >
+                全部线路
+              </li>
+              {lineList.map((item) => (
+                <li
+                  className={item.id === lineId ? "bg" : ""}
+                  onClick={() => {
+                    lineClick(item);
+                  }}
+                  key={item.id}
+                >
+                  {item.shortname}
+                  {item.laname ? `  (${item.laname})` : ""}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
       <div className="box_right">
         <div id="mybox"></div>
@@ -126,4 +214,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default Metro;

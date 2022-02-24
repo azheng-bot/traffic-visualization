@@ -54,7 +54,6 @@ ReactDOM.render(
             <Route path="tool" element={<Tool />}></Route>
 
           </Route>
-
         </Routes>
       </Router>
     </CityInfoContextProvider>
