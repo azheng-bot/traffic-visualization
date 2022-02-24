@@ -1,19 +1,138 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, } from "react";
 import { getTools } from "../../../api/knowLedgeModule";
 import "./index.less";
+import * as echarts from 'echarts/core';
+import { TooltipComponent } from 'echarts/components';
+import { TreeChart } from 'echarts/charts';
+import { CanvasRenderer } from 'echarts/renderers';
+
+echarts.use([TooltipComponent, TreeChart, CanvasRenderer]);
+
+
+
+
 function Index() {
+  // 基础数据
   const [tabIdx, setTabIdx] = useState(0)
   const [zoneCate, setZoneCate] = useState({})
   const [energyCate, setEnergyCate] = useState({})
   const [tools, setTools] = useState({})
 
+  // Echarts数据
+  var myChart;
+  var option;
+  const [rich, setRich] = useState({})
+
+  function createEcharts(data) {
+    myChart = echarts.init(window.document.getElementById('echarts'));
+    myChart.setOption(
+      (option = {
+        series: [
+          {
+            data: [data],
+          }
+        ]
+      })
+    )
+  }
+
   useEffect(() => {
+    // 初始化echarts
+
+    // 获取数据
     getTools().then(res => {
+      // 设置数据
       setZoneCate(res.categaries[0])
       setEnergyCate(res.categaries[1])
       setTools(res.tools)
+
+      // 设置echarts
+      myChart = echarts.init(window.document.getElementById('echarts'));
+      // echarts富文本样式
+      let rich = {
+        name: {
+        }
+      }
+      res.tools.forEach(item => {
+        rich[item.tool_id] = {
+          backgroundColor: {
+            image: '/image/tools/' + item.tool_name + '.png'
+          },
+          width: 25, 
+          height:25,
+        }
+      })
+      myChart.setOption(
+        (option = {
+          tooltip: {
+            trigger: 'item',
+            triggerOn: 'mousemove'
+          },
+          series: [
+            {
+              type: 'tree',
+              data: [res.categaries[0]],
+              top: '1%',
+              left: '0.5%',
+              bottom: '1%',
+              right: '20%',
+              symbol: 'circle',
+              symbolSize: 7,
+              label: {
+                position: 'left',
+                verticalAlign: 'middle',
+                align: 'right',
+                fontSize: 18
+              },
+              leaves: {
+                label: {
+                  position: 'right',
+                  verticalAlign: 'middle',
+                  align: 'left',
+                  fontSize: 20,
+                  // 在文本中，可以对部分文本采用 rich 中定义样式。
+                  // 这里需要在文本中使用标记符号：
+                  // `{styleName|text content text content}` 标记样式名。
+                  // 注意，换行仍是使用 '\n'。
+                  formatter: function (value) {
+                    return `{${value.data.tool_id}|}  {name|${value.data.tool_name}}`
+                  },
+                  rich
+                },
+              },
+              emphasis: {
+                focus: 'descendant'
+              },
+              expandAndCollapse: true,
+              animationDuration: 550,
+              animationDurationUpdate: 750
+            }
+          ],
+          axisPointer: [
+            {
+              z: 50,
+              x: 40,
+              y: 30
+            }
+          ],
+          textStyle: {
+            fontSize: 16
+          }
+        })
+      )
+      console.log('rich', rich)
+      // 给echarts添加数据
+      // createEcharts(res.categaries[0])
     })
   }, [])
+
+  useEffect(() => {
+    if (tabIdx == 0) {
+      createEcharts(zoneCate)
+    } else if (tabIdx == 1) {
+      createEcharts(energyCate)
+    }
+  }, [tabIdx])
 
 
   return (
@@ -21,14 +140,14 @@ function Index() {
       <div className="wrapper">
         <div className="aside">
           <ul className="complete-center" style={{ marginTop: (64 - tabIdx * 60) + 'px' }}>
-            <li className={tabIdx == 0 ? 'active' : ''} onClick={() => setTabIdx(1)}>行驶区域划分</li>
-            <li className={tabIdx == 1 ? 'active' : ''} onClick={() => setTabIdx(2)}>动力方式划分</li>
-            <li className={tabIdx == 2 ? 'active' : ''} onClick={() => setTabIdx(0)} >交通工具选择</li>
+            <li className={tabIdx == 0 ? 'active' : ''} onClick={() => setTabIdx(0)}>行驶区域划分</li>
+            <li className={tabIdx == 1 ? 'active' : ''} onClick={() => setTabIdx(1)}>动力方式划分</li>
+            <li className={tabIdx == 2 ? 'active' : ''} onClick={() => setTabIdx(2)} >交通工具选择</li>
             {/* <li className={tabIdx == 3 ? 'active' : ''} onClick={() => setTabIdx(3)}>全部交通工具</li> */}
           </ul>
         </div>
         <div className="content">
-          <div className="tool-choose" style={{ display: tabIdx == 2 ? 'block' : 'none' }}>
+          <div className={tabIdx == 2 ? "tool-choose active" : "tool-choose"}>
             <h1 className="h1"> 交通方式选择</h1>
             <p className="content1">
               在城市交通规划中,将人们的步行、自行车都作为一种交通方式分析，因此人们的日常工作、学习和生活的出行,可以认为是交通方式的组合。人们的日常工作和上学等的出行日常性地反复，对各人会形成到达目的地的详细信息，从而形成各人的交通方式划分理论。对这种日常性、定型的出行方式，交通方式划分容易确定。然而，问题是人们并非一成不变地利用同一种出行方式，经常因为一些原因改变其交通工具利用情况。例如，平时利用公共汽车的人们，因为行李、天气、身体等原因改用出租车等。
@@ -84,7 +203,7 @@ function Index() {
             <p className="content3">出行目的不同对交通方式选择的影响变化较大的原因，是因出行目的的不同，对交通方式的服务质量要求不同（例如，上班出行时间最重要，旅游时舒适性最重要），同伴的有无，经济情况，出行距离等。一般而言，上班、上学出行的汽车利用率低、公共交通方式高； 业务出行因需要在多客户处停留，装卸货物等，所以汽车利用率高、公共交通方式低；自由出行的汽车(出租)利用率高。步行率也因出行目的不同而异。购物等短距离的出行的步行率高，上班的步行率低。</p>
 
           </div>
-          <div className="echarts" style={{ display: tabIdx == 0 || tabIdx == 1 ? 'block' : 'none' }}></div>
+          <div id="echarts" className={tabIdx == 0 || tabIdx == 1 ? "echarts active" : "echarts"}></div>
         </div>
       </div>
     </div>
