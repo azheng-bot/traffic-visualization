@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import cityList from "./cityList.js";
 import "./index.less";
-// import "https://webapi.amap.com/subway?v=1.0&key=c6e434d1188e1c9f904dc256f7e14de8&callback=cbk";
+import "https://webapi.amap.com/subway?v=1.0&key=c6e434d1188e1c9f904dc256f7e14de8&callback=cbk";
 function Metro() {
   const { id } = useParams();
   let [adcodeId, setAdcodeId] = useState(1100);
@@ -20,19 +20,6 @@ function Metro() {
   // 默认线路
   let [line, setLine] = useState("所有线路");
   let [lineId, setLineId] = useState(0);
-  // 放大缩小
-  const zoomClick = (type) => {
-    if (zoom > 1.3) {
-      setZoom(1.3);
-    } else if (zoom < 0.3) {
-      setZoom(0.3);
-    } else {
-      type === "da"
-        ? setZoom(Math.round((zoom += 0.1)))
-        : setZoom(Math.round((zoom -= 0.1)));
-      mysubway.scale ? mysubway.scale(zoom) : "";
-    }
-  };
 
   useEffect(() => {
     setAdcodeId(id);
@@ -42,7 +29,7 @@ function Metro() {
       }
     });
     window.cbk = function () {
-      var mySubway = subway("mybox", {
+      var mySubway = subway("subway-map", {
         adcode: id,
         easy: 1,
       });
@@ -84,10 +71,8 @@ function Metro() {
   const updateFlag = (type) => {
     if (type == "addres") {
       mysubway.clearOverlays();
-      setFlagLine(false);
       setFlagAddres(!flagAddres);
     } else {
-      setFlagAddres(true);
       setFlagLine(!flagLine);
     }
   };
@@ -96,120 +81,86 @@ function Metro() {
   };
   return (
     <div className="subway-module">
-      <div className="box_left">
-        <div className={flagAddres ? "address action_width" : "address"}>
-          <div
-            className="address_default"
-            onClick={() => {
-              updateFlag("addres");
-            }}
-          >
+      <div className="address">
+        <div
+          className={flagAddres ? "address_default active" : "address_default"}
+          onClick={() => {
+            updateFlag("addres");
+          }}
+        >
+          <span>
             {address}
-            {flagAddres ? (
-              <img
-                src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/icon_down.png"
-                alt=""
-              />
-            ) : (
-              <img
-                src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/icon_up.png"
-                alt=""
-              />
-            )}
-          </div>
-          {!flagAddres ? (
-            <ul>
-              {cityList.map((item) => (
-                <li
-                  className={item.adcode == adcodeId ? "bg" : ""}
-                  key={item.adcode}
-                  onClick={() => {
-                    addressClick(item.name);
-                  }}
-                >
-                  <a href={`/subway/${item.adcode}`}>{item.name}</a>
-                </li>
-              ))}
-            </ul>
+          </span>
+          {flagAddres ? (
+            <img
+              src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/icon_up.png"
+              alt=""
+            />
           ) : (
-            ""
+            <img
+              src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/icon_down.png"
+              alt=""
+            />
           )}
         </div>
-        <div className={!flagLine ? "line action_width" : "line"}>
-          <div
-            className="line_default"
+        <ul className={flagAddres ? "active" : ""}>
+          {cityList.map((item) => (
+            <li
+              className={item.adcode == adcodeId ? "bg" : ""}
+              key={item.adcode}
+              onClick={() => {
+                addressClick(item.name);
+              }}
+            >
+              <a href={`/subway/${item.adcode}`}>{item.name}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="line">
+        <div
+          className="line_default"
+          onClick={() => {
+            updateFlag("line");
+          }}
+        >
+          {line}
+          {flagLine ? (
+            <img
+              src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/icon_up.png"
+              alt=""
+            />
+          ) : (
+            <img
+              src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/icon_down.png"
+              alt=""
+            />
+          )}
+        </div>
+        <ul className={flagLine ? "line-list active" : "line-list"}>
+          <li
+            className={line === "所有线路" ? "bg" : ""}
             onClick={() => {
-              updateFlag("line");
+              lineClick("全部");
             }}
           >
-            {line}
-            {flagLine ? (
-              <img
-                src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/icon_up.png"
-                alt=""
-              />
-            ) : (
-              <img
-                src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/icon_down.png"
-                alt=""
-              />
-            )}
-          </div>
-          {flagLine ? (
-            <ul>
-              <li
-                className={line === "所有线路" ? "bg" : ""}
-                onClick={() => {
-                  lineClick("全部");
-                }}
-              >
-                全部线路
-              </li>
-              {lineList.map((item) => (
-                <li
-                  className={item.id === lineId ? "bg" : ""}
-                  onClick={() => {
-                    lineClick(item);
-                  }}
-                  key={item.id}
-                >
-                  {item.shortname}
-                  {item.laname ? `  (${item.laname})` : ""}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            ""
-          )}
-        </div>
+            全部线路
+          </li>
+          {lineList.map((item) => (
+            <li
+              className={item.id === lineId ? "bg" : ""}
+              onClick={() => {
+                lineClick(item);
+              }}
+              key={item.id}
+            >
+              {item.shortname}
+              {item.laname ? `  (${item.laname})` : ""}
+            </li>
+          ))}
+        </ul>
       </div>
-      <div className="box_right">
-        <div id="mybox"></div>
-      </div>
-      <div className="zoom">
-        <div
-          className="da"
-          onClick={() => {
-            zoomClick("da");
-          }}
-        >
-          <img
-            src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/jia.png"
-            alt="放大"
-          />
-        </div>
-        <div
-          className="xiao"
-          onClick={() => {
-            zoomClick("xiao");
-          }}
-        >
-          <img
-            src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/jian.png"
-            alt="缩小"
-          />
-        </div>
-      </div>
+      <div id="subway-map"></div>
     </div>
   );
 }

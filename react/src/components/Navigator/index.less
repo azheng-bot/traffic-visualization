@@ -90,6 +90,7 @@
     transition: 1s ease-in;
     opacity: .8;
   }
+
   .unfold.active:hover {
     transition: .5s ease-in;
     background-color: rgba(255, 255, 255, 0.918);
@@ -133,13 +134,13 @@
     display: none;
     // top: -500px;
     left: 100px;
-    transition: .5s  left;
+    transition: .5s left;
     backdrop-filter: saturate(180%) blur(20px);
-    background-color: rgba(255, 255, 255, 0.72);
-    border: 2px solid rgba(255, 255, 255, 0.075);
+    background-color: rgba(158, 158, 158, 0.123);
+      border: 2px solid rgba(255, 255, 255, 0.089);
     flex-direction: row;
-    border-radius: 8px;
-    padding: 5.5px;
+    border-radius: 22px;
+    padding: 7px;
     font-size: 0;
     height: 195px;
     overflow: hidden;
@@ -147,12 +148,14 @@
 
     li {
       display: inline-block;
-      width: 176px;
-      height: 176px;
-      background-color: rgba(255, 255, 255, 0.329);
-      border: 2px solid rgba(255, 255, 255, 0.199);
+      width: 180px;
+      height: 180px;
+      // width: 176px;
+      // height: 176px;
+      background-color: rgba(255, 255, 255, 0.596);
+      // border: 1px solid rgba(255, 255, 255, 0.438);
 
-      border-radius: 8px;
+      border-radius: 12px;
       margin: 7.5px;
       position: relative;
       cursor: pointer;
@@ -190,6 +193,7 @@
       img._icon {
         opacity: 0;
       }
+
       img.icon {
         opacity: 1;
       }

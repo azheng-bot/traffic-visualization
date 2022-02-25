@@ -9,7 +9,7 @@
   flex-direction: row;
 
   .box_left {
-    width: 250px;
+    width: 300px;
     height: 100%;
     background-color: #fff;
     z-index: 10;
@@ -52,11 +52,11 @@
     .city-select {
       font-style: normal;
       width: 410px;
-      border: 1px solid #e4e4e4;
+      border: 1px solid #c9c9c962;
       position: absolute;
       left: 0px;
-      top: 50px;
-      border-radius: 5px;
+      top:60px;
+      border-radius: 8px;
       background: #fff;
       min-height: 30px;
       line-height: 30px;
@@ -73,6 +73,7 @@
         cursor: pointer;
         border-radius: 4px;
         padding: 0 3px;
+        margin: 3px 0;
       }
 
       li:hover {
@@ -114,10 +115,10 @@
     }
 
     .bus_item {
-      font-style: italic;
+      // font-style: italic;
       float: left;
-      padding: 4px 15px;
-      width: 90px;
+      padding: 8px 15px;
+      width: 110px;
       box-sizing: border-box;
       text-align: center;
       margin: 10px 15px;
@@ -130,17 +131,17 @@
       transition: .1s;
 
       &:hover {
-        background-color: #f7f7f7;
+        color: @green;
       }
     }
 
-    .bus_select {
+    .bus_item.bus_select {
       background-color: @green;
       color: #fff;
       border-color: transparent;
 
       &:hover {
-        background-color: @green;
+        color: #fff;
       }
     }
   }

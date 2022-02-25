@@ -39,7 +39,7 @@ module.exports.getCityAdcode = async (ctx, next) => {
 module.exports.getLaws = async (ctx, next) => {
   const { laws, lawChapters, lawItems } = await getLaws()
   lawChapters.forEach(lawChapter => {
-    lawChapter.chapters = lawItems.filter(lawItem => lawItem.chap_id == lawChapter.chap_id)
+    lawChapter.items = lawItems.filter(lawItem => lawItem.chap_id == lawChapter.chap_id)
   })
   laws.forEach(law => {
     law.chapters = lawChapters.filter(lawChapter => lawChapter.law_id == law.law_id)
