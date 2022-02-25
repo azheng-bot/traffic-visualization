@@ -3,134 +3,145 @@
   height: 100%;
   position: relative;
   background-color: antiquewhite;
+
   // background-attachment: fixed;
-}
-.swiper-container {
-  width: 100%;
-  height: 100%;
-}
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+  }
 
-  overflow: hidden;
-  // overflow-y: auto;
-}
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
 
-.slide-inner {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  background-size: cover;
-  background-position: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  color: #fff;
-}
+    overflow: hidden;
+    // overflow-y: auto;
+  }
 
-.new_item {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  // overflow-y: auto;
-  background-size: cover;
-  background-repeat: no-repeat;
-  // img {
-  //   width: 100%;
-  //   height: 100%;
-  //   display: block;
-  // }
-}
-.item_content {
-  margin-top: 50px;
-  width: 100%;
+  .slide-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-size: cover;
+    background-position: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    color: #fff;
+  }
 
-  ul {
-    width: 800px;
-    margin: 0 auto;
-    text-align: left;
-    color: #666;
-    line-height: 1.5;
-    li {
-      margin-bottom: 40px;
-      text-indent: 2em;
+  .new_item {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    // overflow-y: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    // img {
+    //   width: 100%;
+    //   height: 100%;
+    //   display: block;
+    // }
+  }
+
+  .item_content {
+    margin-top: 50px;
+    width: 100%;
+
+    ul {
+      width: 800px;
+      margin: 0 auto;
+      text-align: left;
+      color: #666;
+      line-height: 1.5;
+
+      li {
+        margin-bottom: 40px;
+        text-indent: 2em;
+      }
     }
   }
-}
-.active {
-  animation-name: kaishi;
-  animation-duration: 2s;
-}
-.noactive {
-  animation-name: jieshu;
-  animation-duration: 2s;
-}
-@keyframes kaishi {
-  from {
+
+  .active {
+    animation-name: kaishi;
+    animation-duration: 2s;
+  }
+
+  .noactive {
+    animation-name: jieshu;
+    animation-duration: 2s;
+  }
+
+  @keyframes kaishi {
+    from {
+      height: 100%;
+    }
+
+    to {
+      height: 20%;
+    }
+  }
+
+  @keyframes jieshu {
+    from {
+      height: 20%;
+    }
+
+    to {
+      height: 100%;
+    }
+  }
+
+  .item_title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 42px;
+    font-weight: 700;
+    z-index: 1000;
+  }
+
+  // .title_action {
+  //   top: 26px;
+  //   width: 100%;
+  //   background-color: #fff;
+  //   color: #000;
+  // }
+  .wrapper {
     height: 100%;
-  }
-  to {
-    height: 20%;
-  }
-}
+    overflow: scroll;
 
-@keyframes jieshu {
-  from {
-    height: 20%;
-  }
-  to {
-    height: 100%;
-  }
-}
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
 
-.item_title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  font-size: 42px;
-  font-weight: 700;
-  z-index: 1000;
-}
-// .title_action {
-//   top: 26px;
-//   width: 100%;
-//   background-color: #fff;
-//   color: #000;
-// }
-.wrapper {
-  height: 100%;
-  overflow: scroll;
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
+    &::-webkit-scrollbar-thumb {
+      background: rgb(218, 218, 218);
+      border-radius: 10px;
+      border-right: 1px solid transparent;
+    }
 
-  &::-webkit-scrollbar-thumb {
-    background: rgb(218, 218, 218);
-    border-radius: 10px;
-    border-right: 1px solid transparent;
-  }
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgb(168, 168, 168);
+    }
 
-  &::-webkit-scrollbar-thumb:hover {
-    background: rgb(168, 168, 168);
-  }
-
-  &::-webkit-scrollbar-track-piece {
-    background: transparent;
+    &::-webkit-scrollbar-track-piece {
+      background: transparent;
+    }
   }
 }

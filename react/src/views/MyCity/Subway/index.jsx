@@ -3,34 +3,31 @@ import { useParams } from "react-router-dom";
 import cityList from "./cityList.js";
 import "./index.less";
 import "https://webapi.amap.com/subway?v=1.0&key=c6e434d1188e1c9f904dc256f7e14de8&callback=cbk";
-function Metro() {
-  const { id } = useParams();
-  let [adcodeId, setAdcodeId] = useState(1100);
-  let [mysubway, setmysubway] = useState("");
-  // 放大比例
-  let [zoom, setZoom] = useState(1);
+function Metro(props ) {
+  let [adcodeId, setAdcodeId] = useState(props.adcode || 1100);
+  // let [mySubway, setmySubway] = useState("");
   // 线路
   let [lineList, setLineList] = useState([]);
   // 控制地址的显示和隐藏
   let [flagAddres, setFlagAddres] = useState(false);
   // 控制线路显示隐藏
-  let [flagLine, setFlagLine] = useState(false);
+  let [flag, setFlag] = useState('address');
   // 默认地址
   let [address, setAddres] = useState("北京市");
   // 默认线路
   let [line, setLine] = useState("所有线路");
   let [lineId, setLineId] = useState(0);
 
+  var mySubway
   useEffect(() => {
-    setAdcodeId(id);
     cityList.map((item) => {
-      if (item.adcode == id) {
+      if (item.adcode == adcodeId) {
         setAddres(item.name);
       }
     });
     window.cbk = function () {
-      var mySubway = subway("subway-map", {
-        adcode: id,
+      mySubway = subway("subway-map", {
+        adcode: adcodeId,
         easy: 1,
       });
       mySubway.event.on("subway.complete", function () {
@@ -48,8 +45,7 @@ function Metro() {
         mySubway.setCenter(center);
       });
       //点击空白, 关闭infowindow
-
-      setmysubway(mySubway);
+      // setmySubway(mySubway);
     };
   }, []);
 
@@ -57,41 +53,57 @@ function Metro() {
     if (item == "全部") {
       setLine("全部线路");
       setLineId(0);
-      mysubway.clearOverlays();
+      mySubway.clearOverlays();
     } else {
       setLine(item.shortname);
       setLineId(item.id);
-      mysubway.showLine ? mysubway.showLine(item.id) : "";
+      mySubway.showLine ? mySubway.showLine(item.id) : "";
       var select_obj = document.getElementById("g-select");
-      mysubway.setFitView ? mysubway.setFitView(select_obj) : "";
-      var center = mysubway.getSelectedLineCenter();
-      mysubway.setCenter(center);
+      mySubway.setFitView ? mySubway.setFitView(select_obj) : "";
+      var center = mySubway.getSelectedLineCenter();
+      mySubway.setCenter(center);
     }
   };
-  const updateFlag = (type) => {
-    if (type == "addres") {
-      mysubway.clearOverlays();
-      setFlagAddres(!flagAddres);
-    } else {
-      setFlagLine(!flagLine);
-    }
-  };
-  const addressClick = (name) => {
-    setAddres(name);
+  const addressClick = (city) => {
+    setAddres(city.name);
+    setAdcodeId(city.adcode)
+
+    mySubway = null;
+    mySubway = subway("subway-map", {
+      adcode: city.adcode,
+      easy: 1,
+    });
+    mySubway.event.on("subway.complete", function () {
+      mySubway.getLineList(function (res) {
+        console.log("res", res);
+        setLineList(res);
+      });
+    });
+    //点击线路名，高亮此线路
+    mySubway.event.on("lineName.touch", function (ev, info) {
+      mySubway.showLine(info.id);
+      var select_obj = qs("#g-select");
+      mySubway.setFitView(select_obj);
+      var center = mySubway.getSelectedLineCenter();
+      mySubway.setCenter(center);
+    });
+    //点击空白, 关闭infowindow
+    // setmySubway(mySubway);
+
   };
   return (
-    <div className="subway-module">
+    <div className={["subway-module", 'show-' + flag].join(' ')}>
       <div className="address">
         <div
-          className={flagAddres ? "address_default active" : "address_default"}
+          className='address_default'
           onClick={() => {
-            updateFlag("addres");
+            flag == 'address' ? setFlag("none") : setFlag('address')
           }}
         >
           <span>
             {address}
           </span>
-          {flagAddres ? (
+          {flag == 'address' ? (
             <img
               src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/icon_up.png"
               alt=""
@@ -103,16 +115,16 @@ function Metro() {
             />
           )}
         </div>
-        <ul className={flagAddres ? "active" : ""}>
+        <ul>
           {cityList.map((item) => (
             <li
               className={item.adcode == adcodeId ? "bg" : ""}
               key={item.adcode}
               onClick={() => {
-                addressClick(item.name);
+                addressClick(item);
               }}
             >
-              <a href={`/subway/${item.adcode}`}>{item.name}</a>
+              <span href={`/subway/${item.adcode}`}>{item.name}</span>
             </li>
           ))}
         </ul>
@@ -121,11 +133,11 @@ function Metro() {
         <div
           className="line_default"
           onClick={() => {
-            updateFlag("line");
+            flag == 'line' ? setFlag("none") : setFlag('line')
           }}
         >
           {line}
-          {flagLine ? (
+          {flag == 'line' ? (
             <img
               src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/icon_up.png"
               alt=""
@@ -137,7 +149,7 @@ function Metro() {
             />
           )}
         </div>
-        <ul className={flagLine ? "line-list active" : "line-list"}>
+        <ul>
           <li
             className={line === "所有线路" ? "bg" : ""}
             onClick={() => {

@@ -24,6 +24,7 @@ function Laws() {
   const [chapName, setChapName] = useState("");
   // 选中的条名称
   const [itemName, setItemName] = useState("");
+  // 初始化设置数据
   useEffect(() => {
     getLaws().then((res) => {
       setLawList(res.laws);
@@ -36,7 +37,6 @@ function Laws() {
             // 章节
             if (key.chap_id == chapId) {
               setChap(key)
-              console.log('key', key)
               setChapName(key.chap_name);
               setItemList(key.items);
               // 条目
@@ -51,7 +51,7 @@ function Laws() {
         }
       });
     });
-  }, [lawId, chapId, itemId]);
+  }, []);
   // law改变时，重置chapId和ItemId
   useEffect(() => {
     // 找到当前法律
@@ -61,6 +61,7 @@ function Laws() {
         setChap(item.chapters[0])
         setChapId(item.chapters[0].chap_id)
         setChapName(item.chapters[0].chap_name)
+        setChapList(item.chapters)
         // 修改条目为首个
         setItemId(item.chapters[0].items[0]?.item_id);
         setItemName(item.chapters[0].items[0]?.item_name);
@@ -76,7 +77,11 @@ function Laws() {
         // 找到当前章节
         item.chapters.map((key) => {
           if (key.chap_id == chapId) {
+            setChap(key)
+            setChapName(key.chap_name);
+            setItemList(key.items);
             // 修改条目为首个
+            setItemList(key.items)
             setItemId(key.items[0]?.item_id);
             setItemName(key.items[0]?.item_name);
             setItem(key.items[0]);
@@ -85,6 +90,26 @@ function Laws() {
       }
     })
   }, [chapId]);
+  // ItemId改变时
+  useEffect(() => {
+    // 找到当前法律
+    lawList.map((item) => {
+      if (item.law_id == lawId) {
+        // 找到当前章节
+        item.chapters.map((key) => {
+          if (key.chap_id == chapId) {
+            // 找到当前条目
+            key.items.map((items) => {
+              if (items.item_id == itemId) {
+                setItemName(items.item_name);
+                setItem(items);
+              }
+            });
+          }
+        });
+      }
+    })
+  }, [itemId]);
   return (
     <div className="box_law">
       <div className="box_law_list">
@@ -115,8 +140,6 @@ function Laws() {
                 key={item.chap_id}
                 onClick={() => {
                   setChapId(item.chap_id);
-                  setItemId(item.chapters[0].item_id);
-                  console.log(item);
                 }}
               >
                 <p>

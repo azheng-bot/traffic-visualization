@@ -67,7 +67,16 @@ function index(props) {
         {/* 大模块菜单 */}
         <ul className="modules">
           {moduleList.map((item, index) => (
-            <li className="module" key={index} onMouseEnter={() => setModuleIndex(index) || setSelectVisible(true)} onClick={() => navigate(item.route)} >
+            <li
+              className="module"
+              key={index}
+              onMouseEnter={() => {
+                setModuleIndex(index);
+                setSelectVisible(true)
+              }
+              }
+              onClick={() => navigate(item.route)}
+            >
               <a href="#" className="text">
                 {item.name}
               </a>
@@ -92,7 +101,7 @@ function index(props) {
         </ul>
       </div>
       {/* 收起按钮 */}
-      <div className="fold" onClick={() => setNavigatorVisible(!navigatorVisible)}>
+      <div className="fold" onClick={() => {setNavigatorVisible(!navigatorVisible);setSelectVisible(false)}}>
         <img src="../image/others/fold.svg" alt="" />
       </div>
       {/* 展开按钮 */}
