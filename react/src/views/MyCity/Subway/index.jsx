@@ -3,13 +3,11 @@ import { useParams } from "react-router-dom";
 import cityList from "./cityList.js";
 import "./index.less";
 import "https://webapi.amap.com/subway?v=1.0&key=c6e434d1188e1c9f904dc256f7e14de8&callback=cbk";
-function Metro(props ) {
-  let [adcodeId, setAdcodeId] = useState(props.adcode || 1100);
-  // let [mySubway, setmySubway] = useState("");
+function Metro(props) {
+  let [adcodeId, setAdcodeId] = useState(1100);
+  let [mySubway, setmySubway] = useState({});
   // 线路
   let [lineList, setLineList] = useState([]);
-  // 控制地址的显示和隐藏
-  let [flagAddres, setFlagAddres] = useState(false);
   // 控制线路显示隐藏
   let [flag, setFlag] = useState('address');
   // 默认地址
@@ -18,7 +16,7 @@ function Metro(props ) {
   let [line, setLine] = useState("所有线路");
   let [lineId, setLineId] = useState(0);
 
-  var mySubway
+  // var mySubway;
   useEffect(() => {
     cityList.map((item) => {
       if (item.adcode == adcodeId) {
@@ -45,11 +43,11 @@ function Metro(props ) {
         mySubway.setCenter(center);
       });
       //点击空白, 关闭infowindow
-      // setmySubway(mySubway);
+      setmySubway(mySubway);
     };
   }, []);
 
-  const lineClick = (item) => {
+  let lineClick = (item) => {
     if (item == "全部") {
       setLine("全部线路");
       setLineId(0);
@@ -66,8 +64,10 @@ function Metro(props ) {
   };
   const addressClick = (city) => {
     setAddres(city.name);
+    console.log(city.adcode)
     setAdcodeId(city.adcode)
 
+    // document.getElementById('subway-map').innerHTML = ''
     mySubway = null;
     mySubway = subway("subway-map", {
       adcode: city.adcode,
@@ -166,6 +166,8 @@ function Metro(props ) {
               }}
               key={item.id}
             >
+              {item &&
+                <span className="color" style={{ background: '#'+item.color }}></span>}
               {item.shortname}
               {item.laname ? `  (${item.laname})` : ""}
             </li>

@@ -117,11 +117,12 @@
         display: inline-block;
         padding: 10px 40px;
         color: rgb(136, 136, 136);
-        transition: .15s;
+        transition: .3s;
       }
 
-      .module:hover {
-        // font-weight: 500;
+      // .module:hover,
+      .module.active {
+        font-weight: 500;
         font-size: 22px;
         color: rgb(63, 63, 63);
       }
@@ -135,11 +136,12 @@
     // top: -500px;
     left: 100px;
     transition: .5s left;
-    backdrop-filter: saturate(180%) blur(20px);
-    background-color: rgba(158, 158, 158, 0.123);
-      border: 2px solid rgba(255, 255, 255, 0.089);
+    backdrop-filter: saturate(180%) blur(15px);
+    background-color: rgba(197, 197, 197, 0.164);
+    border: 1.5px solid rgba(255, 255, 255, 0.089);
     flex-direction: row;
-    border-radius: 22px;
+    justify-content: space-between;
+    border-radius: 28px;
     padding: 7px;
     font-size: 0;
     height: 195px;
@@ -152,10 +154,10 @@
       height: 180px;
       // width: 176px;
       // height: 176px;
-      background-color: rgba(255, 255, 255, 0.596);
+      background-color: rgba(255, 255, 255, 0.479);
       // border: 1px solid rgba(255, 255, 255, 0.438);
 
-      border-radius: 12px;
+      border-radius: 16px;
       margin: 7.5px;
       position: relative;
       cursor: pointer;
@@ -182,13 +184,13 @@
         line-height: 18px;
         font-size: 18px;
         font-weight: 500;
-        color: #919191;
+        color: #696969;
         transition: 0.05s ease-in-out;
       }
     }
 
     li:hover {
-      background-color: rgba(255, 255, 255, 0.877);
+      background-color: rgba(255, 255, 255, 0.938);
 
       img._icon {
         opacity: 0;
@@ -239,7 +241,7 @@
 
   .select-list.show {
     // top: 58px;
-    display: block;
+    display: flex;
     animation: selectFadeIn forwards .3s;
   }
 

@@ -16,13 +16,14 @@ function index(props) {
       ]
     },
     {
-      name: "交通通识",
+      name: "初识交通",
       route: "/knowledge",
       children: [
         { name: "交通图标", route: "/knowledge/sign", icon: "../image/modules/colorless/sign.png", _icon: "../image/modules/colorless/_sign.png" },
         { name: "交通工具", route: "/knowledge/tool", icon: "../image/modules/colorless/tool.png", _icon: "../image/modules/colorless/_tool.png" },
         { name: "交通法规", route: "/knowledge/law", icon: "../image/modules/colorless/law.png", _icon: "../image/modules/colorless/_law.png" },
-        { name: "交通历史", route: "/knowledge/history", icon: "../image/modules/colorless/history.png", _icon: "../image/modules/colorless/_history.png" },
+        // { name: "交通历史", route: "/knowledge/history", icon: "../image/modules/colorless/history.png", _icon: "../image/modules/colorless/_history.png" },
+        { name: "最新新闻", route: "/knowledge/news", icon: "../image/modules/colorless/news.png", _icon: "../image/modules/colorless/_news.png" },
       ]
     },
     {
@@ -32,11 +33,10 @@ function index(props) {
         { name: "交通现状", route: "/deep/now", icon: "../image/modules/colorless/now.png", _icon: "../image/modules/colorless/_now.png" },
         { name: "违法统计", route: "/deep/illegal", icon: "../image/modules/colorless/illegal.png", _icon: "../image/modules/colorless/_illegal.png" },
         { name: "车辆统计", route: "/deep/cars", icon: "../image/modules/colorless/cars.png", _icon: "../image/modules/colorless/_cars.png" },
-        { name: "最新新闻", route: "/deep/news", icon: "../image/modules/colorless/news.png", _icon: "../image/modules/colorless/_news.png" },
       ]
     },
     {
-      name: "交通展望",
+      name: "未来展望",
       route: "/future",
       children: [
         { name: "疫情", route: "/future/covid", icon: "../image/modules/colorless/covid.png", _icon: "../image/modules/colorless/_covid.png" },
@@ -68,7 +68,7 @@ function index(props) {
         <ul className="modules">
           {moduleList.map((item, index) => (
             <li
-              className="module"
+              className={["module",index == moduleIndex && selectVisible ?'active':''].join(' ')}
               key={index}
               onMouseEnter={() => {
                 setModuleIndex(index);
@@ -87,7 +87,7 @@ function index(props) {
         <ul
           className={["select-list", selectVisible ? "show" : "hide"].join(" ")}
           style={{
-            width: (moduleList[moduleIndex].children.length * 195) + 'px',
+            width: (moduleList[moduleIndex].children.length * 197) + 'px',
             left: moduleIndex * 150 - (moduleList[moduleIndex].children.length * 195) / 2 + 75 + 'px'
           }}
           onMouseLeave={() => setSelectVisible(false)}>

@@ -346,7 +346,7 @@ function index(props) {
                   <LeftArrow />
                 </div>
                 <div className="road-name">
-                  基础通识路
+                  初识交通路
                 </div>
 
               </div>

@@ -328,7 +328,7 @@ function index(props) {
       {/*  可视区域 */}
       <div className="visible-area" >
         {/* 路标 */}
-        <RoadSign style={{ left: -229, bottom: 73 }} cnName={"基础通识路"} enName={"Knowledge Road"} reserve={true}></RoadSign>
+        <RoadSign style={{ left: -229, bottom: 73 }} cnName={"初识交通路"} enName={"Knowledge Road"} reserve={true}></RoadSign>
         {/* 左侧树木&景观 */}
         <div className="scenery-left">
           {leftSceneries.map((item, index) => <img

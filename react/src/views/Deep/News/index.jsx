@@ -7,17 +7,12 @@ import { getNewList } from "../../../api/deepModile";
 
 function New() {
   const [newList, setNewList] = useState([]);
-  const [imageHeight, setImageHeight] = useState("100%");
-  const [toTop, settoTop] = useState(0);
+  const [scrollList, setScrollList] = useState([0,0,0,0,0,0,0,0,0,0]);
 
-  const swiperScorll = (e) => {
-    settoTop(e.target.scrollTop);
-    if (e.target.scrollTop > 0) {
-      setImageHeight("20%");
-    } else {
-      setImageHeight("100%");
-    }
-    console.log(e.target.scrollTop);
+
+  const swiperScorll = (e,index) => {
+    scrollList[index] = e.target.scrollTop;
+    setScrollList([...scrollList])
   };
   useEffect(() => {
     getNewList()
@@ -68,26 +63,27 @@ function New() {
   return (
     <div className="new_box">
       <div className="swiper-container">
-        <div className="swiper-wrapper">
-          {newList.map((item) => (
-            <div key={item.news_id} className="swiper-slide">
-              <span className="item_title">{item.title}</span>
+        <div className="swiper-wrapper"
+        >
+          {newList.map((item,index) => (
+
+            <div key={item.news_id} className="swiper-slide" >
+              
+
+              {/* 新闻内容 */}
               <div
-                className="wrapper"
-                onScroll={(e) => {
-                  swiperScorll(e);
+                className={["wrapper slide-inner",scrollList[index] > 0?'show-content':'show-image'].join(' ')} onScroll={(e) => {
+                  swiperScorll(e,index);
                 }}
               >
+                {/* 新闻标题 */}
+                <p className="news_title"><span className="number">{(index+1).toString().padStart(1,'0')}、</span>{item.title}</p>
+                {/* 新闻图片 */}
                 <div
                   style={{
                     backgroundImage: "url(" + item.image + ")",
-                    height: imageHeight,
                   }}
-                  className={
-                    toTop > 0
-                      ? "new_item slide-inner active"
-                      : "new_item slide-inner noactive"
-                  }
+                  className='news_image'
                 ></div>
                 <div className="item_content">
                   <ul>
