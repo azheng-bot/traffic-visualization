@@ -236,28 +236,28 @@ function index(props) {
     },
     {
       active: false,
-      name: "illegal",
-      title: "违法统计",
-      image: "./image/modules/colorful/illegal.png",
-      intro: "对于所有交通参与者所发生的违法情况以及交通事故进行可视化统计分析。",
+      name: "cars",
+      title: "车辆统计",
+      image: "./image/modules/colorful/cars.png",
+      intro: "对中国现存所有车辆进行统计，以及中国车辆的发展情况进行可视化分析。",
       left: 974,
       top: 149
     },
     {
       active: false,
-      name: "cars",
-      title: "车辆统计",
-      image: "./image/modules/colorful/cars.png",
-      intro: "对中国现存所有车辆进行统计，以及中国车辆的发展情况进行可视化分析。",
-      left: 618,
-      top: -131
+      name: "transport",
+      title: "运输行业分析",
+      image: "./image/modules/colorful/transport.png",
+      intro: "对中国当下运输行业以及运输行业从业者进行具体、全面、多角度的分析。",
+      left: 550,
+      top: -93
     },
     {
       active: false,
-      name: "news",
-      title: "最新新闻",
-      image: "./image/modules/colorful/news.png",
-      intro: "将最新的交通重要新闻进行汇总展示，并通过轮播的方式依次展现。",
+      name: "count",
+      title: "运输行业统计",
+      image: "./image/modules/colorful/count.png",
+      intro: "将全国范围内各个省份、各个城市、各个方面的运输情况进行统计报表分析。",
       left: 197,
       top: 107
     },
@@ -268,12 +268,12 @@ function index(props) {
     back:
       [
         { name: "now", y1: 1850, y2: 2050 },
-        { name: "illegal", y1: 1500, y2: 1700 },
+        { name: "cars", y1: 1500, y2: 1700 },
       ],
     forward:
       [
-        { name: "cars", y1: 1475, y2: 1675 },
-        { name: "news", y1: 1800, y2: 2000},
+        { name: "transport", y1: 1525, y2: 1725 },
+        { name: "count", y1: 1800, y2: 2000},
       ]
   }
 

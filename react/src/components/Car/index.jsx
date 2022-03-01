@@ -261,9 +261,9 @@ function index(props) {
   // 右转
   function turnRight() {
     if (direct == "forward") {
-      x += turnSpeed * Math.abs(runSpeed / maxForwardSpeed)
+      x += turnSpeed * (runSpeed / maxForwardSpeed)
     } else if (direct == "back") {
-      x -= turnSpeed * Math.abs(runSpeed / maxForwardSpeed)
+      x -= turnSpeed * (runSpeed / maxForwardSpeed)
     }
   }
 

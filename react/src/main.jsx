@@ -16,9 +16,10 @@ import Simple from "./views/Simple/index";
 import Sign from "./views/Simple/Sign/index";
 import Laws from "./views/Simple/Law/index";
 import Tool from "./views/Simple/Tool/index";
+import News from "./views/Simple/News/index";
 // 深入交通 - Deep
 import Deep from "./views/Deep/index";
-import News from "./views/Deep/News/index";
+import Count from "./views/Deep/Count/index";
 import Transport from "./views/Deep/Transport/index";
 // 未来展望 - Future
 import Future from "./views/Future/index";
@@ -46,6 +47,7 @@ ReactDOM.render(
 
             <Route path="/deep" element={<Deep />}>
               <Route path="transport" element={<Transport />}></Route>
+              <Route path="count" element={<Count />}></Route>
             </Route>
 
             <Route path="/future" element={<Future />}>

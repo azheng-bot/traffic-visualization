@@ -262,10 +262,10 @@ function index(props) {
     },
     {
       active: false,
-      name: "history",
-      title: "交通历史",
-      image: "./image/modules/colorful/history.png",
-      intro: "将从古到今的交通历史进行展现，并对不同时期的交通能力进行对比。",
+      name: "news",
+      title: "最新新闻",
+      image: "./image/modules/colorful/news.png",
+      intro: "将最新的交通重要新闻进行汇总展示，并通过轮播的方式依次展现。",
       left: 730,
       top: 285
     },
@@ -281,7 +281,7 @@ function index(props) {
     forward:
       [
         { name: "law", y1: 1200, y2: 1400 },
-        { name: "history", y1: 1525, y2: 1725 },
+        { name: "news", y1: 1525, y2: 1725 },
       ]
   }
 
