@@ -5,7 +5,8 @@ import App from "./App";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // cityInfoContext
 import { CityInfoContextProvider, cityInfoContext } from "./utils/reducer";
-// antd design
+// arco design
+import "@arco-design/web-react/dist/css/arco.css";
 
 // 我的城市 - MyCity
 import MyCity from "./views/MyCity/index";
@@ -25,7 +26,7 @@ import Transport from "./views/Deep/Transport/index";
 import Future from "./views/Future/index";
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <CityInfoContextProvider>
       <Router>
         <Routes>
@@ -68,6 +69,7 @@ ReactDOM.render(
         </Routes>
       </Router>
     </CityInfoContextProvider>
-  </React.StrictMode>,
+  // </React.StrictMode>
+  ,
   document.getElementById("root")
 );

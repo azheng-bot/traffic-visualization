@@ -1,0 +1,93 @@
+.road-passenger {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #002242;
+  // background-image:linear-gradient(to right bottom,#024277,#002242,#071525);
+
+  .top {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1px;
+    height: 70%;
+
+    .left {
+      border-right: 1px solid #335880;
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      margin-right: 1px;
+
+      .title {
+        height: 100px;
+        padding: 0 30px;
+        color: #fff;
+
+        .text {
+          height: 100px;
+          padding-left: 20px;
+          border-bottom: 4px solid #fff;
+          font-size: 60px;
+          line-height: 100px;
+          font-weight: 200;
+          letter-spacing: -1px;
+          color: #fff;
+          border-bottom: 4px solid #fff;
+        }
+      }
+
+
+      .bar-chart {
+        flex: 1;
+        margin-top: 1px;
+        padding: 15px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+
+        .chart-label {
+          color: #fff;
+          height: 20px;
+        }
+
+        .content {
+          flex: 1;
+        }
+      }
+    }
+
+    .right {
+      width: 60%;
+      background-color: #002242;
+    }
+  }
+
+  .bottom {
+    height: 30%;
+    border-top: 1px solid #335880;
+    box-sizing: border-box;
+
+
+    .circle-chart {
+      width: 100%;
+      height: 100%;
+      flex: 1;
+      margin-top: 1px;
+      padding: 15px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+
+      .chart-label {
+        color: #fff;
+        height: 20px;
+      }
+
+      .content {
+        flex: 1;
+
+      }
+    }
+  }
+}
