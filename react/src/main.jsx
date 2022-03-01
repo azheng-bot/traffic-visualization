@@ -19,6 +19,7 @@ import Tool from "./views/Simple/Tool/index";
 // 深入交通 - Deep
 import Deep from "./views/Deep/index";
 import News from "./views/Deep/News/index";
+import Transport from "./views/Deep/Transport/index";
 // 未来展望 - Future
 import Future from "./views/Future/index";
 
@@ -44,6 +45,7 @@ ReactDOM.render(
             </Route>
 
             <Route path="/deep" element={<Deep />}>
+              <Route path="transport" element={<Transport />}></Route>
             </Route>
 
             <Route path="/future" element={<Future />}>
