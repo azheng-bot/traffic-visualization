@@ -84,7 +84,7 @@ function index(props) {
     '未知': "./image/weather/无数据.png",
   }
 
-  const WebAPIKey = import.meta.env.VITE_WebAPIKey
+  const WebAPIKey = import.meta.env.VITE_WebKey
   let { state, dispatch } = useContext(cityInfoContext)
   useEffect(() => {
     // 给reducer全局变量设置上城市信息cityInfo
