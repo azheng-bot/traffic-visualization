@@ -13,7 +13,7 @@ function index(props) {
 
   return (
     <div className="back-btn" onClick={back}>
-      <img src="./image/others/back.png" alt="" />
+      <img src="/image/others/back.png" alt="" />
     </div>
   )
 }

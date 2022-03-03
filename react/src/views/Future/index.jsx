@@ -29,7 +29,7 @@ function index(props) {
         initBushTop -= 42 * 2
       }
       leftSceneries.push({
-        src: "image/tree/bush-1.png",
+        src: "/image/tree/bush-1.png",
         left: initBushLeft += 75,
         top: initBushTop -= 42,
         zIndex: initBushZIndex--
@@ -40,7 +40,7 @@ function index(props) {
     let treeNum = 25, initTreeLeft = -700, initTreeTop = 670;
     for (var i = 0; i <= treeNum; i++) {
       leftSceneries.push({
-        src: "image/tree/tree-1.png",
+        src: "/image/tree/tree-1.png",
         width: 76,
         left: initTreeLeft += 80,
         top: initTreeTop -= 45,
@@ -52,7 +52,7 @@ function index(props) {
     let bigTree1Num = 18, initBigTree1Left = -800, initBigTree1Top = 450;
     for (var i = 0; i <= bigTree1Num; i++) {
       leftSceneries.push({
-        src: "image/tree/bigtree-1.png",
+        src: "/image/tree/bigtree-1.png",
         left: initBigTree1Left += 112,
         top: initBigTree1Top -= 63,
         zIndex: 45
@@ -63,7 +63,7 @@ function index(props) {
     let bigTree2Num = 25, initBigTree2Left = -950, initBigTree2Top = 400;
     for (var i = 0; i <= bigTree2Num; i++) {
       leftSceneries.push({
-        src: "image/tree/bigtree-1.png",
+        src: "/image/tree/bigtree-1.png",
         left: initBigTree2Left += 80,
         top: initBigTree2Top -= 45,
         zIndex: 40
@@ -74,7 +74,7 @@ function index(props) {
     let bigTree3Num = 16, initBigTree3Left = -1050, initBigTree3Top = 350;
     for (var i = 0; i <= bigTree3Num; i++) {
       leftSceneries.push({
-        src: "image/tree/bigtree-4.png",
+        src: "/image/tree/bigtree-4.png",
         left: initBigTree3Left += 128,
         top: initBigTree3Top -= 72,
         zIndex: 35
@@ -84,7 +84,7 @@ function index(props) {
     let bigTree4Num = 16, initBigTree4Left = -1150, initBigTree4Top = 250;
     for (var i = 0; i <= bigTree4Num; i++) {
       leftSceneries.push({
-        src: "image/tree/bigtree-4.png",
+        src: "/image/tree/bigtree-4.png",
         left: initBigTree4Left += 128,
         top: initBigTree4Top -= 72,
         zIndex: 30
@@ -105,7 +105,7 @@ function index(props) {
         initBushBottom += 42 * 2
       }
       rightSceneries.push({
-        src: "image/tree/bush-1.png",
+        src: "/image/tree/bush-1.png",
         right: initBushRight -= 75,
         bottom: initBushBottom += 42,
         zIndex: initBushZIndex--
@@ -116,7 +116,7 @@ function index(props) {
     let treeNum = 25, initTreeRight = -740, initTreeBottom = 670;
     for (var i = 0; i <= treeNum; i++) {
       rightSceneries.push({
-        src: "image/tree/tree-1.png",
+        src: "/image/tree/tree-1.png",
         width: 76,
         right: initTreeRight += 80,
         bottom: initTreeBottom -= 45,
@@ -128,7 +128,7 @@ function index(props) {
     let bigTree1Num = 18, initBigTree1Right = -750, initBigTree1Bottom = 500;
     for (var i = 0; i <= bigTree1Num; i++) {
       rightSceneries.push({
-        src: "image/tree/bigtree-1.png",
+        src: "/image/tree/bigtree-1.png",
         right: initBigTree1Right += 112,
         bottom: initBigTree1Bottom -= 63,
         zIndex: 55
@@ -139,7 +139,7 @@ function index(props) {
     let bigTree2Num = 25, initBigTree2Right = -950, initBigTree2Bottom = 450;
     for (var i = 0; i <= bigTree2Num; i++) {
       rightSceneries.push({
-        src: "image/tree/bigtree-1.png",
+        src: "/image/tree/bigtree-1.png",
         right: initBigTree2Right += 80,
         bottom: initBigTree2Bottom -= 45,
         zIndex: 60
@@ -150,7 +150,7 @@ function index(props) {
     let bigTree3Num = 12, initBigTree3Right = -1050, initBigTree3Bottom = 350;
     for (var i = 0; i <= bigTree3Num; i++) {
       rightSceneries.push({
-        src: "image/tree/bigtree-4.png",
+        src: "/image/tree/bigtree-4.png",
         right: initBigTree3Right += 150,
         bottom: initBigTree3Bottom -= 84,
         zIndex: 65
@@ -161,7 +161,7 @@ function index(props) {
     let bigTree4Num = 16, initBigTree4Right = -1150, initBigTree4Bottom = 250;
     for (var i = 0; i <= bigTree4Num; i++) {
       rightSceneries.push({
-        src: "image/tree/bigtree-4.png",
+        src: "/image/tree/bigtree-4.png",
         right: initBigTree4Right += 128,
         bottom: initBigTree4Bottom -= 72,
         zIndex: 70
@@ -171,7 +171,7 @@ function index(props) {
 
     // // 添加座椅和路灯
     // rightSceneries.push({
-    //   src: "image/tree/bigtree-4.png",
+    //   src: "/image/tree/bigtree-4.png",
     //   right: initBigTree3Right += 150,
     //   bottom: initBigTree3Bottom -= 84,
     //   zIndex: 65
@@ -184,7 +184,7 @@ function index(props) {
     // 左边
     // 凳子
     leftSceneries.push({
-      src: "image/scenery/chair-1.png",
+      src: "/image/scenery/chair-1.png",
       width: 60,
       left: 371,
       top: 217,
@@ -192,7 +192,7 @@ function index(props) {
     })
     // 路灯
     leftSceneries.push({
-      src: "image/scenery/light-1.png",
+      src: "/image/scenery/light-1.png",
       width: 20,
       left: 355,
       top: 170,
@@ -200,7 +200,7 @@ function index(props) {
     })
     // 女孩儿
     leftSceneries.push({
-      src: "image/scenery/people-2.png",
+      src: "/image/scenery/people-2.png",
       left: 40,
       top: 140,
       zIndex: 40
@@ -209,7 +209,7 @@ function index(props) {
     // 右边
     // 凳子
     rightSceneries.push({
-      src: "image/scenery/chair-1.png",
+      src: "/image/scenery/chair-1.png",
       width: 60,
       right: 267,
       bottom: 182,
@@ -217,7 +217,7 @@ function index(props) {
     })
     // 路灯
     rightSceneries.push({
-      src: "image/scenery/light-1.png",
+      src: "/image/scenery/light-1.png",
       width: 20,
       right: 248,
       bottom: 215,
@@ -235,7 +235,7 @@ function index(props) {
       active: false,
       name: "covid",
       title: "疫情",
-      image: "./image/modules/colorful/covid.png",
+      image: "/image/modules/colorful/covid.png",
       intro: "通过可视化图表与文字，对当下疫情对于交通的影响进行分析，以及后疫情时代交通的展望。",
       left: 940,
       top: 168
@@ -244,7 +244,7 @@ function index(props) {
       active: false,
       name: "carbon",
       title: "碳中和",
-      image: "./image/modules/colorful/carbon.png",
+      image: "/image/modules/colorful/carbon.png",
       intro: "通过可视化图表与文字，对于碳中和政策对交通的影响进行分析。",
       left: 491,
       top: 419
@@ -253,7 +253,7 @@ function index(props) {
       active: false,
       name: "ai",
       title: "人工智能",
-      image: "./image/modules/colorful/ai.png",
+      image: "/image/modules/colorful/ai.png",
       intro: "人工智能的发展对于交通以及交通参与者的影响。",
       left: -35,
       top: 235
@@ -262,7 +262,7 @@ function index(props) {
       active: false,
       name: "itms",
       title: "智慧交通",
-      image: "./image/modules/colorful/itms.png",
+      image: "/image/modules/colorful/itms.png",
       intro: "对现行的智慧交通策略进行分析，以及对于未来智慧交通系统进行展望。",
       left: 350,
       top: 18

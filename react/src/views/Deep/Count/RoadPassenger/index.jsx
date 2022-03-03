@@ -35,9 +35,13 @@ echarts.use([
   GeoComponent
 ]);
 
+function traggleType (props) {
+
+
+}
 
 function Index() {
-  // document.body.setAttribute('arco-theme', 'dark');
+  document.body.setAttribute('arco-theme', 'dark');
   let allProvBarChart = {
     option: {},
     dom: {},
@@ -89,7 +93,10 @@ function Index() {
           }
         },
         label: {
-          fontSize:18,
+          fontSize: 18,
+        },
+        style: {
+
         }
       },
       series: [
@@ -133,6 +140,11 @@ function Index() {
           }
         }
       },
+      color: [
+        '#1872e5',
+        '#278e6b',
+        '#db7b13'
+      ],
       // toolbox: {
       //   feature: {
       //     dataView: { show: true, readOnly: false },
@@ -225,7 +237,7 @@ function Index() {
 
     // 环形图
     eachProvCircleChart.option = {
-      color: ['green', 'red', 'rgb(255 255 255 / 22.5%)'],
+      color: ['#04a96f', 'rgb(255 255 255 / 22.5%)', '#e34d59'],
       title: [
         {
           text: 'Pie label alignTo',
@@ -247,8 +259,8 @@ function Index() {
       })
       let data = parseInt(Math.random() * 100 - 50)
       data = data > 0 ?
-        [{ name: 1, value: data }, { name: 2, value: 0 }, { name: 3, value: 100 - data }] :
-        [{ name: 1, value: 0 }, { name: 2, value: -data }, { name: 3, value: 100 + data }]
+        [{ name: 1, value: data }, { name: 2, value: 100 - data }, { name: 3, value: 0 }] :
+        [{ name: 1, value: 0 }, { name: 2, value: 100 + data }, { name: 3, value: -data }]
       eachProvCircleChart.option.series.push({
         type: 'pie',
         radius: ['30%', '40%'],
@@ -394,7 +406,13 @@ function Index() {
       <div className="top">
         <div className="left">
           <div className="title">
-            <div className="text">公路旅客运输量</div>
+            <div className="text">
+              公路旅客运输量
+              {/* <div className="traggle-type">
+                <div className="type-1">客运量</div>
+                <div className="type-2">旅客周转量</div>
+              </div> */}
+            </div>
           </div>
           <div className="bar-chart">
             <div className="chart-label">

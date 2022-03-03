@@ -89,7 +89,7 @@ function Index() {
           }
         },
         label: {
-          fontSize:18,
+          fontSize: 18,
         }
       },
       series: [
@@ -198,7 +198,7 @@ function Index() {
           },
           data: [
             2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3
-          ]
+          ],
         },
         {
           name: 'Temperature',
@@ -225,7 +225,7 @@ function Index() {
 
     // 环形图
     eachProvCircleChart.option = {
-      color: ['green', 'red', 'rgb(255 255 255 / 22.5%)'],
+      color: ['#e24e5b', '#e14d58', 'rgb(255 255 255 / 22.5%)'],
       title: [
         {
           text: 'Pie label alignTo',
@@ -390,7 +390,7 @@ function Index() {
   }
 
   return (
-    <div className="road-passenger">
+    <div className="road-freight">
       <div className="top">
         <div className="left">
           <div className="title">

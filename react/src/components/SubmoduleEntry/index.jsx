@@ -28,7 +28,7 @@ function index(props) {
       </div>
       <div className="light"></div>
       <div className="phone">
-        <img src="./image/others/iphone.png" alt="" />
+        <img src="/image/others/iphone.png" alt="" />
       </div>
     </div>
 

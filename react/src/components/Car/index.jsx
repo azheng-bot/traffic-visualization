@@ -19,10 +19,10 @@ function index(props) {
   }
   let [orient, setOrient] = useState(direct == "forward" ? forwardOrient : reverseOrientMap[forwardOrient]) // 汽车朝向
   let orientImgMap = { // 朝向对应的汽车图片
-    topRight: "./image/car/上-右.png",
-    topLeft: "./image/car/上-左.png",
-    bottomRight: "./image/car/下-右.png",
-    bottomLeft: "./image/car/下-左.png",
+    topRight: "/image/car/上-右.png",
+    topLeft: "/image/car/上-左.png",
+    bottomRight: "/image/car/下-右.png",
+    bottomLeft: "/image/car/下-左.png",
   }
   let forwardOrient2Transform = {
     topRight: "rotateX(237deg) rotateY(155deg) rotateZ(120deg)",
@@ -366,8 +366,8 @@ function index(props) {
   return (
     <div className={`car ${orient}`} style={{ transform: forwardOrient2Transform[forwardOrient] }} ref={carRef}>
       <img className="car_image" src={orientImgMap[orient]} alt="" />
-      <img className="wheel wheel_1" src="./image/car/轮毂.png" alt="" ref={wheel_1} />
-      <img className="wheel wheel_2" src="./image/car/轮毂.png" alt="" ref={wheel_2} />
+      <img className="wheel wheel_1" src="/image/car/轮毂.png" alt="" ref={wheel_1} />
+      <img className="wheel wheel_2" src="/image/car/轮毂.png" alt="" ref={wheel_2} />
     </div>
   )
 }

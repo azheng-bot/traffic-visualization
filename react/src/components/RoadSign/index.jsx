@@ -13,7 +13,7 @@ function index(props) {
   }
   return (
     <div className={["road-sign", props.reserve ? "reserve" : ""].join(" ")} style={style}>
-      <img src="./image/others/road-sign.png" alt="" />
+      <img src="/image/others/road-sign.png" alt="" />
       <div className="road-name">
         <div className="cn">
           {props.cnName || "XXX 路"}
