@@ -9,7 +9,8 @@ console.log('china', china)
 echarts.registerMap('china', china)
 
 function Index() {
-  let [province, setProvince] = useState('北京市')
+  let [province, setProvince] = useState('北京')
+  // let province = '北京市'
   // document.body.setAttribute('arco-theme', 'dark');
 
   // 颜色组
@@ -43,29 +44,24 @@ function Index() {
     ['色5']: '#2492ff', // 色5
     ['主色']: '#00ffff', // 主色
   }
-  let echartsColors = {
-    road1: ['#00ffff'],
-    road2: ['#00ffff'],
-    water1: ['#70ffff'],
-    water2: ['#70ffff'],
-    road1: ['#00ffff'],
-  }
-
 
   // 模块类Class
   class EchartModule {
     constructor(dom, option) {
       this.dom = dom;
       this.option = option;
+      this.chart = {}
     }
+
     // 创建
     createChart() {
       this.chart = echarts.init(this.dom)
       this.chart.setOption(this.option)
     }
+
     // 更新
     updateChart() {
-      this.chart.setOption(this.option)
+      this.chart.setOption(Object.assign({}, this.option))
     }
   }
 
@@ -86,11 +82,7 @@ function Index() {
   // 周转量2模块
   let turnover2Module
   // 港口1模块
-  let port1Module
-  // 港口2模块
-  let port2Module
-  // 港口3模块
-  let port3Module
+  let portModule
   // 总比率模块
   let rateModule
   // 增速模块
@@ -105,9 +97,7 @@ function Index() {
   let road2Ref = useRef()
   let turnover1Ref = useRef()
   let turnover2Ref = useRef()
-  let port1Ref = useRef()
-  let port2Ref = useRef()
-  let port3Ref = useRef()
+  let portRef = useRef()
   let rateRef = useRef()
   let grownRef = useRef()
 
@@ -116,7 +106,7 @@ function Index() {
     colorBy: 'series',
     geo: {
       zoom: 1,
-      top: 80,
+      top: 95,
       map: "china",
       show: true,
       borderWidth: 1.5,
@@ -130,7 +120,7 @@ function Index() {
           { offset: 0.9, color: colorGroup3.色3 },
           { offset: 1, color: colorGroup3.色4 }
         ]),
-        borderWidth: 1
+        borderWidth: 1.1
       },
       emphasis: {
         itemStyle: {
@@ -151,11 +141,9 @@ function Index() {
         colorBy: 'series',
         coordinateSystem: 'geo',//使用地理坐标系geo
         data: [
-          [120.13, 33.38, 120],
-          [118.87, 42.28, 20],
-          [120.33, 36.07, 202],
+          [120.13, 33.38, 200],
         ],
-        color: "rgb(96 ,254 ,250,0.5)",
+        color: "rgb(96 ,254 ,250,0.8)",
         symbolSize: function (val) {
           return val[2] / 10
         }
@@ -165,10 +153,11 @@ function Index() {
   let road1Option = {
     color: [colorGroup3.色4],
     title: {
-      text: `${province}公路客运量`,
+      left: 'center',
+      text: `公路旅客运输量`,
       textStyle: {
-        color: "#ffffffdd",
-        fontWeight: "200",
+        color: "#6e7079",
+        fontWeight: "500",
         fontSize: 14
       }
     },
@@ -213,10 +202,11 @@ function Index() {
   let road2Option = {
     color: [colorGroup3.色4],
     title: {
-      text: `${province}公路货运量`,
+      left: 'center',
+      text: `公路货物运输量`,
       textStyle: {
-        color: "#ffffffdd",
-        fontWeight: "200",
+        color: "#6e7079",
+        fontWeight: "500",
         fontSize: 14
       }
     },
@@ -261,10 +251,11 @@ function Index() {
   let water1Option = {
     color: [colorGroup3.色4],
     title: {
-      text: `${province}水路客运量`,
+      text: `水路旅客运输量`,
+      left: 'center',
       textStyle: {
-        color: "#ffffffdd",
-        fontWeight: "200",
+        color: "#6e7079",
+        fontWeight: "500",
         fontSize: 14
       }
     },
@@ -309,10 +300,11 @@ function Index() {
   let water2Option = {
     color: [colorGroup3.色1],
     title: {
-      text: `${province}水路货运量`,
+      text: `水路货物运输量`,
+      left: 'center',
       textStyle: {
-        color: "#ffffffdd",
-        fontWeight: "200",
+        color: "#6e7079",
+        fontWeight: "500",
         fontSize: 14
       }
     },
@@ -357,10 +349,11 @@ function Index() {
   let turnover1Option = {
     color: [colorGroup3.色1, colorGroup3.色2, colorGroup3.色3, colorGroup3.色4, colorGroup3.色5,],
     title: {
-      text: `${province}水路 & 公路客运旅客周转量`,
+      text: `水路 & 公路客运旅客周转量`,
+      left: 'center',
       textStyle: {
-        color: "#ffffffdd",
-        fontWeight: "200",
+        color: "#6e7079",
+        fontWeight: "500",
         fontSize: 14
       }
     },
@@ -373,14 +366,6 @@ function Index() {
         }
       }
     },
-    legend: {
-      data: ['Line 1', 'Line 2', 'Line 3', 'Line 4',]
-    },
-    toolbox: {
-      feature: {
-        saveAsImage: {}
-      }
-    },
     grid: {
       left: '20',
       right: '40',
@@ -391,7 +376,7 @@ function Index() {
       {
         type: 'category',
         boundaryGap: false,
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
       }
     ],
     yAxis: [
@@ -405,7 +390,7 @@ function Index() {
     ],
     series: [
       {
-        name: 'Line 1',
+        name: '水路',
         type: 'line',
         stack: 'Total',
         smooth: true,
@@ -420,10 +405,10 @@ function Index() {
         emphasis: {
           focus: 'series'
         },
-        data: [140, 232, 101, 264, 90, 340, 250]
+        data: [140, 232, 101, 264, 90, 340, 250, 101, 264, 90, 340, 250]
       },
       {
-        name: 'Line 4',
+        name: '公路',
         type: 'line',
         stack: 'Total',
         smooth: true,
@@ -438,7 +423,7 @@ function Index() {
         emphasis: {
           focus: 'series'
         },
-        data: [220, 402, 231, 134, 190, 230, 120]
+        data: [220, 402, 231, 134, 190, 230, 120, 231, 134, 190, 230, 120]
       },
 
     ]
@@ -446,10 +431,11 @@ function Index() {
   let turnover2Option = {
     color: [colorGroup3.色1, colorGroup3.色2, colorGroup3.色3, colorGroup3.色4, colorGroup3.色5,],
     title: {
-      text: `${province}水路 & 公路货运货物周转量`,
+      text: `水路 & 公路货运货物周转量`,
+      left: 'center',
       textStyle: {
-        color: "#ffffffdd",
-        fontWeight: "200",
+        color: "#6e7079",
+        fontWeight: "500",
         fontSize: 14
       }
     },
@@ -462,14 +448,6 @@ function Index() {
         }
       }
     },
-    legend: {
-      data: ['Line 1', 'Line 2', 'Line 3', 'Line 4',]
-    },
-    toolbox: {
-      feature: {
-        saveAsImage: {}
-      }
-    },
     grid: {
       left: '20',
       right: '40',
@@ -480,7 +458,7 @@ function Index() {
       {
         type: 'category',
         boundaryGap: false,
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
       }
     ],
     yAxis: [
@@ -489,12 +467,13 @@ function Index() {
         ,
         splitLine: {
           show: false
-        }
+        },
+        name: '货运量(万吨)',
       }
     ],
     series: [
       {
-        name: 'Line 1',
+        name: '水路',
         type: 'line',
         stack: 'Total',
         smooth: true,
@@ -509,10 +488,10 @@ function Index() {
         emphasis: {
           focus: 'series'
         },
-        data: [140, 232, 101, 264, 90, 340, 250]
+        data: [140, 232, 101, 264, 90, 340, 250, 101, 264, 90, 340, 250]
       },
       {
-        name: 'Line 4',
+        name: '公路',
         type: 'line',
         stack: 'Total',
         smooth: true,
@@ -527,271 +506,150 @@ function Index() {
         emphasis: {
           focus: 'series'
         },
-        data: [220, 402, 231, 134, 190, 230, 120]
+        data: [220, 402, 231, 134, 190, 230, 120, 231, 134, 190, 230, 120]
       },
 
     ]
   };
-  let port1Option = {
-    color: [colorGroup3.色4],
-    xAxis: {
-      type: 'category',
-      data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
-      axisLine: {
-        show: true
-      }
-    },
-    yAxis: {
-      type: 'value',
-      splitLine: {
-        show: false
-      },
-      axisLine: {
-        show: true
-      }
-    },
-    grid: {
-      left: 40,
-      right: 30,
-      top: 30,
-      bottom: 40,
-    },
-    series: [
-      {
-        data: [120, 200, 150, 80, 70, 110, 130, 110, 130, 110, 130, 110],
-        type: 'bar',
-        itemStyle: {
-          color: colorGroup3.主色 + '4f',
-          borderColor: colorGroup3.主色,
-          borderWidth: 1.5
-        },
-        showBackground: false,
-        backgroundStyle: {
-          color: 'rgba(255, 255, 255, 0.3)'
-        }
-      }
-    ]
-  }
-  let port2Option = {
-    color: [colorGroup3.色4],
-    xAxis: {
-      type: 'category',
-      data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
-      axisLine: {
-        show: true
-      }
-    },
-    yAxis: {
-      type: 'value',
-      splitLine: {
-        show: false
-      },
-      axisLine: {
-        show: true
-      }
-    },
-    grid: {
-      left: 40,
-      right: 30,
-      top: 30,
-      bottom: 40,
-    },
-    series: [
-      {
-        data: [120, 200, 150, 80, 70, 110, 130, 110, 130, 110, 130, 110],
-        type: 'bar',
-        itemStyle: {
-          color: colorGroup3.主色 + '4f',
-          borderColor: colorGroup3.主色,
-          borderWidth: 1.5
-        },
-        showBackground: false,
-        backgroundStyle: {
-          color: 'rgba(255, 255, 255, 0.3)'
-        }
-      }
-    ]
-  }
-  let port3Option = {
-    color: [colorGroup3.色4],
-    xAxis: {
-      type: 'category',
-      data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
-      axisLine: {
-        show: true
-      }
-    },
-    yAxis: {
-      type: 'value',
-      splitLine: {
-        show: false
-      },
-      axisLine: {
-        show: true
-      }
-    },
-    grid: {
-      left: 40,
-      right: 30,
-      top: 30,
-      bottom: 40,
-    },
-    series: [
-      {
-        data: [120, 200, 150, 80, 70, 110, 130, 110, 130, 110, 130, 110],
-        type: 'bar',
-        itemStyle: {
-          color: colorGroup3.主色 + '4f',
-          borderColor: colorGroup3.主色,
-          borderWidth: 1.5
-        },
-        showBackground: false,
-        backgroundStyle: {
-          color: 'rgba(255, 255, 255, 0.3)'
-        }
-      }
-    ]
-  }
-  let rateOption = {
-    color: [
-      colorGroup3.色1,
-      colorGroup3.色5,
-      colorGroup3.色3,
-    ],
+  let mainCityOption = {
     title: {
-      text: '运输方式总体比率',
-      textAlign: 'left',
+      text: `中心城市客运量`,
+      left: 50,
       textStyle: {
-        color: "#ffffffdd",
-        fontWeight: "200",
-        fontSize: 16,
+        color: "#6e7079",
+        fontWeight: "500",
+        fontSize: 14
       }
     },
     tooltip: {
-      trigger: 'item',
-      formatter: '{a} <br/>{b}: {c} ({d}%)'
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross',
+        crossStyle: {
+          color: '#999'
+        }
+      }
+    },
+    // legend: {
+    //   data: ['客运总量','公共汽电车','城市轨道交通','巡游出租车', ],
+    //   textStyle:{
+    //     color:'#fff'
+    //   }
+    // },
+    xAxis: [
+      {
+        type: 'category',
+        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+        axisPointer: {
+          type: 'shadow'
+        },
+        splitLine: {
+          show: false
+        },
+        axisLine: {
+          show: true
+        }
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value',
+        name: '客运量',
+        interval: 50,
+        axisLabel: {
+          formatter: '{value} 万人'
+        },
+        splitLine: {
+          show: false
+        },
+        axisLine: {
+          show: true
+        }
+      }
+    ],
+    grid: {
+      bottom: 40,
+      left: 120,
+      right: 100
     },
     series: [
       {
-        name: 'Access From',
-        type: 'pie',
-        selectedMode: 'single',
-        radius: ['25%', '40%'],
-        top: 0,
-        bottom: -60,
-        label: {
-          position: 'inner',
-          fontSize: 14
-        },
-        labelLine: {
-          show: false
-        },
-        data: [
-          { value: 1548, name: '公路客运' },
-          { value: 775, name: '水路客运' },
-        ]
-      },
-      {
-        name: 'Access From',
-        type: 'pie',
-        radius: ['50%', '55%'],
-        labelLine: {
-          length: 30
-        },
-        top: 0,
-        bottom: -60,
-        label: {
-          formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
-          backgroundColor: '#F6F8FC',
-          borderColor: '#8C8D8E',
-          borderWidth: 1,
-          borderRadius: 4,
-          rich: {
-            a: {
-              color: '#6E7079',
-              lineHeight: 22,
-              align: 'center'
-            },
-            hr: {
-              borderColor: '#8C8D8E',
-              width: '100%',
-              borderWidth: 1,
-              height: 0
-            },
-            b: {
-              color: '#4C5058',
-              fontSize: 14,
-              fontWeight: 'bold',
-              lineHeight: 33
-            },
-            per: {
-              color: '#fff',
-              backgroundColor: '#4C5058',
-              padding: [3, 4],
-              borderRadius: 4
-            }
+        name: '客运总量',
+        type: 'line',
+        tooltip: {
+          valueFormatter: function (value) {
+            return value + ' 万吨';
           }
         },
+        itemStyle: {
+          color: colorGroup3.色3 + '8f',
+          borderColor: colorGroup3.色3,
+          borderWidth: 1.5
+        },
         data: [
-          { value: 1048, name: '公路货运' },
-          { value: 335, name: '水路货运' },
-          { value: 310, name: '港口货运' },
+          2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3
         ]
-      }
-    ]
-  };
-  let grownOption = {
-    color: [colorGroup3.色1, 'rgb(255 255 255 / 22.5%)', colorGroup3.色5],
-    title: [
+      },
       {
-        text: '不同运输方式每月增长速率',
-        left: 'left',
-        textStyle: {
-          color: "#ffffffdd",
-          fontWeight: "200",
-          fontSize: 16
-        }
+        name: '公共汽电车',
+        type: 'bar',
+        tooltip: {
+          valueFormatter: function (value) {
+            return value + ' 万吨';
+          }
+        },
+        itemStyle: {
+          color: colorGroup3.色5 + '4f',
+          borderColor: colorGroup3.色5,
+          borderWidth: 1.5
+        },
+        data: [
+          2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3
+        ]
       },
-    ],
-    series: [
+      {
+        name: '城市轨道交通',
+        type: 'bar',
+        tooltip: {
+          valueFormatter: function (value) {
+            return value + ' 万吨';
+          }
+        },
+        itemStyle: {
+          color: colorGroup3.色1 + '4f',
+          borderColor: colorGroup3.色1,
+          borderWidth: 1.5
+        },
+        data: [
+          2.6, 48.7, 18.8, 6.0, 2.3, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2,
+        ]
+      },
+      {
+        name: '巡游出租车',
+        type: 'bar',
+        tooltip: {
+          valueFormatter: function (value) {
+            return value + ' 万吨';
+          }
+        },
+        itemStyle: {
+          color: colorGroup3.色4 + '4f',
+          borderColor: colorGroup3.色4,
+          borderWidth: 1.5
+        },
+        data: [
+          175.6, 182.2, 48.7, 18.8, 6.0, 2.3, 2.6, 5.9, 9.0, 26.4, 28.7, 70.7,
+        ]
+      },
     ]
   };
-  for (var i = 0; i < 12; i++) {
-    grownOption.title.push({
-      subtext: i + 1 + '月',
-      // left: parseFloat((i / 13 + 1 / 20).toFixed(5) * 100) + '%',
-      left: parseFloat((i % 6 / 6 + 7 / 100) * 100).toFixed(5) + '%',
-      top: i > 5 ? '70%' : "41%",
-      textAlign: 'center',
-      textStyle: {
-        color: '#fff'
-      }
-    })
-    let data = parseInt(Math.random() * 100 - 50)
-    data = data > 0 ?
-      [{ name: 1, value: data }, { name: 2, value: 100 - data }, { name: 3, value: 0 }] :
-      [{ name: 1, value: 0 }, { name: 2, value: 100 + data }, { name: 3, value: -data }]
-    grownOption.series.push({
-      type: 'pie',
-      radius: ['15%', '20%'],
-      center: ['0%', i > 5 ? '62%' : "33%"],
-      data: data,
-      label: {
-        show: false
-      },
-      left: parseFloat((i % 6 / 6 + 8 / 100) * 100).toFixed(5) + '%',
-      right: -1000,
-      top: 0,
-      bottom: 0
-    })
-  }
-  let mainCityOption = {
-    color: [colorGroup3.色5, colorGroup3.色4, colorGroup3.色3, colorGroup3.色2,],
+  let portOption = {
     title: {
-      text: `${province}水路 & 公路客运周转量`,
+      text: `港口货物、集装箱吞吐量`,
+      left: 'center',
       textStyle: {
-        color: "#ffffffdd",
-        fontWeight: "200",
+        color: "#6e7079",
+        fontWeight: "500",
         fontSize: 14
       }
     },
@@ -809,48 +667,77 @@ function Index() {
     },
     xAxis: [
       {
-        type: 'value',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        type: 'category',
+        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
         axisPointer: {
           type: 'shadow'
+        },
+        splitLine: {
+          show: false
+        },
+        axisLine: {
+          show: true
         }
       }
     ],
     yAxis: [
       {
-        type: 'category',
-        name: 'Precipitation',
+        type: 'value',
+        name: '货物吞吐量(万吨)',
+        interval: 50,
         axisLabel: {
-          formatter: '{value} ml'
+          formatter: '{value}'
         },
         splitLine: {
           show: false
+        },
+        axisLine: {
+          show: true
         }
       },
       {
         type: 'value',
-        name: 'Temperature',
+        name: '集装箱吞吐量(万TEU)',
         axisLabel: {
-          formatter: '{value} °C'
+          formatter: '{value}'
         },
         splitLine: {
           show: false
+        },
+        axisLine: {
+          show: true
         }
       }
     ],
     grid: {
-      left: 70,
-      right: 70,
-      top: 40,
       bottom: 40,
+      left: 30,
+      right: 30
     },
     series: [
       {
-        name: 'Evaporation',
+        name: '货物吞吐量',
         type: 'bar',
         tooltip: {
           valueFormatter: function (value) {
-            return value + ' ml';
+            return value + ' 万吨';
+          }
+        },
+        itemStyle: {
+          color: colorGroup3.色3 + '4f',
+          borderColor: colorGroup3.色3,
+          borderWidth: 1.5
+        },
+        data: [
+          2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3
+        ]
+      },
+      {
+        name: '外贸货物吞吐量',
+        type: 'bar',
+        tooltip: {
+          valueFormatter: function (value) {
+            return value + ' 万吨';
           }
         },
         itemStyle: {
@@ -859,42 +746,242 @@ function Index() {
           borderWidth: 1.5
         },
         data: [
+          2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3
+        ]
+      },
+      {
+        name: '集装箱吞吐量',
+        type: 'line',
+        yAxisIndex: 1,
+        tooltip: {
+          valueFormatter: function (value) {
+            return value + ' 万TEU';
+          }
+        },
+        itemStyle: {
+          color: colorGroup3.色3 + '5f',
+          borderWidth: 1
+        },
+        data: [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
+      }
+    ]
+  };
+  let rateOption = {
+    color: [
+      colorGroup3.色1,
+      colorGroup3.色5,
+      colorGroup3.色3,
+    ],
+    title: {
+      text: '运输方式总体比率',
+      left: 'center',
+      textStyle: {
+        color: "#6e7079",
+        fontWeight: "500",
+        fontSize: 16,
+      }
+    },
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a} <br/>{b}: {c} ({d}%)',
+      position: 'inside',
+      show: false
+    },
+    series: [
+      {
+        name: '客运',
+        type: 'pie',
+        selectedMode: 'single',
+        radius: ['35%', '50%'],
+        top: -30,
+        bottom: -60,
+        left: 20,
+        right: 20,
+        labelLine: {
+          show: false
+        },
+        label: {
+          position: 'center',
+          formatter: '',
+          show: true,
+          fontSize: "30",
+          fontWeight: "bold",
+          // formatter: `{b} \n {d}%`,
+          textStyle: {
+            color: colorGroup3.色1,
+          },
+        },
+        emphasis: {
+          label: {
+            formatter: '{a|{a}-}{b|{b}} \n {d|{d}%}  \n {c|{c}万吨}  ',
+            show: true,
+            fontSize: "30",
+            fontWeight: "bold",
+            // formatter: `{b} \n {d}%`,
+            textStyle: {
+              color: colorGroup3.色1,
+            },
+            rich: {
+              a: {
+                fontSize: 16,
+                align: 'center',
+                lineHeight: 38,
+                color: colorGroup3.色1 + "df",
+              },
+              b: {
+                fontSize: 16,
+                color: colorGroup3.色1,
+                fontWeight: 600
+              },
+              c: {
+                fontSize: 18,
+                color: colorGroup3.色1 + "df",
+                lineHeight: 30,
+              },
+              d: {
+                fontSize: 35,
+                shadowBlur: 10,
+                fontWeight: 600
+
+              },
+            }
+          },
+        },
+        data: [
           {
-            value: 2.0,
+            value: 1548, name: '公路',
             itemStyle: {
-              color: colorGroup3.色1 + '4f',
+              color: colorGroup3.色1 + '5f',
               borderColor: colorGroup3.色1,
-              borderWidth: 1.5
+              borderWidth: 2
             },
           },
           {
-            value: 2.9,
+            value: 775, name: '水路',
             itemStyle: {
-              color: colorGroup3.色3 + '4f',
-              borderColor: colorGroup3.色3,
-              borderWidth: 1.5
-            },
-          },
-          {
-            value: 2.5,
-            itemStyle: {
-              color: colorGroup3.色4 + '4f',
+              color: colorGroup3.色4 + '5f',
               borderColor: colorGroup3.色4,
-              borderWidth: 1.5
-            },
-          },
-          {
-            value: 1.0,
-            itemStyle: {
-              color: colorGroup3.色5 + '4f',
-              borderColor: colorGroup3.色5,
-              borderWidth: 1.5
+              borderWidth: 2
             },
           },
         ]
       },
+      {
+        name: '货运',
+        type: 'pie',
+        radius: ['60%', '65%'],
+        labelLine: {
+          length: 30
+        },
+        top: -30,
+        bottom: -60,
+        left: 40,
+        right: 40,
+        label: {
+          formatter: '{b|{b}}{a|{a}}  \n {d|{d}%}  \n  {c|{c}万吨} ',
+          show: true,
+          overflow: 'none',
+          rich: {
+            a: {
+              color: colorGroup3.色1 + 'af',
+              lineHeight: 24,
+              fontSize: 14,
+              align: 'center',
+            },
+            b: {
+              color: colorGroup3.色1,
+              lineHeight: 24,
+              fontSize: 14,
+              align: 'center',
+            },
+            c: {
+              color: colorGroup3.色2,
+              fontSize: 16,
+              align: 'center',
+              lineHeight: 24,
+            },
+            d: {
+              color: colorGroup3.色4,
+              fontSize: 24,
+              lineHeight: 24,
+              align: 'center',
+            }
+          }
+        },
+        data: [
+          {
+            value: 1048, name: '公路',
+            itemStyle: {
+              color: colorGroup3.色1 + '5f',
+              borderColor: colorGroup3.色1 + 'af',
+              borderWidth: 1.5
+            },
+          },
+          {
+            value: 335, name: '水路',
+            itemStyle: {
+              color: colorGroup3.色4 + '5f',
+              borderColor: colorGroup3.色4 + 'af',
+              borderWidth: 1.5
+            },
+          },
+          {
+            value: 310, name: '港口',
+            itemStyle: {
+              color: colorGroup3.色5 + '5f',
+              borderColor: colorGroup3.色5 + 'af',
+              borderWidth: 1.5
+            },
+          },
+        ]
+      }
     ]
   };
+  let grownOption = {
+    color: [colorGroup3.色1, 'rgb(255 255 255 / 22.5%)', colorGroup3.色5],
+    title: [
+      {
+        text: '不同运输方式每月增长速率',
+        left: 'center',
+        textStyle: {
+          color: "#6e7079",
+          fontWeight: "500",
+          fontSize: 16
+        }
+      },
+    ],
+    series: [
+    ]
+  };
+  for (var i = 0; i < 12; i++) {
+    grownOption.title.push({
+      subtext: i + 1 + '月',
+      // left: parseFloat((i / 13 + 1 / 20).toFixed(5) * 100) + '%',
+      left: parseFloat((i % 6 / 6 + 7 / 100) * 100).toFixed(5) + '%',
+      top: i > 5 ? '80%' : "43%",
+      textAlign: 'center',
+      textStyle: {
+        color: '#fff'
+      }
+    })
+    let data = parseInt(Math.random() * 100 - 50)
+    data = data > 0 ?
+      [{ name: 1, value: data }, { name: 2, value: 100 - data }, { name: 3, value: 0 }] :
+      [{ name: 1, value: 0 }, { name: 2, value: 100 + data }, { name: 3, value: -data }]
+    grownOption.series.push({
+      type: 'pie',
+      radius: ['19%', '25%'],
+      center: ['0%', i > 5 ? '72%' : "35%"],
+      data: data,
+      label: {
+        show: false
+      },
+      left: parseFloat((i % 6 / 6 + 8 / 100) * 100).toFixed(5) + '%',
+      right: -1000,
+      top: 0,
+      bottom: 0
+    })
+  }
 
   // 创建echartModule对象
   function createAllEchartsModule() {
@@ -906,9 +993,7 @@ function Index() {
     water2Module = new EchartModule(water2Ref.current, water2Option)
     turnover1Module = new EchartModule(turnover1Ref.current, turnover1Option)
     turnover2Module = new EchartModule(turnover2Ref.current, turnover2Option)
-    port1Module = new EchartModule(port1Ref.current, port1Option)
-    port2Module = new EchartModule(port2Ref.current, port2Option)
-    port3Module = new EchartModule(port3Ref.current, port3Option)
+    portModule = new EchartModule(portRef.current, portOption)
     rateModule = new EchartModule(rateRef.current, rateOption)
     grownModule = new EchartModule(grownRef.current, grownOption)
   }
@@ -923,9 +1008,7 @@ function Index() {
     water2Module.createChart()
     turnover1Module.createChart()
     turnover2Module.createChart()
-    port1Module.createChart()
-    port2Module.createChart()
-    port3Module.createChart()
+    portModule.createChart()
     rateModule.createChart()
     grownModule.createChart()
   }
@@ -940,11 +1023,15 @@ function Index() {
     water2Module.updateChart()
     turnover1Module.updateChart()
     turnover2Module.updateChart()
-    port1Module.updateChart()
-    port2Module.updateChart()
-    port3Module.updateChart()
+    portModule.updateChart()
     rateModule.updateChart()
     grownModule.updateChart()
+  }
+
+  function changeActiveProvince(province) {
+    let targetProvince = china.features.find(item => item.properties.name == province)
+    mapModule.option.series[0].data = [[...targetProvince.properties.cp, 200]]
+    mapModule.updateChart()
   }
 
   useEffect(() => {
@@ -953,23 +1040,20 @@ function Index() {
 
     // 初始化生成Echarts
     initAllEcharts()
+    changeActiveProvince(province)
 
     // 地图点击事件
     mapModule.chart.on('click', params => {
+      changeActiveProvince(params.name)
       setProvince(params.name)
+      // updateAllEcharts()
     })
   }, [])
-  useEffect(() => {
-    // updateAllEcharts()
-    // turnover1Module.updateChart()
-    console.log(turnover1Module)
-
-  }, [province])
 
   return (
     <div className="transport-count">
       <div className="top-nav">
-        2021年全国货物运输数据统计
+        2021年{province}交通运输数据统计
       </div>
       <div className="content cols">
         {/* 第一列 */}
@@ -1000,13 +1084,35 @@ function Index() {
         <div className="col-2 rows" style={{ position: "relative" }}>
           <div id="map" style={{ width: '100%', height: "100%", position: "absolute" }} ref={mapRef} ></div>
           <div className="row-5">
-            959599万吨公路客运量
+            <div className="total-numbers cols">
+              <div>
+                <div className="number">99999<span>万人</span></div>
+                <div className="text">公路客运量</div>
+              </div>
+              <div>
+                <div className="number">99999<span>万吨</span></div>
+                <div className="text">公路货运量</div>
+              </div>
+              <div>
+                <div className="number">99999<span>万人</span></div>
+                <div className="text">水路客运量</div>
+              </div>
+              <div>
+                <div className="number">99999<span>万吨</span></div>
+                <div className="text">水路货运量</div>
+              </div>
+              <div>
+                <div className="number">99999<span>万吨</span></div>
+                <div className="text">港口货运量</div>
+              </div>
+              <div>
+                <div className="number">99999<span>万吨</span></div>
+                <div className="text">中心城市客运量</div>
+              </div>
+            </div>
           </div>
           <div className="row-2">
-            <div id="port-3" style={{ width: '100%', height: "100%" }} ref={port3Ref}></div>
-          </div>
-          <div className="row-0" style={{ height: 0 }}>
-            <div id="port-1" style={{ width: '100%', height: "100%" }} ref={port1Ref}></div>
+            <div id="mainCity" style={{ width: '100%', height: "100%" }} ref={mainCityRef}></div>
           </div>
         </div>
         {/* 第三列 */}
@@ -1014,14 +1120,11 @@ function Index() {
           <div className="row-5">
             <div id="total-rate" style={{ width: '100%', height: "100%" }} ref={rateRef}></div>
           </div>
-          <div className="row-4">
+          <div className="row-3">
             <div id="grown" style={{ width: '100%', height: "100%" }} ref={grownRef}></div>
           </div>
-          <div className="row-2" style={{ display: 'none' }}>
-            <div id="port-2" style={{ width: '100%', height: "100%" }} ref={port2Ref}></div>
-          </div>
           <div className="row-3">
-            <div id="mainCity" style={{ width: '100%', height: "100%" }} ref={mainCityRef}></div>
+            <div id="port" style={{ width: '100%', height: "100%" }} ref={portRef}></div>
           </div>
         </div>
       </div>
