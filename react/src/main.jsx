@@ -20,7 +20,7 @@ import Tool from "./views/Simple/Tool/index";
 import News from "./views/Simple/News/index";
 // 深入交通 - Deep
 import Deep from "./views/Deep/index";
-import Count from "./views/Deep/Count/index";
+import Count from "./views/Deep/ProvinceCount/index";
 import Transport from "./views/Deep/Transport/index";
 // 未来展望 - Future
 import Future from "./views/Future/index";

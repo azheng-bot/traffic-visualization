@@ -7,12 +7,15 @@
   flex-direction: column;
   background-color: #002242;
   background-color: #010329;
+  background-image: linear-gradient(to right,#080c1f,#23303a,#213444,#23303a,#080c1f,);
+  background-image: linear-gradient(to right,#080c1f,#213444,#080c1f,);
   color: #fff;
+  
 
   .top-nav {
     height: 50px;
     line-height: 50px;
-    border-bottom: 1px solid #fff;
+    // border-bottom: 1px solid #fff;
     text-align: center;
     font-size: 32px;
     font-weight: 600;
@@ -21,6 +24,8 @@
 
   .content {
     flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
   }
   .rows {
     display: flex;
@@ -31,12 +36,15 @@
     flex-direction: row;
   }
   .row {
-    flex:1;
-    border: 1px solid #fff;
+    // flex:1;
+    // border: 1px solid #fff;
   }
   .col {
-    flex:1;
-    border: 1px solid #fff;
+    // flex:1;
+    // border: 1px solid #fff;
+  }
+  .row-0 {
+    flex:0;
   }
   .row-1 {
     flex:1;
@@ -63,6 +71,9 @@
     flex:4;
   }
 
+  .col-0 {
+    flex:0;
+  }
   .col-1 {
     flex:1;
   }
