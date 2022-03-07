@@ -33,8 +33,8 @@ function index(props) {
         { name: "交通现状", route: "/deep/now", icon: "/image/modules/colorless/now.png", _icon: "/image/modules/colorless/_now.png" },
         // { name: "违法统计", route: "/deep/illegal", icon: "/image/modules/colorless/illegal.png", _icon: "/image/modules/colorless/_illegal.png" },
         { name: "车辆统计", route: "/deep/cars", icon: "/image/modules/colorless/cars.png", _icon: "/image/modules/colorless/_cars.png" },
-        { name: "运输行业分析", route: "/deep/transport", icon: "/image/modules/colorless/transport.png", _icon: "/image/modules/colorless/_transport.png" },
-        { name: "运输行业统计", route: "/deep/count", icon: "/image/modules/colorless/count.png", _icon: "/image/modules/colorless/_count.png" },
+        { name: "各省运输数据统计", route: "/deep/count/province", icon: "/image/modules/colorless/transport.png", _icon: "/image/modules/colorless/_transport.png" },
+        { name: "全国运输数据统计", route: "/deep/count/country", icon: "/image/modules/colorless/count.png", _icon: "/image/modules/colorless/_count.png" },
       ]
     },
     {

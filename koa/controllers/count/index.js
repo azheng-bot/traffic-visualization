@@ -2,10 +2,8 @@ let fs = require("fs")
 let path = require("path")
 
 module.exports.getProvinceData = (ctx, next) => {
-  let fileStream = fs.createReadStream(path.join(__dirname, "../../json/", ctx.query.province + '.json'))
   let data = fs.readFileSync(path.join(__dirname,"../../json/",ctx.query.province+'.json') )
   data = JSON.parse(data)
-  console.log('data', data)
   // fileStream.on('open', data => {
   //   console.log('open', data)
   // })

@@ -23,29 +23,29 @@ function Index() {
   // document.body.setAttribute('arco-theme', 'dark');
 
   // 颜色组
-  let colorGroup1 = {
-    ['蓝']: '#0f8bea', // 蓝
-    ['青']: '#00d3cd', // 青
-    ['紫']: '#a46dec', // 紫
-    ['黄']: '#f9d679', // 黄
-    ['红']: '#ff2c74', // 红
-    ['蓝1']: '#47b9ff', // 蓝1
-    ['蓝2']: '#25abfc', // 蓝2
-    ['蓝3']: '#0a49d4', // 蓝3
-    ['背景色1']: '#000429', // 背景色1
-    ['背景色2']: '#174f9a', // 背景色2
-  }
-  let colorGroup2 = {
-    ['红']: '#e7222a', // 红
-    ['橙']: '#f58c30', // 橙
-    ['黄']: '#e5cd75', // 黄
-    ['红1']: '#e71f29', // 红1
-    ['红2']: '#f28488', // 红2
-    ['红3']: '#f8c8cb', // 红3
-    ['背景色1']: '#03010f', // 背景色1
-    ['背景色2']: '#1c5d57', // 背景色2
-  }
-  let colorGroup3 = {
+  // let colorGroup1 = {
+  //   ['蓝']: '#0f8bea', // 蓝
+  //   ['青']: '#00d3cd', // 青
+  //   ['紫']: '#a46dec', // 紫
+  //   ['黄']: '#f9d679', // 黄
+  //   ['红']: '#ff2c74', // 红
+  //   ['蓝1']: '#47b9ff', // 蓝1
+  //   ['蓝2']: '#25abfc', // 蓝2
+  //   ['蓝3']: '#0a49d4', // 蓝3
+  //   ['背景色1']: '#000429', // 背景色1
+  //   ['背景色2']: '#174f9a', // 背景色2
+  // }
+  // let colorGroup2 = {
+  //   ['红']: '#e7222a', // 红
+  //   ['橙']: '#f58c30', // 橙
+  //   ['黄']: '#e5cd75', // 黄
+  //   ['红1']: '#e71f29', // 红1
+  //   ['红2']: '#f28488', // 红2
+  //   ['红3']: '#f8c8cb', // 红3
+  //   ['背景色1']: '#03010f', // 背景色1
+  //   ['背景色2']: '#1c5d57', // 背景色2
+  // }
+  let colorGroup = {
     ['色1']: '#a6fcfd', // 色1
     ['色2']: '#70ffff', // 色2
     ['色3']: '#48ffff', // 色3
@@ -123,17 +123,17 @@ function Index() {
         areaColor: '#162234',
         // borderColor: "#60fefa",
         borderColor: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-          { offset: 0, color: colorGroup3.色1 },
-          { offset: 0.3, color: colorGroup3.色1 },
-          { offset: 0.6, color: colorGroup3.色2 },
-          { offset: 0.9, color: colorGroup3.色3 },
-          { offset: 1, color: colorGroup3.色4 }
+          { offset: 0, color: colorGroup.色1 },
+          { offset: 0.3, color: colorGroup.色1 },
+          { offset: 0.6, color: colorGroup.色2 },
+          { offset: 0.9, color: colorGroup.色3 },
+          { offset: 1, color: colorGroup.色4 }
         ]),
         borderWidth: 1.1
       },
       emphasis: {
         itemStyle: {
-          areaColor: colorGroup3.色3,
+          areaColor: colorGroup.色3,
         },
       },
       label: {
@@ -160,7 +160,7 @@ function Index() {
     ]
   }
   let road1Option = {
-    color: [colorGroup3.色4],
+    color: [colorGroup.色4],
     title: {
       left: 'center',
       text: `公路旅客运输量`,
@@ -192,13 +192,25 @@ function Index() {
       top: 40,
       bottom: 50,
     },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross',
+        label: {
+          backgroundColor: '#6a7985'
+        }
+      },
+      valueFormatter: function (value) {
+        return value + ' 万人';
+      }
+    },
     series: [
       {
         data: [120, 200, 150, 80, 70, 110, 130, 110, 130, 110, 130, 110],
         type: 'bar',
         itemStyle: {
-          color: colorGroup3.色5 + '4f',
-          borderColor: colorGroup3.主色,
+          color: colorGroup.色5 + '4f',
+          borderColor: colorGroup.主色,
           borderWidth: 1.5
         },
         showBackground: false,
@@ -209,7 +221,7 @@ function Index() {
     ]
   }
   let road2Option = {
-    color: [colorGroup3.色4],
+    color: [colorGroup.色4],
     title: {
       left: 'center',
       text: `公路货物运输量`,
@@ -241,13 +253,25 @@ function Index() {
       top: 40,
       bottom: 50,
     },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross',
+        label: {
+          backgroundColor: '#6a7985'
+        }
+      },
+      valueFormatter: function (value) {
+        return value + ' 万吨';
+      }
+    },
     series: [
       {
         data: [120, 200, 150, 80, 70, 110, 130, 110, 130, 110, 130, 110],
         type: 'bar',
         itemStyle: {
-          color: colorGroup3.色5 + '4f',
-          borderColor: colorGroup3.主色,
+          color: colorGroup.色5 + '4f',
+          borderColor: colorGroup.主色,
           borderWidth: 1.5
         },
         showBackground: false,
@@ -258,7 +282,7 @@ function Index() {
     ]
   }
   let water1Option = {
-    color: [colorGroup3.色4],
+    color: [colorGroup.色4],
     title: {
       text: `水路旅客运输量`,
       left: 'center',
@@ -290,13 +314,25 @@ function Index() {
       top: 40,
       bottom: 50,
     },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross',
+        label: {
+          backgroundColor: '#6a7985'
+        }
+      },
+      valueFormatter: function (value) {
+        return value + ' 万人';
+      }
+    },
     series: [
       {
         data: [120, 200, 150, 80, 70, 110, 130, 110, 130, 110, 130, 110],
         type: 'bar',
         itemStyle: {
-          color: colorGroup3.色1 + '4f',
-          borderColor: colorGroup3.色1,
+          color: colorGroup.色1 + '4f',
+          borderColor: colorGroup.色1,
           borderWidth: 1.5
         },
         showBackground: false,
@@ -307,7 +343,7 @@ function Index() {
     ]
   }
   let water2Option = {
-    color: [colorGroup3.色1],
+    color: [colorGroup.色1],
     title: {
       text: `水路货物运输量`,
       left: 'center',
@@ -339,13 +375,25 @@ function Index() {
       top: 40,
       bottom: 50,
     },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross',
+        label: {
+          backgroundColor: '#6a7985'
+        }
+      },
+      valueFormatter: function (value) {
+        return value + ' 万吨';
+      }
+    },
     series: [
       {
         data: [120, 200, 150, 80, 70, 110, 130, 110, 130, 110, 130, 110],
         type: 'bar',
         itemStyle: {
-          color: colorGroup3.色1 + '4f',
-          borderColor: colorGroup3.色1,
+          color: colorGroup.色1 + '4f',
+          borderColor: colorGroup.色1,
           borderWidth: 1.5
         },
         showBackground: false,
@@ -356,7 +404,7 @@ function Index() {
     ]
   }
   let turnover1Option = {
-    color: [colorGroup3.色1, colorGroup3.色2, colorGroup3.色3, colorGroup3.色4, colorGroup3.色5,],
+    color: [colorGroup.色1, colorGroup.色2, colorGroup.色3, colorGroup.色4, colorGroup.色5,],
     title: {
       text: `水路 & 公路客运旅客周转量`,
       left: 'center',
@@ -373,6 +421,9 @@ function Index() {
         label: {
           backgroundColor: '#6a7985'
         }
+      },
+      valueFormatter: function (value) {
+        return value + ' 万吨公里';
       }
     },
     grid: {
@@ -392,10 +443,11 @@ function Index() {
       {
         type: 'value'
         ,
+        name: '     货物吞吐量(万吨公里)',
         splitLine: {
           show: false
         }
-      }
+      },
     ],
     series: [
       {
@@ -409,7 +461,7 @@ function Index() {
         showSymbol: false,
         areaStyle: {
           opacity: 0.8,
-          color: colorGroup3.色4
+          color: colorGroup.色4
         },
         emphasis: {
           focus: 'series'
@@ -427,7 +479,7 @@ function Index() {
         showSymbol: false,
         areaStyle: {
           opacity: 0.8,
-          color: colorGroup3.色1
+          color: colorGroup.色1
         },
         emphasis: {
           focus: 'series'
@@ -438,7 +490,7 @@ function Index() {
     ]
   };
   let turnover2Option = {
-    color: [colorGroup3.色1, colorGroup3.色2, colorGroup3.色3, colorGroup3.色4, colorGroup3.色5,],
+    color: [colorGroup.色1, colorGroup.色2, colorGroup.色3, colorGroup.色4, colorGroup.色5,],
     title: {
       text: `水路 & 公路货运货物周转量`,
       left: 'center',
@@ -455,6 +507,9 @@ function Index() {
         label: {
           backgroundColor: '#6a7985'
         }
+      },
+      valueFormatter: function (value) {
+        return value + ' 万吨公里';
       }
     },
     grid: {
@@ -477,7 +532,7 @@ function Index() {
         splitLine: {
           show: false
         },
-        name: '货运量(万吨)',
+        name: '货运量(万吨公里)',
       }
     ],
     series: [
@@ -492,7 +547,7 @@ function Index() {
         showSymbol: false,
         areaStyle: {
           opacity: 0.8,
-          color: colorGroup3.色5
+          color: colorGroup.色5
         },
         emphasis: {
           focus: 'series'
@@ -510,7 +565,7 @@ function Index() {
         showSymbol: false,
         areaStyle: {
           opacity: 0.8,
-          color: colorGroup3.色3
+          color: colorGroup.色3
         },
         emphasis: {
           focus: 'series'
@@ -586,12 +641,12 @@ function Index() {
         type: 'line',
         tooltip: {
           valueFormatter: function (value) {
-            return value + ' 万吨';
+            return value + ' 万人';
           }
         },
         itemStyle: {
-          color: colorGroup3.色3 + '8f',
-          borderColor: colorGroup3.色3,
+          color: colorGroup.色3 + '8f',
+          borderColor: colorGroup.色3,
           borderWidth: 1.5
         },
         data: [
@@ -603,12 +658,12 @@ function Index() {
         type: 'bar',
         tooltip: {
           valueFormatter: function (value) {
-            return value + ' 万吨';
+            return value + ' 万人';
           }
         },
         itemStyle: {
-          color: colorGroup3.色5 + '4f',
-          borderColor: colorGroup3.色5,
+          color: colorGroup.色5 + '4f',
+          borderColor: colorGroup.色5,
           borderWidth: 1.5
         },
         data: [
@@ -620,12 +675,12 @@ function Index() {
         type: 'bar',
         tooltip: {
           valueFormatter: function (value) {
-            return value + ' 万吨';
+            return value + ' 万人';
           }
         },
         itemStyle: {
-          color: colorGroup3.色1 + '4f',
-          borderColor: colorGroup3.色1,
+          color: colorGroup.色1 + '4f',
+          borderColor: colorGroup.色1,
           borderWidth: 1.5
         },
         data: [
@@ -637,12 +692,12 @@ function Index() {
         type: 'bar',
         tooltip: {
           valueFormatter: function (value) {
-            return value + ' 万吨';
+            return value + ' 万人';
           }
         },
         itemStyle: {
-          color: colorGroup3.色4 + '4f',
-          borderColor: colorGroup3.色4,
+          color: colorGroup.色4 + '4f',
+          borderColor: colorGroup.色4,
           borderWidth: 1.5
         },
         data: [
@@ -731,8 +786,8 @@ function Index() {
           }
         },
         itemStyle: {
-          color: colorGroup3.色3 + '4f',
-          borderColor: colorGroup3.色3,
+          color: colorGroup.色3 + '4f',
+          borderColor: colorGroup.色3,
           borderWidth: 1.5
         },
         data: [
@@ -748,8 +803,8 @@ function Index() {
           }
         },
         itemStyle: {
-          color: colorGroup3.色5 + '4f',
-          borderColor: colorGroup3.色5,
+          color: colorGroup.色5 + '4f',
+          borderColor: colorGroup.色5,
           borderWidth: 1.5
         },
         data: [
@@ -766,7 +821,7 @@ function Index() {
           }
         },
         itemStyle: {
-          color: colorGroup3.色3 + '5f',
+          color: colorGroup.色3 + '5f',
           borderWidth: 1
         },
         data: [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
@@ -775,9 +830,9 @@ function Index() {
   };
   let rateOption = {
     color: [
-      colorGroup3.色1,
-      colorGroup3.色5,
-      colorGroup3.色3,
+      colorGroup.色1,
+      colorGroup.色5,
+      colorGroup.色3,
     ],
     title: {
       text: '运输方式总体比率',
@@ -815,7 +870,7 @@ function Index() {
           fontWeight: "bold",
           // formatter: `{b} \n {d}%`,
           textStyle: {
-            color: colorGroup3.色1,
+            color: colorGroup.色1,
           },
         },
         emphasis: {
@@ -826,23 +881,23 @@ function Index() {
             fontWeight: "bold",
             // formatter: `{b} \n {d}%`,
             textStyle: {
-              color: colorGroup3.色1,
+              color: colorGroup.色1,
             },
             rich: {
               a: {
                 fontSize: 16,
                 align: 'center',
                 lineHeight: 38,
-                color: colorGroup3.色1 + "df",
+                color: colorGroup.色1 + "df",
               },
               b: {
                 fontSize: 16,
-                color: colorGroup3.色1,
+                color: colorGroup.色1,
                 fontWeight: 600
               },
               c: {
                 fontSize: 18,
-                color: colorGroup3.色1 + "df",
+                color: colorGroup.色1 + "df",
                 lineHeight: 30,
               },
               d: {
@@ -858,16 +913,16 @@ function Index() {
           {
             value: 1548, name: '公路',
             itemStyle: {
-              color: colorGroup3.色1 + '5f',
-              borderColor: colorGroup3.色1,
+              color: colorGroup.色1 + '5f',
+              borderColor: colorGroup.色1,
               borderWidth: 2
             },
           },
           {
             value: 775, name: '水路',
             itemStyle: {
-              color: colorGroup3.色4 + '5f',
-              borderColor: colorGroup3.色4,
+              color: colorGroup.色4 + '5f',
+              borderColor: colorGroup.色4,
               borderWidth: 2
             },
           },
@@ -890,25 +945,25 @@ function Index() {
           overflow: 'none',
           rich: {
             a: {
-              color: colorGroup3.色1 + 'af',
+              color: colorGroup.色1 + 'af',
               lineHeight: 24,
               fontSize: 14,
               align: 'center',
             },
             b: {
-              color: colorGroup3.色1,
+              color: colorGroup.色1,
               lineHeight: 24,
               fontSize: 14,
               align: 'center',
             },
             c: {
-              color: colorGroup3.色2,
+              color: colorGroup.色2,
               fontSize: 16,
               align: 'center',
               lineHeight: 24,
             },
             d: {
-              color: colorGroup3.色4,
+              color: colorGroup.色4,
               fontSize: 24,
               lineHeight: 24,
               align: 'center',
@@ -919,24 +974,24 @@ function Index() {
           {
             value: 1048, name: '公路',
             itemStyle: {
-              color: colorGroup3.色1 + '5f',
-              borderColor: colorGroup3.色1 + 'af',
+              color: colorGroup.色1 + '5f',
+              borderColor: colorGroup.色1 + 'af',
               borderWidth: 1.5
             },
           },
           {
             value: 335, name: '水路',
             itemStyle: {
-              color: colorGroup3.色4 + '5f',
-              borderColor: colorGroup3.色4 + 'af',
+              color: colorGroup.色4 + '5f',
+              borderColor: colorGroup.色4 + 'af',
               borderWidth: 1.5
             },
           },
           {
             value: 310, name: '港口',
             itemStyle: {
-              color: colorGroup3.色5 + '5f',
-              borderColor: colorGroup3.色5 + 'af',
+              color: colorGroup.色5 + '5f',
+              borderColor: colorGroup.色5 + 'af',
               borderWidth: 1.5
             },
           },
@@ -945,7 +1000,7 @@ function Index() {
     ]
   };
   let grownOption = {
-    color: [colorGroup3.色1, 'rgb(255 255 255 / 22.5%)', colorGroup3.色5],
+    color: [colorGroup.色5, 'rgb(255 255 255 / 22.5%)', colorGroup.色1],
     title: [
       {
         text: '不同运输方式每月增长速率',
@@ -980,8 +1035,30 @@ function Index() {
       radius: ['19%', '25%'],
       center: ['0%', i > 5 ? '72%' : "35%"],
       data: data,
-      label: {
-        show: false
+      label: { //  饼图图形上的文本标签
+        normal: { // normal 是图形在默认状态下的样式
+          show: true,
+          position: 'center',
+          fontWeight: 'bold',
+          // formatter: ' {a|{c}%}', // {b}:数据名； {c}：数据值； {d}：百分比，可以自定义显示内容，
+          rich: {
+            a: {
+              color: colorGroup.色1,
+              padding: [0, 10],
+              fontSize: 15
+            },
+            b: {
+              color: colorGroup.色4,
+              padding: [0, 10],
+              fontSize: 15
+            },
+          },
+        }
+      },
+      labelLine: {
+        normal: {
+          show: false
+        }
       },
       left: parseFloat((i % 6 / 6 + 8 / 100) * 100).toFixed(5) + '%',
       right: -1000,
@@ -991,7 +1068,7 @@ function Index() {
   }
 
   // 创建echartModule对象
-  function createAllEchartsModule() {
+  function createEchartsModule() {
     mapModule = new EchartModule(mapRef.current, mapOption)
     centerCityModule = new EchartModule(centerCityRef.current, centerCityOption)
     road1Module = new EchartModule(road1Ref.current, road1Option)
@@ -1006,7 +1083,7 @@ function Index() {
   }
 
   // 初始化生成Echarts
-  function initAllEcharts() {
+  function initEcharts() {
     mapModule.createChart()
     centerCityModule.createChart()
     road1Module.createChart()
@@ -1021,7 +1098,7 @@ function Index() {
   }
 
   // 更新Echarts
-  function updateAllEcharts() {
+  function updateEcharts() {
     mapModule.updateChart()
     centerCityModule.updateChart()
     road1Module.updateChart()
@@ -1044,9 +1121,9 @@ function Index() {
   useEffect(() => {
 
     // 创建echartModule对象
-    createAllEchartsModule()
+    createEchartsModule()
     // 初始化生成Echarts
-    initAllEcharts()
+    initEcharts()
     changeActiveProvince(province)
     updateProvince(province)
 
@@ -1056,7 +1133,7 @@ function Index() {
       changeActiveProvince(params.name)
       setProvince(params.name)
       updateProvince(params.name)
-      // updateAllEcharts()
+      // updateEcharts()
     })
   }, [])
 
@@ -1080,26 +1157,84 @@ function Index() {
       turnover2Module.option.series[0].data = data.goodsTurnoverData.water.map(item => item.data_content)
       turnover2Module.option.series[1].data = data.goodsTurnoverData.road.map(item => item.data_content)
       // 7.中心城市客运
-      centerCityModule.option.series[0].data = data.centerCityData.total
-      centerCityModule.option.series[1].data = data.centerCityData.bus
-      centerCityModule.option.series[2].data = data.centerCityData.rail
-      centerCityModule.option.series[3].data = data.centerCityData.taxi
+      centerCityModule.option.series[0].data = data.centerCityData.total.map(item => item.data_content)
+      centerCityModule.option.series[1].data = data.centerCityData.bus.map(item => item.data_content)
+      centerCityModule.option.series[2].data = data.centerCityData.rail.map(item => item.data_content)
+      centerCityModule.option.series[3].data = data.centerCityData.taxi.map(item => item.data_content)
       // 8.总体运输方式比率
+      let totalPortGoods = data.totalData.portGoods[0]?.data_content;
+      let totalRoadGuest = data.totalData.roadGuest[0]?.data_content;
+      let totalRoadGoods = data.totalData.roadGoods[0]?.data_content;
+      let totalWaterGuest = data.totalData.waterGuest[0]?.data_content;
+      let totalWaterGoods = data.totalData.waterGoods[0]?.data_content;
+      setTotalData({
+        portGoods: totalPortGoods,
+        roadGuest: totalRoadGuest,
+        roadGoods: totalRoadGoods,
+        waterGuest: totalWaterGuest,
+        waterGoods: totalWaterGoods,
+      })
       // 9.不同运输方式每月增长速率
-      grownOption.series = []
+      rateModule.option.series[0].data = [
+        {
+          value: totalRoadGuest, name: '公路',
+          itemStyle: {
+            color: colorGroup.色1 + '5f',
+            borderColor: colorGroup.色1,
+            borderWidth: 2
+          },
+        },
+        {
+          value: totalWaterGuest, name: '水路',
+          itemStyle: {
+            color: colorGroup.色4 + '5f',
+            borderColor: colorGroup.色4,
+            borderWidth: 2
+          },
+        },
+      ]
+      rateModule.option.series[1].data  = [
+        {
+          value: totalRoadGoods, name: '公路',
+          itemStyle: {
+            color: colorGroup.色1 + '5f',
+            borderColor: colorGroup.色1 + 'af',
+            borderWidth: 1.5
+          },
+        },
+        {
+          value: totalWaterGoods, name: '水路',
+          itemStyle: {
+            color: colorGroup.色4 + '5f',
+            borderColor: colorGroup.色4 + 'af',
+            borderWidth: 1.5
+          },
+        },
+        {
+          value: totalPortGoods, name: '港口',
+          itemStyle: {
+            color: colorGroup.色5 + '5f',
+            borderColor: colorGroup.色5 + 'af',
+            borderWidth: 1.5
+          },
+        },
+      ]
+      grownModule.option.series=[]
       for (var i = 0; i < 12; i++) {
-        let rate = Number(data.grownData[i].data_content)
+        let rate = Number(data.grownData.roadGoods[i].data_content)
         // let rate = 3
-        rate = rate > 0 ?
+        let isPositive = rate > 0
+        let rates = rate > 0 ?
           [{ name: 1, value: rate }, { name: 2, value: 100 - rate }, { name: 3, value: 0 }] :
           [{ name: 1, value: 0 }, { name: 2, value: 100 + rate }, { name: 3, value: -rate }]
-        grownOption.series.push({
+        grownModule.option.series.push({
           type: 'pie',
           radius: ['19%', '25%'],
           center: ['0%', i > 5 ? '72%' : "35%"],
-          data: rate,
+          data: rates,
           label: {
-            show: false
+            show: false,
+            formatter: rate > 0 ? `{b|${rate}}` : `{a|${rate}}`
           },
           left: parseFloat((i % 6 / 6 + 8 / 100) * 100).toFixed(5) + '%',
           right: -1000,
@@ -1114,12 +1249,12 @@ function Index() {
 
 
       // 初始化生成Echarts
-      initAllEcharts()
+      initEcharts()
     })
   }
 
   return (
-    <div className="transport-count">
+    <div className="province-count">
       <div className="top-nav">
         2021年{province}交通运输数据统计
       </div>
@@ -1153,33 +1288,45 @@ function Index() {
           <div id="map" style={{ width: '100%', height: "100%", position: "absolute" }} ref={mapRef} ></div>
           <div className="row-5">
             <div className="total-numbers cols">
-              <div>
-                <div className="number">{totalData.roadGuest}<span>万人</span></div>
-                <div className="text">公路客运量</div>
-              </div>
-              <div>
-                <div className="number">{totalData.roadGoods}<span>万吨</span></div>
-                <div className="text">公路货运量</div>
-              </div>
-              <div>
-                <div className="number">{totalData.waterGuest}<span>万人</span></div>
-                <div className="text">水路客运量</div>
-              </div>
-              <div>
-                <div className="number">{totalData.waterGoods}<span>万吨</span></div>
-                <div className="text">水路货运量</div>
-              </div>
-              <div>
-                <div className="number">{totalData.portGoods}<span>万吨</span></div>
-                <div className="text">港口货运量</div>
-              </div>
-              <div>
-                <div className="number">0<span>万吨</span></div>
-                <div className="text">中心城市客运量</div>
-              </div>
+              {totalData.roadGuest &&
+                <div>
+                  <div className="number">{totalData.roadGuest}<span>万人</span></div>
+                  <div className="text">公路客运量</div>
+                </div>
+              }
+              {totalData.roadGoods &&
+                <div>
+                  <div className="number">{totalData.roadGoods}<span>万吨</span></div>
+                  <div className="text">公路货运量</div>
+                </div>
+              }
+              {totalData.waterGuest &&
+                <div>
+                  <div className="number">{totalData.waterGuest}<span>万人</span></div>
+                  <div className="text">水路客运量</div>
+                </div>
+              }
+              {totalData.waterGoods &&
+                <div>
+                  <div className="number">{totalData.waterGoods}<span>万吨</span></div>
+                  <div className="text">水路货运量</div>
+                </div>
+              }
+              {totalData.portGoods &&
+                <div>
+                  <div className="number">{totalData.portGoods}<span>万吨</span></div>
+                  <div className="text">港口货运量</div>
+                </div>
+              }
+              {/* {totalData.roadGoods &&
+                <div>
+                  <div className="number">0<span>万吨</span></div>
+                  <div className="text">中心城市客运量</div>
+                </div>
+              } */}
             </div>
           </div>
-          <div className="row-2">
+          <div className="row-2" style={{ position: "relative", zIndex: 100 }}>
             <div id="centerCity" style={{ width: '100%', height: "100%" }} ref={centerCityRef}></div>
           </div>
         </div>

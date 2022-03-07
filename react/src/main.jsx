@@ -20,7 +20,8 @@ import Tool from "./views/Simple/Tool/index";
 import News from "./views/Simple/News/index";
 // 深入交通 - Deep
 import Deep from "./views/Deep/index";
-import Count from "./views/Deep/ProvinceCount/index";
+import ProvinceCount from "./views/Deep/ProvinceCount/index";
+import CountryCount from "./views/Deep/CountryCount/index";
 import Transport from "./views/Deep/Transport/index";
 // 未来展望 - Future
 import Future from "./views/Future/index";
@@ -47,8 +48,8 @@ ReactDOM.render(
             </Route>
 
             <Route path="/deep" element={<Deep />}>
-              <Route path="transport" element={<Transport />}></Route>
-              <Route path="count" element={<Count />}></Route>
+              <Route path="count/province" element={<ProvinceCount />}></Route>
+              <Route path="count/country" element={<CountryCount />}></Route>
             </Route>
 
             <Route path="/future" element={<Future />}>

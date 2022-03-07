@@ -109,7 +109,16 @@ module.exports.getCenterCityData = async (prov_name) => {
 
 // 8.不同运输方式每月增长速率
 module.exports.getGrownData = async (prov_name = '北京', way = '公路', detail = '旅客', isTurnover = false) => {
-  let data = await getData(prov_name, way, detail, '同比增速', isTurnover)
+  let data = {}
+  let satuations = {
+    roadGuest: { way: '公路', detail: '旅客' },
+    roadGoods: { way: '公路', detail: '货物' },
+    waterGuest: { way: '水路', detail: '旅客' },
+    waterGoods: { way: '水路', detail: '货物' },
+  }
+  for (let key in satuations) {
+    data[key] = await getData(prov_name, satuations[key].way, satuations[key].detail, '同比增速', isTurnover)
+  }
   return { data }
 }
 // 9.港口货物集中向吞吐量
