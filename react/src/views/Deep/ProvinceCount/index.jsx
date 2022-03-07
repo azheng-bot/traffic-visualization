@@ -1,5 +1,6 @@
 import react, { useEffect, useState, useRef } from "react";
 import "./index.less";
+import { getProvinceData } from "../../../api/deepModule";
 
 // echarts
 import * as echarts from 'echarts';
@@ -10,6 +11,14 @@ echarts.registerMap('china', china)
 
 function Index() {
   let [province, setProvince] = useState('北京')
+  let [totalData, setTotalData] = useState({
+    portGoods: 0,
+    roadGoods: 0,
+    roadGuest: 0,
+    waterGoods: 0,
+    waterGuest: 0
+  })
+
   // let province = '北京市'
   // document.body.setAttribute('arco-theme', 'dark');
 
@@ -68,7 +77,7 @@ function Index() {
   // 地图模块
   let mapModule;
   // 中心城市模块
-  let mainCityModule;
+  let centerCityModule;
   // 公路1模块
   let road1Module
   // 公路2模块
@@ -90,7 +99,7 @@ function Index() {
 
   // 获取DOM元素
   let mapRef = useRef()
-  let mainCityRef = useRef()
+  let centerCityRef = useRef()
   let water1Ref = useRef()
   let water2Ref = useRef()
   let road1Ref = useRef()
@@ -511,7 +520,7 @@ function Index() {
 
     ]
   };
-  let mainCityOption = {
+  let centerCityOption = {
     title: {
       text: `中心城市客运量`,
       left: 50,
@@ -555,7 +564,6 @@ function Index() {
       {
         type: 'value',
         name: '客运量',
-        interval: 50,
         axisLabel: {
           formatter: '{value} 万人'
         },
@@ -683,8 +691,7 @@ function Index() {
     yAxis: [
       {
         type: 'value',
-        name: '货物吞吐量(万吨)',
-        interval: 50,
+        name: '     货物吞吐量(万吨)',
         axisLabel: {
           formatter: '{value}'
         },
@@ -697,7 +704,7 @@ function Index() {
       },
       {
         type: 'value',
-        name: '集装箱吞吐量(万TEU)',
+        name: '集装箱吞吐量(万TEU)                 ',
         axisLabel: {
           formatter: '{value}'
         },
@@ -711,8 +718,8 @@ function Index() {
     ],
     grid: {
       bottom: 40,
-      left: 30,
-      right: 30
+      left: 38,
+      right: 38
     },
     series: [
       {
@@ -986,7 +993,7 @@ function Index() {
   // 创建echartModule对象
   function createAllEchartsModule() {
     mapModule = new EchartModule(mapRef.current, mapOption)
-    mainCityModule = new EchartModule(mainCityRef.current, mainCityOption)
+    centerCityModule = new EchartModule(centerCityRef.current, centerCityOption)
     road1Module = new EchartModule(road1Ref.current, road1Option)
     road2Module = new EchartModule(road2Ref.current, road2Option)
     water1Module = new EchartModule(water1Ref.current, water1Option)
@@ -1001,7 +1008,7 @@ function Index() {
   // 初始化生成Echarts
   function initAllEcharts() {
     mapModule.createChart()
-    mainCityModule.createChart()
+    centerCityModule.createChart()
     road1Module.createChart()
     road2Module.createChart()
     water1Module.createChart()
@@ -1016,7 +1023,7 @@ function Index() {
   // 更新Echarts
   function updateAllEcharts() {
     mapModule.updateChart()
-    mainCityModule.updateChart()
+    centerCityModule.updateChart()
     road1Module.updateChart()
     road2Module.updateChart()
     water1Module.updateChart()
@@ -1035,20 +1042,81 @@ function Index() {
   }
 
   useEffect(() => {
+
     // 创建echartModule对象
     createAllEchartsModule()
-
     // 初始化生成Echarts
     initAllEcharts()
     changeActiveProvince(province)
+    updateProvince(province)
+
 
     // 地图点击事件
     mapModule.chart.on('click', params => {
       changeActiveProvince(params.name)
       setProvince(params.name)
+      updateProvince(params.name)
       // updateAllEcharts()
     })
   }, [])
+
+  function updateProvince(province) {
+    getProvinceData(province).then(res => {
+      console.log('res', res)
+      let { data } = res;
+
+      // 1.公路客运运输量
+      road1Module.option.series[0].data = data.roadGuestData.map(item => item.data_content)
+      // 2.公路货运运输量
+      road2Module.option.series[0].data = data.roadGoodsData.map(item => item.data_content)
+      // 3.水路客运运输量
+      water1Module.option.series[0].data = data.waterGuestData.map(item => item.data_content)
+      // 4.水路货运运输量
+      water2Module.option.series[0].data = data.waterGoodsData.map(item => item.data_content)
+      // 5.公路&水路客运周转量
+      turnover1Module.option.series[0].data = data.guestTurnoverData.water.map(item => item.data_content)
+      turnover1Module.option.series[1].data = data.guestTurnoverData.road.map(item => item.data_content)
+      // 6.公路&水路货运周转量
+      turnover2Module.option.series[0].data = data.goodsTurnoverData.water.map(item => item.data_content)
+      turnover2Module.option.series[1].data = data.goodsTurnoverData.road.map(item => item.data_content)
+      // 7.中心城市客运
+      centerCityModule.option.series[0].data = data.centerCityData.total
+      centerCityModule.option.series[1].data = data.centerCityData.bus
+      centerCityModule.option.series[2].data = data.centerCityData.rail
+      centerCityModule.option.series[3].data = data.centerCityData.taxi
+      // 8.总体运输方式比率
+      // 9.不同运输方式每月增长速率
+      grownOption.series = []
+      for (var i = 0; i < 12; i++) {
+        let rate = Number(data.grownData[i].data_content)
+        // let rate = 3
+        rate = rate > 0 ?
+          [{ name: 1, value: rate }, { name: 2, value: 100 - rate }, { name: 3, value: 0 }] :
+          [{ name: 1, value: 0 }, { name: 2, value: 100 + rate }, { name: 3, value: -rate }]
+        grownOption.series.push({
+          type: 'pie',
+          radius: ['19%', '25%'],
+          center: ['0%', i > 5 ? '72%' : "35%"],
+          data: rate,
+          label: {
+            show: false
+          },
+          left: parseFloat((i % 6 / 6 + 8 / 100) * 100).toFixed(5) + '%',
+          right: -1000,
+          top: 0,
+          bottom: 0
+        })
+      }
+      // 10.港口货物集中向吞吐量
+      portModule.option.series[0].data = data.portData.total.map(item => item.data_content)
+      portModule.option.series[1].data = data.portData.container.map(item => item.data_content)
+      portModule.option.series[2].data = data.portData.foreign.map(item => item.data_content)
+
+
+      // 初始化生成Echarts
+      initAllEcharts()
+    })
+  }
 
   return (
     <div className="transport-count">
@@ -1086,33 +1154,33 @@ function Index() {
           <div className="row-5">
             <div className="total-numbers cols">
               <div>
-                <div className="number">99999<span>万人</span></div>
+                <div className="number">{totalData.roadGuest}<span>万人</span></div>
                 <div className="text">公路客运量</div>
               </div>
               <div>
-                <div className="number">99999<span>万吨</span></div>
+                <div className="number">{totalData.roadGoods}<span>万吨</span></div>
                 <div className="text">公路货运量</div>
               </div>
               <div>
-                <div className="number">99999<span>万人</span></div>
+                <div className="number">{totalData.waterGuest}<span>万人</span></div>
                 <div className="text">水路客运量</div>
               </div>
               <div>
-                <div className="number">99999<span>万吨</span></div>
+                <div className="number">{totalData.waterGoods}<span>万吨</span></div>
                 <div className="text">水路货运量</div>
               </div>
               <div>
-                <div className="number">99999<span>万吨</span></div>
+                <div className="number">{totalData.portGoods}<span>万吨</span></div>
                 <div className="text">港口货运量</div>
               </div>
               <div>
-                <div className="number">99999<span>万吨</span></div>
+                <div className="number">0<span>万吨</span></div>
                 <div className="text">中心城市客运量</div>
               </div>
             </div>
           </div>
           <div className="row-2">
-            <div id="mainCity" style={{ width: '100%', height: "100%" }} ref={mainCityRef}></div>
+            <div id="centerCity" style={{ width: '100%', height: "100%" }} ref={centerCityRef}></div>
           </div>
         </div>
         {/* 第三列 */}
@@ -1124,7 +1192,7 @@ function Index() {
             <div id="grown" style={{ width: '100%', height: "100%" }} ref={grownRef}></div>
           </div>
           <div className="row-3">
-            <div id="port" style={{ width: '100%', height: "100%" }} ref={portRef}></div>
+            <div id="port" style={{ width: '100%', height: "100%", position: 'relative' }} ref={portRef}></div>
           </div>
         </div>
       </div>

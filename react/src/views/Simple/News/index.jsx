@@ -3,7 +3,7 @@ import "./index.less";
 
 import "https://unpkg.com/swiper/swiper-bundle.min.js";
 
-import { getNewList } from "../../../api/deepModile";
+import { getNewList } from "../../../api/deepModule";
 
 function New() {
   const [newList, setNewList] = useState([]);

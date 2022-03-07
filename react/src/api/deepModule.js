@@ -5,3 +5,8 @@ import { request } from '../utils/request'
 export function getNewList() {
     return request('/news', "get");
 }
+
+// 获取各省份统计数据
+export function getProvinceData(province) {
+    return request('/count/province', "get", { province });
+}

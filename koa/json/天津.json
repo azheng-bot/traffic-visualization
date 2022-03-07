@@ -1,0 +1,1341 @@
+{
+  "roadGuestData": [
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "1",
+      "label_name": "天津",
+      "data_content": "683"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "2",
+      "label_name": "天津",
+      "data_content": "559"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "3",
+      "label_name": "天津",
+      "data_content": "725"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "4",
+      "label_name": "天津",
+      "data_content": "742"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "5",
+      "label_name": "天津",
+      "data_content": "761"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "6",
+      "label_name": "天津",
+      "data_content": "788"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "7",
+      "label_name": "天津",
+      "data_content": "825"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "8",
+      "label_name": "天津",
+      "data_content": "784"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "9",
+      "label_name": "天津",
+      "data_content": "775"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "10",
+      "label_name": "天津",
+      "data_content": "708"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "11",
+      "label_name": "天津",
+      "data_content": "775"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "12",
+      "label_name": "天津",
+      "data_content": "790"
+    }
+  ],
+  "roadGoodsData": [
+    {
+      "domain_name": "公路货物运输量",
+      "year": "2021",
+      "month": "1",
+      "label_name": "天津",
+      "data_content": "2356"
+    },
+    {
+      "domain_name": "公路货物运输量",
+      "year": "2021",
+      "month": "2",
+      "label_name": "天津",
+      "data_content": "1546"
+    },
+    {
+      "domain_name": "公路货物运输量",
+      "year": "2021",
+      "month": "3",
+      "label_name": "天津",
+      "data_content": "3244"
+    },
+    {
+      "domain_name": "公路货物运输量",
+      "year": "2021",
+      "month": "4",
+      "label_name": "天津",
+      "data_content": "3353"
+    },
+    {
+      "domain_name": "公路货物运输量",
+      "year": "2021",
+      "month": "5",
+      "label_name": "天津",
+      "data_content": "2881"
+    },
+    {
+      "domain_name": "公路货物运输量",
+      "year": "2021",
+      "month": "6",
+      "label_name": "天津",
+      "data_content": "3143"
+    }
+  ],
+  "waterGuestData": [
+    {
+      "domain_name": "水路旅客运输量",
+      "year": "2021",
+      "month": "1",
+      "label_name": "天津",
+      "data_content": "0"
+    },
+    {
+      "domain_name": "水路旅客运输量",
+      "year": "2021",
+      "month": "2",
+      "label_name": "天津",
+      "data_content": "0"
+    },
+    {
+      "domain_name": "水路旅客运输量",
+      "year": "2021",
+      "month": "3",
+      "label_name": "天津",
+      "data_content": "2"
+    },
+    {
+      "domain_name": "水路旅客运输量",
+      "year": "2021",
+      "month": "4",
+      "label_name": "天津",
+      "data_content": "8"
+    },
+    {
+      "domain_name": "水路旅客运输量",
+      "year": "2021",
+      "month": "5",
+      "label_name": "天津",
+      "data_content": "15"
+    },
+    {
+      "domain_name": "水路旅客运输量",
+      "year": "2021",
+      "month": "6",
+      "label_name": "天津",
+      "data_content": "10"
+    },
+    {
+      "domain_name": "水路旅客运输量",
+      "year": "2021",
+      "month": "7",
+      "label_name": "天津",
+      "data_content": "15"
+    },
+    {
+      "domain_name": "水路旅客运输量",
+      "year": "2021",
+      "month": "8",
+      "label_name": "天津",
+      "data_content": "6"
+    },
+    {
+      "domain_name": "水路旅客运输量",
+      "year": "2021",
+      "month": "9",
+      "label_name": "天津",
+      "data_content": "6"
+    },
+    {
+      "domain_name": "水路旅客运输量",
+      "year": "2021",
+      "month": "10",
+      "label_name": "天津",
+      "data_content": "8"
+    },
+    {
+      "domain_name": "水路旅客运输量",
+      "year": "2021",
+      "month": "11",
+      "label_name": "天津",
+      "data_content": "0"
+    },
+    {
+      "domain_name": "水路旅客运输量",
+      "year": "2021",
+      "month": "12",
+      "label_name": "天津",
+      "data_content": "0"
+    }
+  ],
+  "waterGoodsData": [
+    {
+      "domain_name": "水路货物运输量",
+      "year": "2021",
+      "month": "1",
+      "label_name": "天津",
+      "data_content": "756"
+    },
+    {
+      "domain_name": "水路货物运输量",
+      "year": "2021",
+      "month": "2",
+      "label_name": "天津",
+      "data_content": "714"
+    },
+    {
+      "domain_name": "水路货物运输量",
+      "year": "2021",
+      "month": "3",
+      "label_name": "天津",
+      "data_content": "918"
+    },
+    {
+      "domain_name": "水路货物运输量",
+      "year": "2021",
+      "month": "4",
+      "label_name": "天津",
+      "data_content": "905"
+    },
+    {
+      "domain_name": "水路货物运输量",
+      "year": "2021",
+      "month": "5",
+      "label_name": "天津",
+      "data_content": "875"
+    },
+    {
+      "domain_name": "水路货物运输量",
+      "year": "2021",
+      "month": "6",
+      "label_name": "天津",
+      "data_content": "918"
+    },
+    {
+      "domain_name": "水路货物运输量",
+      "year": "2021",
+      "month": "7",
+      "label_name": "天津",
+      "data_content": "893"
+    },
+    {
+      "domain_name": "水路货物运输量",
+      "year": "2021",
+      "month": "8",
+      "label_name": "天津",
+      "data_content": "869"
+    },
+    {
+      "domain_name": "水路货物运输量",
+      "year": "2021",
+      "month": "9",
+      "label_name": "天津",
+      "data_content": "846"
+    },
+    {
+      "domain_name": "水路货物运输量",
+      "year": "2021",
+      "month": "10",
+      "label_name": "天津",
+      "data_content": "819"
+    },
+    {
+      "domain_name": "水路货物运输量",
+      "year": "2021",
+      "month": "11",
+      "label_name": "天津",
+      "data_content": "857"
+    },
+    {
+      "domain_name": "水路货物运输量",
+      "year": "2021",
+      "month": "12",
+      "label_name": "天津",
+      "data_content": "788"
+    }
+  ],
+  "guestTurnoverData": {
+    "water": [
+      {
+        "domain_name": "水路旅客运输量",
+        "year": "2021",
+        "month": "1",
+        "label_name": "天津",
+        "data_content": "0"
+      },
+      {
+        "domain_name": "水路旅客运输量",
+        "year": "2021",
+        "month": "2",
+        "label_name": "天津",
+        "data_content": "0"
+      },
+      {
+        "domain_name": "水路旅客运输量",
+        "year": "2021",
+        "month": "3",
+        "label_name": "天津",
+        "data_content": "26"
+      },
+      {
+        "domain_name": "水路旅客运输量",
+        "year": "2021",
+        "month": "4",
+        "label_name": "天津",
+        "data_content": "125"
+      },
+      {
+        "domain_name": "水路旅客运输量",
+        "year": "2021",
+        "month": "5",
+        "label_name": "天津",
+        "data_content": "223"
+      },
+      {
+        "domain_name": "水路旅客运输量",
+        "year": "2021",
+        "month": "6",
+        "label_name": "天津",
+        "data_content": "156"
+      },
+      {
+        "domain_name": "水路旅客运输量",
+        "year": "2021",
+        "month": "7",
+        "label_name": "天津",
+        "data_content": "225"
+      },
+      {
+        "domain_name": "水路旅客运输量",
+        "year": "2021",
+        "month": "8",
+        "label_name": "天津",
+        "data_content": "86"
+      },
+      {
+        "domain_name": "水路旅客运输量",
+        "year": "2021",
+        "month": "9",
+        "label_name": "天津",
+        "data_content": "95"
+      },
+      {
+        "domain_name": "水路旅客运输量",
+        "year": "2021",
+        "month": "10",
+        "label_name": "天津",
+        "data_content": "116"
+      },
+      {
+        "domain_name": "水路旅客运输量",
+        "year": "2021",
+        "month": "11",
+        "label_name": "天津",
+        "data_content": "3"
+      },
+      {
+        "domain_name": "水路旅客运输量",
+        "year": "2021",
+        "month": "12",
+        "label_name": "天津",
+        "data_content": "0"
+      }
+    ],
+    "road": [
+      {
+        "domain_name": "公路旅客运输量",
+        "year": "2021",
+        "month": "1",
+        "label_name": "天津",
+        "data_content": "40342"
+      },
+      {
+        "domain_name": "公路旅客运输量",
+        "year": "2021",
+        "month": "2",
+        "label_name": "天津",
+        "data_content": "32941"
+      },
+      {
+        "domain_name": "公路旅客运输量",
+        "year": "2021",
+        "month": "3",
+        "label_name": "天津",
+        "data_content": "42770"
+      },
+      {
+        "domain_name": "公路旅客运输量",
+        "year": "2021",
+        "month": "4",
+        "label_name": "天津",
+        "data_content": "45155"
+      },
+      {
+        "domain_name": "公路旅客运输量",
+        "year": "2021",
+        "month": "5",
+        "label_name": "天津",
+        "data_content": "46788"
+      },
+      {
+        "domain_name": "公路旅客运输量",
+        "year": "2021",
+        "month": "6",
+        "label_name": "天津",
+        "data_content": "49436"
+      },
+      {
+        "domain_name": "公路旅客运输量",
+        "year": "2021",
+        "month": "7",
+        "label_name": "天津",
+        "data_content": "54058"
+      },
+      {
+        "domain_name": "公路旅客运输量",
+        "year": "2021",
+        "month": "8",
+        "label_name": "天津",
+        "data_content": "47624"
+      },
+      {
+        "domain_name": "公路旅客运输量",
+        "year": "2021",
+        "month": "9",
+        "label_name": "天津",
+        "data_content": "47625"
+      },
+      {
+        "domain_name": "公路旅客运输量",
+        "year": "2021",
+        "month": "10",
+        "label_name": "天津",
+        "data_content": "42644"
+      },
+      {
+        "domain_name": "公路旅客运输量",
+        "year": "2021",
+        "month": "11",
+        "label_name": "天津",
+        "data_content": "46972"
+      },
+      {
+        "domain_name": "公路旅客运输量",
+        "year": "2021",
+        "month": "12",
+        "label_name": "天津",
+        "data_content": "46655"
+      }
+    ]
+  },
+  "goodsTurnoverData": {
+    "water": [
+      {
+        "domain_name": "水路货物运输量",
+        "year": "2021",
+        "month": "1",
+        "label_name": "天津",
+        "data_content": "1036601"
+      },
+      {
+        "domain_name": "水路货物运输量",
+        "year": "2021",
+        "month": "2",
+        "label_name": "天津",
+        "data_content": "1052757"
+      },
+      {
+        "domain_name": "水路货物运输量",
+        "year": "2021",
+        "month": "3",
+        "label_name": "天津",
+        "data_content": "1345507"
+      },
+      {
+        "domain_name": "水路货物运输量",
+        "year": "2021",
+        "month": "4",
+        "label_name": "天津",
+        "data_content": "1336816"
+      },
+      {
+        "domain_name": "水路货物运输量",
+        "year": "2021",
+        "month": "5",
+        "label_name": "天津",
+        "data_content": "1279149"
+      },
+      {
+        "domain_name": "水路货物运输量",
+        "year": "2021",
+        "month": "6",
+        "label_name": "天津",
+        "data_content": "1326431"
+      },
+      {
+        "domain_name": "水路货物运输量",
+        "year": "2021",
+        "month": "7",
+        "label_name": "天津",
+        "data_content": "1324325"
+      },
+      {
+        "domain_name": "水路货物运输量",
+        "year": "2021",
+        "month": "8",
+        "label_name": "天津",
+        "data_content": "1264834"
+      },
+      {
+        "domain_name": "水路货物运输量",
+        "year": "2021",
+        "month": "9",
+        "label_name": "天津",
+        "data_content": "1127686"
+      },
+      {
+        "domain_name": "水路货物运输量",
+        "year": "2021",
+        "month": "10",
+        "label_name": "天津",
+        "data_content": "1151537"
+      },
+      {
+        "domain_name": "水路货物运输量",
+        "year": "2021",
+        "month": "11",
+        "label_name": "天津",
+        "data_content": "1230438"
+      },
+      {
+        "domain_name": "水路货物运输量",
+        "year": "2021",
+        "month": "12",
+        "label_name": "天津",
+        "data_content": "1036514"
+      }
+    ],
+    "road": [
+      {
+        "domain_name": "公路货物运输量",
+        "year": "2021",
+        "month": "1",
+        "label_name": "天津",
+        "data_content": "470203"
+      },
+      {
+        "domain_name": "公路货物运输量",
+        "year": "2021",
+        "month": "2",
+        "label_name": "天津",
+        "data_content": "300035"
+      },
+      {
+        "domain_name": "公路货物运输量",
+        "year": "2021",
+        "month": "3",
+        "label_name": "天津",
+        "data_content": "573463"
+      },
+      {
+        "domain_name": "公路货物运输量",
+        "year": "2021",
+        "month": "4",
+        "label_name": "天津",
+        "data_content": "572464"
+      },
+      {
+        "domain_name": "公路货物运输量",
+        "year": "2021",
+        "month": "5",
+        "label_name": "天津",
+        "data_content": "569158"
+      },
+      {
+        "domain_name": "公路货物运输量",
+        "year": "2021",
+        "month": "6",
+        "label_name": "天津",
+        "data_content": "619190"
+      }
+    ]
+  },
+  "centerCityData": {
+    "total": [
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "1",
+        "label_name": "天津",
+        "data_content": "8966"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "2",
+        "label_name": "天津",
+        "data_content": "8030"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "3",
+        "label_name": "天津",
+        "data_content": "10999"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "4",
+        "label_name": "天津",
+        "data_content": "10995"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "5",
+        "label_name": "天津",
+        "data_content": "11075"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "6",
+        "label_name": "天津",
+        "data_content": "10677"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "7",
+        "label_name": "天津",
+        "data_content": "9847"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "8",
+        "label_name": "天津",
+        "data_content": "9839"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "9",
+        "label_name": "天津",
+        "data_content": "10144"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "10",
+        "label_name": "天津",
+        "data_content": "10184"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "11",
+        "label_name": "天津",
+        "data_content": "10195"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "12",
+        "label_name": "天津",
+        "data_content": "10492"
+      }
+    ],
+    "bus": [
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "1",
+        "label_name": "天津",
+        "data_content": "5023"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "2",
+        "label_name": "天津",
+        "data_content": "4820"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "3",
+        "label_name": "天津",
+        "data_content": "6180"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "4",
+        "label_name": "天津",
+        "data_content": "6065"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "5",
+        "label_name": "天津",
+        "data_content": "6044"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "6",
+        "label_name": "天津",
+        "data_content": "5971"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "7",
+        "label_name": "天津",
+        "data_content": "5108"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "8",
+        "label_name": "天津",
+        "data_content": "5736"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "9",
+        "label_name": "天津",
+        "data_content": "5650"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "10",
+        "label_name": "天津",
+        "data_content": "5508"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "11",
+        "label_name": "天津",
+        "data_content": "5536"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "12",
+        "label_name": "天津",
+        "data_content": "5683"
+      }
+    ],
+    "rail": [
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "1",
+        "label_name": "天津",
+        "data_content": "3292"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "2",
+        "label_name": "天津",
+        "data_content": "2656"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "3",
+        "label_name": "天津",
+        "data_content": "4064"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "4",
+        "label_name": "天津",
+        "data_content": "4197"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "5",
+        "label_name": "天津",
+        "data_content": "4289"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "6",
+        "label_name": "天津",
+        "data_content": "4032"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "7",
+        "label_name": "天津",
+        "data_content": "4040"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "8",
+        "label_name": "天津",
+        "data_content": "3569"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "9",
+        "label_name": "天津",
+        "data_content": "3875"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "10",
+        "label_name": "天津",
+        "data_content": "4039"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "11",
+        "label_name": "天津",
+        "data_content": "4108"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "12",
+        "label_name": "天津",
+        "data_content": "4217"
+      }
+    ],
+    "taxi": [
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "1",
+        "label_name": "天津",
+        "data_content": "651"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "2",
+        "label_name": "天津",
+        "data_content": "554"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "3",
+        "label_name": "天津",
+        "data_content": "755"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "4",
+        "label_name": "天津",
+        "data_content": "733"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "5",
+        "label_name": "天津",
+        "data_content": "742"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "6",
+        "label_name": "天津",
+        "data_content": "674"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "7",
+        "label_name": "天津",
+        "data_content": "699"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "8",
+        "label_name": "天津",
+        "data_content": "534"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "9",
+        "label_name": "天津",
+        "data_content": "619"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "10",
+        "label_name": "天津",
+        "data_content": "637"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "11",
+        "label_name": "天津",
+        "data_content": "551"
+      },
+      {
+        "domain_name": "中心城市客运量",
+        "year": "2021",
+        "month": "12",
+        "label_name": "天津",
+        "data_content": "592"
+      }
+    ]
+  },
+  "grownData": [
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "1",
+      "label_name": "天津",
+      "data_content": "3.5"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "2",
+      "label_name": "天津",
+      "data_content": "45.7"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "3",
+      "label_name": "天津",
+      "data_content": "44.4"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "4",
+      "label_name": "天津",
+      "data_content": "36.5"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "5",
+      "label_name": "天津",
+      "data_content": "31.7"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "6",
+      "label_name": "天津",
+      "data_content": "26.9"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "7",
+      "label_name": "天津",
+      "data_content": "23.1"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "8",
+      "label_name": "天津",
+      "data_content": "19.1"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "9",
+      "label_name": "天津",
+      "data_content": "16.8"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "10",
+      "label_name": "天津",
+      "data_content": "14.7"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "11",
+      "label_name": "天津",
+      "data_content": "13.6"
+    },
+    {
+      "domain_name": "公路旅客运输量",
+      "year": "2021",
+      "month": "12",
+      "label_name": "天津",
+      "data_content": "12.5"
+    }
+  ],
+  "portData": {
+    "total": [
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "1",
+        "label_name": "天津",
+        "data_content": 4554
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "10",
+        "label_name": "天津",
+        "data_content": 4643
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "11",
+        "label_name": "天津",
+        "data_content": 4398
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "12",
+        "label_name": "天津",
+        "data_content": 3557
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "2",
+        "label_name": "天津",
+        "data_content": 3778
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "3",
+        "label_name": "天津",
+        "data_content": 4498
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "4",
+        "label_name": "天津",
+        "data_content": 4479
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "5",
+        "label_name": "天津",
+        "data_content": 4738
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "6",
+        "label_name": "天津",
+        "data_content": 4622
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "7",
+        "label_name": "天津",
+        "data_content": 4603
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "8",
+        "label_name": "天津",
+        "data_content": 4559
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "9",
+        "label_name": "天津",
+        "data_content": 4525
+      }
+    ],
+    "container": [
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "1",
+        "label_name": "天津",
+        "data_content": 152
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "10",
+        "label_name": "天津",
+        "data_content": 180
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "11",
+        "label_name": "天津",
+        "data_content": 161
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "12",
+        "label_name": "天津",
+        "data_content": 106
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "2",
+        "label_name": "天津",
+        "data_content": 122
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "3",
+        "label_name": "天津",
+        "data_content": 173
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "4",
+        "label_name": "天津",
+        "data_content": 180
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "5",
+        "label_name": "天津",
+        "data_content": 201
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "6",
+        "label_name": "天津",
+        "data_content": 201
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "7",
+        "label_name": "天津",
+        "data_content": 185
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "8",
+        "label_name": "天津",
+        "data_content": 182
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "9",
+        "label_name": "天津",
+        "data_content": 183
+      }
+    ],
+    "foreign": [
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "1",
+        "label_name": "天津",
+        "data_content": 2625
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "10",
+        "label_name": "天津",
+        "data_content": 2523
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "11",
+        "label_name": "天津",
+        "data_content": 2448
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "12",
+        "label_name": "天津",
+        "data_content": 2317
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "2",
+        "label_name": "天津",
+        "data_content": 2194
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "3",
+        "label_name": "天津",
+        "data_content": 2402
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "4",
+        "label_name": "天津",
+        "data_content": 2462
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "5",
+        "label_name": "天津",
+        "data_content": 2621
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "6",
+        "label_name": "天津",
+        "data_content": 2576
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "7",
+        "label_name": "天津",
+        "data_content": 2463
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "8",
+        "label_name": "天津",
+        "data_content": 2365
+      },
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "9",
+        "label_name": "天津",
+        "data_content": 2426
+      }
+    ]
+  },
+  "totalData": {
+    "waterGoods": [
+      {
+        "domain_name": "水路货物运输量",
+        "year": "2021",
+        "month": "12",
+        "label_name": "天津",
+        "data_content": "10159"
+      }
+    ],
+    "waterGuest": [
+      {
+        "domain_name": "水路旅客运输量",
+        "year": "2021",
+        "month": "12",
+        "label_name": "天津",
+        "data_content": "70"
+      }
+    ],
+    "roadGoods": [],
+    "roadGuest": [
+      {
+        "domain_name": "公路旅客运输量",
+        "year": "2021",
+        "month": "12",
+        "label_name": "天津",
+        "data_content": "8916"
+      }
+    ],
+    "portGoods": [
+      {
+        "domain_name": "全国港口货物、集装箱吞吐量",
+        "year": "2021",
+        "month": "12",
+        "label_name": "天津",
+        "data_content": "2027"
+      }
+    ]
+  }
+}

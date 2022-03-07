@@ -8,6 +8,7 @@ const newsControllers = require("../controllers/news")
 const signControllers = require("../controllers/sign")
 const toolControllers = require("../controllers/tool")
 const provinceCountControllers = require("../controllers/count/province")
+const countControllers = require("../controllers/count/index")
 
 // 1. 获取交通图标
 router.get("/signs", signControllers.getSigns)
@@ -30,9 +31,9 @@ router.get("/tools", toolControllers.getTools)
 router.get("/news", newsControllers.getNews)
 
 // 7 获取统计数据
-// 7.1公路客运
-// 7.1.1 某省公路客运同比增速
-router.get('/count/province',provinceCountControllers.getProvinceData)
+// 7.1 某省数据
+// router.get('/count/province',provinceCountControllers.getProvinceData)
+router.get('/count/province',countControllers.getProvinceData)
 
  
 
