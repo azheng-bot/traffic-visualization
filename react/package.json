@@ -7,6 +7,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@alex_xu/react-loading": "^1.0.4",
     "@amap/amap-jsapi-loader": "^1.0.1",
     "@arco-design/web-react": "^2.29.2",
     "antd": "^4.18.7",
