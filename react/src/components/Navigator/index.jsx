@@ -23,18 +23,18 @@ function index(props) {
         { name: "交通工具", route: "/knowledge/tool", icon: "/image/modules/colorless/tool.png", _icon: "/image/modules/colorless/_tool.png" },
         { name: "交通法规", route: "/knowledge/law", icon: "/image/modules/colorless/law.png", _icon: "/image/modules/colorless/_law.png" },
         // { name: "交通历史", route: "/knowledge/history", icon: "/image/modules/colorless/history.png", _icon: "/image/modules/colorless/_history.png" },
-        { name: "最新新闻", route: "/knowledge/news", icon: "/image/modules/colorless/news.png", _icon: "/image/modules/colorless/_news.png" },
       ]
     },
     {
       name: "深入交通",
       route: "/deep",
       children: [
-        { name: "交通现状", route: "/deep/now", icon: "/image/modules/colorless/now.png", _icon: "/image/modules/colorless/_now.png" },
+        // { name: "交通现状", route: "/deep/now", icon: "/image/modules/colorless/now.png", _icon: "/image/modules/colorless/_now.png" },
         // { name: "违法统计", route: "/deep/illegal", icon: "/image/modules/colorless/illegal.png", _icon: "/image/modules/colorless/_illegal.png" },
-        { name: "车辆统计", route: "/deep/cars", icon: "/image/modules/colorless/cars.png", _icon: "/image/modules/colorless/_cars.png" },
-        { name: "各省运输数据统计", route: "/deep/count/province", icon: "/image/modules/colorless/transport.png", _icon: "/image/modules/colorless/_transport.png" },
-        { name: "全国运输数据统计", route: "/deep/count/country", icon: "/image/modules/colorless/count.png", _icon: "/image/modules/colorless/_count.png" },
+        // { name: "车辆统计", route: "/deep/cars", icon: "/image/modules/colorless/cars.png", _icon: "/image/modules/colorless/_cars.png" },
+        { name: "全国交通运输数据", route: "/deep/count/country", icon: "/image/modules/colorless/country-count.png", _icon: "/image/modules/colorless/_country-count.png" },
+        { name: "各省交通运输数据", route: "/deep/count/province", icon: "/image/modules/colorless/province-count.png", _icon: "/image/modules/colorless/_province-count.png" },
+        { name: "交通大事件", route: "/knowledge/news", icon: "/image/modules/colorless/news.png", _icon: "/image/modules/colorless/_news.png" },
       ]
     },
     {
