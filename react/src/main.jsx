@@ -12,7 +12,7 @@ import "@arco-design/web-react/dist/css/arco.css";
 import MyCity from "./views/MyCity/index";
 import Bus from "./views/MyCity/Bus/index";
 import Subway from "./views/MyCity/Subway/index";
-// 初识交通 - Simple
+// 基础通识 - Simple
 import Simple from "./views/Simple/index";
 import Sign from "./views/Simple/Sign/index";
 import Laws from "./views/Simple/Law/index";

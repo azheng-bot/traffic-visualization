@@ -378,7 +378,7 @@ function index(props) {
                   <ForwardArrow />
                 </div>
                 <div className="road-name">
-                  初识交通路
+                  基础通识路
                 </div>
               </div>
               <DottedLine width="7px" height="100%" lineNum="15" />

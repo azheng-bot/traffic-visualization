@@ -16,7 +16,7 @@ function index(props) {
       ]
     },
     {
-      name: "初识交通",
+      name: "基础通识",
       route: "/knowledge",
       children: [
         { name: "交通图标", route: "/knowledge/sign", icon: "/image/modules/colorless/sign.png", _icon: "/image/modules/colorless/_sign.png" },

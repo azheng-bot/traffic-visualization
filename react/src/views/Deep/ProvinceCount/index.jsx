@@ -9,6 +9,37 @@ import china from "./china.json"
 console.log('china', china)
 echarts.registerMap('china', china)
 
+// arco-design
+import { Radio } from '@arco-design/web-react';
+const RadioGroup = Radio.Group;
+import { Select, Message, Space } from '@arco-design/web-react';
+const Option = Select.Option;
+
+
+// 地图模块
+let mapModule;
+// 中心城市模块
+let centerCityModule;
+// 公路1模块
+let road1Module
+// 公路2模块
+let road2Module
+// 水路1模块
+let water1Module
+// 水路2模块
+let water2Module
+// 周转量1模块
+let turnover1Module
+// 周转量2模块
+let turnover2Module
+// 港口1模块
+let portModule
+// 总比率模块
+let rateModule
+// 增速模块
+let grownModule
+
+let grownData;
 function Index() {
   let [province, setProvince] = useState('北京')
   let [totalData, setTotalData] = useState({
@@ -18,33 +49,12 @@ function Index() {
     waterGoods: 0,
     waterGuest: 0
   })
+  let [grownRateType, setGrownRateType] = useState({ way: 'road', detail: 'Goods' })
 
-  // let province = '北京市'
-  // document.body.setAttribute('arco-theme', 'dark');
+
+  document.body.setAttribute('arco-theme', 'dark');
 
   // 颜色组
-  // let colorGroup1 = {
-  //   ['蓝']: '#0f8bea', // 蓝
-  //   ['青']: '#00d3cd', // 青
-  //   ['紫']: '#a46dec', // 紫
-  //   ['黄']: '#f9d679', // 黄
-  //   ['红']: '#ff2c74', // 红
-  //   ['蓝1']: '#47b9ff', // 蓝1
-  //   ['蓝2']: '#25abfc', // 蓝2
-  //   ['蓝3']: '#0a49d4', // 蓝3
-  //   ['背景色1']: '#000429', // 背景色1
-  //   ['背景色2']: '#174f9a', // 背景色2
-  // }
-  // let colorGroup2 = {
-  //   ['红']: '#e7222a', // 红
-  //   ['橙']: '#f58c30', // 橙
-  //   ['黄']: '#e5cd75', // 黄
-  //   ['红1']: '#e71f29', // 红1
-  //   ['红2']: '#f28488', // 红2
-  //   ['红3']: '#f8c8cb', // 红3
-  //   ['背景色1']: '#03010f', // 背景色1
-  //   ['背景色2']: '#1c5d57', // 背景色2
-  // }
   let colorGroup = {
     ['色1']: '#a6fcfd', // 色1
     ['色2']: '#70ffff', // 色2
@@ -74,28 +84,6 @@ function Index() {
     }
   }
 
-  // 地图模块
-  let mapModule;
-  // 中心城市模块
-  let centerCityModule;
-  // 公路1模块
-  let road1Module
-  // 公路2模块
-  let road2Module
-  // 水路1模块
-  let water1Module
-  // 水路2模块
-  let water2Module
-  // 周转量1模块
-  let turnover1Module
-  // 周转量2模块
-  let turnover2Module
-  // 港口1模块
-  let portModule
-  // 总比率模块
-  let rateModule
-  // 增速模块
-  let grownModule
 
   // 获取DOM元素
   let mapRef = useRef()
@@ -423,7 +411,7 @@ function Index() {
         }
       },
       valueFormatter: function (value) {
-        return value + ' 万吨公里';
+        return value + ' 万人公里';
       }
     },
     grid: {
@@ -1066,6 +1054,39 @@ function Index() {
       bottom: 0
     })
   }
+  function updateGrownEcharts(dataSource) {
+    console.log('dataSource', dataSource)
+    grownModule.option.series = []
+    for (var i = 0; i < 12; i++) {
+      let rate = Number(dataSource[i])
+      let rates = rate > 0 ?
+        [{ name: 1, value: rate }, { name: 2, value: 100 - rate }, { name: 3, value: 0 }] :
+        [{ name: 1, value: 0 }, { name: 2, value: 100 + rate }, { name: 3, value: -rate }]
+      grownModule.option.series.push({
+        type: 'pie',
+        radius: ['19%', '25%'],
+        center: ['0%', i > 5 ? '72%' : "35%"],
+        data: rates,
+        label: {
+          show: false,
+          formatter: rate > 0 ? `{b|${rate}%}` : `{a|${rate}%}`
+        },
+        left: parseFloat((i % 6 / 6 + 8 / 100) * 100).toFixed(5) + '%',
+        right: -1000,
+        top: 0,
+        bottom: 0
+      })
+    }
+  }
+  useEffect(() => {
+    console.log('grownRateType', grownRateType)
+    console.log('grownData', grownData)
+    if (grownData) {
+      console.log('grownData[grownRateType.way + grownRateType.detail]', grownData[grownRateType.way + grownRateType.detail])
+      updateGrownEcharts(grownData[grownRateType.way + grownRateType.detail].map(item => item.data_content))
+      grownModule.createChart()
+    }
+  }, [grownRateType])
 
   // 创建echartModule对象
   function createEchartsModule() {
@@ -1174,7 +1195,7 @@ function Index() {
         waterGuest: totalWaterGuest,
         waterGoods: totalWaterGoods,
       })
-      // 9.不同运输方式每月增长速率
+      grownData = data.grownData
       rateModule.option.series[0].data = [
         {
           value: totalRoadGuest, name: '公路',
@@ -1193,7 +1214,7 @@ function Index() {
           },
         },
       ]
-      rateModule.option.series[1].data  = [
+      rateModule.option.series[1].data = [
         {
           value: totalRoadGoods, name: '公路',
           itemStyle: {
@@ -1219,29 +1240,30 @@ function Index() {
           },
         },
       ]
-      grownModule.option.series=[]
-      for (var i = 0; i < 12; i++) {
-        let rate = Number(data.grownData.roadGoods[i].data_content)
-        // let rate = 3
-        let isPositive = rate > 0
-        let rates = rate > 0 ?
-          [{ name: 1, value: rate }, { name: 2, value: 100 - rate }, { name: 3, value: 0 }] :
-          [{ name: 1, value: 0 }, { name: 2, value: 100 + rate }, { name: 3, value: -rate }]
-        grownModule.option.series.push({
-          type: 'pie',
-          radius: ['19%', '25%'],
-          center: ['0%', i > 5 ? '72%' : "35%"],
-          data: rates,
-          label: {
-            show: false,
-            formatter: rate > 0 ? `{b|${rate}}` : `{a|${rate}}`
-          },
-          left: parseFloat((i % 6 / 6 + 8 / 100) * 100).toFixed(5) + '%',
-          right: -1000,
-          top: 0,
-          bottom: 0
-        })
-      }
+      // 9.不同运输方式每月增长速率
+      // grownModule.option.series = []
+      // for (var i = 0; i < 12; i++) {
+      //   let rate = Number(data.grownData.roadGoods[i].data_content)
+      //   let rates = rate > 0 ?
+      //     [{ name: 1, value: rate }, { name: 2, value: 100 - rate }, { name: 3, value: 0 }] :
+      //     [{ name: 1, value: 0 }, { name: 2, value: 100 + rate }, { name: 3, value: -rate }]
+      //   grownModule.option.series.push({
+      //     type: 'pie',
+      //     radius: ['19%', '25%'],
+      //     center: ['0%', i > 5 ? '72%' : "35%"],
+      //     data: rates,
+      //     label: {
+      //       show: false,
+      //       formatter: rate > 0 ? `{b|${rate}}` : `{a|${rate}}`
+      //     },
+      //     left: parseFloat((i % 6 / 6 + 8 / 100) * 100).toFixed(5) + '%',
+      //     right: -1000,
+      //     top: 0,
+      //     bottom: 0
+      //   })
+      // }
+      updateGrownEcharts(grownData[grownRateType.way + grownRateType.detail].map(item => item.data_content))
+
       // 10.港口货物集中向吞吐量
       portModule.option.series[0].data = data.portData.total.map(item => item.data_content)
       portModule.option.series[1].data = data.portData.container.map(item => item.data_content)
@@ -1335,7 +1357,29 @@ function Index() {
           <div className="row-5">
             <div id="total-rate" style={{ width: '100%', height: "100%" }} ref={rateRef}></div>
           </div>
-          <div className="row-3">
+          <div className="row-3" style={{ position: 'relative' }}>
+            <RadioGroup
+              type='button'
+              name='lang'
+              size='small'
+              defaultValue='road'
+              style={{ position: 'absolute', left: '0px', top: '20px', zIndex: 10 }}
+              onChange={(value) => setGrownRateType({ ...grownRateType, way: value })}
+            >
+              <Radio value='road'>公路</Radio>
+              <Radio value='water'>水路</Radio>
+            </RadioGroup>
+            <RadioGroup
+              type='button'
+              name='lang'
+              size='small'
+              defaultValue='Guest'
+              style={{ position: 'absolute', right: '0px', top: '20px', zIndex: 10 }}
+              onChange={(value) => setGrownRateType({ ...grownRateType, detail: value })}
+            >
+              <Radio value='Goods'>客运量</Radio>
+              <Radio value='Guest'>货运量</Radio>
+            </RadioGroup>
             <div id="grown" style={{ width: '100%', height: "100%" }} ref={grownRef}></div>
           </div>
           <div className="row-3">
