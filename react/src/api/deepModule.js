@@ -10,3 +10,8 @@ export function getNewList() {
 export function getProvinceData(province) {
     return request('/count/province', "get", { province });
 }
+
+// 获取全国份统计数据
+export function getCountryData() {
+    return request('/count/country', "get");
+}

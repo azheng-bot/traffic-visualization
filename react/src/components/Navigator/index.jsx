@@ -34,7 +34,7 @@ function index(props) {
         // { name: "车辆统计", route: "/deep/cars", icon: "/image/modules/colorless/cars.png", _icon: "/image/modules/colorless/_cars.png" },
         { name: "全国交通运输数据", route: "/deep/count/country", icon: "/image/modules/colorless/country-count.png", _icon: "/image/modules/colorless/_country-count.png" },
         { name: "各省交通运输数据", route: "/deep/count/province", icon: "/image/modules/colorless/province-count.png", _icon: "/image/modules/colorless/_province-count.png" },
-        { name: "交通大事件", route: "/knowledge/news", icon: "/image/modules/colorless/news.png", _icon: "/image/modules/colorless/_news.png" },
+        { name: "交通大事件", route: "/deep/news", icon: "/image/modules/colorless/news.png", _icon: "/image/modules/colorless/_news.png" },
       ]
     },
     {

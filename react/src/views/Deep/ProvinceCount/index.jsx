@@ -875,7 +875,7 @@ function Index() {
         },
         emphasis: {
           label: {
-            formatter: '{a|{a}-}{b|{b}} \n {d|{d}%}  \n {c|{c}万吨}  ',
+            formatter: '{a|{a}-}{b|{b}} \n {d|{d}%}  \n {c|{c}万人}  ',
             show: true,
             fontSize: "30",
             fontWeight: "bold",

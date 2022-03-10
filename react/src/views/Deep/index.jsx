@@ -227,53 +227,54 @@ function index(props) {
   const [submoduleEntrys, setSubmoduleEntrys] = useState([
     {
       active: false,
-      name: "now",
-      title: "交通现状",
-      image: "/image/modules/colorful/now.png",
-      intro: "多方面、多角度的对于中国交通现状进行可视化方式的陈列与分析。",
+      name: "count/province",
+      title: "交通运输数据统计",
+      image: "/image/modules/colorful/province-count.png",
+      intro: "将各个省份的各项交通运输数据通过报表的方式进行展现，以可视化的方式使得交通数据更直观醒目。",
       left: 547,
       top: 387
     },
     {
       active: false,
-      name: "cars",
-      title: "车辆统计",
-      image: "/image/modules/colorful/cars.png",
-      intro: "对中国现存所有车辆进行统计，以及中国车辆的发展情况进行可视化分析。",
+      name: "count/country",
+      title: "全国交通运输汇总",
+      image: "/image/modules/colorful/country-count.png",
+      intro: "将全国的各项交通运输数据合计通过报表的方式进行展现，以可视化的方式使得交通数据更直观醒目。",
       left: 974,
       top: 149
     },
     {
       active: false,
-      name: "transport",
-      title: "运输行业分析",
-      image: "/image/modules/colorful/transport.png",
-      intro: "对中国当下运输行业以及运输行业从业者进行具体、全面、多角度的分析。",
+      name: "news",
+      title: "最新新闻",
+      image: "/image/modules/colorful/news.png",
+      intro: "将最新的交通重要新闻进行汇总展示，并通过轮播的方式依次展现。",
       left: 550,
       top: -93
     },
-    {
-      active: false,
-      name: "count",
-      title: "运输行业统计",
-      image: "/image/modules/colorful/count.png",
-      intro: "将全国范围内各个省份、各个城市、各个方面的运输情况进行统计报表分析。",
-      left: 197,
-      top: 107
-    },
+    // {
+    //   active: false,
+    //   name: "count",
+    //   title: "运输行业统计",
+    //   image: "/image/modules/colorful/count.png",
+    //   intro: "将全国范围内各个省份、各个城市、各个方面的运输情况进行统计报表分析。",
+    //   left: 197,
+    //   top: 107
+    // },
+    
   ])
 
   // 模块进入点区域 - 对应小车y轴区间
   const submoduleEntryAreas = {
     back:
       [
-        { name: "now", y1: 1850, y2: 2050 },
-        { name: "cars", y1: 1500, y2: 1700 },
+        { name: "count/province", y1: 1850, y2: 2050 },
+        { name: "count/country", y1: 1500, y2: 1700 },
       ],
     forward:
       [
-        { name: "transport", y1: 1525, y2: 1725 },
-        { name: "count", y1: 1800, y2: 2000},
+        { name: "news", y1: 1525, y2: 1725 },
+        // { name: "count", y1: 1800, y2: 2000},
       ]
   }
 

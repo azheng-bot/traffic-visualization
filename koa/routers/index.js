@@ -7,7 +7,6 @@ const lawControllers = require("../controllers/law")
 const newsControllers = require("../controllers/news")
 const signControllers = require("../controllers/sign")
 const toolControllers = require("../controllers/tool")
-const provinceCountControllers = require("../controllers/count/province")
 const countControllers = require("../controllers/count/index")
 
 // 1. 获取交通图标
@@ -34,6 +33,8 @@ router.get("/news", newsControllers.getNews)
 // 7.1 某省数据
 // router.get('/count/province',provinceCountControllers.getProvinceData)
 router.get('/count/province',countControllers.getProvinceData)
+// 7.2 全国数据
+router.get('/count/country',countControllers.getCountryData)
 
  
 

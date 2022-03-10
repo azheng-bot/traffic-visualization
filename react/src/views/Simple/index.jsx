@@ -260,15 +260,15 @@ function index(props) {
       left: 1161,
       top: 42
     },
-    {
-      active: false,
-      name: "news",
-      title: "最新新闻",
-      image: "/image/modules/colorful/news.png",
-      intro: "将最新的交通重要新闻进行汇总展示，并通过轮播的方式依次展现。",
-      left: 730,
-      top: 285
-    },
+    // {
+    //   active: false,
+    //   name: "news",
+    //   title: "最新新闻",
+    //   image: "/image/modules/colorful/news.png",
+    //   intro: "将最新的交通重要新闻进行汇总展示，并通过轮播的方式依次展现。",
+    //   left: 730,
+    //   top: 285
+    // },
   ])
 
   // 模块进入点区域 - 对应小车y轴区间
@@ -281,7 +281,7 @@ function index(props) {
     forward:
       [
         { name: "law", y1: 1200, y2: 1400 },
-        { name: "news", y1: 1525, y2: 1725 },
+        // { name: "news", y1: 1525, y2: 1725 },
       ]
   }
 

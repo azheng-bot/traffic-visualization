@@ -17,12 +17,11 @@ import Simple from "./views/Simple/index";
 import Sign from "./views/Simple/Sign/index";
 import Laws from "./views/Simple/Law/index";
 import Tool from "./views/Simple/Tool/index";
-import News from "./views/Simple/News/index";
 // 深入交通 - Deep
 import Deep from "./views/Deep/index";
 import ProvinceCount from "./views/Deep/ProvinceCount/index";
 import CountryCount from "./views/Deep/CountryCount/index";
-import Transport from "./views/Deep/Transport/index";
+import News from "./views/Deep/News/index";
 // 未来展望 - Future
 import Future from "./views/Future/index";
 
@@ -44,12 +43,12 @@ ReactDOM.render(
               <Route path="sign" element={<Sign />}></Route>
               <Route path="law" element={<Laws />}></Route>
               <Route path="tool" element={<Tool />}></Route>
-              <Route path="news" element={<News />}></Route>
             </Route>
 
             <Route path="/deep" element={<Deep />}>
               <Route path="count/province" element={<ProvinceCount />}></Route>
               <Route path="count/country" element={<CountryCount />}></Route>
+              <Route path="news" element={<News />}></Route>
             </Route>
 
             <Route path="/future" element={<Future />}>
