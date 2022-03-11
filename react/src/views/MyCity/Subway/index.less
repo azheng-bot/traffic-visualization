@@ -3,7 +3,9 @@
   height: 100%;
   background-color: #fff;
   position: relative;
-
+  #subway-svg {
+    left: 0 !important;
+  }
   #subway-map {
     height: 100%;
     position: relative;
@@ -16,9 +18,10 @@
     height: max-content;
     background-color: rgb(255, 255, 255);
     z-index: 500;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 30px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px,
+      rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 30px;
     // box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(141, 141, 141, 0.3) 0px 7px 13px -5px;
-    transition: .5s;
+    transition: 0.5s;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -60,7 +63,7 @@
       }
 
       &::after {
-        content: '';
+        content: "";
         display: block;
         position: absolute;
         bottom: -5px;
@@ -76,9 +79,8 @@
     ul {
       flex: 1;
       overflow-y: scroll;
-      transition: .2s ease;
+      transition: 0.2s ease;
       margin-top: 5px;
-
 
       &::-webkit-scrollbar {
         width: 5px;
@@ -105,7 +107,7 @@
       box-sizing: border-box;
       cursor: pointer;
       // text-align: center;
-      transition: .75s;
+      transition: 0.75s;
       // font-style: italic;
       font-weight: 200;
       font-size: 18px;
@@ -131,7 +133,7 @@
       // background-color: #01a2e225;
       // background-color: #f8f8f8;
       font-size: 20px;
-      transition: .3s;
+      transition: 0.3s;
     }
 
     .bg {
@@ -143,17 +145,16 @@
       line-height: 36px;
       // border: 1px solid rgb(0, 181, 194);
       border: none;
-      box-shadow: rgba(136, 136, 136, 0.4) 0px 2px 1px, rgba(0, 0, 0, 0.3) 0px 7px 13px -10px, rgba(0, 0, 0, 0.2) 0px -2px 0px inset;
-    
+      box-shadow: rgba(136, 136, 136, 0.4) 0px 2px 1px,
+        rgba(0, 0, 0, 0.3) 0px 7px 13px -10px,
+        rgba(0, 0, 0, 0.2) 0px -2px 0px inset;
     }
-
 
     // &.action_width {
     //   height: 50px;
     //   overflow: hidden;
     // }
   }
-
 
   .address {
     left: 5%;
@@ -169,17 +170,15 @@
     left: 5%;
     top: calc(95% - 60px);
   }
-
 }
 
 .subway-module.show-address {
   .address {
     height: calc(87.5% - 60px);
 
-
     ul li {
       margin-top: 10px;
-      transition: .4s;
+      transition: 0.4s;
     }
   }
 
@@ -206,7 +205,7 @@
 
     ul li {
       margin-top: 10px;
-      transition: .4s;
+      transition: 0.4s;
     }
   }
 }
@@ -226,5 +225,4 @@
       margin-top: 0;
     }
   }
-
 }
