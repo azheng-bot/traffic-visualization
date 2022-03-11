@@ -24,51 +24,55 @@ import CountryCount from "./views/Deep/CountryCount/index";
 import News from "./views/Deep/News/index";
 // 未来展望 - Future
 import Future from "./views/Future/index";
+import Carbon from "./views/Future/Carbon/index";
 
 ReactDOM.render(
   // <React.StrictMode>
-    <CityInfoContextProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<App />}>
+  <CityInfoContextProvider>
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />}>
 
-            <Route path="/" element={<MyCity />}></Route>
+          <Route path="/" element={<MyCity />}></Route>
 
-            <Route path="/mycity" element={<MyCity />}>
-              <Route path="bus" element={<Bus />}></Route>
-              <Route path="subway" element={<Subway />}></Route>
-            </Route>
-
-            <Route path="/knowledge" element={<Simple />}>
-              <Route path="sign" element={<Sign />}></Route>
-              <Route path="law" element={<Laws />}></Route>
-              <Route path="tool" element={<Tool />}></Route>
-            </Route>
-
-            <Route path="/deep" element={<Deep />}>
-              <Route path="count/province" element={<ProvinceCount />}></Route>
-              <Route path="count/country" element={<CountryCount />}></Route>
-              <Route path="news" element={<News />}></Route>
-            </Route>
-
-            <Route path="/future" element={<Future />}>
-
-            </Route>
-
-
-
-            <Route path="/bus" element={<Bus />}></Route>
-            <Route path="/subway/:id" element={<Subway />}></Route>
-            <Route path="/subway" element={<Subway />}></Route>
-            <Route path="/sign" element={<Sign />}></Route>
-            <Route path="/law" element={<Laws />}></Route>
-            <Route path="/tool" element={<Tool />}></Route>
-            <Route path="/news" element={<News />}></Route>
-
+          <Route path="/mycity" element={<MyCity />}>
+            <Route path="bus" element={<Bus />}></Route>
+            <Route path="subway" element={<Subway />}></Route>
           </Route>
-        </Routes>
-      </Router>
-    </CityInfoContextProvider>
+
+          <Route path="/knowledge" element={<Simple />}>
+            <Route path="sign" element={<Sign />}></Route>
+            <Route path="law" element={<Laws />}></Route>
+            <Route path="tool" element={<Tool />}></Route>
+          </Route>
+
+          <Route path="/deep" element={<Deep />}>
+            <Route path="count/province" element={<ProvinceCount />}></Route>
+            <Route path="count/country" element={<CountryCount />}></Route>
+            <Route path="news" element={<News />}></Route>
+          </Route>
+
+          <Route path="/future" element={<Future />}>
+            <Route path="carbon" element={<Carbon />}></Route>
+          </Route>
+
+
+
+          <Route path="/bus" element={<Bus />}></Route>
+          <Route path="/subway/:id" element={<Subway />}></Route>
+          <Route path="/subway" element={<Subway />}></Route>
+          <Route path="/sign" element={<Sign />}></Route>
+          <Route path="/law" element={<Laws />}></Route>
+          <Route path="/tool" element={<Tool />}></Route>
+          <Route path="/news" element={<News />}></Route>
+          <Route path="/count/province" element={<ProvinceCount />}></Route>
+          <Route path="/count/country" element={<CountryCount />}></Route>
+          <Route path="/carbon" element={<Carbon />}></Route>
+
+        </Route>
+      </Routes>
+    </Router>
+  </CityInfoContextProvider>
   // </React.StrictMode>
   ,
   document.getElementById("root")

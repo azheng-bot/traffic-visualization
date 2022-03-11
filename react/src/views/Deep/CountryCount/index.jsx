@@ -905,12 +905,6 @@ function Index() {
         waterModule.updateData([data, turnoverData])
         waterModule.createChart()
         break;
-      case '水路旅客':
-        var data = echartsData.waterData.waterGuest.map(item => item.data_content)
-        var turnoverData = echartsData.waterData.waterGuestTurnover.map(item => item.data_content)
-        waterModule.updateData([data, turnoverData])
-        waterModule.createChart()
-        break;
       case '航空货邮':
         var data = echartsData.airData.countryGoods.map(item => item.data_content)
         var worldData = echartsData.airData.worldGoods.map(item => item.data_content)
