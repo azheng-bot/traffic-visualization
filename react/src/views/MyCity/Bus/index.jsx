@@ -117,7 +117,6 @@ function Bus() {
     linesearch.search(name, function (status, result) {
       map.clearMap ? map.clearMap() : "";
       if (status === "complete" && result.info === "OK") {
-        // console.log(result.lineInfo);
         setBusLineInfo(result.lineInfo);
         setHeightNum("70%");
         setBusStop(0);

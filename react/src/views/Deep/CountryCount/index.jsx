@@ -1154,7 +1154,6 @@ function Index() {
       // 获取数据
       .then(getCountryData)
       .then(({ data }) => {
-        console.log('data', data)
         echartsData = { airData: data.airData, portData: data.portData, roadData: data.roadData, waterData: data.waterData }
         // 加载可视化地图数据
         mapDataList = Object.assign({}, data.provinceTotalData);

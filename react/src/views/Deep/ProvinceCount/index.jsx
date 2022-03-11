@@ -6,7 +6,6 @@ import { getProvinceData } from "../../../api/deepModule";
 import * as echarts from 'echarts';
 // china.json
 import china from "./china.json"
-console.log('china', china)
 echarts.registerMap('china', china)
 
 // arco-design
@@ -1055,7 +1054,6 @@ function Index() {
     })
   }
   function updateGrownEcharts(dataSource) {
-    console.log('dataSource', dataSource)
     grownModule.option.series = []
     for (var i = 0; i < 12; i++) {
       let rate = Number(dataSource[i])
@@ -1079,10 +1077,7 @@ function Index() {
     }
   }
   useEffect(() => {
-    console.log('grownRateType', grownRateType)
-    console.log('grownData', grownData)
     if (grownData) {
-      console.log('grownData[grownRateType.way + grownRateType.detail]', grownData[grownRateType.way + grownRateType.detail])
       updateGrownEcharts(grownData[grownRateType.way + grownRateType.detail].map(item => item.data_content))
       grownModule.createChart()
     }
@@ -1160,7 +1155,6 @@ function Index() {
 
   function updateProvince(province) {
     getProvinceData(province).then(res => {
-      console.log('res', res)
       let { data } = res;
 
       // 1.公路客运运输量

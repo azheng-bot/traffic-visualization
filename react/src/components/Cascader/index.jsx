@@ -8,7 +8,6 @@ import "./index.less"
 
 function index(props) {
   let match = useLocation()
-  console.log(match)
 
   const [city, setCity] = useState('0')
   const [temperature, setTemperature] = useState('0')
@@ -107,7 +106,7 @@ function index(props) {
     ).then(
       // 根据adcode，获取高德Web API天气信息
       res => {
-        console.log('state', state)
+        // console.log('state', state)
         let weatherInfo = res.data.lives[0];
         setTemperature(weatherInfo.temperature);
       }

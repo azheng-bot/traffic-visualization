@@ -19,7 +19,6 @@ import RoadSign from "../../components/RoadSign"
 
 function index(props) {
   let match = useLocation()
-  console.log(match)
   // 左边景观的图片与样式
   const leftSceneries = [];
   (function createLeftSceneries() {

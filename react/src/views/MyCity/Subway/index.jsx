@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import cityList from "./cityList.js";
 import "./index.less";
-import "https://webapi.amap.com/subway?v=1.0&key=c6e434d1188e1c9f904dc256f7e14de8&callback=cbk";
+// import "https://webapi.amap.com/subway?v=1.0&key=c6e434d1188e1c9f904dc256f7e14de8&callback=cbk";
 import Loading from "../../../components/Loading";
 
 function Metro(props) {
@@ -27,11 +27,16 @@ function Metro(props) {
     });
     // if (!document.querySelector("#beijing")) return;
     // 创建地铁图
+    let script = document.createElement('script')
+    script.src = "https://webapi.amap.com/subway?v=1.0&key=c6e434d1188e1c9f904dc256f7e14de8&callback=cbk"
+    document.body.appendChild(script)
+    
     window.cbk = function () {
       mySubway = subway("beijing", {
         adcode: adcodeId,
         easy: 1,
-      });
+      }); 
+      console.log('mySubway', mySubway)
       mySubway.event.on("subway.complete", function () {
         console.log("地铁图加载成功");
         // 获取线路
@@ -46,7 +51,7 @@ function Metro(props) {
   }, []);
 
   let lineClick = (item) => {
-    console.log(item);
+    console.log('item',item);
     if (item == "全部") {
       setLine("全部线路");
       setLineId(0);

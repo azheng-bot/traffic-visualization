@@ -5,9 +5,7 @@ function index(props) {
   // 模态框是否显示
   const [isModalVisiable, setIsModalVisiable] = useState(false);
 
-  console.log(props.isModalVisiable)
   useEffect(() => {
-    // console.log(props.isModalVisiable)
   }, [props.isModalVisiable])
 
   return (

@@ -3,7 +3,6 @@ import { useReducer, createContext } from 'react'
 let cityInfoContext = createContext({})
 
 let reducer = (state, action) => {
-  console.log('action', action.payload.cityInfo)
   switch (action.type) {
     case 'setCityInfo':
       return { ...state, cityInfo: action.payload.cityInfo };

@@ -118,7 +118,6 @@ function Index() {
           },
         })
       );
-      console.log("rich", rich);
       // 给echarts添加数据
       // createEcharts(res.categaries[0])
     });

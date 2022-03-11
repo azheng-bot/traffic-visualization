@@ -167,7 +167,6 @@ function index(props) {
         zIndex: 70
       })
     }
-    console.log(bigTree4Num)
 
     // // 添加座椅和路灯
     // rightSceneries.push({

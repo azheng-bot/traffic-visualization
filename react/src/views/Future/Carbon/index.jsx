@@ -7,10 +7,10 @@ import * as echarts from 'echarts';
 // import 'echarts-wordcloud';
 
 function Index() {
-  const [currentPage, setCurrentPage] = useState(0)
+  const [currentPage, setCurrentPage] = useState(-1)
   useEffect(() => {
 
-
+    setCurrentPage(0)
   }, [])
 
   return (
@@ -39,7 +39,7 @@ function Index() {
             </div>
           </div>
           <div className="intro intro-2">
-            <div className="intro-title">碳中和</div>
+            <div className="intro-title">碳达峰</div>
             <div className="intro-content">
               碳达峰（peak carbon dioxide emissions）  就是指在某一个时点，二氧化碳的排放不再增长达到峰值，之后逐步回落。碳达峰是二氧化碳排放量由增转降的历史拐点，标志着碳排放与经济发展实现脱钩，达峰目标包括达峰年份和峰值。
             </div>
