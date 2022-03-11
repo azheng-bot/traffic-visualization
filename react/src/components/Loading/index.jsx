@@ -54,6 +54,6 @@ Loading.defaultProps = {
   textColor: "",
   textOffset: 0,
   opacity: 1,
-  num: 1000,
+  num: 100,
 };
 export default Loading;

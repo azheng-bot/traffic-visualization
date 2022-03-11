@@ -4,19 +4,21 @@ import "./index.less";
 import "https://unpkg.com/swiper/swiper-bundle.min.js";
 
 import { getNewList } from "../../../api/deepModule";
-
+// Loading 组件
+import Loading from "../../../components/Loading";
 function New() {
   const [newList, setNewList] = useState([]);
-  const [scrollList, setScrollList] = useState([0,0,0,0,0,0,0,0,0,0]);
+  const [scrollList, setScrollList] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
-
-  const swiperScorll = (e,index) => {
+  const [newFlag, setNewFlag] = useState(true);
+  const swiperScorll = (e, index) => {
     scrollList[index] = e.target.scrollTop;
-    setScrollList([...scrollList])
+    setScrollList([...scrollList]);
   };
   useEffect(() => {
     getNewList()
       .then((res) => {
+        setNewFlag(false);
         setNewList(res.news);
       })
       .then(() => {
@@ -62,28 +64,34 @@ function New() {
   }, []);
   return (
     <div className="new_box">
+      <Loading flagLoading={newFlag} />
       <div className="swiper-container">
-        <div className="swiper-wrapper"
-        >
-          {newList.map((item,index) => (
-
-            <div key={item.news_id} className="swiper-slide" >
-              
-
+        <div className="swiper-wrapper">
+          {newList.map((item, index) => (
+            <div key={item.news_id} className="swiper-slide">
               {/* 新闻内容 */}
               <div
-                className={["wrapper slide-inner",scrollList[index] > 0?'show-content':'show-image'].join(' ')} onScroll={(e) => {
-                  swiperScorll(e,index);
+                className={[
+                  "wrapper slide-inner",
+                  scrollList[index] > 0 ? "show-content" : "show-image",
+                ].join(" ")}
+                onScroll={(e) => {
+                  swiperScorll(e, index);
                 }}
               >
                 {/* 新闻标题 */}
-                <p className="news_title"><span className="number">{(index+1).toString().padStart(1,'0')}、</span>{item.title}</p>
+                <p className="news_title">
+                  <span className="number">
+                    {(index + 1).toString().padStart(1, "0")}、
+                  </span>
+                  {item.title}
+                </p>
                 {/* 新闻图片 */}
                 <div
                   style={{
                     backgroundImage: "url(" + item.image + ")",
                   }}
-                  className='news_image'
+                  className="news_image"
                 ></div>
                 <div className="item_content">
                   <ul>
