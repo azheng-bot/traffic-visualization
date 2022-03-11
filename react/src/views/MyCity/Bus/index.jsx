@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getBusList, getCityList } from "../../../api/mycityModule";
 import "./index.less";
 import AMapLoader from "@amap/amap-jsapi-loader";
-
-
+import Loading from "../../../components/Loading";
 function Bus() {
   // 城市列表
   const [cityList, setCityList] = useState([]);
@@ -12,7 +11,7 @@ function Bus() {
   // 地图
   let [map, setMap] = useState({});
   // 当前城市
-  let [city, setCity] = useState("北京市");
+  let [city, setCity] = useState("");
   // 控制地址选择的显示和隐藏
   let [cityFlag, setCityFlag] = useState(false);
   // 当前公交线路
@@ -20,11 +19,14 @@ function Bus() {
   // 公交线路信息
   let [busLineInfo, setBusLineInfo] = useState([]);
   // 公交时间信息
-  let [busTimeInfo, setBusTimeInfo] = useState('');
+  let [busTimeInfo, setBusTimeInfo] = useState("");
   // 站点标记
   let [marker, setMarKer] = useState("");
   // 站点选中
   let [busStop, setBusStop] = useState(0);
+  // 地图显示
+  let [mapFlag, setMapFlag] = useState(true);
+  let [heightNum, setHeightNum] = useState("100%");
   useEffect(() => {
     AMapLoader.load({
       key: "c6e434d1188e1c9f904dc256f7e14de8", // 申请好的Web端开发者Key，首次调用 load 时必填
@@ -43,52 +45,50 @@ function Bus() {
         citysearch.getLocalCity(function (status, result) {
           if (status === "complete" && result.info === "OK") {
             // result即为当前所在城市信息
-            // setCity(result.city);
+            setCity(result.city);
             //地图显示当前城市
-            // var citybounds = result.bounds;
+            var citybounds = result.bounds;
             // 设置当前城市
-            // map.setBounds(citybounds);
+            map.setBounds(citybounds);
+            busListClick(result.city);
           }
         });
-        busListClick();
-        getbusLine(busLine, city);
       })
       .catch((e) => {
         console.log(e);
       });
   }, []);
-  const busListClick = () => {
-    getBusList(city).then((res) => {
+  const busListClick = (cityName) => {
+    getBusList(cityName).then((res) => {
       setBusList(res.buses);
       setBusLine(res.buses[0].bus_name);
+      getbusLine(res.buses[0].bus_name, cityName);
     });
   };
 
-
   // 点击城市
   const cityClick = (e, item) => {
-    e.stopPropagation()
+    e.stopPropagation();
 
     if (item.cities) {
-      console.log('item', item)
+      console.log("item", item);
       setCityList(item.cities);
     } else {
       // 关闭选框
       setCityFlag(false);
       // 设置城市
-      setCity(item.city_name)
+      setCity(item.city_name);
       // 获取所有公交
-      busListClick();
+      busListClick(item.city_name);
       // 设置第一个公交线路
       setBusLine("1路");
       // 获取第一个公交线路
       getbusLine(busLine, item.city_name);
       // 设置第一个公交站点
-      setBusStop(0)
+      setBusStop(0);
     }
   };
-  useEffect(() => {
-  },[city])
+  useEffect(() => {}, [city]);
 
   // 城市下拉框
   const downClick = () => {
@@ -97,7 +97,6 @@ function Bus() {
     });
     setCityFlag(!cityFlag);
   };
-
 
   // 获取公交线路信息
   const getbusLine = (name, city) => {
@@ -118,16 +117,20 @@ function Bus() {
     linesearch.search(name, function (status, result) {
       map.clearMap ? map.clearMap() : "";
       if (status === "complete" && result.info === "OK") {
-        console.log(result.lineInfo)
+        // console.log(result.lineInfo);
         setBusLineInfo(result.lineInfo);
-        setBusStop(0)
+        setHeightNum("70%");
+        setBusStop(0);
         // 获取公交时间
-        setBusTimeInfo(JSON.parse(decodeURI(result.lineInfo[0].timedesc).replaceAll('%2C', ',')).allRemark)
+        setBusTimeInfo(
+          JSON.parse(
+            decodeURI(result.lineInfo[0].timedesc).replaceAll("%2C", ",")
+          ).allRemark
+        );
         lineSearch_Callback(result.lineInfo);
       }
     });
   };
-
 
   // 线路选择
   const busLineClick = (name) => {
@@ -155,6 +158,7 @@ function Bus() {
   }
   /*绘制路线*/
   function drawbusLine(startPot, endPot, BusArr) {
+    setMapFlag(true);
     //绘制起点，终点
     new AMap.Marker({
       map: map,
@@ -183,6 +187,7 @@ function Bus() {
     // 将 busPolyline 显示在地图中心并自动缩放地图到合适级别。
     // true表示需要动画过程，[60,200,60,60]表示上下左右避让像素
     map.setFitView(busPolyline, true, [60, 200, 60, 60]);
+    setMapFlag(false);
   }
   // 站点标记
   const busStopClick = (busPot, index) => {
@@ -210,12 +215,8 @@ function Bus() {
             downClick();
           }}
         >
-          <div className="city-name">
-            {city}
-          </div>
-          <span>
-            城市公交
-          </span>
+          <div className="city-name">{city}</div>
+          <span>城市公交</span>
           {/* {cityFlag ? (
             <img src="https://hrsaas.obs.cn-north-4.myhuaweicloud.com/icon_down.png" alt="" />
           ) : (
@@ -225,7 +226,10 @@ function Bus() {
             <div className="city-select">
               <ul>
                 {cityList.map((item) => (
-                  <li onClick={(e) => cityClick(e, item)} key={item.city_id || item.prov_id}>
+                  <li
+                    onClick={(e) => cityClick(e, item)}
+                    key={item.city_id || item.prov_id}
+                  >
                     {item.prov_name || item.city_name}
                   </li>
                 ))}
@@ -255,28 +259,44 @@ function Bus() {
         </div>
       </div>
       <div className="box_right">
-        {busLineInfo[0] &&
-          (<div className="bus-info">
+        {busLineInfo[0] && (
+          <div className="bus-info">
             <div className="bus-base-info">
               <div className="bus-number">
                 {busLine?.match(/^\d+/)[0]}
                 {/* {busLineInfo[0].name} */}
               </div>
               <div className="bus-company">
-                {busLineInfo[0].company || '暂无客运公司信息'}
+                {busLineInfo[0].company || "暂无客运公司信息"}
               </div>
               <div className="bus-start-end">
-                <div className="start-stop">起点:<span> {busLineInfo[0].start_stop}</span></div>
-                <div className="end-stop">终点:<span> {busLineInfo[0].end_stop}</span></div>
+                <div className="start-stop">
+                  起点:<span> {busLineInfo[0].start_stop}</span>
+                </div>
+                <div className="end-stop">
+                  终点:<span> {busLineInfo[0].end_stop}</span>
+                </div>
               </div>
             </div>
             <div className="bus-line-info">
               <div className="top-line">
-                <div className="arrive-line" style={{ width: `calc(20px + (100% - 40px) * ${busStop} / ${busLineInfo[0].via_stops.length - 1})` }}></div>
+                <div
+                  className="arrive-line"
+                  style={{
+                    width: `calc(20px + (100% - 40px) * ${busStop} / ${
+                      busLineInfo[0].via_stops.length - 1
+                    })`,
+                  }}
+                ></div>
               </div>
               <div className="stop-list">
                 {busLineInfo[0].via_stops.map((item, index) => (
-                  <div key={item.sequence} className={index === busStop ? "stop-info active" : "stop-info"}>
+                  <div
+                    key={item.sequence}
+                    className={
+                      index === busStop ? "stop-info active" : "stop-info"
+                    }
+                  >
                     <div className="point"></div>
                     <div
                       className="stop-name"
@@ -290,20 +310,23 @@ function Bus() {
                 ))}
               </div>
               <div className="bottom-line">
-                {[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,].map((item, index) => (
+                {[
+                  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                  0, 0, 0,
+                ].map((item, index) => (
                   <div className="point" key={index}></div>
                 ))}
-                <div className="bus-time">
-                  {busTimeInfo}
-                </div>
+                <div className="bus-time">{busTimeInfo}</div>
               </div>
             </div>
-          </div>)
-        }
+          </div>
+        )}
+        <Loading flagLoading={mapFlag} heightNum={heightNum} />
         <div id="container" className="map" style={{ height: "70%" }}></div>
       </div>
     </div>
   );
-};
+}
 
 export default Bus;

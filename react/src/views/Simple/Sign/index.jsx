@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getSign } from "../../../api/knowLedgeModule";
 import "./index.less";
+// Loading
+import Loading from "../../../components/Loading";
 function Sign() {
   // 数据列表
   const [list, setList] = useState([]);
@@ -10,24 +12,29 @@ function Sign() {
   const [currentSign, setCurrentSign] = useState(1);
   // 模态框是否显示
   const [isModalVisiable, setIsModalVisiable] = useState(false);
-
-
+  // 数据是否加载完成
+  let [listFlag, setListFlag] = useState(true);
   // 初始化获取数据
   useEffect(() => {
     getSign().then((res) => {
+      setListFlag(false);
       setList(res.signCategaries);
-      console.log('res.signCategaries.find(item => item.cate_id == 1)', res.signCategaries);
-      setCurrentCate(res.signCategaries.find(item => item.cate_id == 1))
-    });  
+      // console.log('res.signCategaries.find(item => item.cate_id == 1)', res.signCategaries);
+      setCurrentCate(res.signCategaries.find((item) => item.cate_id == 1));
+    });
   }, []);
-
 
   return (
     <div className="traffic-sign">
+      <Loading flagLoading={listFlag} />
       <ul>
         {list.map((item) => (
           <li
-            className={item.cate_id === currentCate.cate_id ? "active sign-module" : "sign-module"}
+            className={
+              item.cate_id === currentCate.cate_id
+                ? "active sign-module"
+                : "sign-module"
+            }
             key={item.cate_id}
             onClick={() => setCurrentCate(item)}
           >
@@ -46,7 +53,9 @@ function Sign() {
                     className="sign-item"
                     title={key.sign_name}
                     key={key.sign_id}
-                    onClick={() => setCurrentSign(key) || setIsModalVisiable(true)}
+                    onClick={() =>
+                      setCurrentSign(key) || setIsModalVisiable(true)
+                    }
                   >
                     <img src={key.sign_url} title={key.sign_name}></img>
                     <br />
@@ -58,21 +67,21 @@ function Sign() {
           </li>
         ))}
       </ul>
-      <div className={isModalVisiable ? "mask active" : 'mask'}  onClick={() => setIsModalVisiable(false)}></div>
-      <div className={isModalVisiable ? "modal  active" : 'modal'}>
+      <div
+        className={isModalVisiable ? "mask active" : "mask"}
+        onClick={() => setIsModalVisiable(false)}
+      ></div>
+      <div className={isModalVisiable ? "modal  active" : "modal"}>
         <div className="picture">
           <img src={currentSign.sign_url} alt="" />
         </div>
-        <div className="name">
-          {currentSign.sign_name}
-
-        </div>
+        <div className="name">{currentSign.sign_name}</div>
         <div className="module-name">
-          <span>
-            {currentCate.cate_name}
-          </span>
+          <span>{currentCate.cate_name}</span>
         </div>
-        <div className="close" onClick={() => setIsModalVisiable(false)}>+</div>
+        <div className="close" onClick={() => setIsModalVisiable(false)}>
+          +
+        </div>
       </div>
     </div>
   );

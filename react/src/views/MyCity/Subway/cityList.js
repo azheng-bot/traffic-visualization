@@ -1,96 +1,47 @@
 // 拥有地铁城市数据
 export default [
-    {
-        name: "北京市",
-        adcode: 1100,
-    },
-    {
-        name: "上海市",
-        adcode: 3100,
-    },
-    {
-        name: "广州市",
-        adcode: 4401,
-    },
-    {
-        name: "深圳市",
-        adcode: 4403,
-    },
-    {
-        name: "长春市",
-        adcode: 2201,
-    },
-
-    {
-        name: "成都市",
-        adcode: 5101,
-    },
-    {
-        name: "重庆市",
-        adcode: 5000,
-    },
-    {
-        name: "大连市",
-        adcode: 2102,
-    },
-    {
-        name: "哈尔滨市",
-        adcode: 2301,
-    },
-    {
-        name: "佛山市",
-        adcode: 4406,
-    },
-    {
-        name: "杭州市",
-        adcode: 3301,
-    },
-    {
-        name: "昆明市",
-        adcode: 5301,
-    },
-    {
-        name: "南京市",
-        adcode: 3201,
-    },
-    {
-        name: "沈阳市",
-        adcode: 2101,
-    },
-    {
-        name: "苏州市",
-        adcode: 3205,
-    },
-    {
-        name: "天津市",
-        adcode: 1200,
-    },
-    {
-        name: "武汉市",
-        adcode: 4201,
-    },
-    {
-        name: "西安市",
-        adcode: 6101,
-    },
-    {
-        name: "香港特别行政区",
-        adcode: 8100,
-    },
-    {
-        name: "郑州市",
-        adcode: 4101,
-    },
-    {
-        name: "宁波市",
-        adcode: 3302,
-    },
-    {
-        name: "长沙市",
-        adcode: 4301,
-    },
-    {
-        name: "无锡市",
-        adcode: 3202,
-    },
+    { adcode: 1100, city: 'beijing', name: '北京', flag: true },
+    { adcode: 1200, city: 'tianjin', name: '天津', flag: false },
+    { adcode: 1301, city: 'shijiazhuang', name: '石家庄', flag: false },
+    { adcode: 1401, city: 'taiyuan', name: '太原', flag: false },
+    { adcode: 1501, city: 'huhehaote', name: '呼和浩特', flag: false },
+    { adcode: 2101, city: 'shenyang', name: '沈阳', flag: false },
+    { adcode: 2102, city: 'dalian', name: '大连', flag: false },
+    { adcode: 2201, city: 'changchun', name: '长春', flag: false },
+    { adcode: 2301, city: 'haerbin', name: '哈尔滨', flag: false },
+    { adcode: 3100, city: 'shanghai', name: '上海', flag: false },
+    { adcode: 3201, city: 'nanjing', name: '南京', flag: false },
+    { adcode: 3202, city: 'wuxi', name: '无锡', flag: false },
+    { adcode: 3203, city: 'xuzhou', name: '徐州', flag: false },
+    { adcode: 3204, city: 'changzhou', name: '常州', flag: false },
+    { adcode: 3205, city: 'suzhou', name: '苏州', flag: false },
+    { adcode: 3301, city: 'hangzhou', name: '杭州', flag: false },
+    { adcode: 3302, city: 'ningbo', name: '宁波', flag: false },
+    { adcode: 3303, city: 'wenzhou', name: '温州', flag: false },
+    { adcode: 3306, city: 'shaoxing', name: '绍兴', flag: false },
+    { adcode: 3401, city: 'hefei', name: '合肥', flag: false },
+    { adcode: 3402, city: 'wuhu', name: '芜湖', flag: false },
+    { adcode: 3501, city: 'fuzhou', name: '福州', flag: false },
+    { adcode: 3502, city: 'xiamen', name: '厦门', flag: false },
+    { adcode: 3601, city: 'nanchang', name: '南昌', flag: false },
+    { adcode: 3701, city: 'jinan', name: '济南', flag: false },
+    { adcode: 3702, city: 'qingdao', name: '青岛', flag: false },
+    { adcode: 4101, city: 'zhengzhou', name: '郑州', flag: false },
+    { adcode: 4103, city: 'luoyang', name: '洛阳', flag: false },
+    { adcode: 4201, city: 'wuhan', name: '武汉', flag: false },
+    { adcode: 4301, city: 'changsha', name: '长沙', flag: false },
+    { adcode: 4401, city: 'guangzhou', name: '广州', flag: false },
+    { adcode: 4403, city: 'shenzhen', name: '深圳', flag: false },
+    { adcode: 4406, city: 'foshan', name: '佛山', flag: false },
+    { adcode: 4419, city: 'dongguan', name: '东莞', flag: false },
+    { adcode: 4501, city: 'nanning', name: '南宁', flag: false },
+    { adcode: 5000, city: 'chongqing', name: '重庆', flag: false },
+    { adcode: 5101, city: 'chengdu', name: '成都', flag: false },
+    { adcode: 5201, city: 'guiyang', name: '贵阳', flag: false },
+    { adcode: 5301, city: 'kunming', name: '昆明', flag: false },
+    { adcode: 6101, city: 'xian', name: '西安', flag: false },
+    { adcode: 6201, city: 'lanzhou', name: '兰州', flag: false },
+    { adcode: 6501, city: 'wulumuqi', name: '乌鲁木齐', flag: false },
+    { adcode: 8100, city: 'xianggang', name: '香港', flag: false },
+    { adcode: 8200, city: 'aomen', name: '澳门', flag: false },
 ]
