@@ -25,15 +25,15 @@ function Loading({
       // <!-- appear设为true表示进场动画,CSS中有对应类名 -->
       appear={true}
       // <!--以下为动画钩子函数, 与CSS中相对应-->
-      onEnter={(el) => {}}
-      onEntering={(el) => {}}
-      onEntered={(el) => {}}
-      onExit={(el) => {}}
-      onExiting={(el) => {}}
-      onExited={(el) => {}}
+      onEnter={(el) => { }}
+      onEntering={(el) => { }}
+      onEntered={(el) => { }}
+      onExit={(el) => { }}
+      onExiting={(el) => { }}
+      onExited={(el) => { }}
     >
       <div
-        className="loading"
+        className={["loading", flagLoading ? 'visible' : ''].join(' ')}
         style={{ opacity: opacity, zIndex: num, height: heightNum }}
       >
         <LineScale

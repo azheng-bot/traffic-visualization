@@ -3,11 +3,16 @@
   height: 100%;
   position: relative;
   background-color: aqua;
+  opacity: 0;
+  transition: 1s all;
   .react-loader-wrap {
     position: relative;
     top: 50%;
     transform: translate(0, -50%);
   }
+}
+.loading.active  {
+  opacity: 1;
 }
 //进场前的瞬间
 .test-enter,
