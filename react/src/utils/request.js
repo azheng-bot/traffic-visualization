@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const baseURL = "http://localhost:8800/";
+export const baseURL = "http://localhost:8000/";
 const instanceWithoutToken = axios.create({ baseURL });
 instanceWithoutToken.interceptors.response.use(
     (response) => {

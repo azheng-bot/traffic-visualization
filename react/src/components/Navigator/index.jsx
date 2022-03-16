@@ -33,7 +33,7 @@ function index(props) {
         // { name: "违法统计", route: "/deep/illegal", icon: "/image/modules/colorless/illegal.png", _icon: "/image/modules/colorless/_illegal.png" },
         // { name: "车辆统计", route: "/deep/cars", icon: "/image/modules/colorless/cars.png", _icon: "/image/modules/colorless/_cars.png" },
         { name: "交通大事件", route: "/deep/news", icon: "/image/modules/colorless/news.png", _icon: "/image/modules/colorless/_news.png" },
-        { name: "碳中和", route: "/future/carbon", icon: "/image/modules/colorless/carbon.png", _icon: "/image/modules/colorless/_carbon.png" },
+        { name: "碳中和", route: "/deep/carbon", icon: "/image/modules/colorless/carbon.png", _icon: "/image/modules/colorless/_carbon.png" },
       ]
     },
     {

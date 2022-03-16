@@ -188,8 +188,9 @@ function Index() {
 
 
   useEffect(() => {
-    setCurrentPage(4)
+    setCurrentPage(0)
   }, [])
+  
   useEffect(() => {
     switch (currentPage) {
       case 1:

@@ -1,4 +1,4 @@
-import react from "react";
+import react,{useEffect} from "react";
 import { LineScale } from "@alex_xu/react-loading";
 import { CSSTransition } from "react-transition-group";
 import "./index.less";
@@ -13,6 +13,9 @@ function Loading({
   flagLoading,
   heightNum,
 }) {
+  useEffect(() => {
+      console.log('flagLoading', flagLoading)
+  },[flagLoading])
   return (
     <CSSTransition
       // <!-- in表示是否出现 timeout表示动画延时 -->
