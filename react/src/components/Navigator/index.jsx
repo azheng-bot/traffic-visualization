@@ -32,19 +32,16 @@ function index(props) {
         // { name: "交通现状", route: "/deep/now", icon: "/image/modules/colorless/now.png", _icon: "/image/modules/colorless/_now.png" },
         // { name: "违法统计", route: "/deep/illegal", icon: "/image/modules/colorless/illegal.png", _icon: "/image/modules/colorless/_illegal.png" },
         // { name: "车辆统计", route: "/deep/cars", icon: "/image/modules/colorless/cars.png", _icon: "/image/modules/colorless/_cars.png" },
-        { name: "全国交通运输数据", route: "/deep/count/country", icon: "/image/modules/colorless/country-count.png", _icon: "/image/modules/colorless/_country-count.png" },
-        { name: "各省交通运输数据", route: "/deep/count/province", icon: "/image/modules/colorless/province-count.png", _icon: "/image/modules/colorless/_province-count.png" },
         { name: "交通大事件", route: "/deep/news", icon: "/image/modules/colorless/news.png", _icon: "/image/modules/colorless/_news.png" },
+        { name: "碳中和", route: "/future/carbon", icon: "/image/modules/colorless/carbon.png", _icon: "/image/modules/colorless/_carbon.png" },
       ]
     },
     {
       name: "交通统计",
       route: "/count",
       children: [
-        { name: "疫情", route: "/future/covid", icon: "/image/modules/colorless/covid.png", _icon: "/image/modules/colorless/_covid.png" },
-        { name: "碳中和", route: "/future/carbon", icon: "/image/modules/colorless/carbon.png", _icon: "/image/modules/colorless/_carbon.png" },
-        { name: "人工智能", route: "/future/ai", icon: "/image/modules/colorless/ai.png", _icon: "/image/modules/colorless/_ai.png" },
-        { name: "智慧交通", route: "/future/itms", icon: "/image/modules/colorless/itms.png", _icon: "/image/modules/colorless/_itms.png" },
+        { name: "全国交通运输数据", route: "/count/country", icon: "/image/modules/colorless/country-count.png", _icon: "/image/modules/colorless/_country-count.png" },
+        { name: "各省交通运输数据", route: "/count/province", icon: "/image/modules/colorless/province-count.png", _icon: "/image/modules/colorless/_province-count.png" },
       ]
     },
   ]
