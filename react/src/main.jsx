@@ -19,12 +19,12 @@ import Laws from "./views/Simple/Law/index";
 import Tool from "./views/Simple/Tool/index";
 // 深入交通 - Deep
 import Deep from "./views/Deep/index";
-import ProvinceCount from "./views/Deep/ProvinceCount/index";
-import CountryCount from "./views/Deep/CountryCount/index";
 import News from "./views/Deep/News/index";
-// 未来展望 - Future
-import Future from "./views/Future/index";
-import Carbon from "./views/Future/Carbon/index";
+import Carbon from "./views/Deep/Carbon/index";
+// 交通统计 - Count
+import Count from "./views/Count/index";
+import ProvinceCount from "./views/Count/ProvinceCount/index";
+import CountryCount from "./views/Count/CountryCount/index";
 
 ReactDOM.render(
   // <React.StrictMode>
@@ -47,13 +47,13 @@ ReactDOM.render(
           </Route>
 
           <Route path="/deep" element={<Deep />}>
-            <Route path="count/province" element={<ProvinceCount />}></Route>
-            <Route path="count/country" element={<CountryCount />}></Route>
             <Route path="news" element={<News />}></Route>
+            <Route path="carbon" element={<Carbon />}></Route>
           </Route>
 
-          <Route path="/future" element={<Future />}>
-            <Route path="carbon" element={<Carbon />}></Route>
+          <Route path="/count" element={<Count />}>
+            <Route path="province" element={<ProvinceCount />}></Route>
+            <Route path="country" element={<CountryCount />}></Route>
           </Route>
 
 

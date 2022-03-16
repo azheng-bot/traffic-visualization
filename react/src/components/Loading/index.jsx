@@ -1,4 +1,4 @@
-import react from "react";
+import react,{useEffect} from "react";
 import { LineScale } from "@alex_xu/react-loading";
 import { CSSTransition } from "react-transition-group";
 import "./index.less";
@@ -13,6 +13,9 @@ function Loading({
   flagLoading,
   heightNum,
 }) {
+  useEffect(() => {
+      console.log('flagLoading', flagLoading)
+  },[flagLoading])
   return (
     <CSSTransition
       // <!-- in表示是否出现 timeout表示动画延时 -->
@@ -25,15 +28,15 @@ function Loading({
       // <!-- appear设为true表示进场动画,CSS中有对应类名 -->
       appear={true}
       // <!--以下为动画钩子函数, 与CSS中相对应-->
-      onEnter={(el) => {}}
-      onEntering={(el) => {}}
-      onEntered={(el) => {}}
-      onExit={(el) => {}}
-      onExiting={(el) => {}}
-      onExited={(el) => {}}
+      onEnter={(el) => { }}
+      onEntering={(el) => { }}
+      onEntered={(el) => { }}
+      onExit={(el) => { }}
+      onExiting={(el) => { }}
+      onExited={(el) => { }}
     >
       <div
-        className="loading"
+        className={["loading", flagLoading ? 'visible' : ''].join(' ')}
         style={{ opacity: opacity, zIndex: num, height: heightNum }}
       >
         <LineScale

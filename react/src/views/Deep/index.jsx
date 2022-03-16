@@ -224,30 +224,30 @@ function index(props) {
 
   // 模块进入点区域
   const [submoduleEntrys, setSubmoduleEntrys] = useState([
-    {
-      active: false,
-      name: "count/province",
-      title: "交通运输数据统计",
-      image: "/image/modules/colorful/province-count.png",
-      intro: "将各个省份的各项交通运输数据通过报表的方式进行展现，以可视化的方式使得交通数据更直观醒目。",
-      left: 547,
-      top: 387
-    },
-    {
-      active: false,
-      name: "count/country",
-      title: "全国交通运输汇总",
-      image: "/image/modules/colorful/country-count.png",
-      intro: "将全国的各项交通运输数据合计通过报表的方式进行展现，以可视化的方式使得交通数据更直观醒目。",
-      left: 974,
-      top: 149
-    },
+    // {
+    //   active: false,
+    //   name: "news",
+    //   title: "最新新闻",
+    //   image: "/image/modules/colorful/news.png",
+    //   intro: "将最新的交通重要新闻进行汇总展示，并通过轮播的方式依次展现。",
+    //   left: 547,
+    //   top: 387
+    // },
     {
       active: false,
       name: "news",
       title: "最新新闻",
       image: "/image/modules/colorful/news.png",
       intro: "将最新的交通重要新闻进行汇总展示，并通过轮播的方式依次展现。",
+      left: 974,
+      top: 149
+    },
+    {
+      active: false,
+      name: "carbon",
+      title: "碳中和",
+      image: "/image/modules/colorful/carbon.png",
+      intro: "通过可视化图表与文字，对于碳中和政策对交通的影响进行分析。",
       left: 550,
       top: -93
     },
@@ -267,12 +267,12 @@ function index(props) {
   const submoduleEntryAreas = {
     back:
       [
-        { name: "count/province", y1: 1850, y2: 2050 },
-        { name: "count/country", y1: 1500, y2: 1700 },
+        // { name: "carbon", y1: 1850, y2: 2050 },
+        { name: "news", y1: 1500, y2: 1700 },
       ],
     forward:
       [
-        { name: "news", y1: 1525, y2: 1725 },
+        { name: "carbon", y1: 1525, y2: 1725 },
         // { name: "count", y1: 1800, y2: 2000},
       ]
   }
@@ -304,7 +304,7 @@ function index(props) {
   }
 
   // 小车进入下一条路
-  const roadMap = { leftRoad: "/future", forwardRoad: "/mycity", rightRoad: "/knowledge" }
+  const roadMap = { leftRoad: "/count", forwardRoad: "/mycity", rightRoad: "/knowledge" }
   let navigate = useNavigate()
   const [myCityVisible, setMyCityVisible] = useState(true)
   function toNextRoad(road) {
