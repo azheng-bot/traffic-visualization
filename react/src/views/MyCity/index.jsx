@@ -285,7 +285,7 @@ function index(props) {
   }
 
   // 小车进入下一条路
-  const roadMap = { leftRoad: "/knowledge", forwardRoad: "/deep", rightRoad: "/future" }
+  const roadMap = { leftRoad: "/knowledge", forwardRoad: "/deep", rightRoad: "/count" }
   let navigate = useNavigate()
   const [deepVisible, setDeepVisible] = useState(true)
   function toNextRoad(road) {
@@ -364,7 +364,7 @@ function index(props) {
                   <RightArrow />
                 </div>
                 <div className="road-name">
-                  未来展望路
+                  交通统计路
                 </div>
               </div>
             </div>

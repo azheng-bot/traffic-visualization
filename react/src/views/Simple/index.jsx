@@ -249,24 +249,24 @@ function index(props) {
       left: 423,
       top: -23
     },
+    // {
+    //   active: false,
+    //   name: "law",
+    //   title: "交通法规",
+    //   image: "/image/modules/colorful/law.png",
+    //   intro: "展示现行主要的交通法规，并通过章节、条目进行法律内容的选择查看。",
+    //   left: 1161,
+    //   top: 42
+    // },
     {
       active: false,
       name: "law",
       title: "交通法规",
       image: "/image/modules/colorful/law.png",
       intro: "展示现行主要的交通法规，并通过章节、条目进行法律内容的选择查看。",
-      left: 1161,
-      top: 42
+      left: 730,
+      top: 285
     },
-    // {
-    //   active: false,
-    //   name: "news",
-    //   title: "最新新闻",
-    //   image: "/image/modules/colorful/news.png",
-    //   intro: "将最新的交通重要新闻进行汇总展示，并通过轮播的方式依次展现。",
-    //   left: 730,
-    //   top: 285
-    // },
   ])
 
   // 模块进入点区域 - 对应小车y轴区间
@@ -278,8 +278,8 @@ function index(props) {
       ],
     forward:
       [
-        { name: "law", y1: 1200, y2: 1400 },
-        // { name: "news", y1: 1525, y2: 1725 },
+        // { name: "law", y1: 1200, y2: 1400 },
+        { name: "law", y1: 1525, y2: 1725 },
       ]
   }
 
@@ -310,7 +310,7 @@ function index(props) {
   }
 
   // 小车进入下一条路
-  const roadMap = { leftRoad: "/deep", forwardRoad: "/future", rightRoad: "/mycity" }
+  const roadMap = { leftRoad: "/deep", forwardRoad: "/count", rightRoad: "/mycity" }
   let navigate = useNavigate()
   const [knowledgeVisible, setKnowledgeVisible] = useState(true)
   function toNextRoad(road) {
@@ -379,7 +379,7 @@ function index(props) {
                   <ForwardArrow />
                 </div>
                 <div className="road-name">
-                  未来展望路
+                  交通统计路
                 </div>
               </div>
               <DottedLine width="7px" height="100%" lineNum="15" />

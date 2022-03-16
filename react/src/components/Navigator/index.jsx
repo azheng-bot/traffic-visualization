@@ -38,8 +38,8 @@ function index(props) {
       ]
     },
     {
-      name: "未来展望",
-      route: "/future",
+      name: "交通统计",
+      route: "/count",
       children: [
         { name: "疫情", route: "/future/covid", icon: "/image/modules/colorless/covid.png", _icon: "/image/modules/colorless/_covid.png" },
         { name: "碳中和", route: "/future/carbon", icon: "/image/modules/colorless/carbon.png", _icon: "/image/modules/colorless/_carbon.png" },

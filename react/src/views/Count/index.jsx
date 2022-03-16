@@ -232,53 +232,53 @@ function index(props) {
   const [submoduleEntrys, setSubmoduleEntrys] = useState([
     {
       active: false,
-      name: "covid",
-      title: "疫情",
-      image: "/image/modules/colorful/covid.png",
-      intro: "通过可视化图表与文字，对当下疫情对于交通的影响进行分析，以及后疫情时代交通的展望。",
+      name: "province",
+      title: "交通运输数据统计",
+      image: "/image/modules/colorful/province-count.png",
+      intro: "将各个省份的各项交通运输数据通过报表的方式进行展现，以可视化的方式使得交通数据更直观醒目。",
       left: 940,
       top: 168
     },
+    // {
+    //   active: false,
+    //   name: "carbon",
+    //   title: "碳中和",
+    //   image: "/image/modules/colorful/carbon.png",
+    //   intro: "通过可视化图表与文字，对于碳中和政策对交通的影响进行分析。",
+    //   left: 491,
+    //   top: 419
+    // },
     {
-      active: false,
-      name: "carbon",
-      title: "碳中和",
-      image: "/image/modules/colorful/carbon.png",
-      intro: "通过可视化图表与文字，对于碳中和政策对交通的影响进行分析。",
-      left: 491,
-      top: 419
-    },
-    {
-      active: false,
-      name: "ai",
-      title: "人工智能",
-      image: "/image/modules/colorful/ai.png",
-      intro: "人工智能的发展对于交通以及交通参与者的影响。",
+        active: false,
+        name: "country",
+        title: "全国交通运输汇总",
+        image: "/image/modules/colorful/country-count.png",
+        intro: "将全国的各项交通运输数据合计通过报表的方式进行展现，以可视化的方式使得交通数据更直观醒目。",
       left: -35,
       top: 235
     },
-    {
-      active: false,
-      name: "itms",
-      title: "智慧交通",
-      image: "/image/modules/colorful/itms.png",
-      intro: "对现行的智慧交通策略进行分析，以及对于未来智慧交通系统进行展望。",
-      left: 350,
-      top: 18
-    },
+    // {
+    //   active: false,
+    //   name: "itms",
+    //   title: "智慧交通",
+    //   image: "/image/modules/colorful/itms.png",
+    //   intro: "对现行的智慧交通策略进行分析，以及对于未来智慧交通系统进行展望。",
+    //   left: 350,
+    //   top: 18
+    // },
   ])
 
   // 模块进入点区域 - 对应小车y轴区间
   const submoduleEntryAreas = {
     back:
       [
-        { name: "covid", y1: 1850, y2: 2050 },
-        { name: "carbon", y1: 1500, y2: 1700 },
+        { name: "province", y1: 1850, y2: 2050 },
+        // { name: "carbon", y1: 1500, y2: 1700 },
       ],
     forward:
       [
-        { name: "ai", y1: 1375, y2: 1575 },
-        { name: "itms", y1: 1675, y2: 1875 },
+        { name: "country", y1: 1375, y2: 1575 },
+        // { name: "itms", y1: 1675, y2: 1875 },
       ]
   }
 
@@ -325,7 +325,7 @@ function index(props) {
       {/*  可视区域 */}
       <div className="visible-area" >
         {/* 路标 */}
-        <RoadSign style={{ left: -229, bottom: 73 }} cnName={"未来展望路"} enName={"Future Road"} reserve={true}></RoadSign>
+        <RoadSign style={{ left: -229, bottom: 73 }} cnName={"交通统计路"} enName={"Future Road"} reserve={true}></RoadSign>
         {/* 左侧树木&景观 */}
         <div className="scenery-left">
           {leftSceneries.map((item, index) => <img

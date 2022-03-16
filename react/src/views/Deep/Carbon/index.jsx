@@ -10,7 +10,7 @@ function Index() {
   let ref1 = useRef()
   let ref2 = useRef()
   const [currentPage, setCurrentPage] = useState(-1)
-  const totalPage = 6
+  const totalPage = 5
 
 
   class chartModule {
@@ -157,22 +157,38 @@ function Index() {
     setChinaTab(idx)
     setTimeout(() => {
       setIsShowingCards(true);
-    }, 0)
+    }, 200)
   }
   function closeChinaCard(e) {
     e.stopPropagation();
     setIsShowingCards(false);
     setTimeout(() => {
-    setChinaTab(-1)
-    },200)
+      setChinaTab(-1)
+    }, 500)
   }
 
   // page5 未来
-  const [futureTab, setFutureTab] = useState(-1)
+  const [futureTab, setFutureTab] = useState(0)
+  const [futureTitleTime, setFutureTitleTime] = useState(2019)
+  useEffect(() => {
+    let currentTime = futureTitleTime;
+    let targetTime = 2025 + futureTab * 5
+    let step = targetTime > futureTitleTime ? 1 : -1
+    let timer = setInterval(() => {
+      if (currentTime != targetTime) {
+        // console.log('futureTitleTime', futureTitleTime)
+        currentTime += step
+        setFutureTitleTime(currentTime)
+      } else {
+        clearInterval(timer)
+        timer = null
+      }
+    }, 150)
+  }, [futureTab])
 
 
   useEffect(() => {
-    setCurrentPage(3)
+    setCurrentPage(4)
   }, [])
   useEffect(() => {
     switch (currentPage) {
@@ -224,7 +240,7 @@ function Index() {
       <div className={["page-1", currentPage == 0 ? 'active' : ''].join(' ')}>
         <div className="title">
           <div className="hero"><span className="importent">碳中和</span></div>
-          <div className="subtitle">一场不得不走的 <br /> 人类自我解救之路</div>
+          <div className="subtitle">一场不得不走的人类自我解救之路</div>
         </div>
         <div className="center-image complete-center">
           <img src="/image/future/carbon/earth.png" alt=" " />
@@ -352,6 +368,189 @@ function Index() {
 
       {/* Page-5 未来*/}
       <div className={["page-5", currentPage == 4 ? 'active' : ''].join(' ')}>
+        <div className="title">
+          交通碳中和 <span className="importent">{futureTitleTime}</span>
+        </div>
+        <div className="time-line">
+          <div className="times" style={{ left: 50 - futureTab * 50 + '%', marginLeft: (futureTab - 1) * 150 + 'px' }}>
+            <div className={["time time-1", futureTab == 0 ? 'active' : ''].join(' ')} onClick={() => setFutureTab(0)}>2025</div>
+            <div className={["time time-2", futureTab == 1 ? 'active' : ''].join(' ')} onClick={() => setFutureTab(1)}>2030</div>
+            <div className={["time time-3", futureTab == 2 ? 'active' : ''].join(' ')} onClick={() => setFutureTab(2)}>2035</div>
+          </div>
+          <div className="line"></div>
+        </div>
+        <div className="content-container" style={{ left: -futureTab * 100 + '%' }}>
+          <div className={["content content-1 rows", futureTab == 0 ? 'active' : ''].join(' ')}>
+            {/* list-1 */}
+            <div className="row row-1 cols list list-1" style={{ marginBottom: '180px' }}>
+              <div className="list-item">
+                <span className="importent">20%</span> 电动乘用车平均调峰电量占车辆出行用电
+              </div>
+              <div className="list-item">
+                <span className="importent">3000万</span> 辆新能源汽车保有量
+              </div>
+              <div className="list-item">
+                <span className="importent">100%</span> 新建智能充电桩占比
+              </div>
+              <div className="list-item">
+                <span className="importent">30%</span> 新能源汽车渗透率
+              </div>
+            </div>
+            {/* list-2 */}
+            <div className="row row-1 cols list list-2" >
+              <div className="list-item">
+              <span className="importent">解决</span> 转供电交叉补贴
+              </div>
+              <div className="list-item">
+              <span className="importent">明确</span> vGl适应的电力服务品种
+              </div>
+              <div className="list-item">
+                2025年新售车辆 <span className="importent">全面</span> 具备智能有序充电功能
+              </div>
+              <div className="list-item">
+              <span className="importent">推进</span> 分布式发电就近交易,减免过网费、基金、附加
+              </div>
+              <div className="list-item">
+              <span className="importent">采用</span> 高精度双向计量智能电表和开放通信控制标准
+              </div>
+              <div className="list-item">
+              <span className="importent">实现</span> 城市共享出行汽车在专用车道和限定区域的CA级智能化
+              </div>
+            </div>
+          </div>
+          <div className={["content content-2 rows", futureTab == 1 ? 'active' : ''].join(' ')}>
+            {/* list-1 */}
+            <div className="row row-1 cols list list-1" style={{ marginBottom: '180px' }}>
+              <div className="list-item">
+                <span className="importent">20%</span> 电动乘用车平均调峰电量占车辆出行用电
+              </div>
+              <div className="list-item">
+                <span className="importent">3000万</span> 辆新能源汽车保有量
+              </div>
+              <div className="list-item">
+                <span className="importent">100%</span> 新建智能充电桩占比
+              </div>
+              <div className="list-item">
+                <span className="importent">30%</span> 新能源汽车渗透率
+              </div>
+            </div>
+            {/* list-2 */}
+            <div className="row row-1 cols list list-2" >
+              <div className="list-item">
+                解决转供电交叉补贴
+              </div>
+              <div className="list-item">
+                明确vGl适应的电力服务品种
+              </div>
+              <div className="list-item">
+                2025年新售车辆全面具备智能有序充电功能
+              </div>
+              <div className="list-item">
+                推进分布式发电就近交易,减免过网费、基金、附加
+              </div>
+              <div className="list-item">
+                采用高精度双向计量智能电表和开放通信控制标准
+              </div>
+              <div className="list-item">
+                实现城市共享出行汽车在专用车道和限定区域的CA级智能化
+              </div>
+            </div>
+          </div>
+          <div className={["content content-3 rows", futureTab == 2 ? 'active' : ''].join(' ')} style={{paddingBottom:'8%'}}>
+            <div className="row row-1 cols box-container" style={{ marginBottom: '120px' }}>
+              {/* box-1 */}
+              <div className="col cols box">
+                <div className="col col-1 box-title">
+                  <span className="complete-center">
+                    汽车333
+                  </span>
+                </div>
+                <div className="col col-8 rows">
+                  <div className="row row-1  cols intro">
+                    <div className="col col-1 intro-title">渗透情况</div>
+                    <div className="col col-8 intro-content">2025年新能源汽车渗透率约 <span className="importent">30%</span> 保有量约 <span className="importent">3000万辆</span></div>
+                  </div>
+                  <div className="row row-1 cols intro">
+                    <div className="col col-1 intro-title">车网协同</div>
+                    <div className="col col-8 intro-content">2025年新手车辆全面具备智能有序充电功能</div>
+                  </div>
+                  <div className="row row-1 cols intro">
+                    <div className="col col-1 intro-title">互动<br />能量</div>
+                    <div className="col col-8 intro-content">2025年电动乘用车平均调峰电量占车辆出行用电 <span className="importent">20%</span></div>
+                  </div>
+                </div>
+              </div>
+              {/* box-2 */}
+              <div className="col cols box">
+                <div className="col col-1 box-title">
+                  <span className="complete-center">
+                    能源
+                  </span>
+                </div>
+                <div className="col col-8 rows">
+                  <div className="row row-1  cols intro">
+                    <div className="col col-1 intro-title">能源结构</div>
+                    <div className="col col-8 intro-content">2025年非化石能源比例达 <span className="importent">20%</span></div>
+                  </div>
+                  <div className="row row-1 cols intro">
+                    <div className="col col-1 intro-title">电价机制</div>
+                    <div className="col col-8 intro-content">解决转供电较差补贴</div>
+                  </div>
+                  <div className="row row-1 cols intro">
+                    <div className="col col-1 intro-title">电力市场</div>
+                    <div className="col col-8 intro-content">2025年电动乘用车平均调峰电量占车辆出行用电 <span className="importent">20%</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="row row-1 cols box-container">
+              {/* box-3 */}
+              <div className="col cols box">
+                <div className="col col-1 box-title">
+                  <span className="complete-center">
+                    汽车
+                  </span>
+                </div>
+                <div className="col col-8 rows">
+                  <div className="row row-1  cols intro">
+                    <div className="col col-1 intro-title">渗透情况</div>
+                    <div className="col col-8 intro-content">2025年新能源汽车渗透率约 <span className="importent">30%</span> 保有量约 <span className="importent">3000万辆</span></div>
+                  </div>
+                  <div className="row row-1 cols intro">
+                    <div className="col col-1 intro-title">车网协同</div>
+                    <div className="col col-8 intro-content">2025年新手车辆全面具备智能有序充电功能</div>
+                  </div>
+                  <div className="row row-1 cols intro">
+                    <div className="col col-1 intro-title">互动<br />能量</div>
+                    <div className="col col-8 intro-content">2025年电动乘用车平均调峰电量占车辆出行用电 <span className="importent">20%</span></div>
+                  </div>
+                </div>
+              </div>
+              {/* box-4 */}
+              <div className="col cols box">
+                <div className="col col-1 box-title">
+                  <span className="complete-center">
+                    汽车
+                  </span>
+                </div>
+                <div className="col col-8 rows">
+                  <div className="row row-1  cols intro">
+                    <div className="col col-1 intro-title">渗透情况</div>
+                    <div className="col col-8 intro-content">2025年新能源汽车渗透率约 <span className="importent">30%</span> 保有量约 <span className="importent">3000万辆</span></div>
+                  </div>
+                  <div className="row row-1 cols intro">
+                    <div className="col col-1 intro-title">车网协同</div>
+                    <div className="col col-8 intro-content">2025年新手车辆全面具备智能有序充电功能</div>
+                  </div>
+                  <div className="row row-1 cols intro">
+                    <div className="col col-1 intro-title">互动<br />能量</div>
+                    <div className="col col-8 intro-content">2025年电动乘用车平均调峰电量占车辆出行用电 <span className="importent">20%</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
