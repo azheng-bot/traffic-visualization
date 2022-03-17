@@ -29,7 +29,7 @@ function Bus() {
   let [heightNum, setHeightNum] = useState("100%");
   useEffect(() => {
     AMapLoader.load({
-      key: "c6e434d1188e1c9f904dc256f7e14de8", // 申请好的Web端开发者Key，首次调用 load 时必填
+      key:import.meta.env.VITE_WebMapKey, // 申请好的Web端开发者Key，首次调用 load 时必填
       version: "2.0", // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
       plugins: ["AMap.CitySearch", "AMap.LineSearch"], // 需要使用的的插件列表，如比例尺'AMap.Scale'等
     })
@@ -321,7 +321,7 @@ function Bus() {
             </div>
           </div>
         )}
-        <Loading flagLoading={mapFlag} heightNum={heightNum} />
+        <Loading flagLoading={mapFlag} height={heightNum} />
         <div id="container" className="map" style={{ height: "70%" }}></div>
       </div>
     </div>

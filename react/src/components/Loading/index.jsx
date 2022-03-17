@@ -3,15 +3,16 @@ import { LineScale } from "@alex_xu/react-loading";
 import { CSSTransition } from "react-transition-group";
 import "./index.less";
 function Loading({
+  background,
   color,
   size,
   text,
   textColor,
   textOffset,
   opacity,
-  num,
+  zIndex,
   flagLoading,
-  heightNum,
+  height,
 }) {
   useEffect(() => {
       console.log('flagLoading', flagLoading)
@@ -37,7 +38,7 @@ function Loading({
     >
       <div
         className={["loading", flagLoading ? 'visible' : ''].join(' ')}
-        style={{ opacity: opacity, zIndex: num, height: heightNum }}
+        style={{ opacity: opacity, zIndex: zIndex, height,background }}
       >
         <LineScale
           color={color}
@@ -51,12 +52,14 @@ function Loading({
   );
 }
 Loading.defaultProps = {
-  color: "06c",
+  color: "#108ee9",
   size: 4,
   text: "",
   textColor: "",
   textOffset: 0,
   opacity: 1,
-  num: 1000,
+  zIndex: 1000,
+  background:'#fff',
+  height:'100%'
 };
 export default Loading;

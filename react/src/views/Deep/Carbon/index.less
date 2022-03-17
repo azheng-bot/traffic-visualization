@@ -18,6 +18,7 @@
 @gray8: #5a5a5a;
 @gray9: #404040;
 @gray10: #222222;
+@red: #f04134;
 
 
 .future-carbon {
@@ -498,9 +499,6 @@
 
   .page-4 {
     transition-delay: 0s;
-    // * {
-    //   transition: 0s;
-    // }
 
     .title {
       position: relative;
@@ -518,7 +516,7 @@
         text-align: center;
 
         .importent {
-          background: linear-gradient(to right, rgb(255, 102, 0), red);
+          background: linear-gradient(to right, rgb(255, 102, 0), @red);
           -webkit-background-clip: text;
           color: transparent;
         }
@@ -566,6 +564,11 @@
         border-radius: 8px;
         cursor: pointer;
 
+        .card-wrapper {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+        }
 
         .card-title {
           font-size: 90px;
@@ -579,6 +582,19 @@
           color: rgb(146, 146, 146);
           transition-delay: 0ms;
         }
+
+        .card-content {
+          flex: 1;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: row;
+
+        }
+
 
         .card-close {
           display: none;
@@ -614,6 +630,114 @@
       .card:nth-child(1) {
         z-index: 20;
         left: 29%;
+
+        .card-content {
+
+          .left-content,
+          .right-content {
+            width: 50%;
+          }
+
+          .left-content {
+            font-size: 22px;
+            font-weight: 600;
+            line-height: 45px;
+            font-family: 'font1';
+            padding: 25px 40px;
+            padding-top: 10px;
+            padding-left: 75px;
+            letter-spacing: 4px;
+            color: @gray8;
+            transition-delay: 0ms;
+            text-indent: 2em;
+            flex: 2;
+            padding-top: 100px;
+
+            .importent {
+              color: @red;
+              font-size: 32px;
+            }
+
+            .importent.bad {
+              color: orange;
+            }
+          }
+
+          .right-content {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+            
+
+            .row-1 {
+              flex: 1;
+            }
+
+            .compare {
+              padding: 0 100px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+
+              .compare-title {
+                font-size: 20px;
+                color: @gray7;
+                font-weight: 500;
+                font-family: 'font1';
+                // text-align: center;
+              }
+
+              .compare-imgs {
+                display: flex;
+                flex-direction: row;
+              }
+
+              .left-imgs,
+              .right-imgs {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+
+                img {
+                  display: block;
+                  // flex: 1;
+                  width: 100px;
+                  height: 100px;
+                }
+              }
+
+              .left-imgs {
+                flex: 4
+              }
+
+              .right-imgs {
+                flex: 1
+              }
+
+              .compare-sign {
+                flex: 1;
+                font-size: 80px;
+                color: @gray7;
+                text-align: center;
+                line-height: 100px;
+              }
+
+              .compare-intro {
+                font-size: 16px;
+                line-height: 30px;
+                color: @gray7;
+                text-align: center;
+                font-family: 'font4';
+
+
+                .importent {
+                  color: @red;
+                  // font-size: 32px;
+                }
+              }
+            }
+          }
+        }
       }
 
       .card:nth-child(2) {
@@ -643,7 +767,7 @@
 
       .hero {
         .importent {
-          background: linear-gradient(to right, rgb(255, 196, 0), red);
+          background: linear-gradient(to right, rgb(255, 196, 0), @red);
           -webkit-background-clip: text;
           color: transparent;
         }
@@ -654,6 +778,10 @@
       bottom: -550px;
       transition: .5s;
       transition-delay: 0s;
+
+      .card-content {
+        opacity: 0;
+      }
     }
 
     .card:hover {
@@ -715,6 +843,7 @@
         .card-title {
           color: #111;
           position: relative;
+          text-align: left;
           // top: 48%;
         }
       }
@@ -723,17 +852,25 @@
         width: 90%;
         height: 84%;
         left: 50%;
-        border-radius: 30px;
+        border-radius: 15px;
         transform: translateX(-50%) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
         cursor: default;
         box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         transition: 1s;
+        padding: 10px;
+        box-sizing: border-box;
 
         .card-title {
-          // font-size: 28px;
-          // text-align: left;
+          font-size: 42px;
+          line-height: 1;
+          letter-spacing: 0px;
+          text-align: left;
           // color: #111;
+        }
+
+        .card-content {
+          opacity: 1;
         }
 
         .card-close {
@@ -758,7 +895,7 @@
 
 
       .importent {
-        background: linear-gradient(to right, rgb(255, 102, 0), red);
+        background: linear-gradient(to right, rgb(255, 102, 0), @red);
         -webkit-background-clip: text;
         // color: transparent; 
         font-family: 'font1';
@@ -1112,17 +1249,17 @@
         justify-content: flex-start;
         padding-top: 20px;
 
-        .list-item{
-        .importent {
-          font-family: 'font1';
-          font-size: 28px;
-          font-weight: 600;
-          color: @green7;
-          letter-spacing: 0px;
-          // margin: 0 2px;
+        .list-item {
+          .importent {
+            font-family: 'font1';
+            font-size: 28px;
+            font-weight: 600;
+            color: @green7;
+            letter-spacing: 0px;
+            // margin: 0 2px;
+          }
         }
       }
-    }
 
       .list::after {
         content: '';

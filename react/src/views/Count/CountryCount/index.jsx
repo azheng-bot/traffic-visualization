@@ -2,6 +2,7 @@ import react, { useEffect, useState, useRef } from "react";
 import "./index.less";
 import { getCountryData } from "../../../api/deepModule";
 import { getCityList } from "../../../api/mycityModule";
+import Loading from '../../../components/Loading'
 
 // 高德地图
 import AMapLoader from '@amap/amap-jsapi-loader';
@@ -47,6 +48,8 @@ function Index() {
     airGoods: 0,
     airGuest: 0,
   })
+  // 加载
+  let [isLoading, setIsLoading] = useState(true)
 
 
   document.body.setAttribute('arco-theme', 'dark');
@@ -1122,6 +1125,7 @@ function Index() {
 
 
         map.on('complete', function () {
+          setIsLoading(false)
           setTimeout(function () {
             pl.show(500);
             pl.addAnimate({
@@ -1208,6 +1212,7 @@ function Index() {
 
   return (
     <div className="country-count">
+      <Loading flagLoading={isLoading}  background={'#0a141c'} color={colorGroup.色4}></Loading>
       <div className="top-nav">
         2021年全国交通运输数据统计
       </div>

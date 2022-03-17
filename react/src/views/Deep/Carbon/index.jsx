@@ -188,9 +188,9 @@ function Index() {
 
 
   useEffect(() => {
-    setCurrentPage(0)
+    setCurrentPage(3)
   }, [])
-  
+
   useEffect(() => {
     switch (currentPage) {
       case 1:
@@ -339,7 +339,41 @@ function Index() {
           <div className={["card", chinaTab == 0 ? 'up-card' : '', (chinaTab == 0 && isShowingCards) ? 'unfold-card' : ''].join(' ')} onClick={() => { showChinaCard(0) }}>
             <div className="card-wrapper">
               <div className="card-title">交通运输结构优化</div>
-              <div className="card-content"></div>
+              <div className="card-content">
+                <div className="left-content">
+
+                  从交通运输结构来看，客运运输结构倾向于从道路运输向更加高效的铁路运输转型。
+                  <br />
+                  全面推进客运和货运结构调整能够有效减少交通部门碳排放。各种运输方式完成单位运输量所消耗的能源以及产生的碳排放有较大不同，据测算，道路货运单耗约是铁路的<span className="importent">4～5倍</span>。特别是随着铁路电气化改造的推进，铁路节能技术和管理水平不断提升，铁路运输低碳化发展成效明显。交通运输结构优化将显著减少碳排放。1985-2009年间，铁路客运等低能耗方式活动水平逐渐向道路和民航转移，导致CO2排放增加了<span className="importent bad">3.7亿t</span>，约合2009年交通部门碳排放的<span className="importent bad">45.3%</span>。当道路运输在城间客运的占比从<span className="importent">34%</span>下降至<span className="importent">26%</span>、铁路在货运周转量的占比从<span className="importent">10%</span>增长到<span className="importent">18%</span>后，直接碳排放将下降<span className="importent">4亿～5亿t</span>。
+
+                </div>
+                <div className="right-content">
+                  <div className="row row-1 compare">
+                    <div className="compare-title">运单<span style={{ color: '#f66' }}>耗损</span></div>
+                    <div className="compare-imgs">
+                      <div className="left-imgs">
+                        <img src="/image/future/carbon/train.png" alt="" className="train"></img>
+                        <img src="/image/future/carbon/train.png" alt="" className="train"></img>
+                        <img src="/image/future/carbon/train.png" alt="" className="train"></img>
+                        <img src="/image/future/carbon/train.png" alt="" className="train"></img>
+                      </div>
+                      <div className="compare-sign">≈</div>
+                      <div className="right-imgs">
+                        <img src="/image/future/carbon/truck.png" alt="" className="truck" />
+                      </div>
+                    </div>
+                    <div className="compare-intro">道路货运单耗约是铁路的 <span className="importent">4～5倍</span> , 道路货运耗损严重 </div>
+                  </div>
+                  <div className="row row-1">
+                    <div className="time">
+                      <div className="time-1">1985</div>
+                      <div className="bar">/</div>
+                      <div className="time-2">2009</div>
+                    </div>
+                  </div>
+                  <div className="row row-1"></div>
+                </div>
+              </div>
               <div className="card-close" onClick={(e) => closeChinaCard(e)}>+</div>
             </div>
           </div>
@@ -400,22 +434,22 @@ function Index() {
             {/* list-2 */}
             <div className="row row-1 cols list list-2" >
               <div className="list-item">
-              <span className="importent">解决</span> 转供电交叉补贴
+                <span className="importent">解决</span> 转供电交叉补贴
               </div>
               <div className="list-item">
-              <span className="importent">明确</span> vGl适应的电力服务品种
+                <span className="importent">明确</span> vGl适应的电力服务品种
               </div>
               <div className="list-item">
                 2025年新售车辆 <span className="importent">全面</span> 具备智能有序充电功能
               </div>
               <div className="list-item">
-              <span className="importent">推进</span> 分布式发电就近交易,减免过网费、基金、附加
+                <span className="importent">推进</span> 分布式发电就近交易,减免过网费、基金、附加
               </div>
               <div className="list-item">
-              <span className="importent">采用</span> 高精度双向计量智能电表和开放通信控制标准
+                <span className="importent">采用</span> 高精度双向计量智能电表和开放通信控制标准
               </div>
               <div className="list-item">
-              <span className="importent">实现</span> 城市共享出行汽车在专用车道和限定区域的CA级智能化
+                <span className="importent">实现</span> 城市共享出行汽车在专用车道和限定区域的CA级智能化
               </div>
             </div>
           </div>
@@ -457,7 +491,7 @@ function Index() {
               </div>
             </div>
           </div>
-          <div className={["content content-3 rows", futureTab == 2 ? 'active' : ''].join(' ')} style={{paddingBottom:'8%'}}>
+          <div className={["content content-3 rows", futureTab == 2 ? 'active' : ''].join(' ')} style={{ paddingBottom: '8%' }}>
             <div className="row row-1 cols box-container" style={{ marginBottom: '120px' }}>
               {/* box-1 */}
               <div className="col cols box">

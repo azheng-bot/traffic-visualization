@@ -28,7 +28,7 @@ function Metro(props) {
     // if (!document.querySelector("#beijing")) return;
     // 创建地铁图
     let script = document.createElement('script')
-    script.src = "https://webapi.amap.com/subway?v=1.0&key=c6e434d1188e1c9f904dc256f7e14de8&callback=cbk"
+    script.src = `https://webapi.amap.com/subway?v=1.0&key=${import.meta.env.VITE_WebMapKey}&callback=cbk`
     document.body.appendChild(script)
     
     window.cbk = function () {

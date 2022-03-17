@@ -1,6 +1,7 @@
 import react, { useEffect, useState, useRef } from "react";
 import "./index.less";
 import { getProvinceData } from "../../../api/deepModule";
+import Loading from '../../../components/Loading';
 
 // echarts
 import * as echarts from 'echarts';
@@ -37,8 +38,8 @@ let portModule
 let rateModule
 // 增速模块
 let grownModule
-
 let grownData;
+
 function Index() {
   let [province, setProvince] = useState('北京')
   let [totalData, setTotalData] = useState({
@@ -49,6 +50,8 @@ function Index() {
     waterGuest: 0
   })
   let [grownRateType, setGrownRateType] = useState({ way: 'road', detail: 'Goods' })
+  // 加载
+  let [isLoading, setIsLoading] = useState(true)
 
 
   document.body.setAttribute('arco-theme', 'dark');
@@ -1149,6 +1152,7 @@ function Index() {
       changeActiveProvince(params.name)
       setProvince(params.name)
       updateProvince(params.name)
+
       // updateEcharts()
     })
   }, [])
@@ -1266,11 +1270,14 @@ function Index() {
 
       // 初始化生成Echarts
       initEcharts()
+      Message.success({ content: `已加载${province}运输数据.`, showIcon: true });
+      setIsLoading(false)
     })
   }
 
   return (
     <div className="province-count">
+      <Loading flagLoading={isLoading} background={'#0a141c'} color={colorGroup.主色}></Loading>
       <div className="top-nav">
         2021年{province}交通运输数据统计
       </div>
