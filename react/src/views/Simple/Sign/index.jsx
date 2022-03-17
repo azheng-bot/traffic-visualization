@@ -25,7 +25,7 @@ function Sign() {
 
   return (
     <div className="traffic-sign">
-      <Loading flagLoading={listFlag} />
+      <Loading isLoading={listFlag} />
       <ul>
         {list.map((item) => (
           <li

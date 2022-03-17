@@ -592,18 +592,19 @@
           height: 100%;
           display: flex;
           flex-direction: row;
-
-        }
+          box-sizing: border-box;
+        padding-bottom: 30px;
+      }
 
 
         .card-close {
           display: none;
           position: absolute;
-          right: -90px;
-          top: -20px;
+          right: -15px;
+          top: -10px;
           width: 50px;
           height: 50px;
-          font-size: 80px;
+          font-size: 60px;
           transform: rotate(45deg);
           font-weight: 200;
           color: @gray6;
@@ -636,7 +637,8 @@
           .left-content,
           .right-content {
             width: 50%;
-          }
+          overflow: hidden;
+        }
 
           .left-content {
             font-size: 22px;
@@ -667,7 +669,7 @@
             flex: 3;
             display: flex;
             flex-direction: column;
-            
+
 
             .row-1 {
               flex: 1;
@@ -830,6 +832,7 @@
 
       .card {
         bottom: -900px;
+        // overflow: hidden;
       }
 
       .card.up-card {
@@ -838,6 +841,7 @@
         background-color: rgb(253, 253, 253);
         transform: translateX(-50%) rotateX(0deg) rotateY(-45deg) rotateZ(0deg);
         transition: .5s;
+        // transition-delay: .5s;
 
 
         .card-title {
@@ -845,6 +849,11 @@
           position: relative;
           text-align: left;
           // top: 48%;
+        }
+
+        .card-content {
+          transition: .25s;
+          opacity: 0;
         }
       }
 
@@ -860,6 +869,7 @@
         transition: 1s;
         padding: 10px;
         box-sizing: border-box;
+        overflow: hidden;
 
         .card-title {
           font-size: 42px;

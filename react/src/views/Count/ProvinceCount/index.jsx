@@ -1277,7 +1277,7 @@ function Index() {
 
   return (
     <div className="province-count">
-      <Loading flagLoading={isLoading} background={'#0a141c'} color={colorGroup.主色}></Loading>
+      <Loading isLoading={isLoading} background={'#0a141c'} color={colorGroup.主色}></Loading>
       <div className="top-nav">
         2021年{province}交通运输数据统计
       </div>

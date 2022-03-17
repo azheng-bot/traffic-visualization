@@ -369,7 +369,7 @@ function Index() {
                       <div className="time-1">1985</div>
                       <div className="bar">/</div>
                       <div className="time-2">2009</div>
-                    </div>
+                    </div> 
                   </div>
                   <div className="row row-1"></div>
                 </div>

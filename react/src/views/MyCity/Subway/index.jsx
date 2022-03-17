@@ -17,7 +17,7 @@ function Metro(props) {
   let [line, setLine] = useState("所有线路");
   let [lineId, setLineId] = useState(0);
   // 控制loading
-  let [flagLoading, setFlagLoading] = useState(true);
+  let [isLoading, setFlagLoading] = useState(true);
 
   useEffect(() => {
     cityList.map((item) => {
@@ -183,7 +183,7 @@ function Metro(props) {
         </ul>
       </div>
 
-      <Loading flagLoading={flagLoading} />
+      <Loading isLoading={isLoading} />
       {cityList.map((item) =>
         item.flag ? <div key={item.adcode} id={item.city}></div> : ""
       )}

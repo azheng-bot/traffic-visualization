@@ -1212,7 +1212,7 @@ function Index() {
 
   return (
     <div className="country-count">
-      <Loading flagLoading={isLoading}  background={'#0a141c'} color={colorGroup.色4}></Loading>
+      <Loading isLoading={isLoading}  background={'#0a141c'} color={colorGroup.色4}></Loading>
       <div className="top-nav">
         2021年全国交通运输数据统计
       </div>
