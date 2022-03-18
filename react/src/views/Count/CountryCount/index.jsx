@@ -902,6 +902,12 @@ function Index() {
         roadModule.updateData([data, turnoverData])
         roadModule.createChart()
         break;
+      case '水路货物':
+        var data = echartsData.waterData.waterGoods.map(item => item.data_content)
+        var turnoverData = echartsData.waterData.waterGoodsTurnover.map(item => item.data_content)
+        waterModule.updateData([data, turnoverData])
+        waterModule.createChart()
+        break;
       case '水路旅客':
         var data = echartsData.waterData.waterGuest.map(item => item.data_content)
         var turnoverData = echartsData.waterData.waterGuestTurnover.map(item => item.data_content)
@@ -1212,7 +1218,7 @@ function Index() {
 
   return (
     <div className="country-count">
-      <Loading isLoading={isLoading}  background={'#0a141c'} color={colorGroup.色4}></Loading>
+      <Loading isLoading={isLoading} background={'#0a141c'} color={colorGroup.色4}></Loading>
       <div className="top-nav">
         2021年全国交通运输数据统计
       </div>

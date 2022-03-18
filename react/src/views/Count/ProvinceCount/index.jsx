@@ -1081,6 +1081,8 @@ function Index() {
   }
   useEffect(() => {
     if (grownData) {
+      console.log('grownData', grownData)
+      console.log('grownRateType', grownRateType)
       updateGrownEcharts(grownData[grownRateType.way + grownRateType.detail].map(item => item.data_content))
       grownModule.createChart()
     }
@@ -1368,7 +1370,7 @@ function Index() {
               onChange={(value) => setGrownRateType({ ...grownRateType, way: value })}
             >
               <Radio value='road'>公路</Radio>
-              <Radio value='water'>水路</Radio>
+              {grownData?.waterGoods[0] && <Radio value='water'>水路</Radio>}
             </RadioGroup>
             <RadioGroup
               type='button'

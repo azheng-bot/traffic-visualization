@@ -1,5 +1,6 @@
 import react, { useEffect, useState } from "react";
 import "./index.less";
+import Loading from "../../../components/Loading";
 
 import "https://unpkg.com/swiper/swiper-bundle.min.js";
 
@@ -7,6 +8,7 @@ import { getNewList } from "../../../api/deepModule";
 
 function New() {
   const [newList, setNewList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [scrollList, setScrollList] = useState([0,0,0,0,0,0,0,0,0,0]);
 
 
@@ -58,18 +60,18 @@ function New() {
         };
 
         var swiper = new Swiper(".swiper-container", swiperOptions);
+      }).then(() =>{
+        setIsLoading(false)
       });
   }, []);
   return (
     <div className="new_box">
+      <Loading isLoading={isLoading} opacity={0.5}></Loading>
       <div className="swiper-container">
         <div className="swiper-wrapper"
         >
           {newList.map((item,index) => (
-
             <div key={item.news_id} className="swiper-slide" >
-              
-
               {/* 新闻内容 */}
               <div
                 className={["wrapper slide-inner",scrollList[index] > 0?'show-content':'show-image'].join(' ')} onScroll={(e) => {
@@ -81,7 +83,8 @@ function New() {
                 {/* 新闻图片 */}
                 <div
                   style={{
-                    backgroundImage: "url(" + item.image + ")",
+                    // backgroundImage: "url(" + item.image + ")",
+                    backgroundImage: `url(/image/news/${index+1}.jpg)`,
                   }}
                   className='news_image'
                 ></div>

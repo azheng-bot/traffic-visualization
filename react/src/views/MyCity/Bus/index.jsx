@@ -128,6 +128,7 @@ function Bus() {
           ).allRemark
         );
         lineSearch_Callback(result.lineInfo);
+        setMapFlag(false);
       }
     });
   };
@@ -187,7 +188,6 @@ function Bus() {
     // 将 busPolyline 显示在地图中心并自动缩放地图到合适级别。
     // true表示需要动画过程，[60,200,60,60]表示上下左右避让像素
     map.setFitView(busPolyline, true, [60, 200, 60, 60]);
-    setMapFlag(false);
   }
   // 站点标记
   const busStopClick = (busPot, index) => {
@@ -321,7 +321,7 @@ function Bus() {
             </div>
           </div>
         )}
-        <Loading isLoading={mapFlag}  />
+        <Loading isLoading={mapFlag} />
         <div id="container" className="map" style={{ height: "70%" }}></div>
       </div>
     </div>
