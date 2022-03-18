@@ -1,43 +1,60 @@
 .loading {
   width: 100%;
   height: 100%;
-  position: relative;
-  background-color: #fff;
-  opacity: 0;
-  transition: 1s all;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: .5s;
+
+  .wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #fff;
+  }
+
+
   .react-loader-wrap {
     position: relative;
     top: 50%;
     transform: translate(0, -50%);
   }
 }
-.loading.active  {
-  opacity: 1;
+
+.loading.visible {
 }
+
 //进场前的瞬间
 .test-enter,
 .test-appear {
   opacity: 0;
 }
+
 //进场过程中
 .test-enter-active,
 .test-appear-active {
-  opacity: 0.5;
-  // transition: opacity 2000ms;
+  opacity: 1;
+  transition: opacity .15s;
 }
+
 //进场之后
 .test-enter-done {
   opacity: 1;
 }
+
 //离开前的瞬间
 .test-exit {
   opacity: 1;
 }
+
 //离开过程中
 .test-exit-active {
-  opacity: 0.5;
+  opacity: 0;
   // transition: opacity 2000ms;
 }
+
 //离开后
 .test-exit-done {
   opacity: 0;

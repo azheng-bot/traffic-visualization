@@ -1,5 +1,6 @@
 import react, { useEffect, useState } from "react";
 import "./index.less";
+import Loading from "../../../components/Loading";
 
 import "https://unpkg.com/swiper/swiper-bundle.min.js";
 
@@ -8,7 +9,13 @@ import { getNewList } from "../../../api/deepModule";
 import Loading from "../../../components/Loading";
 function New() {
   const [newList, setNewList] = useState([]);
+<<<<<<< HEAD
   const [scrollList, setScrollList] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+=======
+  const [isLoading, setIsLoading] = useState(true);
+  const [scrollList, setScrollList] = useState([0,0,0,0,0,0,0,0,0,0]);
+
+>>>>>>> upstream/main
 
   const [newFlag, setNewFlag] = useState(true);
   const swiperScorll = (e, index) => {
@@ -60,15 +67,18 @@ function New() {
         };
 
         var swiper = new Swiper(".swiper-container", swiperOptions);
+      }).then(() =>{
+        setIsLoading(false)
       });
   }, []);
   return (
     <div className="new_box">
-      <Loading flagLoading={newFlag} />
+      <Loading isLoading={isLoading} opacity={0.5}></Loading>
       <div className="swiper-container">
-        <div className="swiper-wrapper">
-          {newList.map((item, index) => (
-            <div key={item.news_id} className="swiper-slide">
+        <div className="swiper-wrapper"
+        >
+          {newList.map((item,index) => (
+            <div key={item.news_id} className="swiper-slide" >
               {/* 新闻内容 */}
               <div
                 className={[
@@ -89,7 +99,8 @@ function New() {
                 {/* 新闻图片 */}
                 <div
                   style={{
-                    backgroundImage: "url(" + item.image + ")",
+                    // backgroundImage: "url(" + item.image + ")",
+                    backgroundImage: `url(/image/news/${index+1}.jpg)`,
                   }}
                   className="news_image"
                 ></div>

@@ -1,25 +1,31 @@
-import react,{useEffect} from "react";
+import react, { useEffect, useRef, useState } from "react";
 import { LineScale } from "@alex_xu/react-loading";
 import { CSSTransition } from "react-transition-group";
 import "./index.less";
 function Loading({
+  background,
   color,
   size,
   text,
   textColor,
   textOffset,
   opacity,
-  num,
-  flagLoading,
-  heightNum,
+  zIndex,
+  isLoading,
+  height,
 }) {
+  let loadingRef = useRef()
   useEffect(() => {
-      console.log('flagLoading', flagLoading)
-  },[flagLoading])
+    if (!isLoading) {
+      // setTimeout(() => {
+      //   loadingRef.current.style.display = 'none';
+      // }, 5000)
+    }
+  }, [isLoading])
   return (
     <CSSTransition
       // <!-- in表示是否出现 timeout表示动画延时 -->
-      in={flagLoading}
+      in={isLoading}
       timeout={1000}
       // <!-- classNames是钩子名，为后面的class名前缀 -->
       classNames="test"
@@ -36,27 +42,34 @@ function Loading({
       onExited={(el) => { }}
     >
       <div
-        className={["loading", flagLoading ? 'visible' : ''].join(' ')}
-        style={{ opacity: opacity, zIndex: num, height: heightNum }}
+        className={["loading", isLoading ? 'visible' : ''].join(' ')}
+        style={{ zIndex: zIndex }}
+        ref={loadingRef}
       >
-        <LineScale
-          color={color}
-          size={size}
-          text={text}
-          textColor={textColor}
-          textOffset={textOffset}
-        />
+        <div className="wrapper"
+          style={{ background }}
+        >
+          <LineScale
+            color={color}
+            size={size}
+            text={text}
+            textColor={textColor}
+            textOffset={textOffset}
+          />
+        </div>
       </div>
-    </CSSTransition>
+    </CSSTransition >
   );
 }
 Loading.defaultProps = {
-  color: "06c",
+  color: "#108ee9",
   size: 4,
   text: "",
   textColor: "",
   textOffset: 0,
   opacity: 1,
-  num: 100,
+  zIndex: 1000,
+  background: '#fff',
+  height: '100%'
 };
 export default Loading;

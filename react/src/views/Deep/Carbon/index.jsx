@@ -157,7 +157,7 @@ function Index() {
     setChinaTab(idx)
     setTimeout(() => {
       setIsShowingCards(true);
-    }, 200)
+    }, 500)
   }
   function closeChinaCard(e) {
     e.stopPropagation();
@@ -190,7 +190,7 @@ function Index() {
   useEffect(() => {
     setCurrentPage(0)
   }, [])
-  
+
   useEffect(() => {
     switch (currentPage) {
       case 1:
@@ -241,7 +241,7 @@ function Index() {
       <div className={["page-1", currentPage == 0 ? 'active' : ''].join(' ')}>
         <div className="title">
           <div className="hero"><span className="importent">碳中和</span></div>
-          <div className="subtitle">一场不得不走的人类自我解救之路</div>
+          <div className="subtitle">一场不得不走的 <br /> 人类自我解救之路</div>
         </div>
         <div className="center-image complete-center">
           <img src="/image/future/carbon/earth.png" alt=" " />
@@ -339,28 +339,86 @@ function Index() {
           <div className={["card", chinaTab == 0 ? 'up-card' : '', (chinaTab == 0 && isShowingCards) ? 'unfold-card' : ''].join(' ')} onClick={() => { showChinaCard(0) }}>
             <div className="card-wrapper">
               <div className="card-title">交通运输结构优化</div>
-              <div className="card-content"></div>
+              <div className="card-content">
+                {/* <div className="left-content"> */}
+
+                从交通运输结构来看，客运运输结构倾向于从道路运输向更加高效的铁路运输转型。
+                <br />
+                全面推进客运和货运结构调整能够有效减少交通部门碳排放。各种运输方式完成单位运输量所消耗的能源以及产生的碳排放有较大不同，据测算，道路货运单耗约是铁路的<span className="importent">4～5倍</span>。特别是随着铁路电气化改造的推进，铁路节能技术和管理水平不断提升，铁路运输低碳化发展成效明显。交通运输结构优化将显著减少碳排放。1985-2009年间，铁路客运等低能耗方式活动水平逐渐向道路和民航转移，导致CO2排放增加了<span className="importent bad">3.7亿t</span>，约合2009年交通部门碳排放的<span className="importent bad">45.3%</span>。当道路运输在城间客运的占比从<span className="importent">34%</span>下降至<span className="importent">26%</span>、铁路在货运周转量的占比从<span className="importent">10%</span>增长到<span className="importent">18%</span>后，直接碳排放将下降<span className="importent">4亿～5亿t</span>。
+
+                {/* </div>
+                <div className="right-content">
+                  <div className="row row-1 compare">
+                    <div className="compare-title">运单<span style={{ color: '#f66' }}>耗损</span></div>
+                    <div className="compare-imgs">
+                      <div className="left-imgs">
+                        <img src="/image/future/carbon/train.png" alt="" className="train"></img>
+                        <img src="/image/future/carbon/train.png" alt="" className="train"></img>
+                        <img src="/image/future/carbon/train.png" alt="" className="train"></img>
+                        <img src="/image/future/carbon/train.png" alt="" className="train"></img>
+                      </div>
+                      <div className="compare-sign">≈</div>
+                      <div className="right-imgs">
+                        <img src="/image/future/carbon/truck.png" alt="" className="truck" />
+                      </div>
+                    </div>
+                    <div className="compare-intro">道路货运单耗约是铁路的 <span className="importent">4～5倍</span> , 道路货运耗损严重 </div>
+                  </div>
+                  <div className="row row-1">
+                    <div className="time">
+                      <div className="time-1">1985</div>
+                      <div className="bar">/</div>
+                      <div className="time-2">2009</div>
+                    </div> 
+                  </div>
+                  <div className="row row-1"></div>
+                </div> */}
+              </div>
               <div className="card-close" onClick={(e) => closeChinaCard(e)}>+</div>
             </div>
           </div>
           <div className={["card", chinaTab == 1 ? 'up-card' : '', (chinaTab == 1 && isShowingCards) ? 'unfold-card' : ''].join(' ')} onClick={() => { showChinaCard(1) }}>
             <div className="card-wrapper">
               <div className="card-title">替代燃料技术发展</div>
-              <div className="card-content"></div>
+              <div className="card-content">
+                电气化是道路运输和铁路运输中重要的减排措施。电动汽车能效比传统汽车高出<span className="importent bad">50%</span>，即使考虑电力的燃料周期排放，电动汽车全生命周期排放较之于传统化石燃料汽车仍有明显优势。
+                <br />
+                随着未来中国电力结构的低碳化、清洁化，电动汽车减排优势将更明显。电动汽车可能在2050年使得道路运输温室气体排放减少<span className="importent">74%～84%</span>。假设汽车寿命为12 年、年均行驶里程为15000 km，当电池成本低于1500～2000元/(kW∙h) 时，纯电动汽车减排成本为负，即可以实现温室气体减排的同时降低全生命周期使用成本。
+                <br />
+                燃料电池技术可能成为重型货运汽车、大客车、重型船舶以及客机的重要替代燃料技术。燃料电池汽车在运行过程中的零排放有助于减少交通部门碳排放，但目前制氢过程中CO2排放量较高，约为<span className="importent">27～130g/km</span>。已有研究对氢能的减排潜力仍存在争议，且大多数学者认为氢能发展主要受基础设施的制约。道路及机场兴建加氢站对燃料进行存储以及氢燃料运输仍存在较多技术阻碍。
+                <br />
+                由于制备原料各不相同，生物燃料全生命周期减排潜力约在<span className="importent">2%～70%</span>之间。2050年生物燃料将在交通部门能耗中占<span className="importent">17%</span>，然而成本过高是生物燃料推广的最大障碍，生物燃料的运行成本约为<span className="importent">2.8美元/L</span>，是传统航空煤油的<span className="importent">2～3倍</span>。
+              </div>
               <div className="card-close" onClick={(e) => closeChinaCard(e)}>+</div>
             </div>
           </div>
           <div className={["card", chinaTab == 2 ? 'up-card' : '', (chinaTab == 2 && isShowingCards) ? 'unfold-card' : ''].join(' ')} onClick={() => { showChinaCard(2) }}>
             <div className="card-wrapper">
               <div className="card-title">颠覆性技术和新兴行为模式</div>
-              <div className="card-content"></div>
+              <div className="card-content">
+                随着消费者消费理念的变化和升级，共享出行会成为更多人的选择，并将逐步取代一部分私家车的市场。
+                <br />
+                共享出行是指人们无需拥有车辆所有权，以共享和合乘方式与其他人共享车辆，按照自己的出行要求付出相应的使用费的一种新兴交通方式。共享出行模式将有助于减少道路运输碳排放。随着消费观念的转变，共享出行比例将逐渐提高，预计2030年共享出行车渗透率将达到<span className="importent">30%以上</span>。共享出行可能使得每公里碳排放减少<span className="importent">10%～94%</span>。但是由于共享出行可能会增加消费者出行频次，因此长期来看其减排效果仍存在争议。共享出行为自动驾驶技术提供了良好的应用环境。
+                <br />
+                自动驾驶技术被认为是道路运输未来发展的颠覆性技术，具体是指在任何行驶条件下持续地执行全部动态驾驶任务和执行动态任务接管的自动化驾驶系统，可划分为5个等级。
+                <br />
+                自动驾驶汽车可能对道路运输出行方式、出行结构和交通工具能效产生影响。自动驾驶技术的节能机制从机理看可分为拥堵适应性、生态驾驶、跟车行驶、性能要求降低、碰撞回避、车型适度减小和自动加注。与此同时，自动驾驶技术也会导致由高速公路提速、舒适性需求提高、出行成本下降带来的出行需求增加，新的用户群带来的出行需求增加和出行模式的改变。生态驾驶将显著降低单车能耗，以往研究分析结果差异较大，平均来看认为其节能效果为<span className="importent bad">5%</span>。碰撞规避使得自动驾驶汽车能够减少事故发生率从而使整体能耗减少<span className="importent">0～2%</span>。跟车行驶有助于减少运行阻力，从而使得单车能耗下降<span className="importent">3%～25%</span>，根据车型和运行环境不同而不同。
+                <br />
+                整体来看，全自动驾驶汽车对单车燃油经济性的影响范围可能为<span className="importent">-5%～0%</span>，自动驾驶汽车在 2050年渗透率可能达到<span className="importent">49%～87%</span>，届时可能使得车队排放减少<span className="importent">3%</span>。
+              </div>
               <div className="card-close" onClick={(e) => closeChinaCard(e)}>+</div>
             </div>
           </div>
           <div className={["card", chinaTab == 3 ? 'up-card' : '', (chinaTab == 3 && isShowingCards) ? 'unfold-card' : ''].join(' ')} onClick={() => { showChinaCard(3) }}>
             <div className="card-wrapper">
               <div className="card-title">交通工具能效提升</div>
-              <div className="card-content"></div>
+              <div className="card-content">
+                交通工具高效化对减排做出巨大贡献。中国乘用车汽车能耗标准经历了2005-2008年、2009-2012 年、2013-2015年和2016-2020年4个阶段(下文用I、II、III和IV表示)。各阶段油耗标准不断加严，其中，IV较III、III较II和II较I阶段的同质量段油耗限值分别加严了<span className="importent bad">10%</span>、<span className="importent bad">20%</span>和<span className="importent bad">30%</span>。近十年来，全国乘用车新车工况百公里油耗水平有所下降，从2008 年的7.85L下降至2017年的6.77L，年均降幅约<span className="importent"> 2.2%</span>，《节能与新能源汽车技术路线图2.0》提出，2030年传统乘用车新车百公里平均油耗下降至<span className="importent"> 4.80L</span>，混合动力乘用车平均油耗下降至<span className="importent">4.50L</span>。尽管目前能效加严产生的效果尚不明显，但随着新标准汽车在保有量中占比逐渐提高，车队能耗和碳排放将随之显著下降。
+                <br />
+                重型商用车燃料消耗量的管理主要参考国家发布的《重型商用车辆燃料消耗量限值》标准，该强制性标准目前已经进展到第三阶段。总体来看，不同类型重型商用车第三阶段标准较之于第二阶段标准加严了12.5%～15.9%。货车、半挂牵引车、客车、自卸汽车和城市客车分别加严了13.8%、15.3%、12.5%、14.1%和15.9%。2030年货车平均油耗较 2019年下降<span className="importent">10%～15%</span>。
+                <br />
+                综合来看，交通部门能耗强度下降是最直接有效的减碳方式。1985-2009年，能耗强度下降减少了<span className="importent">4600万t</span> CO2排放，在所有措施类别中减碳量最高。
+              </div>
               <div className="card-close" onClick={(e) => closeChinaCard(e)}>+</div>
             </div>
           </div>
@@ -400,22 +458,22 @@ function Index() {
             {/* list-2 */}
             <div className="row row-1 cols list list-2" >
               <div className="list-item">
-              <span className="importent">解决</span> 转供电交叉补贴
+                <span className="importent">解决</span> 转供电交叉补贴
               </div>
               <div className="list-item">
-              <span className="importent">明确</span> vGl适应的电力服务品种
+                <span className="importent">明确</span> vGl适应的电力服务品种
               </div>
               <div className="list-item">
                 2025年新售车辆 <span className="importent">全面</span> 具备智能有序充电功能
               </div>
               <div className="list-item">
-              <span className="importent">推进</span> 分布式发电就近交易,减免过网费、基金、附加
+                <span className="importent">推进</span> 分布式发电就近交易,减免过网费、基金、附加
               </div>
               <div className="list-item">
-              <span className="importent">采用</span> 高精度双向计量智能电表和开放通信控制标准
+                <span className="importent">采用</span> 高精度双向计量智能电表和开放通信控制标准
               </div>
               <div className="list-item">
-              <span className="importent">实现</span> 城市共享出行汽车在专用车道和限定区域的CA级智能化
+                <span className="importent">实现</span> 城市共享出行汽车在专用车道和限定区域的CA级智能化
               </div>
             </div>
           </div>
@@ -457,27 +515,30 @@ function Index() {
               </div>
             </div>
           </div>
-          <div className={["content content-3 rows", futureTab == 2 ? 'active' : ''].join(' ')} style={{paddingBottom:'8%'}}>
+          <div className={["content content-3 rows", futureTab == 2 ? 'active' : ''].join(' ')} style={{ paddingBottom: '8%' }}>
             <div className="row row-1 cols box-container" style={{ marginBottom: '120px' }}>
               {/* box-1 */}
               <div className="col cols box">
                 <div className="col col-1 box-title">
                   <span className="complete-center">
-                    汽车333
+                    汽车
                   </span>
                 </div>
                 <div className="col col-8 rows">
                   <div className="row row-1  cols intro">
                     <div className="col col-1 intro-title">渗透情况</div>
-                    <div className="col col-8 intro-content">2025年新能源汽车渗透率约 <span className="importent">30%</span> 保有量约 <span className="importent">3000万辆</span></div>
+                    <div className="col col-8 intro-content">
+                      新能源汽车成为主流,2035年保有量约<span className="importent">2亿</span>辆
+                    </div>
                   </div>
                   <div className="row row-1 cols intro">
                     <div className="col col-1 intro-title">车网协同</div>
-                    <div className="col col-8 intro-content">2025年新手车辆全面具备智能有序充电功能</div>
+                    <div className="col col-8 intro-content">2035年具有v2G功能的新车渗透率达到<span className="importent">90%</span>以上
+                    </div>
                   </div>
                   <div className="row row-1 cols intro">
                     <div className="col col-1 intro-title">互动<br />能量</div>
-                    <div className="col col-8 intro-content">2025年电动乘用车平均调峰电量占车辆出行用电 <span className="importent">20%</span></div>
+                    <div className="col col-8 intro-content">2025年电动乘用车平均调峰电量占车辆出行用电 <span className="importent">200%</span></div>
                   </div>
                 </div>
               </div>
@@ -491,7 +552,7 @@ function Index() {
                 <div className="col col-8 rows">
                   <div className="row row-1  cols intro">
                     <div className="col col-1 intro-title">能源结构</div>
-                    <div className="col col-8 intro-content">2025年非化石能源比例达 <span className="importent">20%</span></div>
+                    <div className="col col-8 intro-content">2025年非化石能源比例达 <span className="importent">32%</span></div>
                   </div>
                   <div className="row row-1 cols intro">
                     <div className="col col-1 intro-title">电价机制</div>
@@ -499,7 +560,8 @@ function Index() {
                   </div>
                   <div className="row row-1 cols intro">
                     <div className="col col-1 intro-title">电力市场</div>
-                    <div className="col col-8 intro-content">2025年电动乘用车平均调峰电量占车辆出行用电 <span className="importent">20%</span></div>
+                    <div className="col col-8 intro-content">推进分布式发电就近交易,减免过网费、基金、附加
+                    </div>
                   </div>
                 </div>
               </div>
@@ -509,17 +571,23 @@ function Index() {
               <div className="col cols box">
                 <div className="col col-1 box-title">
                   <span className="complete-center">
-                    汽车
+                    交通
                   </span>
                 </div>
                 <div className="col col-8 rows">
                   <div className="row row-1  cols intro">
-                    <div className="col col-1 intro-title">渗透情况</div>
-                    <div className="col col-8 intro-content">2025年新能源汽车渗透率约 <span className="importent">30%</span> 保有量约 <span className="importent">3000万辆</span></div>
+                    <div className="col col-1 intro-title">
+                      车路协同
+                    </div>
+                    <div className="col col-8 intro-content">
+                      实现城市共享出行汽车在专用车道和限定区域的CA级智能化
+                    </div>
                   </div>
                   <div className="row row-1 cols intro">
-                    <div className="col col-1 intro-title">车网协同</div>
-                    <div className="col col-8 intro-content">2025年新手车辆全面具备智能有序充电功能</div>
+                    <div className="col col-1 intro-title">交通结构
+                    </div>
+                    <div className="col col-8 intro-content">构建安全、舒适、便捷的城市骑行体系
+                    </div>
                   </div>
                   <div className="row row-1 cols intro">
                     <div className="col col-1 intro-title">互动<br />能量</div>
@@ -531,21 +599,26 @@ function Index() {
               <div className="col cols box">
                 <div className="col col-1 box-title">
                   <span className="complete-center">
-                    汽车
+                    充电基础设施
                   </span>
                 </div>
                 <div className="col col-8 rows">
                   <div className="row row-1  cols intro">
-                    <div className="col col-1 intro-title">渗透情况</div>
-                    <div className="col col-8 intro-content">2025年新能源汽车渗透率约 <span className="importent">30%</span> 保有量约 <span className="importent">3000万辆</span></div>
+                    <div className="col col-1 intro-title">互联互通</div>
+                    <div className="col col-8 intro-content">
+                      推动气象、电力、交通数据跨平台互联互通
+
+                    </div>
                   </div>
                   <div className="row row-1 cols intro">
-                    <div className="col col-1 intro-title">车网协同</div>
-                    <div className="col col-8 intro-content">2025年新手车辆全面具备智能有序充电功能</div>
+                    <div className="col col-1 intro-title">控制标准</div>
+                    <div className="col col-8 intro-content">采用高精度双向计量智能电表和开放通信控制标准
+                    </div>
                   </div>
                   <div className="row row-1 cols intro">
                     <div className="col col-1 intro-title">互动<br />能量</div>
-                    <div className="col col-8 intro-content">2025年电动乘用车平均调峰电量占车辆出行用电 <span className="importent">20%</span></div>
+                    <div className="col col-8 intro-content">2035年新建v2G充电桩占比
+                      <span className="importent">100%</span></div>
                   </div>
                 </div>
               </div>

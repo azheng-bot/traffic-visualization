@@ -133,7 +133,7 @@ function Index() {
 
   return (
     <div className="traffic-tool">
-      <Loading flagLoading={toolFlag} />
+      <Loading isLoading={toolFlag} />
       <div className="wrapper">
         <div className="aside">
           <ul

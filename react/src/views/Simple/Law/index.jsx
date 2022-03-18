@@ -27,7 +27,7 @@ function Laws() {
   // 选中的条名称
   const [itemName, setItemName] = useState("");
   // 数据是否加载成功
-  const [flagLoading, setFlagLoading] = useState(true);
+  const [isLoading, setFlagLoading] = useState(true);
   // 初始化设置数据
   useEffect(() => {
     getLaws().then((res) => {
@@ -117,7 +117,7 @@ function Laws() {
   }, [itemId]);
   return (
     <div className="law_box">
-      <Loading flagLoading={flagLoading} />
+      <Loading isLoading={isLoading} />
       <div className="box_law">
         <div className="box_law_list">
           <div className="law">

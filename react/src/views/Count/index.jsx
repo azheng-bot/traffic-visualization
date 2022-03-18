@@ -232,10 +232,10 @@ function index(props) {
   const [submoduleEntrys, setSubmoduleEntrys] = useState([
     {
       active: false,
-      name: "province",
-      title: "交通运输数据统计",
-      image: "/image/modules/colorful/province-count.png",
-      intro: "将各个省份的各项交通运输数据通过报表的方式进行展现，以可视化的方式使得交通数据更直观醒目。",
+      name: "country",
+      title: "全国交通运输汇总",
+      image: "/image/modules/colorful/country-count.png",
+      intro: "将全国的各项交通运输数据合计通过报表的方式进行展现，以可视化的方式使得交通数据更直观醒目。",
       left: 940,
       top: 168
     },
@@ -249,11 +249,11 @@ function index(props) {
     //   top: 419
     // },
     {
-        active: false,
-        name: "country",
-        title: "全国交通运输汇总",
-        image: "/image/modules/colorful/country-count.png",
-        intro: "将全国的各项交通运输数据合计通过报表的方式进行展现，以可视化的方式使得交通数据更直观醒目。",
+      active: false,
+      name: "province",
+      title: "各省详细运输统计",
+      image: "/image/modules/colorful/province-count.png",
+      intro: "将各个省份的各项交通运输数据通过报表的方式进行展现，以可视化的方式使得交通数据更直观醒目。",
       left: -35,
       top: 235
     },
@@ -272,12 +272,12 @@ function index(props) {
   const submoduleEntryAreas = {
     back:
       [
-        { name: "province", y1: 1850, y2: 2050 },
+        { name: "country", y1: 1850, y2: 2050 },
         // { name: "carbon", y1: 1500, y2: 1700 },
       ],
     forward:
       [
-        { name: "country", y1: 1375, y2: 1575 },
+        { name: "province", y1: 1375, y2: 1575 },
         // { name: "itms", y1: 1675, y2: 1875 },
       ]
   }
@@ -305,15 +305,15 @@ function index(props) {
   // 键入回车键，进入子模块
   function enterSubmodule(submodule) {
     if (submodule == null) return
-    navigate("/future/" + submodule)
+    navigate("/count/" + submodule)
   }
 
   // 小车进入下一条路
   const roadMap = { leftRoad: "/mycity", forwardRoad: "/knowledge", rightRoad: "/deep" }
   let navigate = useNavigate()
-  const [futureVisible, setFutureVisible] = useState(true)
+  const [countVisible, setCountVisible] = useState(true)
   function toNextRoad(road) {
-    setFutureVisible(false)
+    setCountVisible(false)
     setTimeout(() => {
       navigate(roadMap[road])
     }, 250)
@@ -321,11 +321,11 @@ function index(props) {
 
 
   return (
-    <div className={futureVisible ? "future" : "future hide"}>
+    <div className={countVisible ? "count" : "count hide"}>
       {/*  可视区域 */}
       <div className="visible-area" >
         {/* 路标 */}
-        <RoadSign style={{ left: -229, bottom: 73 }} cnName={"交通统计路"} enName={"Future Road"} reserve={true}></RoadSign>
+        <RoadSign style={{ left: -229, bottom: 73 }} cnName={"交通统计路"} enName={"Count Road"} reserve={true}></RoadSign>
         {/* 左侧树木&景观 */}
         <div className="scenery-left">
           {leftSceneries.map((item, index) => <img

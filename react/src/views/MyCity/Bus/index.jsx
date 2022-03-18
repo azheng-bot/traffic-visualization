@@ -29,7 +29,7 @@ function Bus() {
   let [heightNum, setHeightNum] = useState("100%");
   useEffect(() => {
     AMapLoader.load({
-      key: "c6e434d1188e1c9f904dc256f7e14de8", // 申请好的Web端开发者Key，首次调用 load 时必填
+      key: 'c6e434d1188e1c9f904dc256f7e14de8', // 申请好的Web端开发者Key，首次调用 load 时必填
       version: "2.0", // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
       plugins: ["AMap.CitySearch", "AMap.LineSearch"], // 需要使用的的插件列表，如比例尺'AMap.Scale'等
     })
@@ -43,10 +43,11 @@ function Bus() {
         //实例化城市查询类
         var citysearch = new AMap.CitySearch();
         citysearch.getLocalCity(function (status, result) {
+          console.log('result')
           if (status === "complete" && result.info === "OK") {
             // result即为当前所在城市信息
             setCity(result.city);
-            //地图显示当前城市
+            // 地图显示当前城市
             var citybounds = result.bounds;
             // 设置当前城市
             map.setBounds(citybounds);
@@ -88,7 +89,7 @@ function Bus() {
       setBusStop(0);
     }
   };
-  useEffect(() => {}, [city]);
+  useEffect(() => { }, [city]);
 
   // 城市下拉框
   const downClick = () => {
@@ -127,6 +128,7 @@ function Bus() {
           ).allRemark
         );
         lineSearch_Callback(result.lineInfo);
+        setMapFlag(false);
       }
     });
   };
@@ -186,7 +188,6 @@ function Bus() {
     // 将 busPolyline 显示在地图中心并自动缩放地图到合适级别。
     // true表示需要动画过程，[60,200,60,60]表示上下左右避让像素
     map.setFitView(busPolyline, true, [60, 200, 60, 60]);
-    setMapFlag(false);
   }
   // 站点标记
   const busStopClick = (busPot, index) => {
@@ -282,9 +283,8 @@ function Bus() {
                 <div
                   className="arrive-line"
                   style={{
-                    width: `calc(20px + (100% - 40px) * ${busStop} / ${
-                      busLineInfo[0].via_stops.length - 1
-                    })`,
+                    width: `calc(20px + (100% - 40px) * ${busStop} / ${busLineInfo[0].via_stops.length - 1
+                      })`,
                   }}
                 ></div>
               </div>
@@ -321,7 +321,7 @@ function Bus() {
             </div>
           </div>
         )}
-        <Loading flagLoading={mapFlag} heightNum={heightNum} />
+        <Loading isLoading={mapFlag} />
         <div id="container" className="map" style={{ height: "70%" }}></div>
       </div>
     </div>
