@@ -4,7 +4,17 @@ import { getProvinceData } from "../../../api/deepModule";
 import Loading from '../../../components/Loading';
 
 // echarts
-import * as echarts from 'echarts';
+// import * as echarts from 'echarts';
+import * as echarts from 'echarts/core';
+// import {
+// } from 'echarts/components';
+import {
+  LineChart
+} from 'echarts/charts';
+echarts.use([
+  LineChart
+]);
+
 // china.json
 import china from "./china.json"
 echarts.registerMap('china', china)
@@ -16,28 +26,18 @@ import { Select, Message, Space } from '@arco-design/web-react';
 const Option = Select.Option;
 
 
-// 地图模块
-let mapModule;
-// 中心城市模块
-let centerCityModule;
-// 公路1模块
-let road1Module
-// 公路2模块
-let road2Module
-// 水路1模块
-let water1Module
-// 水路2模块
-let water2Module
-// 周转量1模块
-let turnover1Module
-// 周转量2模块
-let turnover2Module
-// 港口1模块
-let portModule
-// 总比率模块
-let rateModule
-// 增速模块
-let grownModule
+
+let mapModule;// 地图模块
+let centerCityModule;// 中心城市模块
+let road1Module// 公路1模块
+let road2Module// 公路2模块
+let water1Module// 水路1模块
+let water2Module// 水路2模块
+let turnover1Module// 周转量1模块
+let turnover2Module// 周转量2模块
+let portModule// 港口1模块
+let rateModule// 总比率模块
+let grownModule// 增速模块
 let grownData;
 
 function Index() {
@@ -1157,6 +1157,20 @@ function Index() {
 
       // updateEcharts()
     })
+
+    return function unMounted() {
+      mapModule.chart.clear()
+      centerCityModule.chart.clear()
+      road1Module.chart.clear()
+      road2Module.chart.clear()
+      water1Module.chart.clear()
+      water2Module.chart.clear()
+      turnover1Module.chart.clear()
+      turnover2Module.chart.clear()
+      portModule.chart.clear()
+      rateModule.chart.clear()
+      grownModule.chart.clear()
+    }
   }, [])
 
   function updateProvince(province) {

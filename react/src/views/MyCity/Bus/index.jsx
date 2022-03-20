@@ -3,6 +3,8 @@ import { getBusList, getCityList } from "../../../api/mycityModule";
 import "./index.less";
 import AMapLoader from "@amap/amap-jsapi-loader";
 import Loading from "../../../components/Loading";
+let WebMapKey = import.meta.env.VITE_WebMapKey
+
 function Bus() {
   // 城市列表
   const [cityList, setCityList] = useState([]);
@@ -29,7 +31,7 @@ function Bus() {
   let [heightNum, setHeightNum] = useState("100%");
   useEffect(() => {
     AMapLoader.load({
-      key: 'c6e434d1188e1c9f904dc256f7e14de8', // 申请好的Web端开发者Key，首次调用 load 时必填
+      key: WebMapKey, // 申请好的Web端开发者Key，首次调用 load 时必填
       version: "2.0", // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
       plugins: ["AMap.CitySearch", "AMap.LineSearch"], // 需要使用的的插件列表，如比例尺'AMap.Scale'等
     })
@@ -43,7 +45,7 @@ function Bus() {
         //实例化城市查询类
         var citysearch = new AMap.CitySearch();
         citysearch.getLocalCity(function (status, result) {
-          console.log('result')
+          console.log('result',result)
           if (status === "complete" && result.info === "OK") {
             // result即为当前所在城市信息
             setCity(result.city);

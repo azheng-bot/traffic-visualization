@@ -227,7 +227,7 @@ function index(props) {
     // {
     //   active: false,
     //   name: "news",
-    //   title: "最新新闻",
+    //   title: "交通大事件",
     //   image: "/image/modules/colorful/news.png",
     //   intro: "将最新的交通重要新闻进行汇总展示，并通过轮播的方式依次展现。",
     //   left: 547,
@@ -236,7 +236,7 @@ function index(props) {
     {
       active: false,
       name: "news",
-      title: "最新新闻",
+      title: "交通大事件",
       image: "/image/modules/colorful/news.png",
       intro: "将最新的交通重要新闻进行汇总展示，并通过轮播的方式依次展现。",
       left: 974,

@@ -6,6 +6,7 @@ import Loading from '../../../components/Loading'
 
 // 高德地图
 import AMapLoader from '@amap/amap-jsapi-loader';
+let WebMapKey = import.meta.env.VITE_WebMapKey
 
 // echarts
 import * as echarts from 'echarts';
@@ -1083,7 +1084,7 @@ function Index() {
 
     // 加载可视化地图
     AMapLoader.load({
-      "key": import.meta.env.VITE_WebMapKey,              // 申请好的Web端开发者Key，首次调用 load 时必填
+      "key": WebMapKey,              // 申请好的Web端开发者Key，首次调用 load 时必填
       "version": "2.0",       // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
       "plugins": [],
       "Loca": {                // 是否加载 Loca， 缺省不加载

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import cityList from "./cityList.js";
 import "./index.less";
-// import "https://webapi.amap.com/subway?v=1.0&key=c6e434d1188e1c9f904dc256f7e14de8&callback=cbk";
 import Loading from "../../../components/Loading";
+let WebMapKey = import.meta.env.VITE_WebMapKey
 
 function Metro(props) {
   let [adcodeId, setAdcodeId] = useState(1100);
@@ -28,7 +28,7 @@ function Metro(props) {
     // if (!document.querySelector("#beijing")) return;
     // 创建地铁图
     let script = document.createElement('script')
-    script.src = `https://webapi.amap.com/subway?v=1.0&key=${import.meta.env.VITE_WebMapKey}&callback=cbk`
+    script.src = `https://webapi.amap.com/subway?v=1.0&key=${WebMapKey}&callback=cbk`
     document.body.appendChild(script)
     
     window.cbk = function () {
