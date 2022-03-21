@@ -22,6 +22,11 @@
   "resolved" "https://registry.npmmirror.com/bignumber.js/download/bignumber.js-9.0.0.tgz"
   "version" "9.0.0"
 
+"bluebird@^3.1.1":
+  "integrity" "sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg=="
+  "resolved" "https://registry.npmmirror.com/bluebird/-/bluebird-3.7.2.tgz"
+  "version" "3.7.2"
+
 "boolbase@^1.0.0":
   "integrity" "sha1-aN/1++YMUes3cl6p4+0xDcwed24="
   "resolved" "https://registry.nlark.com/boolbase/download/boolbase-1.0.0.tgz"
@@ -63,6 +68,13 @@
   "integrity" "sha1-bqa989hTrlTMuOR7+gvz+QMfsYQ="
   "resolved" "https://registry.nlark.com/co/download/co-4.6.0.tgz?cache=0&sync_timestamp=1624608078028&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fco%2Fdownload%2Fco-4.6.0.tgz"
   "version" "4.6.0"
+
+"consolidate@^0.15.0":
+  "integrity" "sha512-DW46nrsMJgy9kqAbPt5rKaCr7uFtpo4mSUvLHIUbJEjm0vo+aY5QLwBUq3FK4tRnJr/X0Psc0C4jf/h+HtXSMw=="
+  "resolved" "https://registry.npmmirror.com/consolidate/-/consolidate-0.15.1.tgz"
+  "version" "0.15.1"
+  dependencies:
+    "bluebird" "^3.1.1"
 
 "content-disposition@~0.5.2":
   "integrity" "sha512-FveZTNuGw04cxlAiWbzi6zTAL/lhehaWbTtgluJh4/E95DqMwTmha3KZN1aAWA8cFIhHzMZUvLevkw5Rqk+tSQ=="
@@ -285,6 +297,14 @@
   "resolved" "https://registry.npmmirror.com/koa-cors/-/koa-cors-0.0.16.tgz"
   "version" "0.0.16"
 
+"koa-error@^3.2.0":
+  "integrity" "sha512-43fD2lEdEz69NEMYqq9XsxGs3AZEYDLxOST0woX8KEyaNPbdlQGCcQyOpf3CVPShkYPzywbOKZndyebZsfIk7g=="
+  "resolved" "https://registry.npmmirror.com/koa-error/-/koa-error-3.2.0.tgz"
+  "version" "3.2.0"
+  dependencies:
+    "consolidate" "^0.15.0"
+    "lodash" "^4.17.4"
+
 "koa-router@^10.1.1":
   "integrity" "sha512-z/OzxVjf5NyuNO3t9nJpx7e1oR3FSBAauiwXtMQu4ppcnuNZzTaQ4p21P8A6r2Es8uJJM339oc4oVW+qX7SqnQ=="
   "resolved" "https://registry.npmmirror.com/koa-router/-/koa-router-10.1.1.tgz"
@@ -324,6 +344,11 @@
     "statuses" "^1.5.0"
     "type-is" "^1.6.16"
     "vary" "^1.1.2"
+
+"lodash@^4.17.4":
+  "integrity" "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
+  "resolved" "https://registry.npmmirror.com/lodash/-/lodash-4.17.21.tgz"
+  "version" "4.17.21"
 
 "media-typer@0.3.0":
   "integrity" "sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g="

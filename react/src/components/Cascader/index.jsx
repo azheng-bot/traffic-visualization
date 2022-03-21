@@ -93,7 +93,7 @@ function index(props) {
       res => {
         setCity(res.data.city)
         cityInfo.cityName = res.data.city
-        return axios.get("http://localhost:8800/city/adcode", { params: { city: res.data.city } })
+        return axios.get("http://localhost:8000/city/adcode", { params: { city: res.data.city } })
       }
     ).then(
       // 根据城市，获取城市adcode

@@ -1,6 +1,8 @@
 import axios from "axios";
+const CancelToken = axios.CancelToken;
+const source = CancelToken.source();
 
-export const baseURL = "http://localhost:8800/";
+export const baseURL = "http://localhost:8000/";
 const instanceWithoutToken = axios.create({ baseURL });
 instanceWithoutToken.interceptors.response.use(
     (response) => {
@@ -11,7 +13,10 @@ instanceWithoutToken.interceptors.response.use(
     (error) => new Promise.reject(error)
 );
 // 响应拦截器
-instanceWithoutToken.interceptors.response.use((response) => response.data);
+instanceWithoutToken.interceptors.response.use((response) => {
+    console.log('response', response)
+    return response.data
+});
 const generateRequestConfig = (url, method, data) => ({
     url,
     method,
@@ -19,6 +24,8 @@ const generateRequestConfig = (url, method, data) => ({
 });
 // 请求函数
 export function request(url, method, data) {
-    return instanceWithoutToken(generateRequestConfig(url, method, data));
+    return instanceWithoutToken(generateRequestConfig(url, method, data), {
+        cancelToken: source.token
+    });
 }
 
