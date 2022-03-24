@@ -55,6 +55,11 @@ function index(props) {
     // 添加大型树木1
     let bigTree1Num = 18, initBigTree1Left = -800, initBigTree1Top = 450;
     for (var i = 0; i <= bigTree1Num; i++) {
+      // 中间少树木，去添加特殊景观
+      // if (i == 9) {
+      //   initBigTree1Left += 112 * 1
+      //   initBigTree1Top -= 63 * 1
+      // }
       leftSceneries.push({
         src: "/image/tree/bigtree-1.png",
         left: initBigTree1Left += 112,
@@ -67,7 +72,7 @@ function index(props) {
     let bigTree2Num = 20, initBigTree2Left = -1000, initBigTree2Top = 400;
     for (var i = 0; i <= bigTree2Num; i++) {
       // 中间少树木，去添加特殊景观
-      if (i == 13) {
+      if (i == 8) {
         initBigTree2Left += 112 * 1
         initBigTree2Top -= 63 * 1
       }
@@ -83,9 +88,9 @@ function index(props) {
     let bigTree3Num = 16, initBigTree3Left = -1050, initBigTree3Top = 300;
     for (var i = 0; i <= bigTree3Num; i++) {
       // 中间少树木，去添加特殊景观
-      if (i == 7) {
-        initBigTree3Left += 128 * 1
-        initBigTree3Top -= 72 * 1
+      if (i == 6) {
+        initBigTree3Left += 128 * 2
+        initBigTree3Top -= 72 * 2
       }
       leftSceneries.push({
         src: "/image/tree/bigtree-4.png",
@@ -150,9 +155,13 @@ function index(props) {
     for (var i = 0; i <= bigTree1Num; i++) {
       // 中间少树木，去添加特殊景观
       if (i == 5) {
-        initBigTree1Right += 298
-        initBigTree1Bottom -= 162
+        initBigTree1Right += 240
+        initBigTree1Bottom -= 135
       }
+      // if (i == 6) {
+      //   initBigTree1Right += 112
+      //   initBigTree1Bottom -= 63
+      // }
       rightSceneries.push({
         src: "/image/tree/bigtree-1.png",
         right: initBigTree1Right += 112,
@@ -223,28 +232,28 @@ function index(props) {
     leftSceneries.push({
       src: "/image/scenery/people-2.png",
       width:40,
-      left: 38,
-      top: 157,
+      left: -72,
+      top: 235,
       zIndex: 40
     })
     // 花簇
-    leftSceneries.push({
-      src: "/image/scenery/flower-1.png",
-      left: 189,
-      top: -26,
-      zIndex: 40
-    })
-    leftSceneries.push({
-      src: "/image/scenery/flower-2.png",
-      left: 180,
-      top: -10,
-      zIndex: 40
-    })
+    // leftSceneries.push({
+    //   src: "/image/scenery/flower-1.png",
+    //   left:  313,
+    //   top:  0,
+    //   zIndex: 40
+    // })
+    // leftSceneries.push({
+    //   src: "/image/scenery/flower-2.png",
+    //   left:  322,
+    //   top:  -13,
+    //   zIndex: 40
+    // })
     // 池子
     leftSceneries.push({
       src: "/image/scenery/pond.png",
-      left: -60,
-      top: -170,
+      left: -100,
+      top: -120,
       zIndex: 20
     })
 
@@ -294,22 +303,22 @@ function index(props) {
     rightSceneries.push({
       src: "/image/scenery/fountain.png",
       right: -223,
-      bottom: 36,
+      bottom: 56,
       zIndex: 57
     })
     // 花簇
-    rightSceneries.push({
-      src: "/image/scenery/flower-1.png",
-      right: 110,
-      bottom: 65,
-      zIndex: 1
-    })
-    rightSceneries.push({
-      src: "/image/scenery/flower-2.png",
-      right: 135,
-      bottom: 75,
-      zIndex: 5
-    })
+    // rightSceneries.push({
+    //   src: "/image/scenery/flower-1.png",
+    //   right: 255,
+    //   bottom: 14,
+    //   zIndex: 1
+    // })
+    // rightSceneries.push({
+    //   src: "/image/scenery/flower-2.png",
+    //   right: 270,
+    //   bottom: 4,
+    //   zIndex: 5
+    // })
 
   })();
 
