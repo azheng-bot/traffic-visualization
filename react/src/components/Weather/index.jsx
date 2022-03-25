@@ -107,6 +107,7 @@ function index(props) {
       // 根据adcode，获取高德Web API天气信息
       res => {
         let weatherInfo = res.data.lives[0];
+        setWeather(weatherInfo.weather)
         setTemperature(weatherInfo.temperature);
       }
     ).catch(err => console.log(err))
