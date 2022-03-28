@@ -20,7 +20,7 @@ const Option = Select.Option;
 
 // 对用到的数据全局化声明
 // 地图数据
-let map, loca, pl, mapDataList;
+let map, loca, pl, mapDataList, clickInfo;
 // 一般数据
 let provinceList, echartsData;
 // 声明模块
@@ -1018,7 +1018,7 @@ function Index() {
       },
       sideBottomColor: colorGroup.色5 + '60',
       radius: 32000,
-      height: (index, f) => { 
+      height: (index, f) => {
         var props = f.properties;
         var height = Math.max(100, props['value'] * heigthTimes * 5);
         return height;
@@ -1028,7 +1028,8 @@ function Index() {
 
 
     // 点击事件处理
-    var clickInfo = new AMap.Marker({
+    if (clickInfo) clickInfo.hide()
+    clickInfo = new AMap.Marker({
       anchor: 'bottom-center',
       position: [116.396923, 39.918203, 0],
     });

@@ -57,8 +57,8 @@ function Index() {
       // subtext: '单位：%',
       left: 'center',
       textStyle: {
-        fontFamily: 'font1',
-        fontSize: 30
+        fontFamily: 'font6',
+        fontSize: 32
       }
     },
     tooltip: {
@@ -66,15 +66,17 @@ function Index() {
     },
     series: [
       {
-        name: 'Access From',
+        name: '',
         type: 'pie',
         radius: '70%',
         top: 20,
         bottom: -30,
         label: {
           overflow: 'breakAll',
-          fontSize: 18,
-          fontFamily: 'font7',
+          fontFamily: 'font1',
+          fontSize: 22,
+          // fontSize: 18,
+          // fontFamily: 'font7',
           formatter: function (value) {
             return `${value.name} \n ${value.value}%`
           },
@@ -103,8 +105,8 @@ function Index() {
       // subtext: '单位：%',
       left: 'center',
       textStyle: {
-        fontFamily: 'font1',
-        fontSize: 30
+        fontFamily: 'font6',
+        fontSize: 32
       }
     },
     tooltip: {
@@ -112,22 +114,22 @@ function Index() {
     },
     series: [
       {
-        name: 'Access From',
+        name: '',
         type: 'pie',
         radius: '70%',
         top: 20,
         bottom: -30,
         label: {
           overflow: 'breakAll',
-          fontSize: 18,
-          fontFamily: 'font7',
+          fontFamily: 'font1',
+          fontSize: 22,
           formatter: function (value) {
             return `${value.name} \n ${value.value}%`
           },
           textAlign: 'center'
         },
         data: [
-          { value: 21.3, name: '亚太地区（除中国' },
+          { value: 21.3, name: '亚太地区（除中国）' },
           { value: 30.7, name: '中国' },
           { value: 16.6, name: '北美地区' },
           { value: 11.1, name: '欧洲' },
@@ -188,7 +190,7 @@ function Index() {
 
 
   useEffect(() => {
-    setCurrentPage(0)
+    setCurrentPage(1)
   }, [])
 
   useEffect(() => {
@@ -481,16 +483,16 @@ function Index() {
             {/* list-1 */}
             <div className="row row-1 cols list list-1" style={{ marginBottom: '180px' }}>
               <div className="list-item">
-                <span className="importent">20%</span> 电动乘用车平均调峰电量占车辆出行用电
+                <span className="importent">80%</span> 电动乘用车平均调峰电量占车辆出行用电
               </div>
               <div className="list-item">
-                <span className="importent">3000万</span> 辆新能源汽车保有量
+                <span className="importent">1亿</span> 辆新能源汽车保有量
               </div>
               <div className="list-item">
-                <span className="importent">100%</span> 新建智能充电桩占比
+                <span className="importent">25%</span> 非化石能源比例
               </div>
               <div className="list-item">
-                <span className="importent">30%</span> 新能源汽车渗透率
+                <span className="importent">50%</span> 新能源汽车渗透率
               </div>
             </div>
             {/* list-2 */}
