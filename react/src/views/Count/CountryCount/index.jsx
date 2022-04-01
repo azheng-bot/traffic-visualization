@@ -3,6 +3,8 @@ import "./index.less";
 import { getCountryData } from "../../../api/deepModule";
 import { getCityList } from "../../../api/mycityModule";
 import Loading from '../../../components/Loading'
+import IncreaseNumber from '../../../components/IncreaseNumber'
+
 
 // 高德地图
 import AMapLoader from '@amap/amap-jsapi-loader';
@@ -84,6 +86,7 @@ function Index() {
     updateData(data) {
       for (var i = 0; i < data.length; i++) {
         this.option.series[i].data = data[i]
+        this.option.series[i].animationDuration = 2000
       }
     }
 
@@ -688,7 +691,7 @@ function Index() {
           name: '客运',
           type: 'pie',
           selectedMode: 'single',
-          radius: ['35%', '50%'],
+          radius: ['37%', '50%'],
           top: -30,
           bottom: -60,
           left: 20,
@@ -735,7 +738,7 @@ function Index() {
                   lineHeight: 30,
                 },
                 d: {
-                  fontSize: 35,
+                  fontSize: 32,
                   shadowBlur: 10,
                   fontWeight: 600
 
@@ -765,7 +768,7 @@ function Index() {
         {
           name: '货运',
           type: 'pie',
-          radius: ['60%', '65%'],
+          radius: ['62%', '66%'],
           labelLine: {
             length: 30
           },
@@ -1140,8 +1143,8 @@ function Index() {
 
 
         map.on('complete', function () {
-          setIsLoading(false)
-          setTimeout(function () {
+          setTimeout(() => {
+            setIsLoading(false)
             pl.show(500);
             pl.addAnimate({
               key: 'height',
@@ -1152,7 +1155,11 @@ function Index() {
               random: true,
               delay: 5000,
             });
-          }, 80);
+          },
+            1)
+
+          // setTimeout(function () {
+          // }, 80);
         });
         loca.animate.start();
 
@@ -1204,7 +1211,7 @@ function Index() {
         mapDataAnimate()
         console.log(7, 'data', data)
         // 加载echarts数据
-        updateEchartsData(data)
+          updateEchartsData(data)
         // rateModule
         rateModule.option.series[0].data[0].value = data.roadData.roadGuest[11].data_content
         rateModule.option.series[0].data[1].value = data.waterData.waterGuest[11].data_content
@@ -1274,32 +1281,32 @@ function Index() {
         </div>
         {/* 第二列 */}
         <div className="center-col">
-          <div className="total-numbers">
+          {!isLoading && <div className="total-numbers">
             <div>
-              <div className="number">{totalData.roadGuest}<span>万人</span></div>
-              <div className="text">公路客运量</div>
+              <div className="number"><IncreaseNumber number={totalData.roadGuest} /></div>
+              <div className="text"><span>万人</span>公路客运量</div>
             </div>
             <div>
-              <div className="number">{totalData.roadGoods}<span>万吨</span></div>
-              <div className="text">公路货运量</div>
+              <div className="number"><IncreaseNumber number={totalData.roadGoods} /></div>
+              <div className="text"><span>万吨</span>公路货运量</div>
             </div>
             <div>
-              <div className="number">{totalData.waterGuest}<span>万人</span></div>
-              <div className="text">水路客运量</div>
+              <div className="number"><IncreaseNumber number={totalData.waterGuest} /></div>
+              <div className="text"><span>万人</span>水路客运量</div>
             </div>
             <div>
-              <div className="number">{totalData.waterGoods}<span>万吨</span></div>
-              <div className="text">水路货运量</div>
+              <div className="number"><IncreaseNumber number={totalData.waterGoods} /></div>
+              <div className="text"><span>万吨</span>水路货运量</div>
             </div>
             <div>
-              <div className="number">{totalData.airGuest}<span>万人</span></div>
-              <div className="text">国内航线客运量</div>
+              <div className="number"><IncreaseNumber number={totalData.airGuest} /></div>
+              <div className="text"><span>万人</span>国内航线客运量</div>
             </div>
             <div>
-              <div className="number">{totalData.portGoods}<span>万吨</span></div>
-              <div className="text">港口货运量</div>
+              <div className="number"><IncreaseNumber number={totalData.portGoods} /></div>
+              <div className="text"><span className="text">万吨</span>港口货运量</div>
             </div>
-          </div>
+          </div>}
           <div className="selector">
             <Select
               placeholder='Please select'

@@ -47,6 +47,7 @@ function Bus() {
         citysearch.getLocalCity(function (status, result) {
           console.log('result',result)
           if (status === "complete" && result.info === "OK") {
+            result.city = '上海市'
             // result即为当前所在城市信息
             setCity(result.city);
             // 地图显示当前城市

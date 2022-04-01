@@ -190,7 +190,7 @@ function Index() {
 
 
   useEffect(() => {
-    setCurrentPage(1)
+    setCurrentPage(0)
   }, [])
 
   useEffect(() => {

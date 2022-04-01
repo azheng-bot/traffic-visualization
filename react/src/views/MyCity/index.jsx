@@ -72,10 +72,10 @@ function index(props) {
     let bigTree2Num = 20, initBigTree2Left = -1000, initBigTree2Top = 400;
     for (var i = 0; i <= bigTree2Num; i++) {
       // 中间少树木，去添加特殊景观
-      if (i == 8) {
-        initBigTree2Left += 112 * 1
-        initBigTree2Top -= 63 * 1
-      }
+      // if (i == 8) {
+      //   initBigTree2Left += 112 * 1
+      //   initBigTree2Top -= 63 * 1
+      // }
       leftSceneries.push({
         src: "/image/tree/bigtree-1.png",
         left: initBigTree2Left += 112,
@@ -85,13 +85,13 @@ function index(props) {
     }
 
     // 添加大型树木3
-    let bigTree3Num = 16, initBigTree3Left = -1050, initBigTree3Top = 300;
+    let bigTree3Num = 16, initBigTree3Left = -1020, initBigTree3Top = 300;
     for (var i = 0; i <= bigTree3Num; i++) {
       // 中间少树木，去添加特殊景观
-      if (i == 6) {
-        initBigTree3Left += 128 * 2
-        initBigTree3Top -= 72 * 2
-      }
+      // if (i == 6) {
+      //   initBigTree3Left += 128 * 2
+      //   initBigTree3Top -= 72 * 2
+      // }
       leftSceneries.push({
         src: "/image/tree/bigtree-4.png",
         left: initBigTree3Left += 128,
@@ -137,10 +137,10 @@ function index(props) {
     let treeNum = 25, initTreeRight = -740, initTreeBottom = 670;
     for (var i = 0; i <= treeNum; i++) {
       // 中间少树木，去添加特殊景观
-      if (i == 10) {
-        initTreeRight += 96 * 1
-        initTreeBottom -= 54 * 1
-      }
+      // if (i == 10) {
+      //   initTreeRight += 96 * 1
+      //   initTreeBottom -= 54 * 1
+      // }
       rightSceneries.push({
         src: "/image/tree/tree-1.png",
         width: 76,
@@ -154,13 +154,9 @@ function index(props) {
     let bigTree1Num = 18, initBigTree1Right = -750, initBigTree1Bottom = 500;
     for (var i = 0; i <= bigTree1Num; i++) {
       // 中间少树木，去添加特殊景观
-      if (i == 5) {
-        initBigTree1Right += 240
-        initBigTree1Bottom -= 135
-      }
-      // if (i == 6) {
-      //   initBigTree1Right += 112
-      //   initBigTree1Bottom -= 63
+      // if (i == 5) {
+      //   initBigTree1Right += 240
+      //   initBigTree1Bottom -= 135
       // }
       rightSceneries.push({
         src: "/image/tree/bigtree-1.png",
@@ -174,10 +170,10 @@ function index(props) {
     let bigTree2Num = 20, initBigTree2Right = -1000, initBigTree2Bottom = 450;
     for (var i = 0; i <= bigTree2Num; i++) {
       // 中间少树木，去添加特殊景观
-      if (i == 6) {
-        initBigTree2Right += 112 * 1
-        initBigTree2Bottom -= 63 * 1
-      }
+      // if (i == 6) {
+      //   initBigTree2Right += 112 * 1
+      //   initBigTree2Bottom -= 63 * 1
+      // }
       rightSceneries.push({
         src: "/image/tree/bigtree-1.png",
         right: initBigTree2Right += 112,
@@ -233,7 +229,7 @@ function index(props) {
       src: "/image/scenery/people-2.png",
       width:40,
       left: -72,
-      top: 235,
+      top: 215,
       zIndex: 40
     })
     // 花簇
@@ -250,12 +246,12 @@ function index(props) {
     //   zIndex: 40
     // })
     // 池子
-    leftSceneries.push({
-      src: "/image/scenery/pond.png",
-      left: -100,
-      top: -120,
-      zIndex: 20
-    })
+    // leftSceneries.push({
+    //   src: "/image/scenery/pond.png",
+    //   left: -100,
+    //   top: -120,
+    //   zIndex: 20
+    // })
 
 
     // 右边
@@ -276,36 +272,36 @@ function index(props) {
       zIndex: 40
     })
 
-    // 小路
-    rightSceneries.push({
-      src: "/image/scenery/road.png",
-      width: 137,
-      right: 126,
-      bottom: 176,
-      zIndex: 0
-    })
-    rightSceneries.push({
-      src: "/image/scenery/road.png",
-      width: 137,
-      right: 7.5,
-      bottom: 104,
-      zIndex: 0
-    })
-    // 凉亭
-    rightSceneries.push({
-      src: "/image/scenery/kiosk.png",
-      width: 135,
-      right: -70,
-      bottom: 52,
-      zIndex: 57
-    })
-    // 喷泉
-    rightSceneries.push({
-      src: "/image/scenery/fountain.png",
-      right: -223,
-      bottom: 56,
-      zIndex: 57
-    })
+    // // 小路
+    // rightSceneries.push({
+    //   src: "/image/scenery/road.png",
+    //   width: 137,
+    //   right: 126,
+    //   bottom: 176,
+    //   zIndex: 0
+    // })
+    // rightSceneries.push({
+    //   src: "/image/scenery/road.png",
+    //   width: 137,
+    //   right: 7.5,
+    //   bottom: 104,
+    //   zIndex: 0
+    // })
+    // // 凉亭
+    // rightSceneries.push({
+    //   src: "/image/scenery/kiosk.png",
+    //   width: 135,
+    //   right: -70,
+    //   bottom: 52,
+    //   zIndex: 57
+    // })
+    // // 喷泉
+    // rightSceneries.push({
+    //   src: "/image/scenery/fountain.png",
+    //   right: -223,
+    //   bottom: 56,
+    //   zIndex: 57
+    // })
     // 花簇
     // rightSceneries.push({
     //   src: "/image/scenery/flower-1.png",
