@@ -691,7 +691,7 @@ function Index() {
           name: '客运',
           type: 'pie',
           selectedMode: 'single',
-          radius: ['37%', '50%'],
+          radius: ['37%', '52%'],
           top: -30,
           bottom: -60,
           left: 20,
@@ -712,7 +712,7 @@ function Index() {
           },
           emphasis: {
             label: {
-              formatter: '{a|{a}-}{b|{b}} \n {d|{d}%}  \n {c|{c}万人}  ',
+              formatter: '{a|{a}-}{b|{b}} \n {d|{d}%} \n {c|{c}万人}  ',
               show: true,
               fontSize: "30",
               fontWeight: "bold",
@@ -768,7 +768,7 @@ function Index() {
         {
           name: '货运',
           type: 'pie',
-          radius: ['62%', '66%'],
+          radius: ['64%', '68%'],
           labelLine: {
             length: 30
           },
@@ -1211,7 +1211,7 @@ function Index() {
         mapDataAnimate()
         console.log(7, 'data', data)
         // 加载echarts数据
-          updateEchartsData(data)
+        updateEchartsData(data)
         // rateModule
         rateModule.option.series[0].data[0].value = data.roadData.roadGuest[11].data_content
         rateModule.option.series[0].data[1].value = data.waterData.waterGuest[11].data_content
@@ -1281,32 +1281,44 @@ function Index() {
         </div>
         {/* 第二列 */}
         <div className="center-col">
-          {!isLoading && <div className="total-numbers">
-            <div>
-              <div className="number"><IncreaseNumber number={totalData.roadGuest} /></div>
-              <div className="text"><span>万人</span>公路客运量</div>
-            </div>
-            <div>
-              <div className="number"><IncreaseNumber number={totalData.roadGoods} /></div>
-              <div className="text"><span>万吨</span>公路货运量</div>
-            </div>
-            <div>
-              <div className="number"><IncreaseNumber number={totalData.waterGuest} /></div>
-              <div className="text"><span>万人</span>水路客运量</div>
-            </div>
-            <div>
-              <div className="number"><IncreaseNumber number={totalData.waterGoods} /></div>
-              <div className="text"><span>万吨</span>水路货运量</div>
-            </div>
-            <div>
-              <div className="number"><IncreaseNumber number={totalData.airGuest} /></div>
-              <div className="text"><span>万人</span>国内航线客运量</div>
-            </div>
-            <div>
-              <div className="number"><IncreaseNumber number={totalData.portGoods} /></div>
-              <div className="text"><span className="text">万吨</span>港口货运量</div>
-            </div>
-          </div>}
+          <div className="total-numbers">
+            {totalData.roadGuest &&
+              <div>
+                <div className="number"><IncreaseNumber number={totalData.roadGuest} /></div>
+                <div className="text"><span>万人</span>公路客运量</div>
+              </div>
+            }
+            {totalData.roadGoods &&
+              <div>
+                <div className="number"><IncreaseNumber number={totalData.roadGoods} /></div>
+                <div className="text"><span>万吨</span>公路货运量</div>
+              </div>
+            }
+            {totalData.waterGuest &&
+              <div>
+                <div className="number"><IncreaseNumber number={totalData.waterGuest} /></div>
+                <div className="text"><span>万人</span>水路客运量</div>
+              </div>
+            }
+            {totalData.waterGoods &&
+              <div>
+                <div className="number"><IncreaseNumber number={totalData.waterGoods} /></div>
+                <div className="text"><span>万吨</span>水路货运量</div>
+              </div>
+            }
+            {totalData.airGuest &&
+              <div>
+                <div className="number"><IncreaseNumber number={totalData.airGuest} /></div>
+                <div className="text"><span>万人</span>国内航线客运量</div>
+              </div>
+            }
+            {totalData.portGoods &&
+              <div>
+                <div className="number"><IncreaseNumber number={totalData.portGoods} /></div>
+                <div className="text"><span className="text">万吨</span>港口货运量</div>
+              </div>
+            }
+          </div>
           <div className="selector">
             <Select
               placeholder='Please select'

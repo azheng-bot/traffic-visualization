@@ -306,6 +306,7 @@ function index(props) {
   function enterSubmodule(submodule) {
     if (submodule == null) return
     navigate("/count/" + submodule)
+    // window.location.href = "/count/" + submodule
   }
 
   // 小车进入下一条路
@@ -315,6 +316,7 @@ function index(props) {
   function toNextRoad(road) {
     setCountVisible(false)
     setTimeout(() => {
+      window.history.pushState(null,null,roadMap[road])
       navigate(roadMap[road])
     }, 250)
   }

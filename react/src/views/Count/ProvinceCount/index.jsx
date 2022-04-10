@@ -2,6 +2,7 @@ import react, { useEffect, useState, useRef } from "react";
 import "./index.less";
 import { getProvinceData } from "../../../api/deepModule";
 import Loading from '../../../components/Loading';
+import IncreaseNumber from '../../../components/IncreaseNumber'
 
 // echarts
 // import * as echarts from 'echarts';

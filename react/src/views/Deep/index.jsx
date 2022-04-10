@@ -301,6 +301,8 @@ function index(props) {
   function enterSubmodule(submodule) {
     if (submodule == null) return
     navigate("/deep/" + submodule)
+    // window.location.href = "/deep/" + submodule
+
   }
 
   // 小车进入下一条路
@@ -310,6 +312,7 @@ function index(props) {
   function toNextRoad(road) {
     setMyCityVisible(false)
     setTimeout(() => {
+      window.history.pushState(null,null,roadMap[road])
       navigate(roadMap[road])
     }, 250)
   }

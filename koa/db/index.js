@@ -10,6 +10,5 @@ const conn = mysql.createConnection({
   port
 })
 
-conn.connect()
 
 module.exports = conn

@@ -4,29 +4,26 @@ let path = require("path")
 // 1.获取省份详细数据
 module.exports.getProvinceData = (ctx, next) => {
   let filePath = path.join(__dirname, "../../json/", ctx.query.province + '.json')
+
+  fs.openSync(filePath)
   let data = fs.readFileSync(filePath)
-  fs.closeSync(0, res => {
-    console.log(' res', res)
-  })
-
+  console.log('111', 111)
   data = JSON.parse(data)
-
   ctx.body = { data }
 
-  next()
+  fs.closeSync(0)
+  next()  
 }
 
-// 1.获取省份详细数据
+// 2.获取全国数据
 module.exports.getCountryData = (ctx, next) => {
   let filePath = path.join(__dirname, "../../json/全国.json")
+
+  fs.openSync(filePath)
   let data = fs.readFileSync(filePath)
-  fs.closeSync(0, res => {
-    console.log(' res', res)
-  })
-
   data = JSON.parse(data )
-
   ctx.body = { data }
 
+  fs.closeSync(0)
   next()
 }

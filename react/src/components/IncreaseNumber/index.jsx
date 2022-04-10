@@ -27,17 +27,18 @@ function index(props) {
   useEffect(() => {
     if (targetNumber != 0) {
       if (number < targetNumber) {
-        const increaseValue = (targetNumber - number) / 100;// 递增数值
+        const increaseValue = (targetNumber - number) / 70;// 递增数值
         setTimeout(() => {
           setNumber(number + increaseValue)
-        }, 1)
+        }, 4)
       }
     }
   }, [number])
 
   return (
     <span style={style} className="increase-number">
-      {(parseInt(number))}
+      {/* {parseInt(number)} */}
+      {props.number}
     </span>
   )
 }

@@ -498,22 +498,22 @@ function Index() {
             {/* list-2 */}
             <div className="row row-1 cols list list-2" >
               <div className="list-item">
-                解决转供电交叉补贴
+              <span className="importent">逐步探索</span>放电价格,放电价格参考同节点、同时刻用电价格
               </div>
               <div className="list-item">
-                明确vGl适应的电力服务品种
+              <span className="importent">逐步降低</span>vGI市场准入门槛
               </div>
               <div className="list-item">
-                2025年新售车辆全面具备智能有序充电功能
+              <span className="importent">构建</span>全国统一电力市场
               </div>
               <div className="list-item">
-                推进分布式发电就近交易,减免过网费、基金、附加
+              <span className="importent">推动</span>气象、电力、交通数据跨平台互联互通
               </div>
               <div className="list-item">
-                采用高精度双向计量智能电表和开放通信控制标准
+              <span className="importent">采用</span>高精度双向计量智能电表和开放通信控制标准
               </div>
               <div className="list-item">
-                实现城市共享出行汽车在专用车道和限定区域的CA级智能化
+                全国主要城市的城市道路货运<span className="importent">实现</span>高度自动驾驶
               </div>
             </div>
           </div>
@@ -540,7 +540,7 @@ function Index() {
                   </div>
                   <div className="row row-1 cols intro">
                     <div className="col col-1 intro-title">互动<br />能量</div>
-                    <div className="col col-8 intro-content">2025年电动乘用车平均调峰电量占车辆出行用电 <span className="importent">200%</span></div>
+                    <div className="col col-8 intro-content">2035年电动乘用车平均调峰电量占车辆出行用电 <span className="importent">200%</span></div>
                   </div>
                 </div>
               </div>
@@ -554,7 +554,7 @@ function Index() {
                 <div className="col col-8 rows">
                   <div className="row row-1  cols intro">
                     <div className="col col-1 intro-title">能源结构</div>
-                    <div className="col col-8 intro-content">2025年非化石能源比例达 <span className="importent">32%</span></div>
+                    <div className="col col-8 intro-content">2035年非化石能源比例达 <span className="importent">32%</span></div>
                   </div>
                   <div className="row row-1 cols intro">
                     <div className="col col-1 intro-title">电价机制</div>
@@ -593,7 +593,7 @@ function Index() {
                   </div>
                   <div className="row row-1 cols intro">
                     <div className="col col-1 intro-title">互动<br />能量</div>
-                    <div className="col col-8 intro-content">2025年电动乘用车平均调峰电量占车辆出行用电 <span className="importent">20%</span></div>
+                    <div className="col col-8 intro-content">2035年电动乘用车平均调峰电量占车辆出行用电 <span className="importent">20%</span></div>
                   </div>
                 </div>
               </div>

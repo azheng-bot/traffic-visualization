@@ -3,8 +3,8 @@ const PORT = 8000;
 const Koa = require('koa');
 const app = new Koa();
 
-// 跨域问题
-const cors = require("koa-cors")
+// 跨域问题 
+const cors = require("koa-cors") 
 app.use(cors())
 
  
@@ -14,4 +14,4 @@ app.use(routers.routes());
  
 app.listen(PORT, () => { 
   console.log(`Listen to http://localhost:${PORT}`);
-}); 
+});  
