@@ -939,13 +939,11 @@ function Index() {
   // 加载可视化地图数据
   let domainMap = { '公路货物运输量': 'roadGoods', '公路旅客运输量': 'roadGuest', '水路货物运输量': 'waterGoods', '水路旅客运输量': 'waterGuest', '全国港口货物、集装箱吞吐量': 'portGoods' }
   function loadingMapData(domain) {
-    console.log('6.1', 6.1)
     let data = mapDataList[domainMap[domain]]
     let geoData = {
       type: "FeatureCollection",
       features: []
     }
-    console.log('6.2', 6.2)
 
     data.forEach(item => {
       if (item.label_name == '总计' || item.label_name == '不分地区') return false
@@ -967,16 +965,12 @@ function Index() {
 
       geoData.features.push(featureItem)
     })
-    console.log('6.3', 6.3)
 
 
     var geo = new Loca.GeoJSONSource({
       data: geoData
     });
-    console.log('geoData', geoData)
-    console.log('geo', geo)
     pl.setSource(geo);
-    console.log('6.4', 6.4)
 
     // 中界值
     let mediumNumber = 0
@@ -1038,7 +1032,6 @@ function Index() {
     });
     clickInfo.setMap(map);
     clickInfo.hide();
-    console.log('6.5', 6.5)
     map.on('click', function (e) {
       var feat = pl.queryFeature(e.pixel.toArray());
       if (feat) {
@@ -1056,7 +1049,6 @@ function Index() {
         clickInfo.hide();
       }
     });
-    console.log('6.6', 6.6)
 
     loca.add(pl);
     mapDataAnimate()
@@ -1064,9 +1056,7 @@ function Index() {
   }
   // 可视化地图数据加载动画
   function mapDataAnimate() {
-    console.log('6.7', 6.7)
     pl.show(500);
-    console.log('6.8', 6.8)
     pl.addAnimate({
       key: 'height',
       value: [0, 1],
@@ -1076,7 +1066,6 @@ function Index() {
       random: true,
       delay: 2000,
     });
-    console.log('6.9', 6.9)
   }
 
 
@@ -1100,7 +1089,6 @@ function Index() {
     })
       // 生成可视化地图
       .then((AMap) => {
-        console.log(1, 'AMap', AMap)
         map = new AMap.Map('map', {
           zoom: 5,
           showLabel: false,
@@ -1109,12 +1097,10 @@ function Index() {
           center: [107.594884, 36.964587],
           mapStyle: 'amap://styles/grey',
         });
-        console.log(2, 'map', map)
 
         loca = new Loca.Container({
           map,
         });
-        console.log(3, 'loca', loca)
         loca.ambLight = {
           intensity: 0.7,
           color: '#00ffff',
@@ -1139,7 +1125,6 @@ function Index() {
           visible: false,
           hasSide: true,
         });
-        console.log(4, 'pl', pl)
 
 
         map.on('complete', function () {
@@ -1175,13 +1160,11 @@ function Index() {
       // 获取省份坐标数据
       .then(getCityList)
       .then(({ provinces }) => {
-        console.log(5, 'provinces', provinces)
         provinceList = provinces.slice();
       })
       // 获取数据
       .then(getCountryData)
       .then(({ data }) => {
-        console.log(6, 'data', data)
         echartsData = { airData: data.airData, portData: data.portData, roadData: data.roadData, waterData: data.waterData }
         // 加载可视化地图数据
         mapDataList = Object.assign({}, data.provinceTotalData);
@@ -1209,7 +1192,6 @@ function Index() {
 
         loadingMapData('公路货物运输量')
         mapDataAnimate()
-        console.log(7, 'data', data)
         // 加载echarts数据
         updateEchartsData(data)
         // rateModule
@@ -1220,7 +1202,6 @@ function Index() {
         rateModule.option.series[1].data[2].value = data.portData.total[11].data_content
         rateModule.option.series[1].data[3].value = data.airData.countryGoods[10].data_content
         createEcharts()
-        console.log(8, 'data', data)
         // 设置总数据
         setTotalData({
           portGoods: data.portData.total[11].data_content,

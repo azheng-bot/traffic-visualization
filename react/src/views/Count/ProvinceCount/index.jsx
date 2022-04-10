@@ -1082,8 +1082,6 @@ function Index() {
   }
   useEffect(() => {
     if (grownData) {
-      console.log('grownData', grownData)
-      console.log('grownRateType', grownRateType)
       updateGrownEcharts(grownData[grownRateType.way + grownRateType.detail].map(item => item.data_content))
       grownModule.createChart()
     }
