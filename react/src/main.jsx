@@ -8,7 +8,7 @@ import { CityInfoContextProvider, cityInfoContext } from "./utils/reducer";
 // arco design
 import "@arco-design/web-react/dist/css/arco.css";
 
-// 我的城市 - MyCity
+// 城市交通 - MyCity
 import MyCity from "./views/MyCity/index";
 import Bus from "./views/MyCity/Bus/index";
 import Subway from "./views/MyCity/Subway/index";
@@ -21,7 +21,7 @@ import Tool from "./views/Simple/Tool/index";
 import Deep from "./views/Deep/index";
 import News from "./views/Deep/News/index";
 import Carbon from "./views/Deep/Carbon/index";
-// 交通统计 - Count
+// 数据汇总 - Count
 import Count from "./views/Count/index";
 import ProvinceCount from "./views/Count/ProvinceCount/index";
 import CountryCount from "./views/Count/CountryCount/index";

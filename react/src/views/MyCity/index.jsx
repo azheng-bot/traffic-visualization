@@ -287,8 +287,8 @@ function index(props) {
     rightSceneries.push({
       src: "/image/building/building-1.png",
       width:305,
-      right: -324,
-      bottom: -356,
+      right: -362,
+      bottom: -342,
       zIndex: 80
     })
     rightSceneries.push({
@@ -301,8 +301,8 @@ function index(props) {
     rightSceneries.push({
       src: "/image/building/building-1.png",
       width:305,
-      right: 111,
-      bottom: -606,
+      right: 147,
+      bottom: -618,
       zIndex: 80
     })
 
@@ -390,7 +390,7 @@ function index(props) {
       {/*  可视区域 */}
       <div className="visible-area" >
         {/* 路标 */}
-        <RoadSign style={{ left: -229, bottom: 73 }} cnName={"我的城市路"} enName={"My City Road"}></RoadSign>
+        <RoadSign style={{ left: -229, bottom: 73 }} cnName={"城市交通路"} enName={"My City Road"}></RoadSign>
         {/* 左侧树木&景观 */}
         <div className="scenery-left">
           {leftSceneries.map((item, index) => <img
@@ -452,7 +452,7 @@ function index(props) {
                   <RightArrow />
                 </div>
                 <div className="road-name">
-                  交通统计路
+                  数据汇总路
                 </div>
               </div>
             </div>

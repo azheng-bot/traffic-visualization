@@ -8,7 +8,7 @@ function index(props) {
   const navigate = useNavigate()
   const moduleList = [
     {
-      name: "我的城市",
+      name: "城市交通",
       route: "/mycity/",
       children: [
         { name: "城市公交", route: "mycity/bus", icon: "/image/modules/colorless/bus.png", _icon: "/image/modules/colorless/_bus.png" },
@@ -37,7 +37,7 @@ function index(props) {
       ]
     },
     {
-      name: "交通统计",
+      name: "数据汇总",
       route: "count",
       children: [
         { name: "全国交通运输数据", route: "count/country", icon: "/image/modules/colorless/country-count.png", _icon: "/image/modules/colorless/_country-count.png" },

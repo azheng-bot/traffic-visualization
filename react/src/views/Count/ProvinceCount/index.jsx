@@ -1117,19 +1117,19 @@ function Index() {
     grownModule.createChart()
   }
 
-  // 更新Echarts
-  function updateEcharts() {
-    mapModule.updateChart()
-    centerCityModule.updateChart()
-    road1Module.updateChart()
-    road2Module.updateChart()
-    water1Module.updateChart()
-    water2Module.updateChart()
-    turnover1Module.updateChart()
-    turnover2Module.updateChart()
-    portModule.updateChart()
-    rateModule.updateChart()
-    grownModule.updateChart()
+  // 清除Echarts
+  function clearEcharts() {
+    mapModule.chart.clear()
+    centerCityModule.chart.clear()
+    road1Module.chart.clear()
+    road2Module.chart.clear()
+    water1Module.chart.clear()
+    water2Module.chart.clear()
+    turnover1Module.chart.clear()
+    turnover2Module.chart.clear()
+    portModule.chart.clear()
+    rateModule.chart.clear()
+    grownModule.chart.clear()
   }
 
   function changeActiveProvince(province) {
@@ -1145,6 +1145,7 @@ function Index() {
     // 初始化生成Echarts
     initEcharts()
     changeActiveProvince(province)
+    rateModule.chart.clear()
     updateProvince(province)
 
 
@@ -1153,22 +1154,10 @@ function Index() {
       changeActiveProvince(params.name)
       setProvince(params.name)
       updateProvince(params.name)
-
-      // updateEcharts()
     })
 
     return function unMounted() {
-      mapModule.chart.clear()
-      centerCityModule.chart.clear()
-      road1Module.chart.clear()
-      road2Module.chart.clear()
-      water1Module.chart.clear()
-      water2Module.chart.clear()
-      turnover1Module.chart.clear()
-      turnover2Module.chart.clear()
-      portModule.chart.clear()
-      rateModule.chart.clear()
-      grownModule.chart.clear()
+      clearEcharts()
     }
   }, [])
 

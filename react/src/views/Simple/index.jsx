@@ -18,6 +18,7 @@ import RoadSign from "../../components/RoadSign"
 
 function index(props) {
   let match = useLocation()
+  
   // 左边景观的图片与样式
   const leftSceneries = [];
   (function createLeftSceneries() {
@@ -43,8 +44,8 @@ function index(props) {
       leftSceneries.push({
         src: "/image/tree/tree-1.png",
         width: 76,
-        left: initTreeLeft += 80,
-        top: initTreeTop -= 45,
+        left: initTreeLeft += 96,
+        top: initTreeTop -= 54,
         zIndex: 50
       })
     }
@@ -52,6 +53,11 @@ function index(props) {
     // 添加大型树木1
     let bigTree1Num = 18, initBigTree1Left = -800, initBigTree1Top = 450;
     for (var i = 0; i <= bigTree1Num; i++) {
+      // 中间少树木，去添加特殊景观
+      // if (i == 9) {
+      //   initBigTree1Left += 112 * 1
+      //   initBigTree1Top -= 63 * 1
+      // }
       leftSceneries.push({
         src: "/image/tree/bigtree-1.png",
         left: initBigTree1Left += 112,
@@ -60,37 +66,49 @@ function index(props) {
       })
     }
 
-    // 添加大型树木2
-    let bigTree2Num = 25, initBigTree2Left = -950, initBigTree2Top = 400;
-    for (var i = 0; i <= bigTree2Num; i++) {
-      leftSceneries.push({
-        src: "/image/tree/bigtree-1.png",
-        left: initBigTree2Left += 80,
-        top: initBigTree2Top -= 45,
-        zIndex: 40
-      })
-    }
+    // // 添加大型树木2
+    // let bigTree2Num = 20, initBigTree2Left = -1000, initBigTree2Top = 400;
+    // for (var i = 0; i <= bigTree2Num; i++) {
+    //   // 中间少树木，去添加特殊景观
+    //   // if (i == 8) {
+    //   //   initBigTree2Left += 112 * 1
+    //   //   initBigTree2Top -= 63 * 1
+    //   // }
+    //   leftSceneries.push({
+    //     src: "/image/tree/bigtree-1.png",
+    //     left: initBigTree2Left += 112,
+    //     top: initBigTree2Top -= 63,
+    //     zIndex: 40
+    //   })
+    // }
 
-    // 添加大型树木3
-    let bigTree3Num = 16, initBigTree3Left = -1050, initBigTree3Top = 350;
-    for (var i = 0; i <= bigTree3Num; i++) {
-      leftSceneries.push({
-        src: "/image/tree/bigtree-4.png",
-        left: initBigTree3Left += 128,
-        top: initBigTree3Top -= 72,
-        zIndex: 35
-      })
-    }
+    // // 添加大型树木3
+    // let bigTree3Num = 16, initBigTree3Left = -1020, initBigTree3Top = 300;
+    // for (var i = 0; i <= bigTree3Num; i++) {
+    //   // 中间少树木，去添加特殊景观
+    //   // if (i == 6) {
+    //   //   initBigTree3Left += 128 * 2
+    //   //   initBigTree3Top -= 72 * 2
+    //   // }
+    //   leftSceneries.push({
+    //     src: "/image/tree/bigtree-4.png",
+    //     left: initBigTree3Left += 128,
+    //     top: initBigTree3Top -= 72,
+    //     zIndex: 35
+    //   })
+    // }
+
     // 添加大型树木4
-    let bigTree4Num = 16, initBigTree4Left = -1150, initBigTree4Top = 250;
-    for (var i = 0; i <= bigTree4Num; i++) {
-      leftSceneries.push({
-        src: "/image/tree/bigtree-4.png",
-        left: initBigTree4Left += 128,
-        top: initBigTree4Top -= 72,
-        zIndex: 30
-      })
-    }
+    // let bigTree4Num = 16, initBigTree4Left = -1150, initBigTree4Top = 250;
+    // for (var i = 0; i <= bigTree4Num; i++) {
+    //   leftSceneries.push({
+    //     src: "/image/tree/bigtree-4.png",
+    //     left: initBigTree4Left += 128,
+    //     top: initBigTree4Top -= 72,
+    //     zIndex: 30
+    //   })
+    // }
+
 
   })();
 
@@ -116,11 +134,16 @@ function index(props) {
     // 添加不规则小树样式
     let treeNum = 25, initTreeRight = -740, initTreeBottom = 670;
     for (var i = 0; i <= treeNum; i++) {
+      // 中间少树木，去添加特殊景观
+      // if (i == 10) {
+      //   initTreeRight += 96 * 1
+      //   initTreeBottom -= 54 * 1
+      // }
       rightSceneries.push({
         src: "/image/tree/tree-1.png",
         width: 76,
-        right: initTreeRight += 80,
-        bottom: initTreeBottom -= 45,
+        right: initTreeRight += 96,
+        bottom: initTreeBottom -= 54,
         zIndex: 50
       })
     }
@@ -128,6 +151,11 @@ function index(props) {
     // 添加大型树木1
     let bigTree1Num = 18, initBigTree1Right = -750, initBigTree1Bottom = 500;
     for (var i = 0; i <= bigTree1Num; i++) {
+      // 中间少树木，去添加特殊景观
+      // if (i == 5) {
+      //   initBigTree1Right += 240
+      //   initBigTree1Bottom -= 135
+      // }
       rightSceneries.push({
         src: "/image/tree/bigtree-1.png",
         right: initBigTree1Right += 112,
@@ -137,45 +165,43 @@ function index(props) {
     }
 
     // 添加大型树木2
-    let bigTree2Num = 25, initBigTree2Right = -950, initBigTree2Bottom = 450;
+    let bigTree2Num = 20, initBigTree2Right = -1000, initBigTree2Bottom = 450;
     for (var i = 0; i <= bigTree2Num; i++) {
+      // 中间少树木，去添加特殊景观
+      // if (i == 6) {
+      //   initBigTree2Right += 112 * 1
+      //   initBigTree2Bottom -= 63 * 1
+      // }
       rightSceneries.push({
         src: "/image/tree/bigtree-1.png",
-        right: initBigTree2Right += 80,
-        bottom: initBigTree2Bottom -= 45,
+        right: initBigTree2Right += 112,
+        bottom: initBigTree2Bottom -= 63,
         zIndex: 60
       })
     }
 
     // 添加大型树木3
-    let bigTree3Num = 12, initBigTree3Right = -1050, initBigTree3Bottom = 350;
-    for (var i = 0; i <= bigTree3Num; i++) {
-      rightSceneries.push({
-        src: "/image/tree/bigtree-4.png",
-        right: initBigTree3Right += 150,
-        bottom: initBigTree3Bottom -= 84,
-        zIndex: 65
-      })
-    }
-
+    // let bigTree3Num = 12, initBigTree3Right = -1050, initBigTree3Bottom = 300;
+    // for (var i = 0; i <= bigTree3Num; i++) {
+    //   rightSceneries.push({
+    //     src: "/image/tree/bigtree-4.png",
+    //     right: initBigTree3Right += 150,
+    //     bottom: initBigTree3Bottom -= 84,
+    //     zIndex: 65
+    //   })
+    // }
     // 添加大型树木4
-    let bigTree4Num = 16, initBigTree4Right = -1150, initBigTree4Bottom = 250;
-    for (var i = 0; i <= bigTree4Num; i++) {
-      rightSceneries.push({
-        src: "/image/tree/bigtree-4.png",
-        right: initBigTree4Right += 128,
-        bottom: initBigTree4Bottom -= 72,
-        zIndex: 70
-      })
-    }
+    // let bigTree4Num = 16, initBigTree4Right = -1150, initBigTree4Bottom = 250;
+    // for (var i = 0; i <= bigTree4Num; i++) {
+    //   rightSceneries.push({
+    //     src: "/image/tree/bigtree-4.png",
+    //     right: initBigTree4Right += 128,
+    //     bottom: initBigTree4Bottom -= 72,
+    //     zIndex: 70
+    //   })
+    // }
 
-    // // 添加座椅和路灯
-    // rightSceneries.push({
-    //   src: "/image/tree/bigtree-4.png",
-    //   right: initBigTree3Right += 150,
-    //   bottom: initBigTree3Bottom -= 84,
-    //   zIndex: 65
-    // })
+    
 
   })();
 
@@ -199,12 +225,44 @@ function index(props) {
       zIndex: 50
     })
     // 女孩儿
+    // leftSceneries.push({
+    //   src: "/image/scenery/people-2.png",
+    //   width:40,
+    //   left: -72,
+    //   top: 215,
+    //   zIndex: 40
+    // })
+    // 添加楼宇
     leftSceneries.push({
-      src: "/image/scenery/people-2.png",
-      left: 40,
-      top: 140,
+      src: "/image/building/building-1.png",
+      width:270,
+      left: -421,
+      top: -333,
       zIndex: 40
     })
+    leftSceneries.push({
+      src: "/image/building/building-2.png",
+      width:294,
+      left: -234,
+      top: -136,
+      zIndex: 38
+    })
+    leftSceneries.push({
+      src: "/image/building/building-3.png",
+      width:462,
+      left: -157,
+      top: -348,
+      zIndex: 36
+    })
+    leftSceneries.push({
+      src: "/image/building/building-2.png",
+      width:294,
+      left: 184,
+      top: -365,
+      zIndex: 34
+    })
+    
+
 
     // 右边
     // 凳子
@@ -223,7 +281,37 @@ function index(props) {
       bottom: 215,
       zIndex: 40
     })
+    // 添加楼宇
+    rightSceneries.push({
+      src: "/image/building/building-1.png",
+      width:305,
+      right: -362,
+      bottom: -342,
+      zIndex: 80
+    })
+    rightSceneries.push({
+      src: "/image/building/building-1.png",
+      width:305,
+      right: -106,
+      bottom: -480,
+      zIndex: 80
+    })
+    rightSceneries.push({
+      src: "/image/building/building-1.png",
+      width:305,
+      right: 147,
+      bottom: -618,
+      zIndex: 80
+    })
+    rightSceneries.push({
+      src: "/image/building/building-1.png",
+      width:305,
+      right: 401,
+      bottom: -757,
+      zIndex: 80
+    })
   })();
+
 
   // 小车的朝向
   const forwardOrient = "bottomRight"
@@ -379,7 +467,7 @@ function index(props) {
                   <ForwardArrow />
                 </div>
                 <div className="road-name">
-                  交通统计路
+                  数据汇总路
                 </div>
               </div>
               <DottedLine width="7px" height="100%" lineNum="15" />
@@ -388,7 +476,7 @@ function index(props) {
                   <RightArrow />
                 </div>
                 <div className="road-name">
-                  我的城市路
+                  城市交通路
                 </div>
               </div>
             </div>

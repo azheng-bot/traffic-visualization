@@ -1194,23 +1194,32 @@ function Index() {
         mapDataAnimate()
         // 加载echarts数据
         updateEchartsData(data)
+
+        // Total Datas
+        let portGoodsTotalCount = data.portData.total.reduce((total, item) => total += Number(item.data_content), 0)
+        let roadGoodsTotalCount = data.roadData.roadGoods.reduce((total, item) => total += Number(item.data_content), 0)
+        let roadGuestTotalCount = data.roadData.roadGuest.reduce((total, item) => total += Number(item.data_content), 0)
+        let waterGoodsTotalCount = data.waterData.waterGoods.reduce((total, item) => total += Number(item.data_content), 0)
+        let waterGuestTotalCount = data.waterData.waterGuest.reduce((total, item) => total += Number(item.data_content), 0)
+        let airCountryGoodsTotalCount = data.airData.countryGoods.reduce((total, item) => total += Number(item.data_content), 0)
+        let airCountryGuestTotalCount = data.airData.countryGuest.reduce((total, item) => total += Number(item.data_content), 0)
         // rateModule
-        rateModule.option.series[0].data[0].value = data.roadData.roadGuest[11].data_content
-        rateModule.option.series[0].data[1].value = data.waterData.waterGuest[11].data_content
-        rateModule.option.series[1].data[0].value = data.roadData.roadGoods[11].data_content
-        rateModule.option.series[1].data[1].value = data.waterData.waterGoods[11].data_content
-        rateModule.option.series[1].data[2].value = data.portData.total[11].data_content
-        rateModule.option.series[1].data[3].value = data.airData.countryGoods[10].data_content
+        rateModule.option.series[0].data[0].value = roadGuestTotalCount
+        rateModule.option.series[0].data[1].value = waterGuestTotalCount
+        rateModule.option.series[1].data[0].value = roadGoodsTotalCount
+        rateModule.option.series[1].data[1].value = waterGoodsTotalCount
+        rateModule.option.series[1].data[2].value = portGoodsTotalCount
+        rateModule.option.series[1].data[3].value = parseInt(airCountryGoodsTotalCount)
         createEcharts()
         // 设置总数据
         setTotalData({
-          portGoods: data.portData.total[11].data_content,
-          roadGoods: data.roadData.roadGoods[11].data_content,
-          roadGuest: data.roadData.roadGuest[11].data_content,
-          waterGoods: data.waterData.waterGoods[11].data_content,
-          waterGuest: data.waterData.waterGuest[11].data_content,
-          airGoods: data.airData.countryGoods[10].data_content,
-          airGuest: data.airData.countryGuest[10].data_content,
+          portGoods: portGoodsTotalCount,
+          roadGoods: roadGoodsTotalCount,
+          roadGuest: roadGuestTotalCount,
+          waterGoods: waterGoodsTotalCount,
+          waterGuest: waterGuestTotalCount,
+          airGoods: airCountryGoodsTotalCount,
+          airGuest: airCountryGuestTotalCount,
         })
       })
       .catch(e => {
