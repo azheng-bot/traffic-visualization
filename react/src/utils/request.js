@@ -2,7 +2,7 @@ import axios from "axios";
 const CancelToken = axios.CancelToken;
 const source = CancelToken.source();
 
-export const baseURL = "http://localhost:8000/";
+export const baseURL = "http://124.222.166.81:8000/";
 const instanceWithoutToken = axios.create({ baseURL });
 instanceWithoutToken.interceptors.response.use(
     (response) => {

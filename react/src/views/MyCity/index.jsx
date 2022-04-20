@@ -68,37 +68,37 @@ function index(props) {
       })
     }
 
-    // 添加大型树木2
-    let bigTree2Num = 20, initBigTree2Left = -1000, initBigTree2Top = 400;
-    for (var i = 0; i <= bigTree2Num; i++) {
-      // 中间少树木，去添加特殊景观
-      // if (i == 8) {
-      //   initBigTree2Left += 112 * 1
-      //   initBigTree2Top -= 63 * 1
-      // }
-      leftSceneries.push({
-        src: "/image/tree/bigtree-1.png",
-        left: initBigTree2Left += 112,
-        top: initBigTree2Top -= 63,
-        zIndex: 40
-      })
-    }
+    // // 添加大型树木2
+    // let bigTree2Num = 20, initBigTree2Left = -1000, initBigTree2Top = 400;
+    // for (var i = 0; i <= bigTree2Num; i++) {
+    //   // 中间少树木，去添加特殊景观
+    //   // if (i == 8) {
+    //   //   initBigTree2Left += 112 * 1
+    //   //   initBigTree2Top -= 63 * 1
+    //   // }
+    //   leftSceneries.push({
+    //     src: "/image/tree/bigtree-1.png",
+    //     left: initBigTree2Left += 112,
+    //     top: initBigTree2Top -= 63,
+    //     zIndex: 40
+    //   })
+    // }
 
-    // 添加大型树木3
-    let bigTree3Num = 16, initBigTree3Left = -1020, initBigTree3Top = 300;
-    for (var i = 0; i <= bigTree3Num; i++) {
-      // 中间少树木，去添加特殊景观
-      // if (i == 6) {
-      //   initBigTree3Left += 128 * 2
-      //   initBigTree3Top -= 72 * 2
-      // }
-      leftSceneries.push({
-        src: "/image/tree/bigtree-4.png",
-        left: initBigTree3Left += 128,
-        top: initBigTree3Top -= 72,
-        zIndex: 35
-      })
-    }
+    // // 添加大型树木3
+    // let bigTree3Num = 16, initBigTree3Left = -1020, initBigTree3Top = 300;
+    // for (var i = 0; i <= bigTree3Num; i++) {
+    //   // 中间少树木，去添加特殊景观
+    //   // if (i == 6) {
+    //   //   initBigTree3Left += 128 * 2
+    //   //   initBigTree3Top -= 72 * 2
+    //   // }
+    //   leftSceneries.push({
+    //     src: "/image/tree/bigtree-4.png",
+    //     left: initBigTree3Left += 128,
+    //     top: initBigTree3Top -= 72,
+    //     zIndex: 35
+    //   })
+    // }
 
     // 添加大型树木4
     // let bigTree4Num = 16, initBigTree4Left = -1150, initBigTree4Top = 250;
@@ -183,15 +183,15 @@ function index(props) {
     }
 
     // 添加大型树木3
-    let bigTree3Num = 12, initBigTree3Right = -1050, initBigTree3Bottom = 300;
-    for (var i = 0; i <= bigTree3Num; i++) {
-      rightSceneries.push({
-        src: "/image/tree/bigtree-4.png",
-        right: initBigTree3Right += 150,
-        bottom: initBigTree3Bottom -= 84,
-        zIndex: 65
-      })
-    }
+    // let bigTree3Num = 12, initBigTree3Right = -1050, initBigTree3Bottom = 300;
+    // for (var i = 0; i <= bigTree3Num; i++) {
+    //   rightSceneries.push({
+    //     src: "/image/tree/bigtree-4.png",
+    //     right: initBigTree3Right += 150,
+    //     bottom: initBigTree3Bottom -= 84,
+    //     zIndex: 65
+    //   })
+    // }
     // 添加大型树木4
     // let bigTree4Num = 16, initBigTree4Right = -1150, initBigTree4Bottom = 250;
     // for (var i = 0; i <= bigTree4Num; i++) {
@@ -202,6 +202,8 @@ function index(props) {
     //     zIndex: 70
     //   })
     // }
+
+    
 
   })();
 
@@ -225,33 +227,43 @@ function index(props) {
       zIndex: 50
     })
     // 女孩儿
+    // leftSceneries.push({
+    //   src: "/image/scenery/people-2.png",
+    //   width:40,
+    //   left: -72,
+    //   top: 215,
+    //   zIndex: 40
+    // })
+    // 添加楼宇
     leftSceneries.push({
-      src: "/image/scenery/people-2.png",
-      width:40,
-      left: -72,
-      top: 215,
+      src: "/image/building/building-1.png",
+      width:270,
+      left: -421,
+      top: -333,
       zIndex: 40
     })
-    // 花簇
-    // leftSceneries.push({
-    //   src: "/image/scenery/flower-1.png",
-    //   left:  313,
-    //   top:  0,
-    //   zIndex: 40
-    // })
-    // leftSceneries.push({
-    //   src: "/image/scenery/flower-2.png",
-    //   left:  322,
-    //   top:  -13,
-    //   zIndex: 40
-    // })
-    // 池子
-    // leftSceneries.push({
-    //   src: "/image/scenery/pond.png",
-    //   left: -100,
-    //   top: -120,
-    //   zIndex: 20
-    // })
+    leftSceneries.push({
+      src: "/image/building/building-2.png",
+      width:294,
+      left: -234,
+      top: -136,
+      zIndex: 38
+    })
+    leftSceneries.push({
+      src: "/image/building/building-3.png",
+      width:462,
+      left: -157,
+      top: -348,
+      zIndex: 36
+    })
+    leftSceneries.push({
+      src: "/image/building/building-2.png",
+      width:294,
+      left: 184,
+      top: -365,
+      zIndex: 34
+    })
+    
 
 
     // 右边
@@ -271,50 +283,28 @@ function index(props) {
       bottom: 215,
       zIndex: 40
     })
-
-    // // 小路
-    // rightSceneries.push({
-    //   src: "/image/scenery/road.png",
-    //   width: 137,
-    //   right: 126,
-    //   bottom: 176,
-    //   zIndex: 0
-    // })
-    // rightSceneries.push({
-    //   src: "/image/scenery/road.png",
-    //   width: 137,
-    //   right: 7.5,
-    //   bottom: 104,
-    //   zIndex: 0
-    // })
-    // // 凉亭
-    // rightSceneries.push({
-    //   src: "/image/scenery/kiosk.png",
-    //   width: 135,
-    //   right: -70,
-    //   bottom: 52,
-    //   zIndex: 57
-    // })
-    // // 喷泉
-    // rightSceneries.push({
-    //   src: "/image/scenery/fountain.png",
-    //   right: -223,
-    //   bottom: 56,
-    //   zIndex: 57
-    // })
-    // 花簇
-    // rightSceneries.push({
-    //   src: "/image/scenery/flower-1.png",
-    //   right: 255,
-    //   bottom: 14,
-    //   zIndex: 1
-    // })
-    // rightSceneries.push({
-    //   src: "/image/scenery/flower-2.png",
-    //   right: 270,
-    //   bottom: 4,
-    //   zIndex: 5
-    // })
+    // 添加楼宇
+    rightSceneries.push({
+      src: "/image/building/building-1.png",
+      width:305,
+      right: -324,
+      bottom: -356,
+      zIndex: 80
+    })
+    rightSceneries.push({
+      src: "/image/building/building-1.png",
+      width:305,
+      right: -106,
+      bottom: -480,
+      zIndex: 80
+    })
+    rightSceneries.push({
+      src: "/image/building/building-1.png",
+      width:305,
+      right: 111,
+      bottom: -606,
+      zIndex: 80
+    })
 
   })();
 

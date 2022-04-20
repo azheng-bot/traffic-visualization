@@ -9,39 +9,39 @@ function index(props) {
   const moduleList = [
     {
       name: "我的城市",
-      route: "/mycity",
+      route: "/mycity/",
       children: [
-        { name: "城市公交", route: "/mycity/bus", icon: "/image/modules/colorless/bus.png", _icon: "/image/modules/colorless/_bus.png" },
-        { name: "城市地铁", route: "/mycity/subway", icon: "/image/modules/colorless/subway.png", _icon: "/image/modules/colorless/_subway.png" },
+        { name: "城市公交", route: "mycity/bus", icon: "/image/modules/colorless/bus.png", _icon: "/image/modules/colorless/_bus.png" },
+        { name: "城市地铁", route: "mycity/subway", icon: "/image/modules/colorless/subway.png", _icon: "/image/modules/colorless/_subway.png" },
       ]
     },
     {
       name: "基础通识",
-      route: "/knowledge",
+      route: "knowledge",
       children: [
-        { name: "交通图标", route: "/knowledge/sign", icon: "/image/modules/colorless/sign.png", _icon: "/image/modules/colorless/_sign.png" },
-        { name: "交通工具", route: "/knowledge/tool", icon: "/image/modules/colorless/tool.png", _icon: "/image/modules/colorless/_tool.png" },
-        { name: "交通法规", route: "/knowledge/law", icon: "/image/modules/colorless/law.png", _icon: "/image/modules/colorless/_law.png" },
-        // { name: "交通历史", route: "/knowledge/history", icon: "/image/modules/colorless/history.png", _icon: "/image/modules/colorless/_history.png" },
+        { name: "交通图标", route: "knowledge/sign", icon: "/image/modules/colorless/sign.png", _icon: "/image/modules/colorless/_sign.png" },
+        { name: "交通工具", route: "knowledge/tool", icon: "/image/modules/colorless/tool.png", _icon: "/image/modules/colorless/_tool.png" },
+        { name: "交通法规", route: "knowledge/law", icon: "/image/modules/colorless/law.png", _icon: "/image/modules/colorless/_law.png" },
+        // { name: "交通历史", route: "knowledge/history", icon: "/image/modules/colorless/history.png", _icon: "/image/modules/colorless/_history.png" },
       ]
     },
     {
       name: "深入交通",
-      route: "/deep",
+      route: "deep",
       children: [
-        // { name: "交通现状", route: "/deep/now", icon: "/image/modules/colorless/now.png", _icon: "/image/modules/colorless/_now.png" },
-        // { name: "违法统计", route: "/deep/illegal", icon: "/image/modules/colorless/illegal.png", _icon: "/image/modules/colorless/_illegal.png" },
-        // { name: "车辆统计", route: "/deep/cars", icon: "/image/modules/colorless/cars.png", _icon: "/image/modules/colorless/_cars.png" },
-        { name: "交通大事件", route: "/deep/news", icon: "/image/modules/colorless/news.png", _icon: "/image/modules/colorless/_news.png" },
-        { name: "碳中和", route: "/deep/carbon", icon: "/image/modules/colorless/carbon.png", _icon: "/image/modules/colorless/_carbon.png" },
+        // { name: "交通现状", route: "deep/now", icon: "/image/modules/colorless/now.png", _icon: "/image/modules/colorless/_now.png" },
+        // { name: "违法统计", route: "deep/illegal", icon: "/image/modules/colorless/illegal.png", _icon: "/image/modules/colorless/_illegal.png" },
+        // { name: "车辆统计", route: "deep/cars", icon: "/image/modules/colorless/cars.png", _icon: "/image/modules/colorless/_cars.png" },
+        { name: "交通大事件", route: "deep/news", icon: "/image/modules/colorless/news.png", _icon: "/image/modules/colorless/_news.png" },
+        { name: "碳中和", route: "deep/carbon", icon: "/image/modules/colorless/carbon.png", _icon: "/image/modules/colorless/_carbon.png" },
       ]
     },
     {
       name: "交通统计",
-      route: "/count",
+      route: "count",
       children: [
-        { name: "全国交通运输数据", route: "/count/country", icon: "/image/modules/colorless/country-count.png", _icon: "/image/modules/colorless/_country-count.png" },
-        { name: "各省交通运输数据", route: "/count/province", icon: "/image/modules/colorless/province-count.png", _icon: "/image/modules/colorless/_province-count.png" },
+        { name: "全国交通运输数据", route: "count/country", icon: "/image/modules/colorless/country-count.png", _icon: "/image/modules/colorless/_country-count.png" },
+        { name: "各省交通运输数据", route: "count/province", icon: "/image/modules/colorless/province-count.png", _icon: "/image/modules/colorless/_province-count.png" },
       ]
     },
   ]
