@@ -82,9 +82,11 @@ function index(props) {
     }, 750)
 
     return function onDestory() {
+      // 清除状态
       setOrient = () => false
       clearInterval(timer)
       timer = null
+      window.removeEventListener('keypress', windowPressHandler)
     }
   }, [])
 
@@ -342,10 +344,10 @@ function index(props) {
     defermineDirection()
   })
   // 按回车时触发enterSubmodule事件
-  window.removeEventListener('keypress')
-  window.addEventListener("keypress", (e) => {
+  function windowPressHandler(e) {
     if (e.keyCode == 13) props.enterSubmodule(currentSubmodule)
-  })
+  }
+  window.addEventListener("keypress", windowPressHandler)
 
   // 三条路的x轴位置
   const leftRoad = [56, 134]
