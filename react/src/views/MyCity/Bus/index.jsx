@@ -312,11 +312,7 @@ function Bus() {
                 ))}
               </div>
               <div className="bottom-line">
-                {[
-                  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                  0, 0, 0,
-                ].map((item, index) => (
+                {new Array(20).map((item, index) => (
                   <div className="point" key={index}></div>
                 ))}
                 <div className="bus-time">{busTimeInfo}</div>

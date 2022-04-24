@@ -342,6 +342,7 @@ function index(props) {
     defermineDirection()
   })
   // 按回车时触发enterSubmodule事件
+  window.removeEventListener('keypress')
   window.addEventListener("keypress", (e) => {
     if (e.keyCode == 13) props.enterSubmodule(currentSubmodule)
   })
